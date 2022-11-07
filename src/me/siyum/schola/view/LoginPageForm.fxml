@@ -81,8 +81,8 @@
             <Font name="Arial" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="416.0" promptText="Username 👤" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5;" />
-      <PasswordField layoutX="44.0" layoutY="181.0" prefHeight="29.0" prefWidth="413.0" promptText="Password 🔑" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5;" />
+      <TextField layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="416.0" promptText="Username 👤" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;"/>
+      <PasswordField layoutX="44.0" layoutY="181.0" prefHeight="29.0" prefWidth="413.0" promptText="Password 🔑" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;" />
       <Label layoutX="46.0" layoutY="60.0" text="Don't have account? Meet your counsellor to create one." textFill="WHITE">
          <font>
             <Font name="Arial" size="12.0" />
