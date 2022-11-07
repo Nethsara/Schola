@@ -1,5 +1,7 @@
 package me.siyum.schola.dao;
 
-public interface CrudDAO<T,ID> {
+import me.siyum.schola.entity.SuperEntity;
+
+public interface CrudDAO<T extends SuperEntity,ID> {
     public boolean save(T t);
 }
