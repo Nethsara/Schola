@@ -1,7 +1,14 @@
 package me.siyum.schola;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class AppInitializer extends Application {
 
@@ -10,7 +17,12 @@ public class AppInitializer extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
-
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(
+                Objects.requireNonNull(getClass().getResource("view/LoginPageForm.fxml"))
+        );
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+        primaryStage.getIcons().add(new Image("./me/siyum/schola/assets/images/icon-blue.png"));
     }
 }

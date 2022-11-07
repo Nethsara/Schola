@@ -12,100 +12,89 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #061b28;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.LoginPageFormController">
-   <children>
-      <Circle fill="TRANSPARENT" layoutX="711.0" layoutY="451.0" opacity="0.23" radius="26.0" stroke="#ecf0f1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" />
-      <Circle fill="TRANSPARENT" layoutX="489.0" layoutY="478.0" opacity="0.23" radius="26.0" stroke="#ecf0f1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="108.0" layoutX="429.0" layoutY="72.0" opacity="0.23" stroke="#ecf0f1" strokeType="INSIDE" strokeWidth="3.0" width="86.0" />
-      <Circle fill="TRANSPARENT" layoutX="980.0" layoutY="130.0" opacity="0.23" radius="49.0" stroke="#ecf0f1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="129.0" layoutX="970.0" layoutY="409.0" opacity="0.23" stroke="#ecf0f1" strokeType="INSIDE" strokeWidth="3.0" width="108.0" />
-      <Line endX="22.5" layoutX="991.0" layoutY="432.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
-      <Line endX="41.0" layoutX="991.0" layoutY="442.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
-      <Line endX="41.0" layoutX="991.0" layoutY="451.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
-      <Line endX="41.0" layoutX="1032.0" layoutY="505.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
-      <Line endX="41.0" layoutX="1031.0" layoutY="515.0" opacity="0.23" startX="7.0" stroke="#ecf0f1" />
-      <AnchorPane layoutY="-12.0" prefHeight="612.0" prefWidth="392.0" style="-fx-background-color: #294f81;">
-         <children>
-            <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="15.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/images/icon-blue.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="20.0" layoutY="100.0" text="SCHOLA" textFill="WHITE">
-               <font>
-                  <Font name="Agency FB Bold" size="43.0" />
-               </font>
-            </Label>
-            <Label layoutX="20.0" layoutY="152.0" text="We are the next generation of the management systems" textFill="WHITE">
-               <font>
-                  <Font name="Agency FB" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="254.0" text="Lets's Manage Your" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="30.0" />
-               </font>
-            </Label>
-            <Label layoutX="24.0" layoutY="292.0" text="School With Us" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="30.0" />
-               </font>
-            </Label>
-            <Label layoutX="22.0" layoutY="349.0" text="With our most powerful student management system, your can manage your " textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="10.0" />
-               </font>
-            </Label>
-            <Label layoutX="22.0" layoutY="361.0" text="school/institute with minimum errort" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="10.0" />
-               </font>
-            </Label>
-            <AnchorPane layoutX="38.0" layoutY="461.0" prefHeight="88.0" prefWidth="323.0" style="-fx-background-color: #23436e; -fx-background-radius: 10;">
-               <children>
-                  <Label layoutX="14.0" layoutY="20.0" text="Schola system in your one stop system to manage your school. " textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="34.0" text="Schola is deisigned by the managers to the managers to manage" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="47.0" text="efficiently your beloved school" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="10.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </children>
+   <Circle fill="TRANSPARENT" layoutX="711.0" layoutY="451.0" opacity="0.23" radius="26.0" stroke="#ecf0f1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" />
+   <Circle fill="TRANSPARENT" layoutX="489.0" layoutY="478.0" opacity="0.23" radius="26.0" stroke="#ecf0f1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="108.0" layoutX="429.0" layoutY="72.0" opacity="0.23" stroke="#ecf0f1" strokeType="INSIDE" strokeWidth="3.0" width="86.0" />
+   <Circle fill="TRANSPARENT" layoutX="980.0" layoutY="130.0" opacity="0.23" radius="49.0" stroke="#ecf0f1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="129.0" layoutX="970.0" layoutY="409.0" opacity="0.23" stroke="#ecf0f1" strokeType="INSIDE" strokeWidth="3.0" width="108.0" />
+   <Line endX="22.5" layoutX="991.0" layoutY="432.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
+   <Line endX="41.0" layoutX="991.0" layoutY="442.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
+   <Line endX="41.0" layoutX="991.0" layoutY="451.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
+   <Line endX="41.0" layoutX="1032.0" layoutY="505.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
+   <Line endX="41.0" layoutX="1031.0" layoutY="515.0" opacity="0.23" startX="7.0" stroke="#ecf0f1" />
+   <AnchorPane layoutY="-12.0" prefHeight="612.0" prefWidth="392.0" style="-fx-background-color: #294f81;">
+      <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="15.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../assets/images/icon-blue.png" />
+      </ImageView>
+      <Label layoutX="20.0" layoutY="100.0" text="SCHOLA" textFill="WHITE">
+         <font>
+            <Font name="Agency FB Bold" size="43.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="152.0" text="We are the next generation of the management systems" textFill="WHITE">
+         <font>
+            <Font name="Agency FB" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="254.0" text="Let's Manage Your" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="292.0" text="School With Us" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="349.0" text="With our most powerful student management system, your can manage your " textFill="WHITE">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="361.0" text="school/institute with minimum effort" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="38.0" layoutY="461.0" prefHeight="88.0" prefWidth="323.0" style="-fx-background-color: #23436e; -fx-background-radius: 10;">
+         <Label layoutX="14.0" layoutY="20.0" text="Schola system in your one stop system to manage your school. " textFill="WHITE">
+            <font>
+               <Font name="Arial" size="10.0" />
+            </font>
+         </Label>
+         <Label layoutX="14.0" layoutY="34.0" text="Schola is designed by the managers to the managers to manage" textFill="WHITE">
+            <font>
+               <Font name="Arial" size="10.0" />
+            </font>
+         </Label>
+         <Label layoutX="14.0" layoutY="47.0" text="efficiently your beloved school" textFill="WHITE">
+            <font>
+               <Font name="Arial" size="10.0" />
+            </font>
+         </Label>
       </AnchorPane>
-      <AnchorPane layoutX="479.0" layoutY="115.0" prefHeight="355.0" prefWidth="510.0" style="-fx-background-color: #0c2230; -fx-border-radius: 15; -fx-background-radius: 15;">
-         <children>
-            <Label layoutX="44.0" layoutY="22.0" text="Let us get you in" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="24.0" />
-               </font>
-            </Label>
-            <TextField layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="416.0" promptText="Username 👤" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-font-style: &quot;color:white&quot;;" />
-            <PasswordField layoutX="44.0" layoutY="181.0" prefHeight="29.0" prefWidth="413.0" promptText="Password 🔑" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5;" />
-            <Label layoutX="46.0" layoutY="60.0" text="Don't have account? Meet your counsellor to create one." textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <JFXButton layoutX="205.0" layoutY="264.0" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #3d87b4;" text="Login" textFill="WHITE">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </AnchorPane>
-      <Line endX="22.5" layoutX="454.0" layoutY="91.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
-      <Line endX="41.0" layoutX="454.0" layoutY="101.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
-      <Line endX="41.0" layoutX="454.0" layoutY="110.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
-   </children>
+   </AnchorPane>
+   <AnchorPane layoutX="479.0" layoutY="115.0" prefHeight="355.0" prefWidth="510.0" style="-fx-background-color: #0c2230; -fx-border-radius: 15; -fx-background-radius: 15;">
+      <Label layoutX="44.0" layoutY="22.0" text="Let us get you in" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="416.0" promptText="Username 👤" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5;" />
+      <PasswordField layoutX="44.0" layoutY="181.0" prefHeight="29.0" prefWidth="413.0" promptText="Password 🔑" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5;" />
+      <Label layoutX="46.0" layoutY="60.0" text="Don't have account? Meet your counsellor to create one." textFill="WHITE">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="205.0" layoutY="264.0" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #3d87b4;" text="Login" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+   </AnchorPane>
+   <Line endX="22.5" layoutX="454.0" layoutY="91.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
+   <Line endX="41.0" layoutX="454.0" layoutY="101.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
+   <Line endX="41.0" layoutX="454.0" layoutY="110.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
 </AnchorPane>
