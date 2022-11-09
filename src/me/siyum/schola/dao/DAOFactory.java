@@ -1,5 +1,7 @@
 package me.siyum.schola.dao;
 
+import me.siyum.schola.dao.custom.ParentDAO;
+import me.siyum.schola.dao.custom.impl.ParentDAOImpl;
 import me.siyum.schola.dao.custom.impl.StudentDAOImpl;
 
 public class DAOFactory {
@@ -14,6 +16,8 @@ public class DAOFactory {
         switch (types){
             case STUDENT:
                 return (T) new StudentDAOImpl();
+            case PARENT:
+                return (T) new ParentDAOImpl();
             default:
                 return null;
         }
