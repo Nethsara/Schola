@@ -1,65 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.AdminDashboardController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#191d20" height="52.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1100.0" />
-      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/images/icon-grey.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="56.0" layoutY="15.0" text="SCHOLA" textFill="WHITE">
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.AdminDashboardController">
+   <Label layoutX="14.0" layoutY="14.0" text="Welcome, Nethsara Siyum" textFill="WHITE">
+      <font>
+         <Font name="Consolas Bold" size="12.0" />
+      </font>
+   </Label>
+   <ImageView fitHeight="14.0" fitWidth="19.0" layoutX="169.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../assets/images/wave-hand.png"/>
+   </ImageView>
+   <AnchorPane layoutX="11.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="15.0" layoutY="6.0" text="Total Students" textFill="WHITE">
          <font>
-            <Font name="Agency FB Bold" size="20.0" />
+            <Font name="Consolas" size="12.0"/>
          </font>
       </Label>
-      <Circle fx:id="circleImg" fill="DODGERBLUE" layoutX="1060.0" layoutY="24.0" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Circle fill="#1fff2c" layoutX="1050.0" layoutY="39.0" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <FontAwesomeIconView fill="#dddddd" glyphName="BELL" layoutX="1005.0" layoutY="37.0" size="20" />
-      <Label layoutX="1003.0" layoutY="8.0" style="-fx-background-color: red; -fx-background-radius: 10;" text="  10  " textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="23.0" layoutY="19.0" text="1000" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="11.0" />
+            <Font name="Consolas Bold" size="36.0"/>
          </font>
       </Label>
-      <AnchorPane fx:id="mainPane" layoutX="2.0" layoutY="52.0" prefHeight="620.0" prefWidth="1099.0" />
-      <Label layoutX="173.0" layoutY="17.0" text="Home" textFill="WHITE">
+   </AnchorPane>
+   <AnchorPane layoutX="284.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="18.0" layoutY="6.0" text="Total Employees" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas" size="12.0"/>
          </font>
       </Label>
-      <Label layoutX="236.0" layoutY="18.0" text="Students" textFill="WHITE">
+      <Label layoutX="31.0" layoutY="18.0" text="100" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas Bold" size="36.0"/>
          </font>
       </Label>
-      <Label layoutX="331.0" layoutY="18.0" text="Lecturers" textFill="WHITE">
+   </AnchorPane>
+   <AnchorPane layoutX="556.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="20.0" layoutY="7.0" text="Total Courses" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas" size="12.0"/>
          </font>
       </Label>
-      <Label layoutX="429.0" layoutY="18.0" text="Announcements" textFill="WHITE">
+      <Label layoutX="27.0" layoutY="19.0" text="5" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas Bold" size="36.0"/>
          </font>
       </Label>
-      <Label layoutX="560.0" layoutY="19.0" text="Incomes" textFill="WHITE">
+   </AnchorPane>
+   <AnchorPane layoutX="827.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="24.0" layoutY="7.0" text="Total Class Rooms" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="644.0" layoutY="19.0" text="Settings" textFill="WHITE">
+      <Label layoutX="34.0" layoutY="19.0" text="7" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas Bold" size="36.0" />
          </font>
       </Label>
-   </children>
+   </AnchorPane>
+   <AnchorPane layoutX="420.0" layoutY="128.0" prefHeight="307.0" prefWidth="667.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="19.0" layoutY="17.0" text="Performance Listed (Lecturers)" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="14.0"/>
+         </font>
+      </Label>
+      <TableView layoutX="19.0" layoutY="43.0" prefHeight="243.0" prefWidth="639.0"
+                 style="-fx-background-color: transparent; -fx-border-color: grey;">
+         <columns>
+            <TableColumn prefWidth="75.0" text="#ID"/>
+            <TableColumn prefWidth="107.0" text="Image"/>
+            <TableColumn prefWidth="351.0" text="Name"/>
+            <TableColumn prefWidth="105.0" text="Schola Mark"/>
+         </columns>
+      </TableView>
+      <JFXButton layoutX="576.0" layoutY="9.0" opacity="0.61"
+                 style="-fx-background-color: #111214; -fx-background-radius: 5;" text="View All" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="12.0"/>
+         </font>
+      </JFXButton>
+   </AnchorPane>
+   <AnchorPane layoutX="12.0" layoutY="128.0" prefHeight="307.0" prefWidth="398.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <PieChart layoutX="32.0" layoutY="46.0" prefHeight="239.0" prefWidth="317.0"/>
+      <Label layoutX="11.0" layoutY="25.0" text="Student Composition" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="14.0"/>
+         </font>
+      </Label>
+   </AnchorPane>
+   <AnchorPane layoutX="11.0" layoutY="444.0" prefHeight="171.0" prefWidth="549.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <LineChart fx:id="studentGrowthChart" alternativeRowFillVisible="false" createSymbols="false"
+                 horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutY="5.0"
+                 legendVisible="false" prefHeight="166.0" prefWidth="540.0" title="Student Growth"
+                 verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" tickLabelsVisible="false" tickMarkVisible="false"/>
+         </xAxis>
+         <yAxis>
+            <NumberAxis forceZeroInRange="false" minorTickVisible="false" side="LEFT" tickLabelsVisible="false"
+                        tickMarkVisible="false"/>
+         </yAxis>
+      </LineChart>
+   </AnchorPane>
+   <AnchorPane layoutX="566.0" layoutY="444.0" prefHeight="171.0" prefWidth="519.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <LineChart fx:id="incomeGrowthChart" alternativeRowFillVisible="false" createSymbols="false"
+                 horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutY="5.0"
+                 legendVisible="false" prefHeight="166.0" prefWidth="519.0" title="Income Growth"
+                 verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" tickLabelsVisible="false" tickMarkVisible="false"/>
+         </xAxis>
+         <yAxis>
+            <NumberAxis forceZeroInRange="false" minorTickVisible="false" side="LEFT" tickLabelsVisible="false"
+                        tickMarkVisible="false"/>
+         </yAxis>
+      </LineChart>
+   </AnchorPane>
 </AnchorPane>

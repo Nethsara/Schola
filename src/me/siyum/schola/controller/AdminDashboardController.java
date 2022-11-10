@@ -1,17 +1,14 @@
 package me.siyum.schola.controller;
 
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
+import javafx.scene.chart.LineChart;
 
 public class AdminDashboardController {
-    public Circle circleImg;
-    public AnchorPane mainPane;
+    public LineChart studentGrowthChart;
+    public LineChart incomeGrowthChart;
 
     public void initialize(){
-        Image im = new javafx.scene.image.Image("me/siyum/schola/assets/images/admin.png", false);
+        studentGrowthChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
+        incomeGrowthChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
 
-        circleImg.setFill(new ImagePattern(im));
     }
 }
