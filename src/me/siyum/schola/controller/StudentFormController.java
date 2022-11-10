@@ -77,7 +77,7 @@ public class StudentFormController {
         }
     }
 
-    public void saveStudentOnAction() throws SQLException, ClassNotFoundException {
+    public void saveStudentOnAction() throws SQLException {
         Connection connection = null;
         try {
             connection = DBConnection.getInstance().getConnection();
@@ -107,7 +107,8 @@ public class StudentFormController {
 
             }
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.CONFIRMATION,
+                    "Error occured when adding student").show();
         } finally {
             connection.setAutoCommit(true);
             clear();
@@ -172,6 +173,7 @@ public class StudentFormController {
     }
 
     public void setData(int id) {
+        btnSave.setText("Update");
         imgSt.setImage(null);
         try {
             ResultSet rs = CRUDUtil.execute("SELECT image FROM students WHERE id = ?", id);
