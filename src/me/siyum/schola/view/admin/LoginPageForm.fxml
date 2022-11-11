@@ -25,7 +25,7 @@
    <Line endX="41.0" layoutX="1031.0" layoutY="515.0" opacity="0.23" startX="7.0" stroke="#ecf0f1" />
    <AnchorPane layoutY="-12.0" prefHeight="612.0" prefWidth="392.0" style="-fx-background-color: #294f81;">
       <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="15.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../assets/images/icon-blue.png" />
+         <Image url="@../../assets/images/icon-blue.png" />
       </ImageView>
       <Label layoutX="20.0" layoutY="100.0" text="SCHOLA" textFill="WHITE">
          <font>

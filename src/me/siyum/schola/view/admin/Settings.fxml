@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="me.siyum.schola.controller.AdminStudentPageController">
+    <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="601.0" prefWidth="1071.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Label layoutX="14.0" layoutY="14.0" text="Announcements" textFill="#7662c4">
+            <font>
+                <Font name="Consolas Bold" size="18.0"/>
+            </font>
+        </Label>
+        <JFXComboBox layoutX="832.0" layoutY="107.0" prefHeight="25.0" prefWidth="217.0"/>
+        <JFXTextArea layoutX="14.0" layoutY="68.0" prefHeight="140.0" prefWidth="757.0"/>
+        <JFXButton layoutX="894.0" layoutY="183.0" style="-fx-background-color: #7662c4;" text="Send Message"
+                   textFill="WHITE"/>
+        <Label layoutX="14.0" layoutY="42.0" text="What is the message?" textFill="WHITE"/>
+        <Label layoutX="832.0" layoutY="42.0" text="To Whom?" textFill="WHITE"/>
+        <TableView layoutX="14.0" layoutY="245.0" prefHeight="345.0" prefWidth="1041.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="ID"/>
+                <TableColumn prefWidth="99.0" text="To"/>
+                <TableColumn prefWidth="632.0" text="Message"/>
+                <TableColumn prefWidth="132.0" text="Date"/>
+                <TableColumn prefWidth="102.0" text="Action"/>
+            </columns>
+        </TableView>
+    </AnchorPane>
+</AnchorPane>
