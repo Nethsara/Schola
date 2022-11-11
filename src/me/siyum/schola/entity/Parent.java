@@ -1,34 +1,23 @@
-package me.siyum.schola.dto;
+package me.siyum.schola.entity;
 
-import me.siyum.schola.entity.SuperEntity;
-
-import java.sql.Blob;
-
-public class StudentDTO implements SuperEntity {
+public class Parent implements SuperEntity {
     private int id;
     private String name;
     private String email;
     private String nic;
-    private Blob image;
     private String address;
     private String phone;
-    private int parentID;
-    private int scholaMark;
 
-
-    public StudentDTO() {
+    public Parent() {
     }
 
-    public StudentDTO(int id, String name, String email, String nic, Blob image, String address, String phone, int parentID, int scholaMark) {
+    public Parent(int id, String name, String email, String nic, String address, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.nic = nic;
-        this.image = image;
         this.address = address;
         this.phone = phone;
-        this.parentID = parentID;
-        this.scholaMark = scholaMark;
     }
 
     public int getId() {
@@ -63,14 +52,6 @@ public class StudentDTO implements SuperEntity {
         this.nic = nic;
     }
 
-    public Blob getImage() {
-        return image;
-    }
-
-    public void setImage(Blob image) {
-        this.image = image;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -85,21 +66,5 @@ public class StudentDTO implements SuperEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public int getParentID() {
-        return parentID;
-    }
-
-    public void setParentID(int parentID) {
-        this.parentID = parentID;
-    }
-
-    public int getScholaMark() {
-        return scholaMark;
-    }
-
-    public void setScholaMark(int scholaMark) {
-        this.scholaMark = scholaMark;
     }
 }

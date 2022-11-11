@@ -3,132 +3,132 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="665.0" prefWidth="723.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.AddStudentFromController">
-   <children>
-      <AnchorPane layoutX="39.0" layoutY="31.0" prefHeight="617.0" prefWidth="645.0" style="-fx-background-color: #191d20; -fx-background-radius: 10;">
-         <children>
-            <Circle fill="DODGERBLUE" layoutX="59.0" layoutY="59.0" radius="45.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-            <Label layoutX="115.0" layoutY="38.0" text="Example Name" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="115.0" layoutY="59.0" text="Student" textFill="WHITE" />
-            <Separator layoutX="15.0" layoutY="114.0" opacity="0.21" prefHeight="0.0" prefWidth="609.0" />
-            <JFXButton layoutX="551.0" layoutY="54.0" style="-fx-background-color: #d63031;" text="BAN" textFill="WHITE" />
-            <Label layoutX="59.0" layoutY="130.0" opacity="0.67" text="Basic" textFill="#e6e6e7">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="59.0" layoutY="149.0" opacity="0.5" text="Name in full" textFill="#e6e6e7">
+<AnchorPane prefHeight="665.0" prefWidth="723.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.StudentFormController">
+   <AnchorPane layoutX="39.0" layoutY="31.0" prefHeight="617.0" prefWidth="645.0" style="-fx-background-color: #191d20; -fx-background-radius: 10;">
+      <ImageView fx:id="imgSt" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../assets/images/stImg.png" />
+      </ImageView>
+      <Label fx:id="lblName" layoutX="115.0" layoutY="38.0" text="Example Name" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="115.0" layoutY="59.0" text="Student" textFill="WHITE" />
+      <Separator layoutX="15.0" layoutY="114.0" opacity="0.21" prefHeight="0.0" prefWidth="609.0" />
+      <JFXButton layoutX="551.0" layoutY="54.0" style="-fx-background-color: #d63031;" text="BAN" textFill="WHITE" />
+      <Label layoutX="59.0" layoutY="130.0" opacity="0.67" text="Basic" textFill="#e6e6e7">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="149.0" opacity="0.5" text="Name in full" textFill="#e6e6e7">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" layoutX="59.0" layoutY="170.0" prefHeight="29.0" prefWidth="532.0" style="-fx-background-color: #26292e;" />
+      <Label layoutX="59.0" layoutY="203.0" opacity="0.5" text="NIC" textFill="#e6e6e7">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNIC" layoutX="59.0" layoutY="221.0" prefHeight="29.0" prefWidth="227.0" style="-fx-background-color: #26292e;" />
+      <Label layoutX="302.0" layoutY="203.0" opacity="0.5" text="Email" textFill="#e6e6e7">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmail" layoutX="302.0" layoutY="221.0" prefHeight="29.0" prefWidth="290.0" style="-fx-background-color: #26292e;" />
+      <Label layoutX="59.0" layoutY="279.0" opacity="0.67" text="Contact" textFill="#e6e6e7">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="307.0" opacity="0.5" text="Phone" textFill="#e6e6e7">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPhone" layoutX="59.0" layoutY="325.0" prefHeight="29.0" prefWidth="227.0" style="-fx-background-color: #26292e;" />
+      <Label layoutX="305.0" layoutY="307.0" opacity="0.5" text="Address" textFill="#e6e6e7">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAddress" layoutX="302.0" layoutY="325.0" prefHeight="29.0" prefWidth="290.0" style="-fx-background-color: #26292e;" />
+      <JFXCheckBox fx:id="chkAddParent" layoutX="59.0" layoutY="372.0" onAction="#changeParentStatus" text="Add parent" textFill="WHITE" />
+      <Label layoutX="115.0" layoutY="75.0" text="ID : " textFill="WHITE" />
+      <Label fx:id="lblStID" layoutX="137.0" layoutY="75.0" text="ITS11111" textFill="WHITE" />
+      <AnchorPane layoutX="57.0" layoutY="397.0" prefHeight="164.0" prefWidth="532.0" style="-fx-background-color: #26292e; -fx-background-radius: 12;">
+         <TextField fx:id="txtPEmail" layoutX="248.0" layoutY="54.0" prefHeight="31.0" prefWidth="269.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
+         <Label layoutX="20.0" layoutY="12.0" opacity="0.5" text="ID : " textFill="#e6e6e7">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Label>
+         <Label fx:id="lblPID" layoutX="43.0" layoutY="12.0" opacity="0.5" text="P10009" textFill="#e6e6e7">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Label>
+         <TextField fx:id="txtPName" layoutX="20.0" layoutY="54.0" prefHeight="31.0" prefWidth="212.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
+         <Label layoutX="21.0" layoutY="38.0" opacity="0.5" text="Name" textFill="#e6e6e7">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Label>
+         <Label layoutX="250.0" layoutY="38.0" opacity="0.5" text="Email" textFill="#e6e6e7">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Label>
+         <Label layoutX="21.0" layoutY="97.0" opacity="0.5" text="NIC" textFill="#e6e6e7">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Label>
+         <TextField fx:id="txtPNIC" layoutX="20.0" layoutY="114.0" prefHeight="31.0" prefWidth="212.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
+         <Label layoutX="249.0" layoutY="97.0" opacity="0.5" text="Phone" textFill="#e6e6e7">
+            <font>
+               <Font name="Arial" size="12.0" />
+            </font>
+         </Label>
+         <TextField fx:id="txtPPhone" layoutX="250.0" layoutY="114.0" prefHeight="31.0" prefWidth="269.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
+         <AnchorPane fx:id="paneSelectParents" layoutX="1.0" layoutY="3.0" prefHeight="164.0" prefWidth="532.0" style="-fx-background-color: #26292e; -fx-background-radius: 12;">
+            <JFXComboBox fx:id="cmbParentID" layoutX="168.0" layoutY="70.0" prefHeight="25.0" prefWidth="196.0" />
+            <Label layoutX="124.0" layoutY="41.0" opacity="0.5" text="Select Parent ID" textFill="#e6e6e7">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <TextField layoutX="59.0" layoutY="170.0" prefHeight="29.0" prefWidth="532.0" style="-fx-background-color: #26292e;" />
-            <Label layoutX="59.0" layoutY="203.0" opacity="0.5" text="NIC" textFill="#e6e6e7">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <TextField layoutX="59.0" layoutY="221.0" prefHeight="29.0" prefWidth="227.0" style="-fx-background-color: #26292e;" />
-            <Label layoutX="302.0" layoutY="203.0" opacity="0.5" text="Email" textFill="#e6e6e7">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <TextField layoutX="302.0" layoutY="221.0" prefHeight="29.0" prefWidth="290.0" style="-fx-background-color: #26292e;" />
-            <Label layoutX="59.0" layoutY="279.0" opacity="0.67" text="Contact" textFill="#e6e6e7">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="60.0" layoutY="307.0" opacity="0.5" text="Phone" textFill="#e6e6e7">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <TextField layoutX="59.0" layoutY="325.0" prefHeight="29.0" prefWidth="227.0" style="-fx-background-color: #26292e;" />
-            <Label layoutX="305.0" layoutY="307.0" opacity="0.5" text="Address" textFill="#e6e6e7">
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </Label>
-            <TextField layoutX="302.0" layoutY="325.0" prefHeight="29.0" prefWidth="290.0" style="-fx-background-color: #26292e;" />
-            <JFXCheckBox layoutX="59.0" layoutY="372.0" text="Add parent" textFill="WHITE" />
-            <Label layoutX="115.0" layoutY="75.0" text="ID : " textFill="WHITE" />
-            <Label layoutX="137.0" layoutY="75.0" text="ITS11111" textFill="WHITE" />
-            <AnchorPane layoutX="57.0" layoutY="397.0" prefHeight="164.0" prefWidth="532.0" style="-fx-background-color: #26292e; -fx-background-radius: 12;">
-               <children>
-                  <Label layoutX="20.0" layoutY="12.0" opacity="0.5" text="ID : " textFill="#e6e6e7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblPID" layoutX="43.0" layoutY="12.0" opacity="0.5" text="P10009" textFill="#e6e6e7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtPName" layoutX="20.0" layoutY="54.0" prefHeight="31.0" prefWidth="212.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
-                  <Label layoutX="21.0" layoutY="38.0" opacity="0.5" text="Name" textFill="#e6e6e7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtPAddress" layoutX="248.0" layoutY="54.0" prefHeight="31.0" prefWidth="269.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
-                  <Label layoutX="250.0" layoutY="38.0" opacity="0.5" text="Email" textFill="#e6e6e7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="21.0" layoutY="97.0" opacity="0.5" text="NIC" textFill="#e6e6e7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtPNIC" layoutX="20.0" layoutY="114.0" prefHeight="31.0" prefWidth="212.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
-                  <Label layoutX="249.0" layoutY="97.0" opacity="0.5" text="Phone" textFill="#e6e6e7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtPPhone" layoutX="250.0" layoutY="114.0" prefHeight="31.0" prefWidth="269.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="58.0" layoutY="397.0" prefHeight="164.0" prefWidth="532.0" style="-fx-background-color: #26292e; -fx-background-radius: 12;">
-               <children>
-                  <JFXComboBox layoutX="168.0" layoutY="70.0" prefHeight="25.0" prefWidth="196.0" />
-                  <Label layoutX="124.0" layoutY="41.0" opacity="0.5" text="Select Parent ID" textFill="#e6e6e7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="397.0" layoutY="52.0" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: #26292e; -fx-background-radius: 10;">
-               <children>
-                  <Label layoutX="14.0" layoutY="6.0" text="Schola Marks : " textFill="WHITE" />
-                  <Label layoutX="101.0" layoutY="6.0" text="99" textFill="#00ff2f">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <JFXButton layoutX="465.0" layoutY="573.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Cancel" textFill="WHITE" />
-            <JFXButton layoutX="525.0" layoutY="574.0" style="-fx-background-color: #785fd4; -fx-border-radius: 5;" text="    Save    " textFill="WHITE" />
-            <Separator layoutX="61.0" layoutY="267.0" opacity="0.21" prefHeight="3.0" prefWidth="532.0" />
-            <Separator layoutX="57.0" layoutY="364.0" opacity="0.21" prefHeight="3.0" prefWidth="532.0" />
-         </children>
+         </AnchorPane>
       </AnchorPane>
-   </children>
+      <AnchorPane layoutX="397.0" layoutY="52.0" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: #26292e; -fx-background-radius: 10;">
+         <Label layoutX="14.0" layoutY="6.0" text="Schola Marks : " textFill="WHITE" />
+         <Label fx:id="lblScholaMark" layoutX="101.0" layoutY="6.0" text="99" textFill="#00ff2f">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+      </AnchorPane>
+      <JFXButton fx:id="btnCancel" layoutX="465.0" layoutY="573.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Cancel" textFill="WHITE" />
+      <JFXButton fx:id="btnSave" layoutX="525.0" layoutY="574.0" onAction="#saveStudentOnAction" style="-fx-background-color: #785fd4; -fx-border-radius: 5;" text="    Save    " textFill="WHITE" />
+      <Separator layoutX="61.0" layoutY="267.0" opacity="0.21" prefHeight="3.0" prefWidth="532.0" />
+      <Separator layoutX="57.0" layoutY="364.0" opacity="0.21" prefHeight="3.0" prefWidth="532.0" />
+      <FontAwesomeIconView fx:id="iconUpload" fill="WHITE" glyphName="UPLOAD" layoutX="94.0" layoutY="108.0" onMouseClicked="#uploadStImageOnAction" size="20">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+   </AnchorPane>
 </AnchorPane>
