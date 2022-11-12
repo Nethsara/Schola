@@ -12,5 +12,6 @@ public interface TasksBO {
     boolean addTasks(Tasks t) throws SQLException, ClassNotFoundException;
     ResultSet retrieveTasks() throws SQLException, ClassNotFoundException;
     ArrayList<TasksDTO> searchTasks(String s) throws SQLException, ClassNotFoundException;
+    boolean deleteTasks(int id) throws SQLException, ClassNotFoundException;
 
 }

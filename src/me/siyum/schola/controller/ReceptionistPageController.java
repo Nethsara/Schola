@@ -4,9 +4,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.TasksBO;
@@ -15,6 +21,7 @@ import me.siyum.schola.dto.TasksDTO;
 import me.siyum.schola.entity.Tasks;
 import me.siyum.schola.view.receptionist.tm.TasksTM;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -33,6 +40,8 @@ public class ReceptionistPageController {
     public TableColumn colActions;
     public AnchorPane receptionistPane;
     public AnchorPane mainPane;
+    public Circle circleImg;
+
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -63,6 +72,25 @@ public class ReceptionistPageController {
                         t.getStatus(),
                         btn
                 );
+                btn.setOnAction(event -> {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                            "Are you sure you want to cancel?",
+                            ButtonType.YES, ButtonType.NO);
+                    Optional<ButtonType> buttonType = alert.showAndWait();
+                    if (buttonType.get() == ButtonType.YES) {
+                        try {
+                            boolean isDeleted = tasksBO.deleteTasks(tm.getId());
+                            if (isDeleted) {
+                                setData();
+                                new Alert(Alert.AlertType.INFORMATION, "Request Cancelled!").show();
+                            } else {
+                                new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                            }
+                        } catch (ClassNotFoundException | SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, "DB Loading Error, Please contact system admin");
+                        }
+                    }
+                });
                 tmList.add(tm);
             }
             tblRefreshments.setItems(tmList);
@@ -136,5 +164,9 @@ public class ReceptionistPageController {
                 new Alert(Alert.AlertType.ERROR, "Unknown Error").show();
             }
         }
+    }
+
+    public void studentsPageLoad(ActionEvent actionEvent) throws IOException {
+
     }
 }

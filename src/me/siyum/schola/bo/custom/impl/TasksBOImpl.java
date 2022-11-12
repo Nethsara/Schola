@@ -38,4 +38,9 @@ public class TasksBOImpl implements TasksBO {
         }
         return dtos;
     }
+
+    @Override
+    public boolean deleteTasks(int id) throws SQLException, ClassNotFoundException {
+        return dao.delete(id);
+    }
 }

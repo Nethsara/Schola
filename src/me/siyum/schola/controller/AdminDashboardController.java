@@ -18,4 +18,6 @@ public class AdminDashboardController {
     }
 
 
+    public void newStudent(ActionEvent actionEvent) {
+    }
 }

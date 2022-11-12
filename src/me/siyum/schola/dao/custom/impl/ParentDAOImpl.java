@@ -42,7 +42,7 @@ public class ParentDAOImpl implements ParentDAO {
     }
 
     @Override
-    public ArrayList<Tasks> search(String s) throws SQLException, ClassNotFoundException {
+    public ArrayList<Parent> search(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 

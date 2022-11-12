@@ -31,8 +31,9 @@ public class TasksDAOImpl implements TasksDAO {
     }
 
     @Override
-    public boolean delete(Integer integer) {
-        return false;
+    public boolean delete(Integer integer) throws SQLException, ClassNotFoundException {
+        return CRUDUtil.execute("DELETE FROM tasks WHERE tskID=?",
+                integer);
     }
 
     @Override
