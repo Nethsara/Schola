@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.TasksBO;
@@ -31,12 +33,16 @@ public class ReceptionistDashboardController {
     public TableColumn colStatus;
     public TableColumn colActions;
 
+    private AnchorPane pane;
+    private int id;
+
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         colActions.setCellValueFactory(new PropertyValueFactory<>("cancel"));
         setData();
+
     }
 
     public void setData() {
@@ -46,6 +52,13 @@ public class ReceptionistDashboardController {
             ArrayList<TasksDTO> tasksDTOS = tasksBO.searchTasks("");
             for (TasksDTO t : tasksDTOS) {
                 Button btn = new Button("Cancel");
+
+                if (t.getStatus()) {
+                    btn.setStyle("-fx-base: #c0392b; -fx-border-radius: 5; -fx-background-radius: 5;");
+                } else {
+                    btn.setStyle("-fx-base: #2980b9; -fx-border-radius: 5; -fx-background-radius: 5;");
+                    btn.setDisable(true);
+                }
                 TasksTM tm = new TasksTM(
                         t.getId(),
                         t.getTimeStamp(),
@@ -70,6 +83,7 @@ public class ReceptionistDashboardController {
             );
             if (execute) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Added to \"To do List\" ").show();
+                listName.getItems().add(txtToDoListItem.getText());
                 txtToDoListItem.clear();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to add \"To do List\" ").show();
@@ -77,7 +91,6 @@ public class ReceptionistDashboardController {
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, "Unknown errors occurred :(").show();
         }
-        listName.getItems().add(txtToDoListItem.getText());
 
     }
 

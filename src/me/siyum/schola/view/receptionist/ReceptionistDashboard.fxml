@@ -104,7 +104,7 @@
          </font>
       </TextField>
       <JFXButton fx:id="btnAddToDo" layoutX="421.0" layoutY="43.0" onAction="#addToList" style="-fx-border-color: #7960d5; -fx-border-radius: 5;" text="Add" textFill="#7960d5" />
-      <JFXListView fx:id="listName" layoutX="14.0" layoutY="79.0" prefHeight="359.0" prefWidth="515.0" style="-fx-border-radius: 5; -fx-border-color: #7960d5; -fx-background-color: transparent; -fx-background-radius: 5;" />
+      <JFXListView fx:id="listName" layoutX="14.0" layoutY="79.0" prefHeight="359.0" prefWidth="515.0" style="-fx-border-radius: 5; -fx-border-color: #7960d5; -fx-background-radius: 5; -fx-background-color: transparent;" />
       <JFXButton fx:id="btnRemove" layoutX="468.0" layoutY="43.0" onAction="#removeFromList" style="-fx-border-color: #7960d5; -fx-border-radius: 5;" text="Remove" textFill="#7960d5" />
    </AnchorPane>
    <AnchorPane layoutX="558.0" layoutY="126.0" prefHeight="444.0" prefWidth="528.0" style="-fx-background-color: #191d20; -fx-background-radius: 10;">
@@ -113,13 +113,13 @@
             <Font name="Consolas" size="12.0" />
          </font>
       </Label>
-      <JFXButton layoutX="14.0" layoutY="43.0" onAction="#requestsRefreshments" prefHeight="27.0" prefWidth="507.0" style="-fx-border-color: #7960d5; -fx-border-radius: 5; -fx-background-color: #7960d5;" text="Request Refeshments to the Guests" textFill="WHITE" />
-      <TableView fx:id="tblRefreshments" layoutX="20.0" layoutY="88.0" prefHeight="342.0" prefWidth="496.0">
+      <JFXButton layoutX="20.0" layoutY="44.0" onAction="#requestsRefreshments" prefHeight="27.0" prefWidth="496.0" style="-fx-border-color: #7960d5; -fx-border-radius: 5; -fx-background-color: #7960d5;" text="Request Refeshments to the Guests" textFill="WHITE" />
+      <TableView fx:id="tblRefreshments" layoutX="20.0" layoutY="88.0" prefHeight="342.0" prefWidth="496.0" style="-fx-background-color: transparent;">
          <columns>
             <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="colTime" prefWidth="162.0" text="Time" />
-            <TableColumn fx:id="colStatus" prefWidth="134.0" text="Status" />
-            <TableColumn fx:id="colActions" prefWidth="124.0" text="Actions" />
+            <TableColumn fx:id="colTime" prefWidth="201.0" text="Time" />
+            <TableColumn fx:id="colStatus" prefWidth="149.0" text="Status" />
+            <TableColumn fx:id="colActions" prefWidth="70.0" resizable="false" text="Actions" />
          </columns>
       </TableView>
    </AnchorPane>
