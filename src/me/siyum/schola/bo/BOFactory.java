@@ -3,6 +3,7 @@ package me.siyum.schola.bo;
 import me.siyum.schola.bo.custom.ParentBO;
 import me.siyum.schola.bo.custom.impl.ParentBOImpl;
 import me.siyum.schola.bo.custom.impl.StudentBOImpl;
+import me.siyum.schola.bo.custom.impl.TasksBOImpl;
 import me.siyum.schola.dao.custom.impl.ParentDAOImpl;
 
 public class BOFactory {
@@ -20,7 +21,10 @@ public class BOFactory {
 
             case PARENT:
                 return (T) new ParentBOImpl();
+            case TASKS:
+                return (T) new TasksBOImpl();
             default:
+
                 return null;
         }
     }

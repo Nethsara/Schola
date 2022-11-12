@@ -3,6 +3,8 @@ package me.siyum.schola.dto;
 import me.siyum.schola.entity.SuperEntity;
 
 import java.sql.Blob;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class StudentDTO implements SuperEntity {
     private int id;
@@ -14,9 +16,27 @@ public class StudentDTO implements SuperEntity {
     private String phone;
     private int parentID;
     private int scholaMark;
-    private int attitudeTowardsLearning;
-    private int attendance;
+    private int batch;
+    private LocalDate dob;
+    private boolean status;
+    private boolean approval;
 
+
+    public StudentDTO(int id, String name, String email, String nic, Blob image, String address, String phone, int parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, int batch) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.nic = nic;
+        this.image = image;
+        this.address = address;
+        this.phone = phone;
+        this.parentID = parentID;
+        this.scholaMark = scholaMark;
+        this.dob = dob;
+        this.status = status;
+        this.approval = approval;
+        this.batch = batch;
+    }
 
     public StudentDTO() {
     }
@@ -30,9 +50,21 @@ public class StudentDTO implements SuperEntity {
         this.address = address;
         this.phone = phone;
         this.parentID = parentID;
-
         this.scholaMark = scholaMark;
     }
+
+    public StudentDTO(int id, String name, String email, String nic, String address, Blob image, String phone, int parentID, int scholaMark) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.nic = nic;
+        this.image = image;
+        this.address = address;
+        this.phone = phone;
+        this.parentID = parentID;
+        this.scholaMark = scholaMark;
+    }
+
 
     public int getId() {
         return id;
@@ -106,19 +138,35 @@ public class StudentDTO implements SuperEntity {
         this.scholaMark = scholaMark;
     }
 
-    public int getAttitudeTowardsLearning() {
-        return attitudeTowardsLearning;
+    public LocalDate getDob() {
+        return dob;
     }
 
-    public void setAttitudeTowardsLearning(int attitudeTowardsLearning) {
-        this.attitudeTowardsLearning = attitudeTowardsLearning;
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
     }
 
-    public int getAttendance() {
-        return attendance;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setAttendance(int attendance) {
-        this.attendance = attendance;
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isApproval() {
+        return approval;
+    }
+
+    public void setApproval(boolean approval) {
+        this.approval = approval;
+    }
+
+    public int getBatch() {
+        return batch;
+    }
+
+    public void setBatch(int batch) {
+        this.batch = batch;
     }
 }

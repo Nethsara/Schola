@@ -6,10 +6,11 @@ import me.siyum.schola.entity.Student;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class StudentDAOImpl implements StudentDAO {
     public boolean save(Student st) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("INSERT INTO students VALUES(?,?,?,?,?,?,?,?,?)",
+        return CRUDUtil.execute("INSERT INTO students VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 st.getId(),
                 st.getName(),
                 st.getEmail(),
@@ -18,12 +19,17 @@ public class StudentDAOImpl implements StudentDAO {
                 st.getAddress(),
                 st.getPhone(),
                 st.getParentID(),
-                st.getScholaMark());
+                st.getScholaMark(),
+                st.getDob(),
+                st.isStatus(),
+                st.isApproval(),
+                st.getBatch()
+        );
     }
 
     @Override
     public int getLastID() throws SQLException, ClassNotFoundException {
-        ResultSet res = CRUDUtil.execute("SELECT * FROM students ORDER BY sID DESC");
+        ResultSet res = CRUDUtil.execute("SELECT * FROM students ORDER BY stID DESC");
         if(res.next()){
             return res.getInt(1);
         }
@@ -41,8 +47,13 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
+    public ArrayList<Student> search(String s) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
     public ResultSet retrieve(Integer id) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("SELECT * FROM students WHERE sID = ?", id);
+        return CRUDUtil.execute("SELECT * FROM students WHERE stID = ?", id);
     }
 
     @Override

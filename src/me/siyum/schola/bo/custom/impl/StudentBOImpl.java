@@ -22,11 +22,15 @@ public class StudentBOImpl implements StudentBO {
                         st.getName(),
                         st.getEmail(),
                         st.getNic(),
-                        st.getAddress(),
                         st.getImage(),
+                        st.getAddress(),
                         st.getPhone(),
                         st.getParentID(),
-                        st.getScholaMark()
+                        st.getScholaMark(),
+                        st.getDob(),
+                        st.isStatus(),
+                        st.isApproval(),
+                        st.getBatch()
                 )
         );
     }

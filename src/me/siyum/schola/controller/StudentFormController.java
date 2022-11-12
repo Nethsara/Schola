@@ -3,6 +3,7 @@ package me.siyum.schola.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +35,7 @@ import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class StudentFormController {
@@ -58,14 +60,21 @@ public class StudentFormController {
     public JFXButton btnSave;
     public JFXComboBox<String> cmbParentID;
     public TextField txtPEmail;
+    public JFXDatePicker pickerDOB;
+    public JFXComboBox<String> cmbBatch;
 
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
     private ParentBO parentBO = BOFactory.getInstance().getBO(BOTypes.PARENT);
     private boolean isSavedParent = true;
     private ParentDTO parentDTO;
 
-    public void initialize() throws ClassNotFoundException {
+    public void initialize() {
         setData();
+        txtName.textProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    lblName.setText(newValue);
+                });
+
     }
 
     public void uploadStImageOnAction() {
@@ -128,8 +137,8 @@ public class StudentFormController {
         System.out.println(stPhone);
         int parentID;
         if (isSavedParent) {
-            String tempOrderId = cmbParentID.getValue();
-            String[] array = tempOrderId.split("-");//[D,3]
+            String tempParentID = cmbParentID.getValue();
+            String[] array = tempParentID.split("-");//[D,3]
             parentID = Integer.parseInt(array[0]);
         } else {
             parentID = Integer.parseInt(lblPID.getText());
@@ -169,7 +178,14 @@ public class StudentFormController {
             }
 
         }
-        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark);
+
+        String tempBatchID = cmbBatch.getValue();
+        String[] array = tempBatchID.split("-");//[D,3]
+        int batchID = Integer.parseInt(array[0]);
+
+        LocalDate dob = pickerDOB.getValue();
+
+        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,dob, true, false, batchID );
     }
 
     public void setData(int id) {
@@ -189,6 +205,15 @@ public class StudentFormController {
 
     private void setData() {
         try {
+            ArrayList<String> batchList = new ArrayList<>();
+            ResultSet res = CRUDUtil.execute("SELECT * FROM batches");
+            while (res.next()) {
+                batchList.add(res.getString(1) + "-" + res.getString(2));
+            }
+
+            ObservableList<String> obBatchList = FXCollections.observableArrayList(batchList);
+            cmbBatch.setItems(obBatchList);
+
             lblStID.setText(String.valueOf(studentBO.getLastID() + 1));
             lblPID.setText(String.valueOf(parentBO.getLastID() + 1));
             ResultSet set = parentBO.retrieve();

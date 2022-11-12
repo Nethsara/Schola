@@ -1,6 +1,8 @@
 package me.siyum.schola.entity;
 
 import java.sql.Blob;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Student implements SuperEntity {
     private int id;
@@ -12,7 +14,27 @@ public class Student implements SuperEntity {
     private String phone;
     private int parentID;
     private int scholaMark;
+    private int batch;
+    private LocalDate dob;
+    private boolean status;
+    private boolean approval;
 
+
+    public Student(int id, String name, String email, String nic, Blob image, String address, String phone, int parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, int batch) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.nic = nic;
+        this.image = image;
+        this.address = address;
+        this.phone = phone;
+        this.parentID = parentID;
+        this.scholaMark = scholaMark;
+        this.dob = dob;
+        this.status = status;
+        this.approval = approval;
+        this.batch = batch;
+    }
 
     public Student() {
     }
@@ -111,5 +133,37 @@ public class Student implements SuperEntity {
 
     public void setScholaMark(int scholaMark) {
         this.scholaMark = scholaMark;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isApproval() {
+        return approval;
+    }
+
+    public void setApproval(boolean approval) {
+        this.approval = approval;
+    }
+
+    public int getBatch() {
+        return batch;
+    }
+
+    public void setBatch(int batch) {
+        this.batch = batch;
     }
 }

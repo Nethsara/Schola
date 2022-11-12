@@ -1,5 +1,5 @@
 package me.siyum.schola.bo;
 
 public enum BOTypes {
-    STUDENT, CLASS, PARENT
+    STUDENT, CLASS, PARENT, TASKS
 }
