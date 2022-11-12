@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.AdminPage">
+<AnchorPane prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.ReceptionistPageController">
    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#191d20" height="52.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1100.0" />
    <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../assets/images/icon-grey.png" />

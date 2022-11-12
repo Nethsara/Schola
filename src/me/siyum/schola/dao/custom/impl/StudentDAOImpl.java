@@ -3,9 +3,11 @@ package me.siyum.schola.dao.custom.impl;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.dao.custom.StudentDAO;
 import me.siyum.schola.entity.Student;
+import me.siyum.schola.entity.Tasks;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class StudentDAOImpl implements StudentDAO {
     public boolean save(Student st) throws SQLException, ClassNotFoundException {
@@ -39,6 +41,12 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean delete(Integer id) {
         return false;
     }
+
+    @Override
+    public ArrayList<Tasks> search(String s) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 
     @Override
     public ResultSet retrieve(Integer id) throws SQLException, ClassNotFoundException {

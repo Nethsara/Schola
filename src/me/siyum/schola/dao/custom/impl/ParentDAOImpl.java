@@ -3,9 +3,11 @@ package me.siyum.schola.dao.custom.impl;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.dao.custom.ParentDAO;
 import me.siyum.schola.entity.Parent;
+import me.siyum.schola.entity.Tasks;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ParentDAOImpl implements ParentDAO {
     @Override
@@ -37,6 +39,11 @@ public class ParentDAOImpl implements ParentDAO {
     @Override
     public boolean delete(Integer integer) {
         return false;
+    }
+
+    @Override
+    public ArrayList<Tasks> search(String s) throws SQLException, ClassNotFoundException {
+        return null;
     }
 
     @Override
