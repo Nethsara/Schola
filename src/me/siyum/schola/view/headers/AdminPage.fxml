@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -28,34 +30,38 @@
       </font>
    </Label>
    <AnchorPane fx:id="mainPane" layoutX="2.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0" />
-   <Label layoutX="173.0" layoutY="17.0" text="Home" textFill="WHITE">
-      <font>
-         <Font name="Consolas" size="15.0" />
-      </font>
-   </Label>
-   <Label layoutX="236.0" layoutY="18.0" text="Students" textFill="WHITE">
-      <font>
-         <Font name="Consolas" size="15.0" />
-      </font>
-   </Label>
-   <Label layoutX="331.0" layoutY="18.0" text="Employers" textFill="WHITE">
-      <font>
-         <Font name="Consolas" size="15.0" />
-      </font>
-   </Label>
-   <Label layoutX="429.0" layoutY="18.0" text="Announcements" textFill="WHITE">
-      <font>
-         <Font name="Consolas" size="15.0" />
-      </font>
-   </Label>
-   <Label layoutX="560.0" layoutY="19.0" text="Incomes" textFill="WHITE">
-      <font>
-         <Font name="Consolas" size="15.0" />
-      </font>
-   </Label>
-   <Label layoutX="644.0" layoutY="19.0" text="Settings" textFill="WHITE">
-      <font>
-         <Font name="Consolas" size="15.0" />
-      </font>
-   </Label>
+   <HBox layoutX="309.0" layoutY="12.0" prefHeight="31.0" prefWidth="600.0" spacing="10.0">
+      <children>
+         <JFXButton text="Home" textFill="WHITE">
+            <font>
+               <Font name="Consolas" size="15.0" />
+            </font>
+         </JFXButton>
+         <JFXButton text="Students" textFill="WHITE">
+            <font>
+               <Font name="Consolas" size="15.0" />
+            </font>
+         </JFXButton>
+         <JFXButton text="Employers" textFill="WHITE">
+            <font>
+               <Font name="Consolas" size="15.0" />
+            </font>
+         </JFXButton>
+         <JFXButton text="Announcements" textFill="WHITE">
+            <font>
+               <Font name="Consolas" size="15.0" />
+            </font>
+         </JFXButton>
+         <JFXButton text="Incomes" textFill="WHITE">
+            <font>
+               <Font name="Consolas" size="15.0" />
+            </font>
+         </JFXButton>
+         <JFXButton text="Settings" textFill="WHITE">
+            <font>
+               <Font name="Consolas" size="15.0" />
+            </font>
+         </JFXButton>
+      </children>
+   </HBox>
 </AnchorPane>
