@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.AdminDashboardController">
+   <Label layoutX="14.0" layoutY="14.0" text="Welcome, Nethsara Siyum" textFill="WHITE">
+      <font>
+         <Font name="Consolas Bold" size="12.0" />
+      </font>
+   </Label>
+   <ImageView fitHeight="14.0" fitWidth="19.0" layoutX="169.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../../assets/images/wave-hand.png" />
+   </ImageView>
+   <AnchorPane layoutX="11.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="15.0" layoutY="6.0" text="Total Students" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="19.0" text="1000" textFill="WHITE">
+         <font>
+            <Font name="Consolas Bold" size="36.0" />
+         </font>
+      </Label>
+   </AnchorPane>
+   <AnchorPane layoutX="284.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="18.0" layoutY="6.0" text="Total Hours Teached" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="18.0" text="100" textFill="WHITE">
+         <font>
+            <Font name="Consolas Bold" size="36.0" />
+         </font>
+      </Label>
+   </AnchorPane>
+   <AnchorPane layoutX="556.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="20.0" layoutY="7.0" text="Upcomming Lessons" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="19.0" text="5" textFill="WHITE">
+         <font>
+            <Font name="Consolas Bold" size="36.0" />
+         </font>
+      </Label>
+   </AnchorPane>
+   <AnchorPane layoutX="827.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="24.0" layoutY="7.0" text="Schola Rating" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="19.0" text="7" textFill="WHITE">
+         <font>
+            <Font name="Consolas Bold" size="36.0" />
+         </font>
+      </Label>
+   </AnchorPane>
+   <AnchorPane layoutX="15.0" layoutY="329.0" prefHeight="281.0" prefWidth="523.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="19.0" layoutY="17.0" text="Top Students" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="14.0" />
+         </font>
+      </Label>
+      <TableView layoutX="13.0" layoutY="43.0" prefHeight="225.0" prefWidth="493.0" style="-fx-background-color: transparent; -fx-border-color: grey;">
+         <columns>
+            <TableColumn prefWidth="75.0" text="#ID" />
+            <TableColumn prefWidth="83.0" text="Image" />
+            <TableColumn prefWidth="135.0" text="Name" />
+            <TableColumn prefWidth="93.0" text="Schola Mark" />
+            <TableColumn prefWidth="121.0" text="Actions" />
+         </columns>
+      </TableView>
+      <JFXButton layoutX="440.0" layoutY="9.0" opacity="0.61" style="-fx-background-color: #111214; -fx-background-radius: 5;" text="View All" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </JFXButton>
+      <Circle fill="#00ff04" layoutX="122.0" layoutY="26.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+   </AnchorPane>
+   <AnchorPane layoutX="10.0" layoutY="133.0" prefHeight="182.0" prefWidth="1080.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="17.0" layoutY="8.0" text="Your Peformance" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="14.0" />
+         </font>
+      </Label>
+      <LineChart layoutX="-1.0" layoutY="25.0" prefHeight="150.0" prefWidth="1080.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis minorTickVisible="false" side="LEFT" tickLabelsVisible="false" tickMarkVisible="false" />
+        </yAxis>
+      </LineChart>
+   </AnchorPane>
+   <AnchorPane layoutX="552.0" layoutY="329.0" prefHeight="281.0" prefWidth="534.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <children>
+         <Label layoutX="19.0" layoutY="17.0" text="Weak Students" textFill="WHITE">
+            <font>
+               <Font name="Consolas" size="14.0" />
+            </font>
+         </Label>
+         <TableView layoutX="13.0" layoutY="43.0" prefHeight="225.0" prefWidth="511.0" style="-fx-background-color: transparent; -fx-border-color: grey;">
+            <columns>
+               <TableColumn prefWidth="75.0" text="#ID" />
+               <TableColumn prefWidth="83.0" text="Image" />
+               <TableColumn prefWidth="135.0" text="Name" />
+               <TableColumn prefWidth="93.0" text="Schola Mark" />
+               <TableColumn prefWidth="121.0" text="Actions" />
+            </columns>
+         </TableView>
+         <JFXButton layoutX="454.0" layoutY="9.0" opacity="0.61" style="-fx-background-color: #111214; -fx-background-radius: 5;" text="View All" textFill="WHITE">
+            <font>
+               <Font name="Consolas" size="12.0" />
+            </font>
+         </JFXButton>
+         <Circle fill="RED" layoutX="128.0" layoutY="25.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      </children>
+   </AnchorPane>
+</AnchorPane>

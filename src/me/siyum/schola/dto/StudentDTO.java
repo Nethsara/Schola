@@ -14,6 +14,8 @@ public class StudentDTO implements SuperEntity {
     private String phone;
     private int parentID;
     private int scholaMark;
+    private int attitudeTowardsLearning;
+    private int attendance;
 
 
     public StudentDTO() {
@@ -28,6 +30,7 @@ public class StudentDTO implements SuperEntity {
         this.address = address;
         this.phone = phone;
         this.parentID = parentID;
+
         this.scholaMark = scholaMark;
     }
 
@@ -101,5 +104,21 @@ public class StudentDTO implements SuperEntity {
 
     public void setScholaMark(int scholaMark) {
         this.scholaMark = scholaMark;
+    }
+
+    public int getAttitudeTowardsLearning() {
+        return attitudeTowardsLearning;
+    }
+
+    public void setAttitudeTowardsLearning(int attitudeTowardsLearning) {
+        this.attitudeTowardsLearning = attitudeTowardsLearning;
+    }
+
+    public int getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(int attendance) {
+        this.attendance = attendance;
     }
 }
