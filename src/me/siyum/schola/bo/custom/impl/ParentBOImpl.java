@@ -14,7 +14,7 @@ public class ParentBOImpl implements ParentBO {
     private ParentDAOImpl dao = DAOFactory.getInstance().getDAO(DAOTypes.PARENT);
 
     @Override
-    public int getLastID() throws SQLException, ClassNotFoundException {
+    public String getLastID() throws SQLException, ClassNotFoundException {
         return dao.getLastID();
     }
 

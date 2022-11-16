@@ -2,6 +2,7 @@ package me.siyum.schola.dao;
 
 import me.siyum.schola.dao.custom.ParentDAO;
 import me.siyum.schola.dao.custom.TasksDAO;
+import me.siyum.schola.dao.custom.impl.EmployeeDAOImpl;
 import me.siyum.schola.dao.custom.impl.ParentDAOImpl;
 import me.siyum.schola.dao.custom.impl.StudentDAOImpl;
 import me.siyum.schola.dao.custom.impl.TasksDAOImpl;
@@ -22,6 +23,8 @@ public class DAOFactory {
                 return (T) new ParentDAOImpl();
             case TASKS:
                 return (T) new TasksDAOImpl();
+            case EMPLOYEE:
+                return (T) new EmployeeDAOImpl();
             default:
                 return null;
         }

@@ -1,4 +1,4 @@
-package me.siyum.schola.controller;
+package me.siyum.schola.controller.students;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -111,7 +111,7 @@ public class StudentFormController {
                 }
             } else {
                 boolean b = studentBO.saveStudent(getData());
-                if (b) new Alert(Alert.AlertType.CONFIRMATION,
+                if (b) new Alert(Alert.AlertType.INFORMATION,
                         "Successfully Added the Student").show();
 
             }
@@ -128,20 +128,19 @@ public class StudentFormController {
     }
 
     private StudentDTO getData() throws SQLException, ClassNotFoundException {
-        int stID = Integer.parseInt(lblStID.getText());
+        String stID = lblStID.getText();
         String stName = txtName.getText();
         String stEmail = txtEmail.getText();
         String stNIC = txtNIC.getText();
         String stAddress = txtAddress.getText();
         String stPhone = txtPhone.getText();
-        System.out.println(stPhone);
-        int parentID;
+        String parentID;
         if (isSavedParent) {
             String tempParentID = cmbParentID.getValue();
             String[] array = tempParentID.split("-");//[D,3]
-            parentID = Integer.parseInt(array[0]);
+            parentID = array[0];
         } else {
-            parentID = Integer.parseInt(lblPID.getText());
+            parentID = lblPID.getText();
             String parentName = txtPName.getText();
             String parentEmail = txtPEmail.getText();
             String parentPhone = txtPPhone.getText();
@@ -156,7 +155,6 @@ public class StudentFormController {
                     parentPhone
             );
 
-            System.out.println(parentDTO);
         }
         int scholaMark = 0;
         if (!btnSave.getText().equalsIgnoreCase("Save")) {
@@ -181,11 +179,11 @@ public class StudentFormController {
 
         String tempBatchID = cmbBatch.getValue();
         String[] array = tempBatchID.split("-");//[D,3]
-        int batchID = Integer.parseInt(array[0]);
+        int batchID = Integer.parseInt(array[1]);
 
         LocalDate dob = pickerDOB.getValue();
 
-        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,dob, true, false, batchID );
+        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark, dob, true, false, batchID);
     }
 
     public void setData(int id) {
@@ -203,6 +201,23 @@ public class StudentFormController {
 
     }
 
+    private void setStudentID() throws SQLException, ClassNotFoundException {
+        String tempOrderId = studentBO.getLastID();
+        String[] array = tempOrderId.split("-");//[D,3]
+        int tempNumber = Integer.parseInt(array[1]);
+        int finalizeOrderId = tempNumber + 1;
+        lblStID.setText("SS-" + finalizeOrderId);
+    }
+
+    private void setParentID() throws SQLException, ClassNotFoundException {
+        String tempOrderId = parentBO.getLastID();
+        String[] array = tempOrderId.split("-");//[D,3]
+        int tempNumber = Integer.parseInt(array[1]);
+        int finalizeOrderId = tempNumber + 1;
+        lblStID.setText("SP-" + finalizeOrderId);
+
+    }
+
     private void setData() {
         try {
             ArrayList<String> batchList = new ArrayList<>();
@@ -214,8 +229,9 @@ public class StudentFormController {
             ObservableList<String> obBatchList = FXCollections.observableArrayList(batchList);
             cmbBatch.setItems(obBatchList);
 
-            lblStID.setText(String.valueOf(studentBO.getLastID() + 1));
-            lblPID.setText(String.valueOf(parentBO.getLastID() + 1));
+            setStudentID();
+            setParentID();
+
             ResultSet set = parentBO.retrieve();
             ArrayList<String> idList = new ArrayList<>();
             while (set.next()) {
@@ -233,11 +249,9 @@ public class StudentFormController {
         if (chkAddParent.isSelected()) {
             paneSelectParents.setVisible(false);
             isSavedParent = false;
-            System.out.println("isNotSaved");
         } else {
             isSavedParent = true;
             paneSelectParents.setVisible(true);
-            System.out.println("Saved");
         }
     }
 

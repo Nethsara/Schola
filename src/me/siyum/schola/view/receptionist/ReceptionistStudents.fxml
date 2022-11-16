@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.ReceptionistStudentsController">
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.receptionist.ReceptionistStudentsController">
     <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
         <Pane layoutX="17.0" layoutY="67.0" prefHeight="483.0" prefWidth="1008.0">
             <TableView layoutX="5.0" layoutY="11.0" prefHeight="473.0" prefWidth="1008.0">

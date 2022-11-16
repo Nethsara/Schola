@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="665.0" prefWidth="1024.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.StudentFormController">
+<AnchorPane prefHeight="665.0" prefWidth="1024.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.students.StudentFormController">
    <AnchorPane layoutX="39.0" layoutY="31.0" prefHeight="617.0" prefWidth="967.0" style="-fx-background-color: #191d20; -fx-background-radius: 10;">
       <ImageView fx:id="imgSt" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../assets/images/stImg.png" />

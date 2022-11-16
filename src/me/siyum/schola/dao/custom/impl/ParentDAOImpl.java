@@ -23,12 +23,12 @@ public class ParentDAOImpl implements ParentDAO {
     }
 
     @Override
-    public int getLastID() throws SQLException, ClassNotFoundException {
+    public String getLastID() throws SQLException, ClassNotFoundException {
         ResultSet res = CRUDUtil.execute("SELECT * FROM parents ORDER BY pID DESC");
         if(res.next()){
-            return res.getInt(1);
+            return res.getString(1);
         }
-        return 0;
+        return "";
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ParentDAOImpl implements ParentDAO {
     }
 
     @Override
-    public boolean delete(Integer integer) {
+    public boolean delete(String integer) {
         return false;
     }
 
@@ -45,6 +45,7 @@ public class ParentDAOImpl implements ParentDAO {
     public ArrayList<Parent> search(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
+
 
     @Override
     public ResultSet retrieve(Integer id) throws SQLException, ClassNotFoundException {
@@ -55,4 +56,10 @@ public class ParentDAOImpl implements ParentDAO {
     public ResultSet retrieve() throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("SELECT * FROM parents");
     }
+
+    @Override
+    public int getID(String s) {
+        return 0;
+    }
+
 }

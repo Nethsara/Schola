@@ -1,10 +1,9 @@
 package me.siyum.schola.bo;
 
-import me.siyum.schola.bo.custom.ParentBO;
+import me.siyum.schola.bo.custom.impl.EmployeeBOImpl;
 import me.siyum.schola.bo.custom.impl.ParentBOImpl;
 import me.siyum.schola.bo.custom.impl.StudentBOImpl;
 import me.siyum.schola.bo.custom.impl.TasksBOImpl;
-import me.siyum.schola.dao.custom.impl.ParentDAOImpl;
 
 public class BOFactory {
     private static BOFactory boFactory;
@@ -18,13 +17,13 @@ public class BOFactory {
         switch (types){
             case STUDENT:
                 return (T) new StudentBOImpl();
-
             case PARENT:
                 return (T) new ParentBOImpl();
             case TASKS:
                 return (T) new TasksBOImpl();
+            case EMPLOYEE:
+                return (T) new EmployeeBOImpl();
             default:
-
                 return null;
         }
     }

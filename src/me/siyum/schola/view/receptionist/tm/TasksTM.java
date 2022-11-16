@@ -3,7 +3,7 @@ package me.siyum.schola.view.receptionist.tm;
 import javafx.scene.control.Button;
 
 public class TasksTM {
-    private int id;
+    private String id;
     private String time;
     private boolean status;
     private Button cancel;
@@ -12,7 +12,7 @@ public class TasksTM {
     public TasksTM() {
     }
 
-    public TasksTM(int id, String time, String message, boolean status, Button cancel) {
+    public TasksTM(String id, String time, String message, boolean status, Button cancel) {
         this.id = id;
         this.time = time;
         this.status = status;
@@ -20,11 +20,11 @@ public class TasksTM {
         this.message = message;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

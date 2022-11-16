@@ -1,7 +1,7 @@
 package me.siyum.schola.dto;
 
 public class ParentDTO {
-    private int id;
+    private String id;
     private String name;
     private String email;
     private String nic;
@@ -11,7 +11,7 @@ public class ParentDTO {
     public ParentDTO() {
     }
 
-    public ParentDTO(int id, String name, String email, String nic, String address, String phone) {
+    public ParentDTO(String id, String name, String email, String nic, String address, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -20,11 +20,11 @@ public class ParentDTO {
         this.phone = phone;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

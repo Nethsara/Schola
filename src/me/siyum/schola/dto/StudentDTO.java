@@ -7,14 +7,14 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class StudentDTO implements SuperEntity {
-    private int id;
+    private String id;
     private String name;
     private String email;
     private String nic;
     private Blob image;
     private String address;
     private String phone;
-    private int parentID;
+    private String parentID;
     private int scholaMark;
     private int batch;
     private LocalDate dob;
@@ -22,7 +22,7 @@ public class StudentDTO implements SuperEntity {
     private boolean approval;
 
 
-    public StudentDTO(int id, String name, String email, String nic, Blob image, String address, String phone, int parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, int batch) {
+    public StudentDTO(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, int batch) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -41,7 +41,7 @@ public class StudentDTO implements SuperEntity {
     public StudentDTO() {
     }
 
-    public StudentDTO(int id, String name, String email, String nic, Blob image, String address, String phone, int parentID, int scholaMark) {
+    public StudentDTO(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -53,7 +53,7 @@ public class StudentDTO implements SuperEntity {
         this.scholaMark = scholaMark;
     }
 
-    public StudentDTO(int id, String name, String email, String nic, String address, Blob image, String phone, int parentID, int scholaMark) {
+    public StudentDTO(String id, String name, String email, String nic, String address, Blob image, String phone, String parentID, int scholaMark) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -66,11 +66,11 @@ public class StudentDTO implements SuperEntity {
     }
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -122,11 +122,11 @@ public class StudentDTO implements SuperEntity {
         this.phone = phone;
     }
 
-    public int getParentID() {
+    public String getParentID() {
         return parentID;
     }
 
-    public void setParentID(int parentID) {
+    public void setParentID(String parentID) {
         this.parentID = parentID;
     }
 

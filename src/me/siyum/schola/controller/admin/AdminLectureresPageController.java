@@ -1,4 +1,4 @@
-package me.siyum.schola.controller;
+package me.siyum.schola.controller.admin;
 
 public class AdminLectureresPageController {
 }

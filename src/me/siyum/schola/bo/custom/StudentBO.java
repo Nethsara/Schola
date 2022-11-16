@@ -9,5 +9,5 @@ public interface StudentBO {
 
     boolean saveStudent(StudentDTO student) throws SQLException, ClassNotFoundException;
     ResultSet retrieveStudent(int id);
-    int getLastID() throws SQLException, ClassNotFoundException;
+    String getLastID() throws SQLException, ClassNotFoundException;
 }

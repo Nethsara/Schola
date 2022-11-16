@@ -5,14 +5,14 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Student implements SuperEntity {
-    private int id;
+    private String id;
     private String name;
     private String email;
     private String nic;
     private Blob image;
     private String address;
     private String phone;
-    private int parentID;
+    private String parentID;
     private int scholaMark;
     private int batch;
     private LocalDate dob;
@@ -20,7 +20,7 @@ public class Student implements SuperEntity {
     private boolean approval;
 
 
-    public Student(int id, String name, String email, String nic, Blob image, String address, String phone, int parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, int batch) {
+    public Student(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, int batch) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -39,7 +39,7 @@ public class Student implements SuperEntity {
     public Student() {
     }
 
-    public Student(int id, String name, String email, String nic, Blob image, String address, String phone, int parentID, int scholaMark) {
+    public Student(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -51,7 +51,7 @@ public class Student implements SuperEntity {
         this.scholaMark = scholaMark;
     }
 
-    public Student(int id, String name, String email, String nic, String address, Blob image, String phone, int parentID, int scholaMark) {
+    public Student(String id, String name, String email, String nic, String address, Blob image, String phone, String parentID, int scholaMark) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -63,11 +63,11 @@ public class Student implements SuperEntity {
         this.scholaMark = scholaMark;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -119,11 +119,11 @@ public class Student implements SuperEntity {
         this.phone = phone;
     }
 
-    public int getParentID() {
+    public String getParentID() {
         return parentID;
     }
 
-    public void setParentID(int parentID) {
+    public void setParentID(String parentID) {
         this.parentID = parentID;
     }
 

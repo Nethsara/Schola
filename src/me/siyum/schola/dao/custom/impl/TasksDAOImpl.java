@@ -13,16 +13,16 @@ public class TasksDAOImpl implements TasksDAO {
     @Override
     public boolean save(Tasks tasks) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("INSERT INTO tasks VALUES(?,?,?,?)",
-                tasks.getId(), tasks.getTimeStamp(),tasks.getMessage(),tasks.getStatus());
+                tasks.getId(), tasks.getTimeStamp(), tasks.getMessage(), tasks.getStatus());
     }
 
     @Override
-    public int getLastID() throws SQLException, ClassNotFoundException {
+    public String getLastID() throws SQLException, ClassNotFoundException {
         ResultSet res = CRUDUtil.execute("SELECT * FROM tasks ORDER BY tskID DESC");
-        if(res.next()){
-            return res.getInt(1);
+        if (res.next()) {
+            return res.getString(1);
         }
-        return 0;
+        return "";
     }
 
     @Override
@@ -31,18 +31,17 @@ public class TasksDAOImpl implements TasksDAO {
     }
 
     @Override
-    public boolean delete(Integer integer) throws SQLException, ClassNotFoundException {
+    public boolean delete(String integer) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("DELETE FROM tasks WHERE tskID=?",
                 integer);
     }
 
-    @Override
     public ArrayList<Tasks> search(String s) throws SQLException, ClassNotFoundException {
         ResultSet set = CRUDUtil.execute("SELECT * FROM tasks");
         ArrayList<Tasks> list = new ArrayList<>();
-        while (set.next()){
+        while (set.next()) {
             list.add(new Tasks(
-                    set.getInt(1),
+                    set.getString(1),
                     set.getString(2),
                     set.getString(3),
                     set.getBoolean(4))
@@ -59,5 +58,10 @@ public class TasksDAOImpl implements TasksDAO {
     @Override
     public ResultSet retrieve() throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("SELECT * FROM tasks");
+    }
+
+    @Override
+    public int getID(String s) {
+        return 0;
     }
 }

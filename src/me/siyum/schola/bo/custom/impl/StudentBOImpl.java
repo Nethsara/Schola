@@ -41,7 +41,7 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public int getLastID() throws SQLException, ClassNotFoundException {
+    public String getLastID() throws SQLException, ClassNotFoundException {
         return dao.getLastID();
     }
 }
