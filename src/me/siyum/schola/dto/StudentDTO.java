@@ -16,13 +16,13 @@ public class StudentDTO implements SuperEntity {
     private String phone;
     private String parentID;
     private int scholaMark;
-    private int batch;
+    private String batch;
     private LocalDate dob;
     private boolean status;
     private boolean approval;
 
 
-    public StudentDTO(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, int batch) {
+    public StudentDTO(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, String batch) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -162,11 +162,11 @@ public class StudentDTO implements SuperEntity {
         this.approval = approval;
     }
 
-    public int getBatch() {
+    public String getBatch() {
         return batch;
     }
 
-    public void setBatch(int batch) {
+    public void setBatch(String batch) {
         this.batch = batch;
     }
 }

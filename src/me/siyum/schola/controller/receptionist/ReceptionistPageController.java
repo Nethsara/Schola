@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class ReceptionistPageController {
-    private static ArrayList<ToDoDTO> toDoList = new ArrayList<>();
+    private static final ArrayList<ToDoDTO> toDoList = new ArrayList<>();
     private final TasksBO tasksBO = BOFactory.getInstance().getBO(BOTypes.TASKS);
     public JFXButton btnAddToDo;
     public JFXListView<String> listName;
@@ -103,8 +103,6 @@ public class ReceptionistPageController {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void addToList() {
@@ -160,7 +158,6 @@ public class ReceptionistPageController {
             return "TSK-" + 1;
         } else {
             String[] array = lastID.split("-");//[D,3]
-            System.out.println(array.length);
             int tempNumber = Integer.parseInt(array[1]);
             int finalizeOrderId = tempNumber + 1;
             return "TSK-" + finalizeOrderId;

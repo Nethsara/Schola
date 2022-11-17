@@ -74,7 +74,6 @@ public class StudentFormController {
                 .addListener((observable, oldValue, newValue) -> {
                     lblName.setText(newValue);
                 });
-
     }
 
     public void uploadStImageOnAction() {
@@ -116,8 +115,7 @@ public class StudentFormController {
 
             }
         } catch (SQLException | ClassNotFoundException e) {
-            new Alert(Alert.AlertType.CONFIRMATION,
-                    "Error occured when adding student").show();
+            e.printStackTrace();
         } finally {
             connection.setAutoCommit(true);
             clear();
@@ -177,9 +175,7 @@ public class StudentFormController {
 
         }
 
-        String tempBatchID = cmbBatch.getValue();
-        String[] array = tempBatchID.split("-");//[D,3]
-        int batchID = Integer.parseInt(array[1]);
+        String batchID = cmbBatch.getValue();
 
         LocalDate dob = pickerDOB.getValue();
 
@@ -202,19 +198,28 @@ public class StudentFormController {
     }
 
     private void setStudentID() throws SQLException, ClassNotFoundException {
-        String tempOrderId = studentBO.getLastID();
-        String[] array = tempOrderId.split("-");//[D,3]
-        int tempNumber = Integer.parseInt(array[1]);
-        int finalizeOrderId = tempNumber + 1;
-        lblStID.setText("SS-" + finalizeOrderId);
+        String tempStID = studentBO.getLastID();
+        if (tempStID.equalsIgnoreCase("")) {
+            lblStID.setText("SS-" + 1);
+        } else {
+            String[] array = tempStID.split("-");
+            int tempNumber = Integer.parseInt(array[1]);
+            int finalizeOrderId = tempNumber + 1;
+            lblStID.setText("SS-" + finalizeOrderId);
+        }
     }
 
     private void setParentID() throws SQLException, ClassNotFoundException {
-        String tempOrderId = parentBO.getLastID();
-        String[] array = tempOrderId.split("-");//[D,3]
-        int tempNumber = Integer.parseInt(array[1]);
-        int finalizeOrderId = tempNumber + 1;
-        lblStID.setText("SP-" + finalizeOrderId);
+        String tempPID = parentBO.getLastID();
+        if (tempPID.equalsIgnoreCase("")) {
+            lblPID.setText("SP-" + 1);
+        } else {
+            String[] array = tempPID.split("-");
+            int tempNumber = Integer.parseInt(array[1]);
+            int finalizeOrderId = tempNumber + 1;
+            lblPID.setText("SP-" + finalizeOrderId);
+        }
+
 
     }
 
@@ -223,7 +228,7 @@ public class StudentFormController {
             ArrayList<String> batchList = new ArrayList<>();
             ResultSet res = CRUDUtil.execute("SELECT * FROM batches");
             while (res.next()) {
-                batchList.add(res.getString(1) + "-" + res.getString(2));
+                batchList.add(res.getString(1));
             }
 
             ObservableList<String> obBatchList = FXCollections.observableArrayList(batchList);
@@ -235,7 +240,7 @@ public class StudentFormController {
             ResultSet set = parentBO.retrieve();
             ArrayList<String> idList = new ArrayList<>();
             while (set.next()) {
-                idList.add(set.getString(1) + "-" + set.getString(2));
+                idList.add(set.getString(1));
             }
             ObservableList<String> obList = FXCollections.observableArrayList(idList);
             cmbParentID.setItems(obList);
@@ -265,6 +270,12 @@ public class StudentFormController {
         txtPPhone.clear();
         txtPNIC.clear();
         txtPNIC.clear();
+        txtPName.clear();
+
+        cmbBatch.setValue(null);
+        cmbParentID.setValue(null);
+
+        pickerDOB.setValue(null);
     }
 }
 

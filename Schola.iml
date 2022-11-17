@@ -7,9 +7,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="lib2" level="project" />
+    <orderEntry type="library" name="FontawesomeFX" level="project" />
+    <orderEntry type="library" name="fontawesomefx-8.9" level="project" />
     <orderEntry type="library" name="jfoenix-8.0.8" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.30" level="project" />
-    <orderEntry type="library" name="fontawesomefx-8.9" level="project" />
     <orderEntry type="library" name="charm-glisten-3.0.1-b7" level="project" />
   </component>
 </module>

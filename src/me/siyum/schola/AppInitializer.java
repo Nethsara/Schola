@@ -18,7 +18,7 @@ public class AppInitializer extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Parent root = FXMLLoader.load((getClass().getResource("view/LoginPageForm.fxml")));
+        Parent root = FXMLLoader.load((getClass().getResource("view/receptionist/ReceptionistStudents.fxml")));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.centerOnScreen();

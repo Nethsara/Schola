@@ -30,7 +30,7 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {
         ResultSet res = CRUDUtil.execute("SELECT * FROM students ORDER BY stID DESC");
-        if(res.next()){
+        if (res.next()) {
             return res.getString(1);
         }
         return "";
@@ -48,9 +48,34 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public ArrayList<Student> search(String s) throws SQLException, ClassNotFoundException {
-        return null;
-    }
+        ArrayList<Student> students = new ArrayList<>();
 
+        s = "%" + s + "%";
+        ResultSet res = CRUDUtil.execute("SELECT * FROM students WHERE stID LIKE ? || name LIKE ? || email LIKE ?",
+                s, s, s);
+        System.out.println(res);
+
+        while (res.next()) {
+            students.add(
+                    new Student(
+                            res.getString(1),
+                            res.getString(2),
+                            res.getString(3),
+                            res.getString(4),
+                            res.getBlob(5),
+                            res.getString(6),
+                            res.getString(7),
+                            res.getString(8),
+                            res.getInt(9),
+                            res.getDate(10).toLocalDate(),
+                            res.getBoolean(11),
+                            res.getBoolean(12),
+                            res.getString(13)
+                    )
+            );
+        }
+        return students;
+    }
 
     @Override
     public ResultSet retrieve(Integer id) throws SQLException, ClassNotFoundException {
