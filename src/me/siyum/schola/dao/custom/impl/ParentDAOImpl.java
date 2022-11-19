@@ -42,7 +42,7 @@ public class ParentDAOImpl implements ParentDAO {
     }
 
     @Override
-    public ArrayList<Parent> search(String s) throws SQLException, ClassNotFoundException {
+    public ArrayList<Parent> search(String s) {
         return null;
     }
 
@@ -58,8 +58,8 @@ public class ParentDAOImpl implements ParentDAO {
     }
 
     @Override
-    public int getID(String s) {
-        return 0;
+    public String getID(String s) {
+        return "";
     }
 
 }

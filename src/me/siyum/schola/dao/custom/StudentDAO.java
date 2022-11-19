@@ -6,6 +6,6 @@ import me.siyum.schola.entity.Student;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface StudentDAO extends CrudDAO<Student, Integer> {
+public interface StudentDAO extends CrudDAO<Student, String> {
     ArrayList<Student> search(boolean b) throws SQLException, ClassNotFoundException;
 }

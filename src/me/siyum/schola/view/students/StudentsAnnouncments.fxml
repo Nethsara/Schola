@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.students.StudentsAnnouncementsController">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Pane layoutX="17.0" layoutY="67.0" prefHeight="483.0" prefWidth="1008.0">
+            <JFXListView fx:id="listAnnouncements" prefHeight="490.0" prefWidth="1010.0"/>
+        </Pane>
+        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0" />
+        <FontAwesomeIconView fill="#785fd5" glyphName="GRADUATION_CAP" layoutX="35.0" layoutY="43.0" size="20" />
+        <Label layoutX="66.0" layoutY="25.0" text="Announcements" textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+</AnchorPane>

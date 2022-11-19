@@ -1,5 +1,6 @@
 package me.siyum.schola.dao.custom.impl;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.dao.custom.EmployeeDAO;
 import me.siyum.schola.entity.Employee;
@@ -26,7 +27,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public boolean delete(String integer) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -35,9 +36,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return null;
     }
 
-
     @Override
-    public ResultSet retrieve(String integer) throws SQLException, ClassNotFoundException {
+    public ResultSet retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -46,17 +46,18 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return null;
     }
 
+
     @Override
-    public int getID(String s) throws SQLException, ClassNotFoundException {
+    public String getID(String s) throws SQLException, ClassNotFoundException {
         ResultSet resultSet = CRUDUtil.execute("SELECT id FROM login_token WHERE token=?", s);
         if (resultSet.next()) {
-            return resultSet.getInt(1);
+            return resultSet.getString(1);
         }
-        return 0;
+        return "";
     }
 
     @Override
-    public ArrayList<Salary> getPayments(int id) throws SQLException, ClassNotFoundException {
+    public ArrayList<Salary> getPayments(ID id) throws SQLException, ClassNotFoundException {
         ResultSet res = CRUDUtil.execute("SELECT * FROM payments WHERE empID=?", id);
         ArrayList<Salary> payments = new ArrayList<>();
         while (res.next()) {
@@ -73,11 +74,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public String getPaymentMethod(int id) throws SQLException, ClassNotFoundException {
+    public String getPaymentMethod(ID id) throws SQLException, ClassNotFoundException {
         ResultSet execute = CRUDUtil.execute("SELECT name FROM payment_methods WHERE empID=?", id);
         if (execute.next()) {
             return execute.getString(1);
         }
         return "";
     }
+
+
 }

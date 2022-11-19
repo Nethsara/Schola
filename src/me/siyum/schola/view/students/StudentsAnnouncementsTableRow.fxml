@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.students.StudentsAnnouncementsTableRowController">
+   <TextField fx:id="txtAnnID" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="SA-001">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <HBox.margin>
+         <Insets left="20.0" right="20.0" top="20.0" />
+      </HBox.margin>
+   </TextField>
+    <Separator orientation="VERTICAL" prefHeight="200.0">
+        <opaqueInsets>
+            <Insets left="10.0" />
+        </opaqueInsets>
+    </Separator>
+   <TextField fx:id="txtAnnMessage" prefHeight="29.0" prefWidth="597.0" style="-fx-background-color: transparent;">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <HBox.margin>
+         <Insets left="20.0" right="20.0" top="20.0" />
+      </HBox.margin>
+   </TextField>
+    <Separator orientation="VERTICAL" prefHeight="200.0">
+        <opaqueInsets>
+            <Insets left="10.0" />
+        </opaqueInsets>
+    </Separator>
+   <TextField fx:id="txtAnnFrom" prefHeight="29.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Lecturers">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <HBox.margin>
+         <Insets left="20.0" right="20.0" top="20.0" />
+      </HBox.margin>
+   </TextField>
+    <Separator orientation="VERTICAL" prefHeight="200.0">
+        <opaqueInsets>
+            <Insets left="10.0" />
+        </opaqueInsets>
+    </Separator>
+    <JFXButton fx:id="btnAction" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #785fd5;" text="Mark As Read" textFill="WHITE">
+        <HBox.margin>
+            <Insets left="15.0" right="15.0" top="20.0" />
+        </HBox.margin>
+    </JFXButton>
+</HBox>

@@ -1,5 +1,6 @@
 package me.siyum.schola.bo.custom.impl;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import me.siyum.schola.bo.custom.EmployeeBO;
 import me.siyum.schola.dao.DAOFactory;
 import me.siyum.schola.dao.DAOTypes;
@@ -14,7 +15,7 @@ public class EmployeeBOImpl implements EmployeeBO {
     private final EmployeeDAOImpl dao = DAOFactory.getInstance().getDAO(DAOTypes.EMPLOYEE);
 
     @Override
-    public ArrayList<SalaryDTO> getSalaries(int id) throws SQLException, ClassNotFoundException {
+    public ArrayList<SalaryDTO> getSalaries(ID id) throws SQLException, ClassNotFoundException {
         ArrayList<Salary> payments = dao.getPayments(id);
         ArrayList<SalaryDTO> obList = new ArrayList<>();
         for (Salary s : payments) {
@@ -29,12 +30,12 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public int getEmployeeID(String token) throws SQLException, ClassNotFoundException {
+    public String getEmployeeID(String token) throws SQLException, ClassNotFoundException {
         return dao.getID(token);
     }
 
     @Override
-    public String getPaymentMethod(int id) throws SQLException, ClassNotFoundException {
+    public String getPaymentMethod(ID id) throws SQLException, ClassNotFoundException {
         return dao.getPaymentMethod(id);
     }
 }

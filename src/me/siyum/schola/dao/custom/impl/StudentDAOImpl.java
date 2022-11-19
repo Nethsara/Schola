@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StudentDAOImpl implements StudentDAO {
+    @Override
     public boolean save(Student st) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("INSERT INTO students VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 st.getId(),
@@ -88,8 +89,8 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public int getID(String s) {
-        return 0;
+    public String getID(String s) {
+        return "";
     }
 
 
