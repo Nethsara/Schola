@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.lecturers.LecturersTableRowController">
-   <TextField fx:id="txtID" prefHeight="29.0" prefWidth="68.0">
+   <TextField fx:id="txtID" prefHeight="29.0" prefWidth="68.0" style="-fx-background-color: transparent;">
       <HBox.margin>
          <Insets left="10.0" right="10.0" top="20.0" />
       </HBox.margin>
@@ -28,12 +28,12 @@
             <Insets left="10.0" />
         </opaqueInsets>
     </Separator>
-   <TextField fx:id="txtStName" prefHeight="29.0" prefWidth="101.0" text="Nethsara Siyum">
+   <TextField fx:id="txtStName" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Nethsara Siyum">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
       <HBox.margin>
-         <Insets left="25.0" right="25.0" top="20.0" />
+         <Insets left="20.0" right="20.0" top="20.0" />
       </HBox.margin>
    </TextField>
     <Separator orientation="VERTICAL" prefHeight="200.0">
@@ -41,12 +41,12 @@
             <Insets left="10.0" />
         </opaqueInsets>
     </Separator>
-   <TextField fx:id="txtEmail" prefHeight="29.0" prefWidth="123.0" text="nethsara@gmail.com">
+   <TextField fx:id="txtEmail" prefHeight="29.0" prefWidth="123.0" style="-fx-background-color: transparent;" text="nethsara@gmail.com">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
       <HBox.margin>
-         <Insets left="25.0" right="25.0" top="20.0" />
+         <Insets left="20.0" right="20.0" top="20.0" />
       </HBox.margin>
    </TextField>
     <Separator orientation="VERTICAL" prefHeight="200.0">
@@ -54,12 +54,12 @@
             <Insets left="10.0" />
         </opaqueInsets>
     </Separator>
-   <TextField fx:id="txtNIC" prefHeight="29.0" prefWidth="94.0" text="200212003063">
+   <TextField fx:id="txtNIC" prefHeight="29.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="200212003063">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
       <HBox.margin>
-         <Insets left="25.0" right="25.0" top="20.0" />
+         <Insets left="20.0" right="20.0" top="20.0" />
       </HBox.margin>
    </TextField>
     <Separator orientation="VERTICAL" prefHeight="200.0">
@@ -67,12 +67,12 @@
             <Insets left="10.0" />
         </opaqueInsets>
     </Separator>
-   <TextField fx:id="txtScholaMarks" prefHeight="29.0" prefWidth="26.0" text="99">
+   <TextField fx:id="txtScholaMarks" prefHeight="29.0" prefWidth="26.0" style="-fx-background-color: transparent;" text="99">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
       <HBox.margin>
-         <Insets left="35.0" right="35.0" top="20.0" />
+         <Insets left="20.0" right="20.0" top="20.0" />
       </HBox.margin>
    </TextField>
     <Separator orientation="VERTICAL" prefHeight="200.0">
@@ -80,12 +80,12 @@
             <Insets left="10.0" />
         </opaqueInsets>
     </Separator>
-   <TextField fx:id="txtStatus" prefHeight="29.0" prefWidth="47.0" text="Active">
+   <TextField fx:id="txtStatus" prefHeight="29.0" prefWidth="47.0" style="-fx-background-color: transparent;" text="Active">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
       <HBox.margin>
-         <Insets left="25.0" right="25.0" top="20.0" />
+         <Insets left="20.0" right="20.0" top="20.0" />
       </HBox.margin>
    </TextField>
     <Separator orientation="VERTICAL" prefHeight="200.0">
@@ -93,9 +93,19 @@
             <Insets left="10.0" />
         </opaqueInsets>
     </Separator>
-    <JFXButton fx:id="btnAction" style="-fx-background-color: #e74c3c;" text="Remove" textFill="WHITE">
+    <JFXButton fx:id="btnAction" style="-fx-background-color: #785fd5;" text="View" textFill="WHITE">
         <HBox.margin>
-            <Insets left="15.0" right="10.0" top="20.0" />
+            <Insets left="15.0" right="15.0" top="20.0" />
         </HBox.margin>
     </JFXButton>
+   <Separator orientation="VERTICAL" prefHeight="200.0">
+      <opaqueInsets>
+         <Insets left="10.0" />
+      </opaqueInsets>
+   </Separator>
+   <JFXButton onAction="#generateReport" style="-fx-background-color: #e74c3c;" text="Reports" textFill="WHITE">
+      <HBox.margin>
+         <Insets left="15.0" right="15.0" top="20.0" />
+      </HBox.margin>
+   </JFXButton>
 </HBox>

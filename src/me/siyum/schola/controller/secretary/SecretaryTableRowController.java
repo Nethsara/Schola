@@ -42,7 +42,7 @@ public class SecretaryTableRowController implements Initializable {
                 Parent parent = loader.load();
                 StudentFormController controller = loader.getController();
                 controller.setData(studentTM.getId());
-                controller.makeUpdateForm();
+                controller.makeApprovalForm();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(parent));
                 stage.show();

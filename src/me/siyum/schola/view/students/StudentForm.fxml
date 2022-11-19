@@ -123,14 +123,14 @@
       </AnchorPane>
       <AnchorPane layoutX="754.0" layoutY="52.0" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: #26292e; -fx-background-radius: 10;">
          <Label layoutX="14.0" layoutY="6.0" text="Schola Marks : " textFill="WHITE" />
-         <Label fx:id="lblScholaMark" layoutX="101.0" layoutY="6.0" text="99" textFill="#00ff2f">
+         <Label fx:id="lblScholaMark" layoutX="106.0" layoutY="6.0" text="99" textFill="#00ff2f">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Label>
       </AnchorPane>
       <JFXButton fx:id="btnCancel" layoutX="465.0" layoutY="573.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Cancel" textFill="WHITE" />
-      <JFXButton fx:id="btnSave" layoutX="525.0" layoutY="574.0" onAction="#saveStudentOnAction" style="-fx-background-color: #785fd4; -fx-border-radius: 5;" text="    Save    " textFill="WHITE" />
+      <JFXButton fx:id="btnSave" layoutX="525.0" layoutY="574.0" onAction="#saveStudentOnAction" style="-fx-background-color: #785fd4; -fx-border-radius: 5;" text="Save" textFill="WHITE" />
       <Separator layoutX="61.0" layoutY="267.0" opacity="0.21" prefHeight="3.0" prefWidth="868.0" />
       <Separator layoutX="57.0" layoutY="364.0" opacity="0.21" prefHeight="3.0" prefWidth="868.0" />
       <FontAwesomeIconView fx:id="iconUpload" fill="WHITE" glyphName="UPLOAD" layoutX="94.0" layoutY="108.0" onMouseClicked="#uploadStImageOnAction" size="20">
