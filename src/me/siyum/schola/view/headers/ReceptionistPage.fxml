@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="receptionistPane" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.ReceptionistPageController">
+<AnchorPane fx:id="receptionistPane" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.receptionist.ReceptionistPageController">
    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#191d20" height="52.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1100.0" />
    <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../assets/images/icon-grey.png" />
@@ -125,9 +125,15 @@
                   <Font name="Consolas" size="12.0" />
                </font>
             </TextField>
-            <JFXButton fx:id="btnAddToDo" layoutX="421.0" layoutY="43.0" onAction="#addToList" style="-fx-border-color: #7960d5; -fx-border-radius: 5;" text="Add" textFill="#7960d5" />
+            <JFXButton fx:id="btnAddToDo" layoutX="421.0" layoutY="43.0" onAction="#addToList" style="-fx-border-color: #7960d5; -fx-background-color: #7960d5; -fx-border-radius: 5;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Consolas Bold" size="12.0" />
+               </font></JFXButton>
             <JFXListView fx:id="listName" layoutX="14.0" layoutY="79.0" prefHeight="390.0" prefWidth="515.0" style="-fx-border-radius: 5; -fx-border-color: #7960d5; -fx-background-radius: 5; -fx-background-color: transparent;" />
-            <JFXButton fx:id="btnRemove" layoutX="468.0" layoutY="43.0" onAction="#removeFromList" style="-fx-border-color: #7960d5; -fx-border-radius: 5;" text="Remove" textFill="#7960d5" />
+            <JFXButton fx:id="btnRemove" layoutX="468.0" layoutY="43.0" onAction="#removeFromList" style="-fx-border-color: #7960d5; -fx-background-color: #7960d5; -fx-border-radius: 5;" text="Remove" textFill="WHITE">
+               <font>
+                  <Font name="Consolas Bold" size="12.0" />
+               </font></JFXButton>
          </AnchorPane>
          <AnchorPane layoutX="558.0" layoutY="132.0" prefHeight="479.0" prefWidth="528.0" style="-fx-background-color: #191d20; -fx-background-radius: 10;">
             <Label layoutX="14.0" layoutY="14.0" text="Refreshments" textFill="WHITE">
@@ -148,7 +154,7 @@
       </AnchorPane>
    </AnchorPane>
    <HBox layoutX="192.0" layoutY="10.0" prefHeight="28.0" prefWidth="491.0" spacing="10.0">
-      <JFXButton text="Home" textFill="WHITE">
+      <JFXButton onAction="#receptionistHome" text="Home" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
@@ -163,7 +169,7 @@
             <Font name="Consolas" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton text="Salary" textFill="WHITE">
+      <JFXButton onAction="#salaryPage" text="Salary" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>

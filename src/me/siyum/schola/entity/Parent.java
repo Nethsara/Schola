@@ -1,7 +1,7 @@
 package me.siyum.schola.entity;
 
 public class Parent implements SuperEntity {
-    private int id;
+    private String id;
     private String name;
     private String email;
     private String nic;
@@ -11,7 +11,7 @@ public class Parent implements SuperEntity {
     public Parent() {
     }
 
-    public Parent(int id, String name, String email, String nic, String address, String phone) {
+    public Parent(String id, String name, String email, String nic, String address, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -20,11 +20,11 @@ public class Parent implements SuperEntity {
         this.phone = phone;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

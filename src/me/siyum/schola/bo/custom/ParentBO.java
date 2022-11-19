@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public interface ParentBO {
-    int getLastID() throws SQLException, ClassNotFoundException;
+    String getLastID() throws SQLException, ClassNotFoundException;
     boolean saveParent(ParentDTO parentDTO) throws SQLException, ClassNotFoundException;
-    ResultSet retrieve(int id) throws SQLException, ClassNotFoundException;
+    ResultSet retrieve(String id) throws SQLException, ClassNotFoundException;
     ResultSet retrieve() throws SQLException, ClassNotFoundException;
 
 }

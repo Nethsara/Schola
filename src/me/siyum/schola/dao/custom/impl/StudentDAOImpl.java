@@ -28,31 +28,57 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public int getLastID() throws SQLException, ClassNotFoundException {
+    public String getLastID() throws SQLException, ClassNotFoundException {
         ResultSet res = CRUDUtil.execute("SELECT * FROM students ORDER BY stID DESC");
-        if(res.next()){
-            return res.getInt(1);
+        if (res.next()) {
+            return res.getString(1);
         }
-        return 0;
+        return "";
     }
 
     @Override
-    public boolean update(Student student) {
-        return false;
+    public boolean update(Student s) throws SQLException, ClassNotFoundException {
+        return CRUDUtil.execute("UPDATE students SET name=?,email=?,nic=?,image=?," +
+                        "address=?,phone=?,pID=?,scholaMarks=?,dob=?,status=?,approval=?, batch=? WHERE stid=?",
+                s.getName(),s.getEmail(),s.getNic(),s.getImage(),s.getAddress(),s.getPhone(),s.getPhone(),s.getScholaMark(),s.getDob(),s.isStatus(),s.isApproval(),s.getBatch(), s.getId());
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(String id) {
         return false;
     }
 
     @Override
     public ArrayList<Student> search(String s) throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<Student> students = new ArrayList<>();
+
+        s = "%" + s + "%";
+        ResultSet res = CRUDUtil.execute("SELECT * FROM students WHERE stID LIKE ? || name LIKE ? || email LIKE ?",
+                s, s, s);
+        while (res.next()) {
+            students.add(
+                    new Student(
+                            res.getString(1),
+                            res.getString(2),
+                            res.getString(3),
+                            res.getString(4),
+                            res.getBlob(5),
+                            res.getString(6),
+                            res.getString(7),
+                            res.getString(8),
+                            res.getInt(9),
+                            res.getDate(10).toLocalDate(),
+                            res.getBoolean(11),
+                            res.getBoolean(12),
+                            res.getString(13)
+                    )
+            );
+        }
+        return students;
     }
 
     @Override
-    public ResultSet retrieve(Integer id) throws SQLException, ClassNotFoundException {
+    public ResultSet retrieve(String id) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("SELECT * FROM students WHERE stID = ?", id);
     }
 
@@ -61,4 +87,37 @@ public class StudentDAOImpl implements StudentDAO {
         return CRUDUtil.execute("SELECT * FROM students");
     }
 
+    @Override
+    public int getID(String s) {
+        return 0;
+    }
+
+
+    @Override
+    public ArrayList<Student> search(boolean b) throws SQLException, ClassNotFoundException {
+        ArrayList<Student> students = new ArrayList<>();
+
+        ResultSet res = CRUDUtil.execute("SELECT * FROM students WHERE approval=? && status=?", b, !b);
+
+        while (res.next()) {
+            students.add(
+                    new Student(
+                            res.getString(1),
+                            res.getString(2),
+                            res.getString(3),
+                            res.getString(4),
+                            res.getBlob(5),
+                            res.getString(6),
+                            res.getString(7),
+                            res.getString(8),
+                            res.getInt(9),
+                            res.getDate(10).toLocalDate(),
+                            res.getBoolean(11),
+                            res.getBoolean(12),
+                            res.getString(13)
+                    )
+            );
+        }
+        return students;
+    }
 }

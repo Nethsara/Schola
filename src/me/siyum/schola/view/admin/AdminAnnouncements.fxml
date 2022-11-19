@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;"
             xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="me.siyum.schola.controller.AdminAnnouncement">
+            fx:controller="me.siyum.schola.controller.admin.AdminAnnouncement">
     <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="601.0" prefWidth="1071.0"
                 style="-fx-background-color: #191d20; -fx-background-radius: 15;">
         <Label layoutX="14.0" layoutY="14.0" text="Announcements" textFill="#7662c4">

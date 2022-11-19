@@ -1,7 +1,7 @@
 package me.siyum.schola.dto;
 
 public class TasksDTO {
-    private int id;
+    private String id;
     private String timeStamp;
     private String message;
     private Boolean status;
@@ -9,18 +9,18 @@ public class TasksDTO {
     public TasksDTO() {
     }
 
-    public TasksDTO(int id, String timeStamp, String message, Boolean status) {
+    public TasksDTO(String id, String timeStamp, String message, Boolean status) {
         this.id = id;
         this.timeStamp = timeStamp;
         this.message = message;
         this.status = status;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

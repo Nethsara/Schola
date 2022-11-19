@@ -7,7 +7,6 @@ import me.siyum.schola.dao.custom.TasksDAO;
 import me.siyum.schola.dto.TasksDTO;
 import me.siyum.schola.entity.Tasks;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,7 +14,7 @@ public class TasksBOImpl implements TasksBO {
     private final TasksDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.TASKS);
 
     @Override
-    public int getLastID() throws SQLException, ClassNotFoundException {
+    public String getLastID() throws SQLException, ClassNotFoundException {
         return dao.getLastID();
     }
 
@@ -24,10 +23,6 @@ public class TasksBOImpl implements TasksBO {
         return dao.save(t);
     }
 
-    @Override
-    public ResultSet retrieveTasks() throws SQLException, ClassNotFoundException {
-        return dao.retrieve();
-    }
 
     @Override
     public ArrayList<TasksDTO> searchTasks(String s) throws SQLException, ClassNotFoundException {
@@ -40,7 +35,7 @@ public class TasksBOImpl implements TasksBO {
     }
 
     @Override
-    public boolean deleteTasks(int id) throws SQLException, ClassNotFoundException {
+    public boolean deleteTasks(String id) throws SQLException, ClassNotFoundException {
         return dao.delete(id);
     }
 }

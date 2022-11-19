@@ -1,7 +1,7 @@
 package me.siyum.schola.entity;
 
 public class Tasks implements SuperEntity {
-    private int id;
+    private String id;
     private String timeStamp;
     private String message;
     private Boolean status;
@@ -9,18 +9,18 @@ public class Tasks implements SuperEntity {
     public Tasks() {
     }
 
-    public Tasks(int id, String timeStamp, String message, Boolean status) {
+    public Tasks(String id, String timeStamp, String message, Boolean status) {
         this.id = id;
         this.timeStamp = timeStamp;
         this.message = message;
         this.status = status;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class AppInitializer extends Application {
 
@@ -18,7 +17,8 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load((getClass().getResource("view/receptionist/ReceptionistStudents.fxml")));
+
+        Parent root = FXMLLoader.load((getClass().getResource("view/secretary/SecretaryApprovals.fxml")));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.centerOnScreen();

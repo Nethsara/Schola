@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #061b28;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.LoginPageFormController">
+<AnchorPane prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #061b28;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.logincontrol.LoginPageFormController">
    <Circle fill="TRANSPARENT" layoutX="711.0" layoutY="451.0" opacity="0.23" radius="26.0" stroke="#ecf0f1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" />
    <Circle fill="TRANSPARENT" layoutX="489.0" layoutY="478.0" opacity="0.23" radius="26.0" stroke="#ecf0f1" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" />
    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="108.0" layoutX="429.0" layoutY="72.0" opacity="0.23" stroke="#ecf0f1" strokeType="INSIDE" strokeWidth="3.0" width="86.0" />
@@ -81,8 +81,8 @@
             <Font name="Microsoft YaHei UI" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="416.0" promptText="Username 👤" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;" />
-      <PasswordField layoutX="44.0" layoutY="181.0" prefHeight="29.0" prefWidth="413.0" promptText="Password 🔑" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;" />
+      <TextField fx:id="txtEmail" layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="416.0" promptText="Username 👤" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;" />
+      <PasswordField fx:id="txtPassword" layoutX="44.0" layoutY="181.0" prefHeight="29.0" prefWidth="413.0" promptText="Password 🔑" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;" />
       <Label layoutX="46.0" layoutY="60.0" text="Don't have account? Meet your counsellor to create one." textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei UI" size="12.0" />
@@ -93,6 +93,7 @@
             <Font size="13.0" />
          </font>
       </JFXButton>
+      <Label fx:id="passwordStatus" layoutX="289.0" layoutY="230.0" textFill="RED" />
    </AnchorPane>
    <Line endX="22.5" layoutX="454.0" layoutY="91.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />
    <Line endX="41.0" layoutX="454.0" layoutY="101.0" opacity="0.23" startX="-10.5" stroke="#ecf0f1" />

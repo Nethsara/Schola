@@ -3,42 +3,91 @@ package me.siyum.schola.util;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Navigation {
     private static Stage stage;
     private static AnchorPane pane;
 
-    public static void navigate(Routes routes, Event event, String token) throws IOException {
+    public static void navigate(Routes routes, AnchorPane anchorPane) throws IOException {
+        switch (routes) {
+            case ADMIN_STUDENTS:
+                setPanel("admin/AdminStudentPage", anchorPane);
+                break;
+            case ADMIN_EMPLOYEE:
+                setPanel("admin/AdminLecturersPage", anchorPane);
+                break;
+            case ADMIN_HOME:
+                setPanel("admin/AdminDashboard", anchorPane);
+                break;
+            case ADMIN_ANOUNCEMENTS:
+                setPanel("admin/AdminAnnouncements", anchorPane);
+                break;
+            case ADMIN_INCOME:
+                setPanel("admin/AdminIncomeReports", anchorPane);
+                break;
+            case ADMIN_SETTINGS:
+                setPanel("admin/AdminSettings", anchorPane);
+                break;
+            case RECEPTIONIST_STUDENTS:
+                setPanel("receptionist/ReceptionistStudents", anchorPane);
+                break;
+            case RECEPTIONIST_SALARY:
+                setPanel("receptionist/ReceptionistSalary", anchorPane);
+                break;
+            case SECRETARY_HOME:
+                setPanel("secretary/SecretaryDashboard", anchorPane);
+                break;
+            case SECRETARY_PAYMENTS:
+                setPanel("secretary/SecretaryPayments", anchorPane);
+                break;
+            case SECRETARY_APPROVAL:
+                setPanel("secretary/SecretaryApprovals", anchorPane);
+                break;
+            case SECRETARY_CLASSES:
+                setPanel("secretary/SecretaryClasses", anchorPane);
+                break;
+            case SECRETARY_STUDENTS:
+                setPanel("secretary/SecretaryStudents", anchorPane);
+                break;
+
+        }
+
+    }
+
+    private static void setPanel(String s, AnchorPane anchorPane) throws IOException {
+        Parent parent = FXMLLoader.load((Navigation.class.getResource("../view/" + s + ".fxml")));
+        anchorPane.getChildren().clear();
+        anchorPane.getChildren().add(parent);
+    }
+
+    public static void navigate(Routes routes, Event event) throws IOException {
         Node node = (Node) event.getSource();
         stage = (Stage) node.getScene().getWindow();
         stage.close();
         switch (routes) {
             case RECEPTIONIST:
                 initUI("headers/ReceptionistPage");
-                stage.setTitle(token);
                 break;
+            case RECEPTIONIST_SALARY:
+                initUI("receptionist/ReceptionistSalary");
+                break;
+            case RECEPTIONIST_STUDENTS:
+                initUI("receptionist/ReceptionistStudents");
+                break;
+            case ADMIN:
+                initUI("headers/AdminPage");
+                break;
+
             default:
                 initUI("WelcomePageForm");
         }
-    }
-
-    public static void setFrame(Routes routes, AnchorPane pane) throws IOException {
-        switch (routes) {
-            case RECEPTIONIST_STUDENTS:
-                setPanel("receptionist/Students");
-                break;
-        }
-        stage = (Stage) pane.getScene().getWindow();
-    }
-
-    public static void setPanel(String location) throws IOException {
-        stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(Navigation.class.getResource("../view/" + location + ".fxml")))));
     }
 
     public static void initUI(String location) throws IOException {
@@ -48,4 +97,5 @@ public class Navigation {
         stage.centerOnScreen();
         stage.show();
     }
+
 }
