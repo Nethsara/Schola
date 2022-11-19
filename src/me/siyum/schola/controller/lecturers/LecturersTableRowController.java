@@ -1,6 +1,5 @@
 package me.siyum.schola.controller.lecturers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,7 +24,9 @@ public class LecturersTableRowController {
     public TextField txtScholaMarks;
     public TextField txtStatus;
 
+    private  LecturersStudentsTM lecturersStudentsTM;
     public void setData(LecturersStudentsTM studentTM) throws SQLException {
+        lecturersStudentsTM = studentTM;
         txtID.setText(studentTM.getId());
         lblStImg.setImage(new Image(studentTM.getImage().getBinaryStream()));
         txtEmail.setText(studentTM.getEmail());
@@ -51,6 +52,6 @@ public class LecturersTableRowController {
 
     }
 
-    public void generateReport(ActionEvent actionEvent) {
+    public void generateReport() {
     }
 }

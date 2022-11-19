@@ -5,7 +5,6 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -62,17 +61,15 @@ public class StudentFormController {
     public JFXTextField txtParentName;
     public JFXButton btnReject;
 
-    private StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private ParentBO parentBO = BOFactory.getInstance().getBO(BOTypes.PARENT);
+    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final ParentBO parentBO = BOFactory.getInstance().getBO(BOTypes.PARENT);
     private boolean isSavedParent = true;
     private ParentDTO parentDTO;
 
     public void initialize() {
         setData();
         txtName.textProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    lblName.setText(newValue);
-                });
+                .addListener((observable, oldValue, newValue) -> lblName.setText(newValue));
 
     }
 
@@ -152,6 +149,7 @@ public class StudentFormController {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
+            assert connection != null;
             connection.setAutoCommit(true);
         }
     }
@@ -305,7 +303,7 @@ public class StudentFormController {
     }
 
 
-    public void changeParentStatus(ActionEvent actionEvent) {
+    public void changeParentStatus() {
         if (chkAddParent.isSelected()) {
             paneSelectParents.setVisible(false);
             isSavedParent = false;
