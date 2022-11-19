@@ -37,7 +37,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 
     @Override
-    public ResultSet retrieve(Integer integer) throws SQLException, ClassNotFoundException {
+    public ResultSet retrieve(String integer) throws SQLException, ClassNotFoundException {
         return null;
     }
 

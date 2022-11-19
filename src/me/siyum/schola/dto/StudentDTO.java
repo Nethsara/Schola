@@ -37,35 +37,6 @@ public class StudentDTO implements SuperEntity {
         this.approval = approval;
         this.batch = batch;
     }
-
-    public StudentDTO() {
-    }
-
-    public StudentDTO(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.nic = nic;
-        this.image = image;
-        this.address = address;
-        this.phone = phone;
-        this.parentID = parentID;
-        this.scholaMark = scholaMark;
-    }
-
-    public StudentDTO(String id, String name, String email, String nic, String address, Blob image, String phone, String parentID, int scholaMark) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.nic = nic;
-        this.image = image;
-        this.address = address;
-        this.phone = phone;
-        this.parentID = parentID;
-        this.scholaMark = scholaMark;
-    }
-
-
     public String getId() {
         return id;
     }

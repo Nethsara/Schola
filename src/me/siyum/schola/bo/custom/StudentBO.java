@@ -10,8 +10,11 @@ import java.util.ArrayList;
 public interface StudentBO {
 
     boolean saveStudent(StudentDTO student) throws SQLException, ClassNotFoundException;
-    ResultSet retrieveStudent(int id);
+    ResultSet retrieveStudent(String id) throws SQLException, ClassNotFoundException;
     String getLastID() throws SQLException, ClassNotFoundException;
     ArrayList<StudentDTO> searchStudents(String s) throws SQLException, ClassNotFoundException;
+    ArrayList<StudentDTO> searchStudents(boolean b) throws SQLException, ClassNotFoundException;
+    boolean updateStudent(StudentDTO student) throws SQLException, ClassNotFoundException;
+
 
 }

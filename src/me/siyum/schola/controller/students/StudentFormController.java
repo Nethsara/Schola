@@ -1,9 +1,6 @@
 package me.siyum.schola.controller.students;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,6 +59,8 @@ public class StudentFormController {
     public TextField txtPEmail;
     public JFXDatePicker pickerDOB;
     public JFXComboBox<String> cmbBatch;
+    public JFXTextField txtParentName;
+    public JFXButton btnReject;
 
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
     private ParentBO parentBO = BOFactory.getInstance().getBO(BOTypes.PARENT);
@@ -74,6 +73,7 @@ public class StudentFormController {
                 .addListener((observable, oldValue, newValue) -> {
                     lblName.setText(newValue);
                 });
+
     }
 
     public void uploadStImageOnAction() {
@@ -86,18 +86,38 @@ public class StudentFormController {
     }
 
     public void saveStudentOnAction() throws SQLException {
+        if (btnSave.getText().equalsIgnoreCase("Save")) {
+            try {
+                getData();
+                clear();
+                setData();
+                StudentDTO sdTO = null;
+                sdTO = getData();
+                sendToStudentBO(parentDTO, sdTO);
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else if (btnSave.getText().equalsIgnoreCase("  Accept  ")) {
+            acceptStudents();
+        }
+
+
+    }
+
+    private void sendToStudentBO(ParentDTO pdTO, StudentDTO sdTO) throws SQLException {
         Connection connection = null;
         try {
             connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
             getData();
             if (!isSavedParent) {
-                boolean saveParent = parentBO.saveParent(parentDTO);
+                boolean saveParent = parentBO.saveParent(pdTO);
                 if (saveParent) {
-                    boolean save = studentBO.saveStudent(getData());
+                    boolean save = studentBO.saveStudent(sdTO);
                     if (save) {
                         connection.commit();
-                        new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added the Student").show();
+                        new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
                     } else {
                         connection.setAutoCommit(true);
                         connection.rollback();
@@ -121,8 +141,6 @@ public class StudentFormController {
             clear();
             setData();
         }
-
-
     }
 
     private StudentDTO getData() throws SQLException, ClassNotFoundException {
@@ -134,9 +152,7 @@ public class StudentFormController {
         String stPhone = txtPhone.getText();
         String parentID;
         if (isSavedParent) {
-            String tempParentID = cmbParentID.getValue();
-            String[] array = tempParentID.split("-");//[D,3]
-            parentID = array[0];
+            parentID = cmbParentID.getValue();
         } else {
             parentID = lblPID.getText();
             String parentName = txtPName.getText();
@@ -155,7 +171,7 @@ public class StudentFormController {
 
         }
         int scholaMark = 0;
-        if (!btnSave.getText().equalsIgnoreCase("Save")) {
+        if (!btnSave.getText().equalsIgnoreCase("  Save  ")) {
             scholaMark = Integer.parseInt(lblScholaMark.getText());
         }
 
@@ -182,14 +198,31 @@ public class StudentFormController {
         return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark, dob, true, false, batchID);
     }
 
-    public void setData(int id) {
+    public void setData(String id) {
         btnSave.setText("Update");
         imgSt.setImage(null);
         try {
-            ResultSet rs = CRUDUtil.execute("SELECT image FROM students WHERE id = ?", id);
+            ResultSet rs = studentBO.retrieveStudent(id);
             if (rs.next()) {
-                Blob data = rs.getBlob(1);
+
+                lblStID.setText(rs.getString(1));
+                lblName.setText(rs.getString(2));
+                txtName.setText(rs.getString(2));
+                txtNIC.setText(rs.getString(4));
+                txtEmail.setText(rs.getString(3));
+                pickerDOB.setValue(rs.getDate(10).toLocalDate());
+                txtPhone.setText(rs.getString(7));
+                txtAddress.setText(rs.getString(6));
+                cmbParentID.setValue(rs.getString(8));
+                cmbBatch.setValue(rs.getString(13));
+                lblScholaMark.setText(String.valueOf(rs.getInt(9)));
+                Blob data = rs.getBlob(5);
                 imgSt.setImage(new Image(data.getBinaryStream()));
+
+                ResultSet res = parentBO.retrieve(cmbParentID.getValue());
+                if (res.next()) {
+                    txtParentName.setText(res.getString(2));
+                }
             }
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
@@ -250,6 +283,11 @@ public class StudentFormController {
 
     }
 
+    public void makeUpdateForm() {
+        btnSave.setText("  Accept  ");
+        btnReject.setVisible(true);
+    }
+
     public void changeParentStatus(ActionEvent actionEvent) {
         if (chkAddParent.isSelected()) {
             paneSelectParents.setVisible(false);
@@ -276,6 +314,47 @@ public class StudentFormController {
         cmbParentID.setValue(null);
 
         pickerDOB.setValue(null);
+    }
+
+    public void setParentIDOnAction() {
+        try {
+            ResultSet res = parentBO.retrieve(cmbParentID.getValue());
+            if (res.next()) {
+                txtParentName.setText(res.getString(2));
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void rejectStudent() {
+        try {
+            StudentDTO sdTO = getData();
+            sdTO.setApproval(false);
+            sdTO.setStatus(false);
+            boolean b = studentBO.updateStudent(sdTO);
+            if (b) new Alert(Alert.AlertType.INFORMATION,
+                    "Successfully Rejected the Student").show();
+            clear();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void acceptStudents() {
+        try {
+            StudentDTO sdTO = getData();
+            sdTO.setApproval(true);
+            sdTO.setStatus(true);
+            boolean b = studentBO.updateStudent(sdTO);
+            if (b) new Alert(Alert.AlertType.INFORMATION,
+                    "Successfully Accepted the Student").show();
+            clear();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 

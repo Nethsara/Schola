@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -106,8 +107,14 @@
          </Label>
          <TextField fx:id="txtPPhone" layoutX="425.0" layoutY="114.0" prefHeight="31.0" prefWidth="415.0" style="-fx-background-color: #26292e; -fx-border-color: grey; -fx-border-radius: 5;" />
          <AnchorPane fx:id="paneSelectParents" layoutX="2.0" layoutY="1.0" prefHeight="164.0" prefWidth="885.0" style="-fx-background-color: #26292e; -fx-background-radius: 12;">
-            <JFXComboBox fx:id="cmbParentID" layoutX="243.0" layoutY="70.0" prefHeight="25.0" prefWidth="399.0" />
-            <Label layoutX="243.0" layoutY="41.0" opacity="0.5" text="Select Parent ID" textFill="#e6e6e7">
+            <JFXComboBox fx:id="cmbParentID" layoutX="59.0" layoutY="70.0" onAction="#setParentIDOnAction" prefHeight="25.0" prefWidth="399.0" />
+            <Label layoutX="59.0" layoutY="55.0" opacity="0.5" text="Select Parent ID" textFill="#e6e6e7">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtParentName" layoutX="478.0" layoutY="70.0" prefHeight="25.0" prefWidth="368.0" />
+            <Label layoutX="478.0" layoutY="55.0" opacity="0.5" text="Parent Name" textFill="#e6e6e7">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -143,5 +150,6 @@
          </font>
       </Label>
       <JFXComboBox fx:id="cmbBatch" layoutX="603.0" layoutY="221.0" prefHeight="25.0" prefWidth="338.0" />
+      <JFXButton fx:id="btnReject" layoutX="601.0" layoutY="574.0" onAction="#rejectStudent" style="-fx-background-color: #e74c3c; -fx-border-radius: 5;" text="  Reject  " textFill="WHITE" visible="false" />
    </AnchorPane>
 </AnchorPane>

@@ -48,7 +48,7 @@ public class ParentDAOImpl implements ParentDAO {
 
 
     @Override
-    public ResultSet retrieve(Integer id) throws SQLException, ClassNotFoundException {
+    public ResultSet retrieve(String id) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("SELECT * FROM parents WHERE pID = ?", id);
     }
 

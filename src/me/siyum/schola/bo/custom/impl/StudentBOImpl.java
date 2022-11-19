@@ -37,8 +37,10 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public ResultSet retrieveStudent(int id) {
-        return null;
+    public ResultSet retrieveStudent(String id) throws SQLException, ClassNotFoundException {
+
+        return dao.retrieve(id);
+
     }
 
     @Override
@@ -68,5 +70,50 @@ public class StudentBOImpl implements StudentBO {
             ));
         }
         return dtos;
+    }
+
+    @Override
+    public ArrayList<StudentDTO> searchStudents(boolean b) throws SQLException, ClassNotFoundException {
+        ArrayList<Student> students = dao.search(b);
+        ArrayList<StudentDTO> dtos = new ArrayList<>();
+        for (Student t : students) {
+            dtos.add(new StudentDTO(
+                    t.getId(),
+                    t.getName(),
+                    t.getEmail(),
+                    t.getAddress(),
+                    t.getImage(),
+                    t.getNic(),
+                    t.getPhone(),
+                    t.getParentID(),
+                    t.getScholaMark(),
+                    t.getDob(),
+                    t.isStatus(),
+                    t.isApproval(),
+                    t.getBatch()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
+    public boolean updateStudent(StudentDTO st) throws SQLException, ClassNotFoundException {
+        return dao.update(
+                new Student(
+                        st.getId(),
+                        st.getName(),
+                        st.getEmail(),
+                        st.getNic(),
+                        st.getImage(),
+                        st.getAddress(),
+                        st.getPhone(),
+                        st.getParentID(),
+                        st.getScholaMark(),
+                        st.getDob(),
+                        st.isStatus(),
+                        st.isApproval(),
+                        st.getBatch()
+                )
+        );
     }
 }

@@ -61,23 +61,18 @@ public class ReceptionistStudentsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadStudents();
-        System.out.println(tmList.size());
         for (ReceptionistStudentTM tm : tmList) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/me/siyum/schola/view/receptionist/TableRow.fxml"));
             HBox anchorPane = null;
             try {
                 anchorPane = fxmlLoader.load();
-                TableRowContoller itemController = fxmlLoader.getController();
-                itemController.setData(tm);
-                System.out.println(anchorPane);
+                ReceptionistTableRowController rowController = fxmlLoader.getController();
+                rowController.setData(tm);
                 listStudents.getItems().add(anchorPane);
             } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
-
         }
-
-
     }
 }

@@ -31,7 +31,7 @@ public class ParentBOImpl implements ParentBO {
     }
 
     @Override
-    public ResultSet retrieve(int id) throws SQLException, ClassNotFoundException {
+    public ResultSet retrieve(String id) throws SQLException, ClassNotFoundException {
         return dao.retrieve(id);
     }
 
