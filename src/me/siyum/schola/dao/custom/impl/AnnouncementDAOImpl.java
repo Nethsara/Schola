@@ -80,4 +80,9 @@ public class AnnouncementDAOImpl implements AnnouncementsDAO {
     public String getID(String s) throws SQLException, ClassNotFoundException {
         return "";
     }
+
+    @Override
+    public int getCount() {
+        return 0;
+    }
 }

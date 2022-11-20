@@ -24,6 +24,10 @@ public class BOFactory {
                 return (T) new EmployeeBOImpl();
             case ANNOUNCEMENTS:
                 return (T) new AnnouncementBOImpl();
+            case EXAMS:
+                return (T) new ExamsBoImpl();
+            case EXAM_QUESTIONS:
+                return (T) new ExamsQuestionsBoImpl();
             default:
                 return null;
         }

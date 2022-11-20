@@ -22,6 +22,10 @@ public class DAOFactory {
                 return (T) new EmployeeDAOImpl();
             case ANNOUNCEMENT:
                 return (T) new AnnouncementDAOImpl();
+            case EXAMS:
+                return (T) new ExamDAOImpl();
+            case EXAM_QUESTIONS:
+                return (T) new ExamQuestionsDAOImpl();
             default:
                 return null;
         }

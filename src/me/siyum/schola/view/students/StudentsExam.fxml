@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.students.StudentExamController">
+    <AnchorPane layoutX="36.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0" />
+        <Label layoutX="509.0" layoutY="26.0" text="Exam" textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0" />
+            </font>
+        </Label>
+      <TextField fx:id="txtQuestion" layoutX="212.0" layoutY="111.0" prefHeight="29.0" prefWidth="643.0" />
+      <JFXButton layoutX="542.0" layoutY="471.0" onAction="#nextButton" text="Next" textFill="WHITE" />
+      <JFXRadioButton fx:id="radioMCQ2" layoutX="258.0" layoutY="243.0" text="RadioButton" textFill="WHITE" />
+      <JFXRadioButton fx:id="radioMCQ3" layoutX="258.0" layoutY="299.0" textFill="WHITE" />
+      <JFXRadioButton fx:id="radioMCQ4" layoutX="258.0" layoutY="360.0" textFill="WHITE" />
+      <JFXRadioButton fx:id="radioMCQ1" layoutX="258.0" layoutY="182.0" text="RadioButton" textFill="WHITE" />
+    </AnchorPane>
+</AnchorPane>

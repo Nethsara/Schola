@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.lecturers.LecturersExamsController">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="17.0" layoutY="48.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0" />
+        <Label layoutX="476.0" layoutY="14.0" text="Exam Manager" textFill="#785fd5">
+            <font> 
+                <Font name="Consolas Bold" size="15.0" />
+            </font>
+        </Label>
+      <TableView layoutX="17.0" layoutY="84.0" prefHeight="460.0" prefWidth="1016.0">
+        <columns>
+          <TableColumn prefWidth="181.0" text="ID" />
+          <TableColumn prefWidth="228.0" text="Date" />
+            <TableColumn prefWidth="338.0" text="Batch" />
+            <TableColumn prefWidth="268.0" text="Actions" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="977.0" layoutY="51.0" onAction="#newExam" style="-fx-background-color: #785ed5;" text="+ Exam" textFill="WHITE" />
+    </AnchorPane>
+</AnchorPane>

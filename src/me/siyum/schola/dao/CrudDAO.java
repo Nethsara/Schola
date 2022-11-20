@@ -15,4 +15,5 @@ public interface CrudDAO<T extends SuperEntity,ID> {
     ResultSet retrieve(ID id) throws SQLException, ClassNotFoundException;
     ResultSet retrieve() throws SQLException, ClassNotFoundException;
     String getID(ID s) throws SQLException, ClassNotFoundException;
+    int getCount() throws SQLException, ClassNotFoundException;
 }

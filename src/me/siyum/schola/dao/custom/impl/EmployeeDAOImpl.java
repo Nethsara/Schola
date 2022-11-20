@@ -57,6 +57,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
+    public int getCount() {
+        return 0;
+    }
+
+    @Override
     public ArrayList<Salary> getPayments(ID id) throws SQLException, ClassNotFoundException {
         ResultSet res = CRUDUtil.execute("SELECT * FROM payments WHERE empID=?", id);
         ArrayList<Salary> payments = new ArrayList<>();

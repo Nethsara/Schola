@@ -93,6 +93,11 @@ public class StudentDAOImpl implements StudentDAO {
         return "";
     }
 
+    @Override
+    public int getCount() {
+        return 0;
+    }
+
 
     @Override
     public ArrayList<Student> search(boolean b) throws SQLException, ClassNotFoundException {

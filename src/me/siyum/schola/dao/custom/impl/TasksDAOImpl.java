@@ -64,4 +64,9 @@ public class TasksDAOImpl implements TasksDAO {
     public String getID(String s) {
         return "";
     }
+
+    @Override
+    public int getCount() {
+        return 0;
+    }
 }

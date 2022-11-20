@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.lecturers.LecturersExamsQuestionsController">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="17.0" layoutY="48.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0" />
+        <Label layoutX="476.0" layoutY="14.0" text="Questions Manager" textFill="#785fd5">
+            <font> 
+                <Font name="Consolas Bold" size="15.0" />
+            </font>
+        </Label>
+      <TableView fx:id="tblQuestions" layoutX="356.0" layoutY="84.0" prefHeight="421.0" prefWidth="677.0">
+        <columns>
+          <TableColumn fx:id="colQNo" prefWidth="58.66668701171875" text="Q No." />
+          <TableColumn fx:id="colQuestion" prefWidth="107.0" text="Question" />
+            <TableColumn fx:id="colMCQ1" text="MCQ1" />
+            <TableColumn fx:id="colMCQ2" prefWidth="91.0" text="MCQ2" />
+            <TableColumn fx:id="colMCQ3" prefWidth="95.0" text="MCQ3" />
+            <TableColumn fx:id="colMCQ4" prefWidth="87.0" text="MCQ4" />
+            <TableColumn fx:id="colCorrectAns" prefWidth="74.0" text="Correct Ans" />
+            <TableColumn fx:id="colAction" prefWidth="83.0" text="Action" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="951.0" layoutY="517.0" onAction="#createExm" style="-fx-background-color: #785ed5;" text="Create Exam" textFill="WHITE" />
+      <TextField fx:id="txtQuestion" layoutX="17.0" layoutY="104.0" prefHeight="29.0" prefWidth="327.0" style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;" />
+      <Label layoutX="17.0" layoutY="76.0" text="Question" textFill="WHITE" />
+      <TextField fx:id="txtMCQ1" layoutX="17.0" layoutY="179.0" prefHeight="29.0" prefWidth="327.0" style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;" />
+      <TextField fx:id="txtMCQ2" layoutX="17.0" layoutY="247.0" prefHeight="29.0" prefWidth="327.0" style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;" />
+      <Label layoutX="17.0" layoutY="158.0" text="MCQ1" textFill="WHITE" />
+      <Label layoutX="17.0" layoutY="225.0" text="MCQ2" textFill="WHITE" />
+      <TextField fx:id="txtMCQ3" layoutX="17.0" layoutY="309.0" prefHeight="29.0" prefWidth="327.0" style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;" />
+      <Label layoutX="17.0" layoutY="288.0" text="MCQ3" textFill="WHITE" />
+      <Label layoutX="17.0" layoutY="350.0" text="MCQ3" textFill="WHITE" />
+      <TextField fx:id="txtMCQ4" layoutX="17.0" layoutY="371.0" prefHeight="29.0" prefWidth="327.0" style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;" />
+      <JFXComboBox fx:id="cmbCorrectAnswer" focusColor="#785ed5" layoutX="18.0" layoutY="435.0" prefHeight="25.0" prefWidth="327.0" />
+      <Label layoutX="17.0" layoutY="416.0" text="Correct Answer" textFill="WHITE" />
+      <JFXButton layoutX="136.0" layoutY="480.0" onAction="#addQuestion" style="-fx-background-color: #785ed5;" text="Add Question" textFill="WHITE" />
+      <Label layoutX="624.0" layoutY="14.0" text="(Exm ID - " textFill="#785fd5">
+         <font>
+            <Font name="Consolas Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblExmID" layoutX="707.0" layoutY="14.0" text="SE-1" textFill="#785fd5">
+         <font>
+            <Font name="Consolas Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="749.0" layoutY="14.0" text=")" textFill="#785fd5">
+         <font>
+            <Font name="Consolas Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtID" layoutX="789.0" layoutY="11.0" />
+    </AnchorPane>
+</AnchorPane>
