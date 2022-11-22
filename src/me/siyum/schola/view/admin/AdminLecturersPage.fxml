@@ -1,42 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.admin.AdminLectureresPageController">
-   <children>
-      <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="601.0" prefWidth="1071.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-         <children>
-            <FontAwesomeIconView fill="#7662c4" glyphName="GROUP" layoutX="17.0" layoutY="35.0" size="22" />
-            <Label layoutX="49.0" layoutY="15.0" text="Lecturers" textFill="#7662c4">
-               <font>
-                  <Font name="Consolas Bold" size="18.0" />
-               </font>
-            </Label>
-            <JFXButton layoutX="956.0" layoutY="17.0" style="-fx-background-color: #7662c4;" text="New Lecturers" textFill="WHITE">
-               <font>
-                  <Font name="Consolas Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <TableView layoutX="17.0" layoutY="52.0" prefHeight="535.0" prefWidth="1042.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="106.0" text="Img" />
-                  <TableColumn prefWidth="153.0" text="Name" />
-                  <TableColumn prefWidth="141.0" text="Email" />
-                  <TableColumn prefWidth="116.0" text="Contact" />
-                  <TableColumn prefWidth="106.0" text="Location" />
-                  <TableColumn prefWidth="125.0" text="Birthday" />
-                  <TableColumn prefWidth="108.0" text="Schola St Marks" />
-                  <TableColumn prefWidth="112.0" text="Action" />
-              </columns>
-            </TableView>
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="me.siyum.schola.controller.admin.AdminLectureresPageController">
+    <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="601.0" prefWidth="1071.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <FontAwesomeIconView fill="#7662c4" glyphName="GROUP" layoutX="17.0" layoutY="35.0" size="22"/>
+        <Label layoutX="49.0" layoutY="15.0" text="Lecturers" textFill="#7662c4">
+            <font>
+                <Font name="Consolas Bold" size="18.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="956.0" layoutY="17.0" style="-fx-background-color: #7662c4;" text="New Lecturers"
+                   textFill="WHITE">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </JFXButton>
+        <JFXListView fx:id="listLec" layoutX="17.0" layoutY="58.0" prefHeight="534.0" prefWidth="1033.0"/>
+    </AnchorPane>
 </AnchorPane>

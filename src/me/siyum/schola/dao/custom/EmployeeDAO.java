@@ -13,4 +13,5 @@ public interface EmployeeDAO extends CrudDAO<Employee, String> {
     ArrayList<Salary> getPayments(ID id) throws SQLException, ClassNotFoundException;
     String getPaymentMethod(ID id) throws SQLException, ClassNotFoundException;
     String getID(String s) throws SQLException, ClassNotFoundException;
+    ArrayList<Employee> get(String s) throws SQLException, ClassNotFoundException;
 }

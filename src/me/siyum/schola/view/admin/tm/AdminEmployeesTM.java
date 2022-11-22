@@ -1,26 +1,29 @@
-package me.siyum.schola.entity;
+package me.siyum.schola.view.admin.tm;
 
 import java.sql.Blob;
 
-public class Employee implements SuperEntity {
+public class AdminEmployeesTM {
     private String id;
     private Blob image;
     private String name;
     private String address;
     private String email;
     private double salary;
-    private String paymentMethod;
+    private String paymentType;
     private String role;
     private boolean status;
 
-    public Employee(String id, Blob image, String name, String address, String email, double salary, String paymentMethod, String role, boolean status) {
+    public AdminEmployeesTM() {
+    }
+
+    public AdminEmployeesTM(String id, Blob image, String name, String address, String email, double salary, String paymentType, String role, boolean status) {
         this.id = id;
         this.image = image;
         this.name = name;
         this.address = address;
         this.email = email;
         this.salary = salary;
-        this.paymentMethod = paymentMethod;
+        this.paymentType = paymentType;
         this.role = role;
         this.status = status;
     }
@@ -73,20 +76,12 @@ public class Employee implements SuperEntity {
         this.salary = salary;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
+    public String getPaymentType() {
+        return paymentType;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
     }
 
     public String getRole() {
@@ -95,5 +90,13 @@ public class Employee implements SuperEntity {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

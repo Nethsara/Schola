@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -21,18 +20,6 @@
                 <Font name="Consolas Bold" size="12.0" />
             </font>
         </JFXButton>
-        <TableView layoutX="17.0" layoutY="52.0" prefHeight="535.0" prefWidth="1042.0">
-            <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="106.0" text="Img" />
-                <TableColumn prefWidth="153.0" text="Name" />
-                <TableColumn prefWidth="141.0" text="Email" />
-                <TableColumn prefWidth="116.0" text="Contact" />
-                <TableColumn prefWidth="106.0" text="Location" />
-                <TableColumn prefWidth="125.0" text="Birthday" />
-                <TableColumn prefWidth="108.0" text="Schola St Marks" />
-                <TableColumn prefWidth="112.0" text="Action" />
-            </columns>
-        </TableView>
+      <JFXListView fx:id="listStudents" layoutX="19.0" layoutY="62.0" prefHeight="528.0" prefWidth="1036.0" />
     </AnchorPane>
 </AnchorPane>

@@ -57,6 +57,28 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
+    public ArrayList<Employee> get(String s) throws SQLException, ClassNotFoundException {
+        s = "%" + s + "%";
+
+        ArrayList<Employee> employees = new ArrayList<>();
+        ResultSet resultSet = CRUDUtil.execute("SELECT * FROM employee WHERE role LIKE?", s);
+        while (resultSet.next()) {
+            employees.add(new Employee(
+                    resultSet.getString(1),
+                    resultSet.getBlob(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getDouble(6),
+                    resultSet.getString(7),
+                    resultSet.getString(8),
+                    resultSet.getBoolean(9)
+            ));
+        }
+        return employees;
+    }
+
+    @Override
     public int getCount() {
         return 0;
     }
