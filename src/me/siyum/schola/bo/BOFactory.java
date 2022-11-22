@@ -28,6 +28,8 @@ public class BOFactory {
                 return (T) new ExamsBoImpl();
             case EXAM_QUESTIONS:
                 return (T) new ExamsQuestionsBoImpl();
+            case SUBJECTS:
+                return (T) new SubjectsBOImpl();
             default:
                 return null;
         }
