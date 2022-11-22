@@ -30,6 +30,10 @@ public class BOFactory {
                 return (T) new ExamsQuestionsBoImpl();
             case SUBJECTS:
                 return (T) new SubjectsBOImpl();
+            case CLASS_ROOMS:
+                return (T) new ClassRoomsBOImpl();
+            case CLASSES:
+                return (T) new ClassesBOImpl();
             default:
                 return null;
         }

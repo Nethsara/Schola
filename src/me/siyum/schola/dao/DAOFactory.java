@@ -26,6 +26,12 @@ public class DAOFactory {
                 return (T) new ExamDAOImpl();
             case EXAM_QUESTIONS:
                 return (T) new ExamQuestionsDAOImpl();
+            case CLASS_ROOMS:
+                return (T) new ClassRoomsDAOImpl();
+            case SUBJECTS:
+                return (T) new SubjectsDAOImpl();
+            case CLASSES:
+                return (T) new ClassesDAOImpl();
             default:
                 return null;
         }
