@@ -47,7 +47,18 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public EmployeeDTO getEmployeeByID(String id) {
-        return null;
+    public EmployeeDTO getEmployeeByID(String id) throws SQLException, ClassNotFoundException {
+        Employee retrieve = dao.retrieve(id);
+        return new EmployeeDTO(
+                retrieve.getId(),
+                retrieve.getImage(),
+                retrieve.getName(),
+                retrieve.getAddress(),
+                retrieve.getEmail(),
+                retrieve.getSalary(),
+                retrieve.getPaymentMethod(),
+                retrieve.getRole(),
+                retrieve.isStatus()
+        );
     }
 }

@@ -37,8 +37,23 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee retrieve(String s) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM employee");
+        if (res.next()) {
+            return new Employee(
+                    res.getString(1),
+                    res.getBlob(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getDouble(6),
+                    res.getString(7),
+                    res.getString(8),
+                    res.getBoolean(9)
+            );
+        }
         return null;
     }
+
 
     @Override
     public String getID(String s) throws SQLException, ClassNotFoundException {

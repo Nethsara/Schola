@@ -13,5 +13,5 @@ public interface EmployeeBO {
 
     ArrayList<EmployeeDTO> getEmployeeByType(String type) throws SQLException, ClassNotFoundException;
 
-    EmployeeDTO getEmployeeByID(String id);
+    EmployeeDTO getEmployeeByID(String id) throws SQLException, ClassNotFoundException;
 }

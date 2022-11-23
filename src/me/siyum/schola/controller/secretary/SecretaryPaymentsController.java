@@ -73,8 +73,9 @@ public class SecretaryPaymentsController {
         tblPayment.setItems(list);
     }
 
-    public void setEmployeeData(ActionEvent actionEvent) {
-        EmployeeDTO employee = empBo.getEmployeeByID(cmbEmployeeID.getValue().toString());
+    public void setEmployeeData() throws SQLException, ClassNotFoundException {
+        EmployeeDTO employee = empBo.getEmployeeByID(cmbEmployeeID.getValue());
+        System.out.println(employee.getId());
         txtEmpName.setText(employee.getName());
         txtPayable.setText(String.valueOf(employee.getSalary()));
     }
