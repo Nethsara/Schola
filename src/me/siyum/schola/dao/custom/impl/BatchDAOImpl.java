@@ -1,16 +1,16 @@
 package me.siyum.schola.dao.custom.impl;
 
 import me.siyum.schola.dao.CRUDUtil;
-import me.siyum.schola.dao.custom.SubjectsDAO;
-import me.siyum.schola.entity.Subjects;
+import me.siyum.schola.dao.custom.BatchDAO;
+import me.siyum.schola.entity.Batch;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SubjectsDAOImpl implements SubjectsDAO {
+public class BatchDAOImpl implements BatchDAO {
     @Override
-    public boolean save(Subjects subjects) throws SQLException, ClassNotFoundException {
+    public boolean save(Batch batch) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -20,7 +20,7 @@ public class SubjectsDAOImpl implements SubjectsDAO {
     }
 
     @Override
-    public boolean update(Subjects subjects) throws SQLException, ClassNotFoundException {
+    public boolean update(Batch batch) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -30,22 +30,21 @@ public class SubjectsDAOImpl implements SubjectsDAO {
     }
 
     @Override
-    public ArrayList<Subjects> search(String s) throws SQLException, ClassNotFoundException {
-        s = "%" + s + "%";
-        ArrayList<Subjects> arList = new ArrayList<>();
-        ResultSet rs = CRUDUtil.execute("SELECT * FROM subjects");
+    public ArrayList<Batch> search(String s) throws SQLException, ClassNotFoundException {
+        ArrayList<Batch> batchList = new ArrayList<>();
 
-        while (rs.next()) {
-            arList.add(
-                    new Subjects(
-                            rs.getString(1),
-                            rs.getString(2),
-                            rs.getString(3)
-                    )
+        s = "%"+s+"%";
+        ResultSet res = CRUDUtil.execute("SELECT * FROM batches");
+        while (res.next()){
+            batchList.add(
+                new Batch(
+                        res.getString(1),
+                        res.getString(2)
+                )
             );
         }
+        return batchList;
 
-        return arList;
     }
 
     @Override

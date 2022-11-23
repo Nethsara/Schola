@@ -1,13 +1,13 @@
 package me.siyum.schola.dto;
 
-public class ClassRoomsEntity {
+public class ClassRoomsDTO {
     private String id;
     private int space;
 
-    public ClassRoomsEntity() {
+    public ClassRoomsDTO() {
     }
 
-    public ClassRoomsEntity(String id, int space) {
+    public ClassRoomsDTO(String id, int space) {
         this.id = id;
         this.space = space;
     }

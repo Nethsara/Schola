@@ -7,18 +7,20 @@ public class Classes implements SuperEntity {
     private String id;
     private String subID;
     private String clssRoom;
+    private String batch;
     private LocalDate date;
     private LocalTime time;
 
     public Classes() {
     }
 
-    public Classes(String id, String subID, String clssRoom, LocalDate date, LocalTime time) {
+    public Classes(String id, String subID, String clssRoom, String batch, LocalDate date, LocalTime time) {
         this.id = id;
         this.subID = subID;
         this.clssRoom = clssRoom;
         this.date = date;
         this.time = time;
+        this.batch = batch;
     }
 
     public String getId() {
@@ -59,5 +61,13 @@ public class Classes implements SuperEntity {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    public String getBatch() {
+        return batch;
+    }
+
+    public void setBatch(String batch) {
+        this.batch = batch;
     }
 }

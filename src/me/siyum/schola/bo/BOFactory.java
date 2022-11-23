@@ -34,6 +34,8 @@ public class BOFactory {
                 return (T) new ClassRoomsBOImpl();
             case CLASSES:
                 return (T) new ClassesBOImpl();
+            case BATCHES:
+                return (T) new BatchBOImpl();
             default:
                 return null;
         }

@@ -32,6 +32,8 @@ public class DAOFactory {
                 return (T) new SubjectsDAOImpl();
             case CLASSES:
                 return (T) new ClassesDAOImpl();
+            case BATCHES:
+                return (T) new BatchDAOImpl();
             default:
                 return null;
         }

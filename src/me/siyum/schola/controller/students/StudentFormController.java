@@ -14,10 +14,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
+import me.siyum.schola.bo.custom.BatchBO;
 import me.siyum.schola.bo.custom.ParentBO;
 import me.siyum.schola.bo.custom.StudentBO;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.db.DBConnection;
+import me.siyum.schola.dto.BatchDTO;
 import me.siyum.schola.dto.ParentDTO;
 import me.siyum.schola.dto.StudentDTO;
 
@@ -63,6 +65,7 @@ public class StudentFormController {
 
     private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
     private final ParentBO parentBO = BOFactory.getInstance().getBO(BOTypes.PARENT);
+    private final BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
     private boolean isSavedParent = true;
     private ParentDTO parentDTO;
 
@@ -262,20 +265,23 @@ public class StudentFormController {
             int finalizeOrderId = tempNumber + 1;
             lblPID.setText("SP-" + finalizeOrderId);
         }
+    }
 
+    private void setBatchID() throws SQLException, ClassNotFoundException {
+        ArrayList<BatchDTO> batches = batchBO.getBatches("");
+        ObservableList<String> obBatchList = FXCollections.observableArrayList();
 
+        for (BatchDTO b : batches
+             ) {
+            obBatchList.add(b.getId());
+        }
+
+        cmbBatch.setItems(obBatchList);
     }
 
     private void setData() {
         try {
-            ArrayList<String> batchList = new ArrayList<>();
-            ResultSet res = CRUDUtil.execute("SELECT * FROM batches");
-            while (res.next()) {
-                batchList.add(res.getString(1));
-            }
-
-            ObservableList<String> obBatchList = FXCollections.observableArrayList(batchList);
-            cmbBatch.setItems(obBatchList);
+            setBatchID();
 
             if(btnSave.getText().equalsIgnoreCase("Save")){
                 lblScholaMark.setText("0");

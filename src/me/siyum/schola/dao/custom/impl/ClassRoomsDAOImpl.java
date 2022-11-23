@@ -1,5 +1,6 @@
 package me.siyum.schola.dao.custom.impl;
 
+import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.dao.custom.ClassRoomDAO;
 import me.siyum.schola.entity.ClassRooms;
 
@@ -30,7 +31,20 @@ public class ClassRoomsDAOImpl implements ClassRoomDAO {
 
     @Override
     public ArrayList<ClassRooms> search(String s) throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<ClassRooms> arList = new ArrayList<>();
+
+        ResultSet execute = CRUDUtil.execute("SELECT * FROM class_rooms");
+
+        while (execute.next()) {
+            arList.add(
+                    new ClassRooms(
+                            execute.getString(1),
+                            execute.getInt(2)
+                    )
+            );
+        }
+
+        return arList;
     }
 
     @Override
