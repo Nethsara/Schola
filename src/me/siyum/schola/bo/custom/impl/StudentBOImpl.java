@@ -7,7 +7,6 @@ import me.siyum.schola.dao.custom.StudentDAO;
 import me.siyum.schola.dto.StudentDTO;
 import me.siyum.schola.entity.Student;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -37,9 +36,24 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public ResultSet retrieveStudent(String id) throws SQLException, ClassNotFoundException {
+    public StudentDTO retrieveStudent(String id) throws SQLException, ClassNotFoundException {
 
-        return dao.retrieve(id);
+        Student t = dao.retrieve(id);
+
+        return new StudentDTO(
+                t.getId(),
+                t.getName(),
+                t.getEmail(),
+                t.getAddress(),
+                t.getImage(),
+                t.getNic(),
+                t.getPhone(),
+                t.getParentID(),
+                t.getScholaMark(),
+                t.getDob(),
+                t.isStatus(),
+                t.isApproval(),
+                t.getBatch());
 
     }
 

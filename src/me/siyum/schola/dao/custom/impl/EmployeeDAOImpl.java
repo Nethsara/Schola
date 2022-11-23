@@ -4,7 +4,6 @@ import com.sun.xml.internal.bind.v2.model.core.ID;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.dao.custom.EmployeeDAO;
 import me.siyum.schola.entity.Employee;
-import me.siyum.schola.entity.Salary;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,15 +36,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public ResultSet retrieve(String s) throws SQLException, ClassNotFoundException {
+    public Employee retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
-
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
 
     @Override
     public String getID(String s) throws SQLException, ClassNotFoundException {
@@ -83,22 +76,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return 0;
     }
 
-    @Override
-    public ArrayList<Salary> getPayments(ID id) throws SQLException, ClassNotFoundException {
-        ResultSet res = CRUDUtil.execute("SELECT * FROM payments WHERE empID=?", id);
-        ArrayList<Salary> payments = new ArrayList<>();
-        while (res.next()) {
-            payments.add(
-                    new Salary(
-                            res.getInt(1),
-                            res.getInt(2),
-                            res.getDate(3).toLocalDate(),
-                            res.getDouble(4)
-                    )
-            );
-        }
-        return payments;
-    }
 
     @Override
     public String getPaymentMethod(ID id) throws SQLException, ClassNotFoundException {

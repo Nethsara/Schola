@@ -3,43 +3,36 @@ package me.siyum.schola.dto;
 import java.time.LocalDate;
 
 public class SalaryDTO {
-    private int id;
-    private int empID;
+    private String id;
+    private String empID;
     private LocalDate date;
     private double amount;
     private String method;
 
-    public SalaryDTO(int id, int empID, LocalDate date, double amount, String method) {
-        this.id = id;
-        this.empID = empID;
-        this.date = date;
-        this.amount = amount;
-        this.method = method;
-    }
 
     public SalaryDTO() {
     }
 
-    public SalaryDTO(int id, int empID, LocalDate date, double amount) {
+    public SalaryDTO(String id, String empID, LocalDate date, double amount) {
         this.id = id;
         this.empID = empID;
         this.date = date;
         this.amount = amount;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getEmpID() {
+    public String getEmpID() {
         return empID;
     }
 
-    public void setEmpID(int empID) {
+    public void setEmpID(String empID) {
         this.empID = empID;
     }
 

@@ -36,6 +36,8 @@ public class BOFactory {
                 return (T) new ClassesBOImpl();
             case BATCHES:
                 return (T) new BatchBOImpl();
+            case SALARY:
+                return (T) new SalaryBOImpl();
             default:
                 return null;
         }

@@ -3,7 +3,6 @@ package me.siyum.schola.dao.custom.impl;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.dao.custom.ParentDAO;
 import me.siyum.schola.entity.Parent;
-import me.siyum.schola.entity.Tasks;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +24,7 @@ public class ParentDAOImpl implements ParentDAO {
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {
         ResultSet res = CRUDUtil.execute("SELECT * FROM parents ORDER BY pID DESC");
-        if(res.next()){
+        if (res.next()) {
             return res.getString(1);
         }
         return "";
@@ -42,20 +41,40 @@ public class ParentDAOImpl implements ParentDAO {
     }
 
     @Override
-    public ArrayList<Parent> search(String s) {
+    public ArrayList<Parent> search(String s) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM parents");
+
+        ArrayList<Parent> list = new ArrayList<>();
+        while (res.next()) {
+            list.add(new Parent(
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getString(6)
+            ));
+        }
+        return list;
+    }
+
+
+    @Override
+    public Parent retrieve(String id) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM parents WHERE pID = ?", id);
+        if (res.next()) {
+            return new Parent(
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getString(6)
+            );
+        }
         return null;
     }
 
-
-    @Override
-    public ResultSet retrieve(String id) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("SELECT * FROM parents WHERE pID = ?", id);
-    }
-
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("SELECT * FROM parents");
-    }
 
     @Override
     public String getID(String s) {

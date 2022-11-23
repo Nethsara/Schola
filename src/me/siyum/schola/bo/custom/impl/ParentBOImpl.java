@@ -7,8 +7,8 @@ import me.siyum.schola.dao.custom.impl.ParentDAOImpl;
 import me.siyum.schola.dto.ParentDTO;
 import me.siyum.schola.entity.Parent;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ParentBOImpl implements ParentBO {
     private ParentDAOImpl dao = DAOFactory.getInstance().getDAO(DAOTypes.PARENT);
@@ -31,13 +31,37 @@ public class ParentBOImpl implements ParentBO {
     }
 
     @Override
-    public ResultSet retrieve(String id) throws SQLException, ClassNotFoundException {
-        return dao.retrieve(id);
+    public ParentDTO getParentByID(String id) throws SQLException, ClassNotFoundException {
+        Parent parent = dao.retrieve(id);
+        return new ParentDTO(
+                parent.getId(),
+                parent.getName(),
+                parent.getEmail(),
+                parent.getNic(),
+                parent.getAddress(),
+                parent.getPhone()
+        );
+
     }
 
     @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
-        return dao.retrieve();
+    public ArrayList<ParentDTO> getParents() throws SQLException, ClassNotFoundException {
+        ArrayList<Parent> search = dao.search("");
+        ArrayList<ParentDTO> list = new ArrayList<>();
+        for (Parent p : search
+        ) {
+            list.add(
+                    new ParentDTO(
+                            p.getId(),
+                            p.getName(),
+                            p.getEmail(),
+                            p.getNic(),
+                            p.getAddress(),
+                            p.getPhone()
+                    )
+            );
+        }
+        return list;
     }
 
 

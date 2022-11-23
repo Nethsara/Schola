@@ -2,35 +2,35 @@ package me.siyum.schola.entity;
 
 import java.time.LocalDate;
 
-public class Salary {
-    private int id;
-    private int empID;
+public class Salary implements SuperEntity {
+    private String id;
+    private String empID;
     private LocalDate date;
     private double amount;
 
     public Salary() {
     }
 
-    public Salary(int id, int empID, LocalDate date, double amount) {
+    public Salary(String id, String empID, LocalDate date, double amount) {
         this.id = id;
         this.empID = empID;
         this.date = date;
         this.amount = amount;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getEmpID() {
+    public String getEmpID() {
         return empID;
     }
 
-    public void setEmpID(int empID) {
+    public void setEmpID(String empID) {
         this.empID = empID;
     }
 

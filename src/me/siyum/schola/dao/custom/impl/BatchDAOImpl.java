@@ -48,12 +48,7 @@ public class BatchDAOImpl implements BatchDAO {
     }
 
     @Override
-    public ResultSet retrieve(String s) throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
+    public Batch retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 

@@ -64,14 +64,10 @@ public class ExamQuestionsDAOImpl implements ExamsQuestionsDAO {
     }
 
     @Override
-    public ResultSet retrieve(String s) throws SQLException, ClassNotFoundException {
+    public ExamQuestions retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
-        return null;
-    }
 
     @Override
     public String getID(String s) throws SQLException, ClassNotFoundException {

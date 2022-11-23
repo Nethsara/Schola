@@ -56,12 +56,7 @@ public class ClassesDAOImpl implements ClassesDAO {
         return classList;    }
 
     @Override
-    public ResultSet retrieve(String s) throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
+    public Classes retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 

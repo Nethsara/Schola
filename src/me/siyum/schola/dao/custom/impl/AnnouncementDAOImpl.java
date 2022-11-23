@@ -67,12 +67,7 @@ public class AnnouncementDAOImpl implements AnnouncementsDAO {
     }
 
     @Override
-    public ResultSet retrieve(String id) throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
+    public Announcements retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 

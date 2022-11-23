@@ -58,12 +58,7 @@ public class ExamDAOImpl implements ExamsDAO {
     }
 
     @Override
-    public ResultSet retrieve(String s) throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
+    public Exams retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 

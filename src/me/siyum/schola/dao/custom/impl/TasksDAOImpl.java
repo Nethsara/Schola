@@ -51,14 +51,10 @@ public class TasksDAOImpl implements TasksDAO {
     }
 
     @Override
-    public ResultSet retrieve(String integer) throws SQLException, ClassNotFoundException {
+    public Tasks retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("SELECT * FROM tasks");
-    }
 
     @Override
     public String getID(String s) {

@@ -6,30 +6,13 @@ import me.siyum.schola.dao.DAOFactory;
 import me.siyum.schola.dao.DAOTypes;
 import me.siyum.schola.dao.custom.impl.EmployeeDAOImpl;
 import me.siyum.schola.dto.EmployeeDTO;
-import me.siyum.schola.dto.SalaryDTO;
 import me.siyum.schola.entity.Employee;
-import me.siyum.schola.entity.Salary;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
     private final EmployeeDAOImpl dao = DAOFactory.getInstance().getDAO(DAOTypes.EMPLOYEE);
-
-    @Override
-    public ArrayList<SalaryDTO> getSalaries(ID id) throws SQLException, ClassNotFoundException {
-        ArrayList<Salary> payments = dao.getPayments(id);
-        ArrayList<SalaryDTO> obList = new ArrayList<>();
-        for (Salary s : payments) {
-            obList.add(new SalaryDTO(
-                    s.getId(),
-                    s.getEmpID(),
-                    s.getDate(),
-                    s.getAmount()
-            ));
-        }
-        return obList;
-    }
 
     @Override
     public String getEmployeeID(String token) throws SQLException, ClassNotFoundException {
@@ -42,7 +25,7 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public ArrayList<EmployeeDTO> getEmployee(String type) throws SQLException, ClassNotFoundException {
+    public ArrayList<EmployeeDTO> getEmployeeByType(String type) throws SQLException, ClassNotFoundException {
         ArrayList<Employee> employee = dao.get(type);
         ArrayList<EmployeeDTO> emp = new ArrayList<>();
         for (Employee e : employee
@@ -61,5 +44,10 @@ public class EmployeeBOImpl implements EmployeeBO {
         }
 
         return emp;
+    }
+
+    @Override
+    public EmployeeDTO getEmployeeByID(String id) {
+        return null;
     }
 }

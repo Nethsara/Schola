@@ -17,7 +17,6 @@ import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.BatchBO;
 import me.siyum.schola.bo.custom.ParentBO;
 import me.siyum.schola.bo.custom.StudentBO;
-import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.BatchDTO;
 import me.siyum.schola.dto.ParentDTO;
@@ -31,13 +30,15 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class StudentFormController {
 
+    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final ParentBO parentBO = BOFactory.getInstance().getBO(BOTypes.PARENT);
+    private final BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
     public ImageView imgSt;
     public Label lblName;
     public TextField txtName;
@@ -62,10 +63,6 @@ public class StudentFormController {
     public JFXComboBox<String> cmbBatch;
     public JFXTextField txtParentName;
     public JFXButton btnReject;
-
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private final ParentBO parentBO = BOFactory.getInstance().getBO(BOTypes.PARENT);
-    private final BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
     private boolean isSavedParent = true;
     private ParentDTO parentDTO;
 
@@ -215,28 +212,24 @@ public class StudentFormController {
         btnSave.setText("Update");
         imgSt.setImage(null);
         try {
-            ResultSet rs = studentBO.retrieveStudent(id);
-            if (rs.next()) {
+            StudentDTO st = studentBO.retrieveStudent(id);
+            lblStID.setText(st.getId());
+            lblName.setText(st.getName());
+            txtName.setText(st.getName());
+            txtNIC.setText(st.getNic());
+            txtEmail.setText(st.getEmail());
+            pickerDOB.setValue(st.getDob());
+            txtPhone.setText(st.getPhone());
+            txtAddress.setText(st.getAddress());
+            cmbParentID.setValue(st.getParentID());
+            cmbBatch.setValue(st.getBatch());
+            lblScholaMark.setText(String.valueOf(st.getScholaMark()));
+            Blob data = st.getImage();
+            imgSt.setImage(new Image(data.getBinaryStream()));
 
-                lblStID.setText(rs.getString(1));
-                lblName.setText(rs.getString(2));
-                txtName.setText(rs.getString(2));
-                txtNIC.setText(rs.getString(4));
-                txtEmail.setText(rs.getString(3));
-                pickerDOB.setValue(rs.getDate(10).toLocalDate());
-                txtPhone.setText(rs.getString(7));
-                txtAddress.setText(rs.getString(6));
-                cmbParentID.setValue(rs.getString(8));
-                cmbBatch.setValue(rs.getString(13));
-                lblScholaMark.setText(String.valueOf(rs.getInt(9)));
-                Blob data = rs.getBlob(5);
-                imgSt.setImage(new Image(data.getBinaryStream()));
+            ParentDTO parent = parentBO.getParentByID(cmbParentID.getValue());
+            txtParentName.setText(parent.getName());
 
-                ResultSet res = parentBO.retrieve(cmbParentID.getValue());
-                if (res.next()) {
-                    txtParentName.setText(res.getString(2));
-                }
-            }
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
@@ -272,7 +265,7 @@ public class StudentFormController {
         ObservableList<String> obBatchList = FXCollections.observableArrayList();
 
         for (BatchDTO b : batches
-             ) {
+        ) {
             obBatchList.add(b.getId());
         }
 
@@ -283,17 +276,18 @@ public class StudentFormController {
         try {
             setBatchID();
 
-            if(btnSave.getText().equalsIgnoreCase("Save")){
+            if (btnSave.getText().equalsIgnoreCase("Save")) {
                 lblScholaMark.setText("0");
             }
 
             setStudentID();
             setParentID();
 
-            ResultSet set = parentBO.retrieve();
+            ArrayList<ParentDTO> parents = parentBO.getParents();
             ArrayList<String> idList = new ArrayList<>();
-            while (set.next()) {
-                idList.add(set.getString(1));
+            for (ParentDTO p : parents
+            ) {
+                idList.add(p.getId());
             }
             ObservableList<String> obList = FXCollections.observableArrayList(idList);
             cmbParentID.setItems(obList);
@@ -344,10 +338,8 @@ public class StudentFormController {
 
     public void setParentIDOnAction() {
         try {
-            ResultSet res = parentBO.retrieve(cmbParentID.getValue());
-            if (res.next()) {
-                txtParentName.setText(res.getString(2));
-            }
+            ParentDTO parent = parentBO.getParentByID(cmbParentID.getValue());
+            txtParentName.setText(parent.getName());
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

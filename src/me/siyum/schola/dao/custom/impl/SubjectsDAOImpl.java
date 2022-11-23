@@ -49,14 +49,10 @@ public class SubjectsDAOImpl implements SubjectsDAO {
     }
 
     @Override
-    public ResultSet retrieve(String s) throws SQLException, ClassNotFoundException {
+    public Subjects retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
-        return null;
-    }
 
     @Override
     public String getID(String s) throws SQLException, ClassNotFoundException {

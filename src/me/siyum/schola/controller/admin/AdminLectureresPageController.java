@@ -15,7 +15,6 @@ import me.siyum.schola.bo.custom.EmployeeBO;
 import me.siyum.schola.controller.students.StudentFormController;
 import me.siyum.schola.dto.EmployeeDTO;
 import me.siyum.schola.view.admin.tm.AdminEmployeesTM;
-import me.siyum.schola.view.admin.tm.AdminStudentsTM;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,7 +46,7 @@ public class AdminLectureresPageController {
 
     private void loadStudents() {
         try {
-            ArrayList<EmployeeDTO> empDTO = stBo.getEmployee("");
+            ArrayList<EmployeeDTO> empDTO = stBo.getEmployeeByType("");
             for (EmployeeDTO s : empDTO) {
                 Button btn = new Button("Edit");
                 tmList.add(new AdminEmployeesTM(

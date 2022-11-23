@@ -48,12 +48,7 @@ public class ClassRoomsDAOImpl implements ClassRoomDAO {
     }
 
     @Override
-    public ResultSet retrieve(String s) throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
+    public ClassRooms retrieve(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 

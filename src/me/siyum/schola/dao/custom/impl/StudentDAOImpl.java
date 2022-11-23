@@ -79,14 +79,28 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public ResultSet retrieve(String id) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("SELECT * FROM students WHERE stID = ?", id);
+    public Student retrieve(String id) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM students WHERE stID = ?", id);
+        if (res.next()) {
+            return new Student(
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getBlob(5),
+                    res.getString(6),
+                    res.getString(7),
+                    res.getString(8),
+                    res.getInt(9),
+                    res.getDate(10).toLocalDate(),
+                    res.getBoolean(11),
+                    res.getBoolean(12),
+                    res.getString(13)
+            );
+        }
+        return null;
     }
 
-    @Override
-    public ResultSet retrieve() throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("SELECT * FROM students");
-    }
 
     @Override
     public String getID(String s) {
