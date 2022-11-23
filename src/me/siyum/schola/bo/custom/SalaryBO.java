@@ -7,4 +7,6 @@ import java.util.ArrayList;
 
 public interface SalaryBO {
     ArrayList<SalaryDTO> getSalaries() throws SQLException, ClassNotFoundException;
+
+    boolean saveSalary(SalaryDTO salary) throws SQLException, ClassNotFoundException;
 }

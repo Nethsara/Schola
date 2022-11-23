@@ -5,8 +5,10 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.EmployeeBO;
@@ -16,14 +18,15 @@ import me.siyum.schola.dto.SalaryDTO;
 import me.siyum.schola.view.secretary.tm.SecretarySalaryTM;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SecretaryPaymentsController {
     private final SalaryBO bo = BOFactory.getInstance().getBO(BOTypes.SALARY);
+    private final EmployeeBO empBo = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public JFXTextField txtEmpName;
     public JFXTextField txtPayable;
     public JFXTextField txtAmount;
-    private final EmployeeBO empBo = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public TableColumn colID;
     public TableColumn colTo;
     public TableColumn colAmount;
@@ -31,7 +34,15 @@ public class SecretaryPaymentsController {
     public JFXComboBox<String> cmbEmployeeID;
     public TableView<SecretarySalaryTM> tblPayment;
 
+    private EmployeeDTO employeeDTO;
+
     public void initialize() {
+
+        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colTo.setCellValueFactory(new PropertyValueFactory<>("to"));
+
         setData();
     }
 
@@ -74,12 +85,28 @@ public class SecretaryPaymentsController {
     }
 
     public void setEmployeeData() throws SQLException, ClassNotFoundException {
-        EmployeeDTO employee = empBo.getEmployeeByID(cmbEmployeeID.getValue());
-        System.out.println(employee.getId());
-        txtEmpName.setText(employee.getName());
-        txtPayable.setText(String.valueOf(employee.getSalary()));
+        employeeDTO = empBo.getEmployeeByID(cmbEmployeeID.getValue());
+        txtEmpName.setText(employeeDTO.getName());
+        txtPayable.setText(String.valueOf(employeeDTO.getSalary()));
     }
 
-    public void payEmp(ActionEvent actionEvent) {
+    public void payEmp(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        if (Double.parseDouble(txtAmount.getText()) > employeeDTO.getSalary()) {
+            new Alert(Alert.AlertType.WARNING, "Amount is greater than payable amount, Please check values").show();
+        } else {
+            boolean b = bo.saveSalary(new SalaryDTO(
+                    "1",
+                    cmbEmployeeID.getValue(),
+                    LocalDate.now(),
+                    Double.parseDouble(txtAmount.getText())
+            ));
+
+            if (b) {
+                new Alert(Alert.AlertType.INFORMATION, "Success").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Failed").show();
+            }
+            setTable();
+        }
     }
 }

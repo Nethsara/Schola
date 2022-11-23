@@ -51,7 +51,7 @@ public class SecretaryClassesController {
 
 
     public void initialize(){
-        colID.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colSubject.setCellValueFactory(new PropertyValueFactory<>("subject"));
         colActions.setCellValueFactory(new PropertyValueFactory<>("btn"));
         colBatch.setCellValueFactory(new PropertyValueFactory<>("batch"));

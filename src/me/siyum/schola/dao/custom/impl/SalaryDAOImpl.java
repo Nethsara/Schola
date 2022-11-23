@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class SalaryDAOImpl implements SalaryDAO {
     @Override
     public boolean save(Salary salary) throws SQLException, ClassNotFoundException {
-        return false;
+        return CRUDUtil.execute("INSERT INTO salary VALUES(?,?,?,?)",
+                salary.getId(), salary.getEmpID(), salary.getDate(), salary.getAmount());
     }
 
     @Override
