@@ -10,17 +10,56 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
+import me.siyum.schola.bo.custom.EmployeeBO;
 import me.siyum.schola.bo.custom.ExamsBO;
 import me.siyum.schola.dto.ExamsDTO;
+import me.siyum.schola.util.Env;
 
-import java.io.IOException;
+import java.sql.SQLException;
 
 public class LecturersExamsManagerController {
     public TextField txtExamID;
     public TextField txtLecID;
-    public JFXComboBox cmbBatchID;
+    public JFXComboBox<String> cmbBatchID;
     public JFXDatePicker pickerDate;
     ExamsBO examsBO = BOFactory.getInstance().getBO(BOTypes.EXAMS);
+    EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+
+    public void initialize() {
+        setData();
+    }
+
+    public void setData() {
+        try {
+            setLecturer();
+            setExmID();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void setExmID() throws SQLException, ClassNotFoundException {
+        try {
+            String lastID = examsBO.getLastID();
+
+            if (lastID.equals("")) {
+                txtExamID.setText("SE-1");
+            } else {
+                String[] array = lastID.split("-");
+                int tempNumber = Integer.parseInt(array[1]);
+                int finalizeOrderId = tempNumber + 1;
+                txtExamID.setText("SE-" + finalizeOrderId);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setLecturer() throws SQLException, ClassNotFoundException {
+        txtLecID.setText(employeeBO.getIDByToken(Env.token, "lecturer"));
+
+    }
 
     public void offlineExam(ActionEvent actionEvent) {
         try {
@@ -34,20 +73,27 @@ public class LecturersExamsManagerController {
         }
     }
 
-    public void onlineExam(ActionEvent actionEvent) throws IOException {
+    public void onlineExam(ActionEvent actionEvent) {
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource(".././../view/lecturers/LectureresExamQuestions.fxml"));
+        boolean b = false;
         try {
-            Stage stage = new Stage();
-            stage.setScene(new Scene(fxmlLoader.load()));
-            stage.show();
+            b = saveExam();
+            if (b) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource(".././../view/lecturers/LectureresExamQuestions.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(fxmlLoader.load()));
+                stage.show();
 
-            LecturersExamsQuestionsController rowController = fxmlLoader.getController();
-            rowController.setExamID(txtExamID.getText());
-        } catch (IOException e) {
+                LecturersExamsQuestionsController rowController = fxmlLoader.getController();
+                rowController.setExamID(txtExamID.getText());
+
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     private boolean saveExam() throws Exception {

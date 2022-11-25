@@ -12,7 +12,7 @@ public class ExamQuestionsDAOImpl implements ExamsQuestionsDAO {
 
     @Override
     public boolean save(ExamQuestions examQuestions) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("INSERT INTO exam_questions VALUES(?,?,?,?,?,?,?)",
+        return CRUDUtil.execute("INSERT INTO exam_questions VALUES(?,?,?,?,?,?,?,?)",
                 examQuestions.getQuestionNo(),
                 examQuestions.getExmID(),
                 examQuestions.getQuestion(),

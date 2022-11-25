@@ -302,7 +302,6 @@ public class StudentFormController {
         btnReject.setVisible(true);
     }
 
-
     public void changeParentStatus() {
         if (chkAddParent.isSelected()) {
             paneSelectParents.setVisible(false);

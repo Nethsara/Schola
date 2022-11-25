@@ -36,4 +36,9 @@ public class ExamsBoImpl implements ExamsBO {
         return list;
     }
 
+    @Override
+    public String getLastID() throws SQLException, ClassNotFoundException {
+        return examsDAO.getLastID();
+    }
+
 }

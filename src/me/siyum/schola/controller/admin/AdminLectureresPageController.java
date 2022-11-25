@@ -3,6 +3,7 @@ package me.siyum.schola.controller.admin;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,13 +22,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AdminLectureresPageController {
-    public JFXListView<HBox> listLec;
-
     private final EmployeeBO stBo = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    public JFXListView<HBox> listLec;
     private ObservableList<AdminEmployeesTM> tmList = FXCollections.observableArrayList();
 
     public void initialize() {
-        loadStudents();
+        setData();
         for (AdminEmployeesTM tm : tmList) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/me/siyum/schola/view/admin/AdminEmployeeTableRow.fxml"));
@@ -42,6 +42,10 @@ public class AdminLectureresPageController {
             }
         }
 
+    }
+
+    public void setData() {
+        loadStudents();
     }
 
     private void loadStudents() {
@@ -78,6 +82,18 @@ public class AdminLectureresPageController {
             }
 
         } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void newEmployee(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/admin/EmployeeForm.fxml"));
+        try {
+            Parent parent = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

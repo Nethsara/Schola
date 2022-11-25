@@ -9,4 +9,6 @@ public interface ExamsBO {
     boolean saveExams(ExamsDTO examsDTO) throws SQLException, Exception;
 
     ArrayList<ExamsDTO> getAllExams() throws SQLException, ClassNotFoundException;
+
+    String getLastID() throws SQLException, ClassNotFoundException;
 }

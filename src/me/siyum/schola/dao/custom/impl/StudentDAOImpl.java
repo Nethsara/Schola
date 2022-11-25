@@ -114,7 +114,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public String getIDByToken(String s, String role) throws SQLException, ClassNotFoundException {
-        ResultSet res = CRUDUtil.execute("SELECT uID FROM login_tokens WHERE token=?, role=?",
+        ResultSet res = CRUDUtil.execute("SELECT uID FROM login_tokens WHERE token= ? ||  role=?",
                 s, role);
         if (res.next()) {
             return res.getString(1);

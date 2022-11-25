@@ -12,8 +12,11 @@ public interface StudentBO {
     StudentDTO retrieveStudent(String id) throws SQLException, ClassNotFoundException;
 
     String getLastID() throws SQLException, ClassNotFoundException;
+
     ArrayList<StudentDTO> searchStudents(String s) throws SQLException, ClassNotFoundException;
+
     ArrayList<StudentDTO> searchStudents(boolean b) throws SQLException, ClassNotFoundException;
+
     boolean updateStudent(StudentDTO student) throws SQLException, ClassNotFoundException;
 
     String getStudentByToken(String token) throws SQLException, ClassNotFoundException;

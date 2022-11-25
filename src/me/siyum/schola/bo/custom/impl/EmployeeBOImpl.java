@@ -1,6 +1,5 @@
 package me.siyum.schola.bo.custom.impl;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import me.siyum.schola.bo.custom.EmployeeBO;
 import me.siyum.schola.dao.DAOFactory;
 import me.siyum.schola.dao.DAOTypes;
@@ -13,16 +12,6 @@ import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
     private final EmployeeDAOImpl dao = DAOFactory.getInstance().getDAO(DAOTypes.EMPLOYEE);
-
-    @Override
-    public String getEmployeeID(String token) throws SQLException, ClassNotFoundException {
-        return dao.getID(token);
-    }
-
-    @Override
-    public String getPaymentMethod(ID id) throws SQLException, ClassNotFoundException {
-        return dao.getPaymentMethod(id);
-    }
 
     @Override
     public ArrayList<EmployeeDTO> getEmployeeByType(String type) throws SQLException, ClassNotFoundException {
@@ -61,4 +50,31 @@ public class EmployeeBOImpl implements EmployeeBO {
                 retrieve.isStatus()
         );
     }
+
+    @Override
+    public boolean saveEmployee(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
+        return dao.save(new Employee(
+                employeeDTO.getId(),
+                employeeDTO.getImage(),
+                employeeDTO.getName(),
+                employeeDTO.getAddress(),
+                employeeDTO.getEmail(),
+                employeeDTO.getSalary(),
+                employeeDTO.getPaymentMethod(),
+                employeeDTO.getRole(),
+                true
+        ));
+    }
+
+    @Override
+    public String getLastID() throws SQLException, ClassNotFoundException {
+        return dao.getLastID();
+    }
+
+    @Override
+    public String getIDByToken(String token, String role) throws SQLException, ClassNotFoundException {
+        return dao.getIDByToken(token, role);
+    }
+
+
 }

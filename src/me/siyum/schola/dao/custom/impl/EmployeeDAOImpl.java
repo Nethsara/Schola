@@ -12,11 +12,24 @@ import java.util.ArrayList;
 public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public boolean save(Employee employee) throws SQLException, ClassNotFoundException {
-        return false;
+        return CRUDUtil.execute("INSERT INTO employee VALUES(?,?,?,?,?,?,?,?,?)",
+                employee.getId(),
+                employee.getImage(),
+                employee.getName(),
+                employee.getAddress(),
+                employee.getEmail(),
+                employee.getSalary(),
+                employee.getPaymentMethod(),
+                employee.getRole(),
+                employee.isStatus());
     }
 
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM employee ORDER BY eID DESC");
+        if (res.next()) {
+            return res.getString(1);
+        }
         return "";
     }
 
@@ -92,8 +105,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public String getIDByToken(String s, String role) {
-        return null;
+    public String getIDByToken(String s, String role) throws SQLException, ClassNotFoundException {
+        ResultSet execute = CRUDUtil.execute("SELECT uID FROM login_tokens WHERE token=? && role=?", s, role);
+        if (execute.next()) {
+            return execute.getString(1);
+        }
+        return "";
     }
 
 
