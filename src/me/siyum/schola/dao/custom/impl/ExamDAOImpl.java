@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class ExamDAOImpl implements ExamsDAO {
     @Override
     public boolean save(Exams exams) throws SQLException, ClassNotFoundException {
+        System.out.println("Saving " + exams.getId());
         return CRUDUtil.execute("INSERT INTO exam VALUES(?,?,?,?)",
                 exams.getId(),
                 exams.getDate(),

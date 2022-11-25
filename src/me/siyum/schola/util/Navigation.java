@@ -55,6 +55,9 @@ public class Navigation {
             case SECRETARY_STUDENTS:
                 setPanel("secretary/SecretaryStudents", anchorPane);
                 break;
+            case LECTURER_STUDENTS:
+                setPanel("lecturers/LectureresStudents", anchorPane);
+                break;
             case LECTURER_DASHBOARD:
                 setPanel("lecturers/LectureresDashboard", anchorPane);
                 break;
@@ -66,6 +69,7 @@ public class Navigation {
     }
 
     private static void setPanel(String s, AnchorPane anchorPane) throws IOException {
+        System.out.println(s + " panel " + anchorPane + " anchor pane");
         Parent parent = FXMLLoader.load((Navigation.class.getResource("../view/" + s + ".fxml")));
         anchorPane.getChildren().clear();
         anchorPane.getChildren().add(parent);

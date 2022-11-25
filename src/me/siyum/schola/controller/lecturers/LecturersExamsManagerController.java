@@ -2,20 +2,26 @@ package me.siyum.schola.controller.lecturers;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
+import me.siyum.schola.bo.custom.BatchBO;
 import me.siyum.schola.bo.custom.EmployeeBO;
 import me.siyum.schola.bo.custom.ExamsBO;
+import me.siyum.schola.dto.BatchDTO;
 import me.siyum.schola.dto.ExamsDTO;
 import me.siyum.schola.util.Env;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LecturersExamsManagerController {
     public TextField txtExamID;
@@ -24,6 +30,7 @@ public class LecturersExamsManagerController {
     public JFXDatePicker pickerDate;
     ExamsBO examsBO = BOFactory.getInstance().getBO(BOTypes.EXAMS);
     EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
 
     public void initialize() {
         setData();
@@ -33,10 +40,24 @@ public class LecturersExamsManagerController {
         try {
             setLecturer();
             setExmID();
+            setCMBox();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private void setCMBox() throws SQLException, ClassNotFoundException {
+        ObservableList<String> batches = FXCollections.observableArrayList();
+        ArrayList<BatchDTO> allbatches = batchBO.getBatches("");
+        for (BatchDTO b : allbatches
+        ) {
+            batches.add(
+                    b.getId()
+            );
+        }
+
+        cmbBatchID.setItems(batches);
     }
 
     private void setExmID() throws SQLException, ClassNotFoundException {
@@ -66,7 +87,9 @@ public class LecturersExamsManagerController {
             boolean b = saveExam();
 
             if (b) {
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 new Alert(Alert.AlertType.INFORMATION, "Successfully saved").show();
+                stage.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,9 +102,11 @@ public class LecturersExamsManagerController {
         try {
             b = saveExam();
             if (b) {
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource(".././../view/lecturers/LectureresExamQuestions.fxml"));
-                Stage stage = new Stage();
+                stage = new Stage();
                 stage.setScene(new Scene(fxmlLoader.load()));
                 stage.show();
 
@@ -97,10 +122,11 @@ public class LecturersExamsManagerController {
     }
 
     private boolean saveExam() throws Exception {
+        System.out.println("saving exams");
         return examsBO.saveExams(new ExamsDTO(
                 txtExamID.getText(),
                 pickerDate.getValue(),
-                cmbBatchID.getValue().toString(),
+                cmbBatchID.getValue(),
                 txtLecID.getText()
         ));
     }

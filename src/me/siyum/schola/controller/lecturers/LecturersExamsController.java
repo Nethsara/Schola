@@ -2,7 +2,6 @@ package me.siyum.schola.controller.lecturers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -66,8 +65,8 @@ public class LecturersExamsController {
 
     }
 
-    public void newExam(ActionEvent actionEvent) throws IOException {
-        Parent parent = FXMLLoader.load((getClass().getResource(".././../view/lecturers/LectureresExamsManager.fxml")));
+    public void newExam() throws IOException {
+        Parent parent = FXMLLoader.load((getClass().getResource("../../view/lecturers/LectureresExamsScheduler.fxml")));
         Stage stage = new Stage();
         stage.setScene(new Scene(parent));
         stage.show();
