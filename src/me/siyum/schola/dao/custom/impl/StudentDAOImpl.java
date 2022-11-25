@@ -41,7 +41,7 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean update(Student s) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("UPDATE students SET name=?,email=?,nic=?,image=?," +
                         "address=?,phone=?,pID=?,scholaMarks=?,dob=?,status=?,approval=?, batch=? WHERE stid=?",
-                s.getName(),s.getEmail(),s.getNic(),s.getImage(),s.getAddress(),s.getPhone(),s.getPhone(),s.getScholaMark(),s.getDob(),s.isStatus(),s.isApproval(),s.getBatch(), s.getId());
+                s.getName(), s.getEmail(), s.getNic(), s.getImage(), s.getAddress(), s.getPhone(), s.getPhone(), s.getScholaMark(), s.getDob(), s.isStatus(), s.isApproval(), s.getBatch(), s.getId());
     }
 
     @Override
@@ -110,6 +110,16 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public int getCount() {
         return 0;
+    }
+
+    @Override
+    public String getIDByToken(String s, String role) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT uID FROM login_tokens WHERE token=?, role=?",
+                s, role);
+        if (res.next()) {
+            return res.getString(1);
+        }
+        return "";
     }
 
 

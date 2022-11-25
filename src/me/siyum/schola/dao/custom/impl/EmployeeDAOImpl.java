@@ -91,6 +91,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return 0;
     }
 
+    @Override
+    public String getIDByToken(String s, String role) {
+        return null;
+    }
+
 
     @Override
     public String getPaymentMethod(ID id) throws SQLException, ClassNotFoundException {

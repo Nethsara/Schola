@@ -84,6 +84,11 @@ public class ExamQuestionsDAOImpl implements ExamsQuestionsDAO {
     }
 
     @Override
+    public String getIDByToken(String s, String role) {
+        return null;
+    }
+
+    @Override
     public ExamQuestions retrieve(String exmID, int qNO) throws SQLException, ClassNotFoundException {
 
         ResultSet res = CRUDUtil.execute("SELECT * FROM exam_questions WHERE qID=? && exmID=?",

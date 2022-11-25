@@ -38,6 +38,8 @@ public class BOFactory {
                 return (T) new BatchBOImpl();
             case SALARY:
                 return (T) new SalaryBOImpl();
+            case STUDENT_MARK:
+                return (T) new StudentMarkBOImpl();
             default:
                 return null;
         }

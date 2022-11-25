@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class Navigation {
@@ -56,6 +55,11 @@ public class Navigation {
             case SECRETARY_STUDENTS:
                 setPanel("secretary/SecretaryStudents", anchorPane);
                 break;
+            case LECTURER_DASHBOARD:
+                setPanel("lecturers/LectureresDashboard", anchorPane);
+                break;
+            case LECTURER_EXAM:
+                setPanel("lecturers/LectureresExams", anchorPane);
 
         }
 
@@ -97,5 +101,4 @@ public class Navigation {
         stage.centerOnScreen();
         stage.show();
     }
-
 }

@@ -7,7 +7,6 @@ import me.siyum.schola.dao.custom.ExamsQuestionsDAO;
 import me.siyum.schola.dto.ExamQuestionsDTO;
 import me.siyum.schola.entity.ExamQuestions;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ExamsQuestionsBoImpl implements ExamsQuestionsBO {
@@ -15,7 +14,7 @@ public class ExamsQuestionsBoImpl implements ExamsQuestionsBO {
 
 
     @Override
-    public boolean saveExam(ExamQuestionsDTO examsDTO) throws SQLException, Exception {
+    public boolean saveExamQuestion(ExamQuestionsDTO examsDTO) throws SQLException, Exception {
         return examsDAO.save(new ExamQuestions(
                 examsDTO.getQuestionNo(),
                 examsDTO.getExmID(),

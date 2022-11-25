@@ -3,8 +3,10 @@ package me.siyum.schola.controller.students;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
@@ -22,6 +24,8 @@ public class StudentExamController {
     public JFXRadioButton radioMCQ3;
     public JFXRadioButton radioMCQ4;
     public JFXRadioButton radioMCQ1;
+    public Label lblExmID;
+    public Label lblStID;
     ExamsQuestionsBO examsQuestionsBO = BOFactory.getInstance().getBO(BOTypes.EXAM_QUESTIONS);
     private ExamQuestionsDTO examQuestionsDTO;
     private int correctAns;
@@ -45,13 +49,31 @@ public class StudentExamController {
 
         int questionCount = examsQuestionsBO.getQuestionCount();
         if (questionCount == ExamMarking.currentQ) {
+
+
+            try {
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../view/students/StudentsExamResults.fxml"));
+                Parent parent = loader.load();
+                stage.setScene(new Scene(parent));
+
+                StudentExamResultController controller = loader.getController();
+                controller.setMarks(String.valueOf(ExamMarking.mark));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
             System.out.println(ExamMarking.mark);
         } else {
             ExamMarking.currentQ++;
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExam.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../view/students/StudentsExamQuestions.fxml"));
                 Parent parent = loader.load();
-                Stage stage = new Stage();
                 stage.setScene(new Scene(parent));
                 stage.show();
             } catch (IOException e) {
@@ -74,10 +96,11 @@ public class StudentExamController {
             correctAns = examQuestionsDTO.getCorrectAns();
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void startExam(ActionEvent actionEvent) {
     }
 }

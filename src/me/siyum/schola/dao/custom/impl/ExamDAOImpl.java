@@ -71,4 +71,9 @@ public class ExamDAOImpl implements ExamsDAO {
     public int getCount() {
         return 0;
     }
+
+    @Override
+    public String getIDByToken(String s, String role) {
+        return null;
+    }
 }

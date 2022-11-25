@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.students.StudentsExamPageController">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
+        <FontAwesomeIconView fill="#785fd5" glyphName="GRADUATION_CAP" layoutX="35.0" layoutY="43.0" size="20"/>
+        <Label layoutX="66.0" layoutY="25.0" text="Exams" textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="tblExm" layoutX="8.0" layoutY="72.0" prefHeight="478.0" prefWidth="1034.0">
+            <columns>
+                <TableColumn fx:id="colExmID" prefWidth="100.33332824707031" text="Exam ID"/>
+                <TableColumn fx:id="colBy" prefWidth="155.33331298828125" text="By"/>
+                <TableColumn fx:id="colSub" prefWidth="146.33331298828125" text="Subject"/>
+                <TableColumn fx:id="colDate" prefWidth="150.0" text="Date"/>
+                <TableColumn fx:id="colTime" prefWidth="156.0" text="Time"/>
+                <TableColumn fx:id="colMarks" prefWidth="120.0" text="Marks"/>
+                <TableColumn fx:id="colStatus" prefWidth="104.0" text="Status"/>
+                <TableColumn fx:id="colActions" prefWidth="106.0" text="Actions"/>
+            </columns>
+        </TableView>
+    </AnchorPane>
+</AnchorPane>

@@ -16,5 +16,7 @@ public interface StudentBO {
     ArrayList<StudentDTO> searchStudents(boolean b) throws SQLException, ClassNotFoundException;
     boolean updateStudent(StudentDTO student) throws SQLException, ClassNotFoundException;
 
+    String getStudentByToken(String token) throws SQLException, ClassNotFoundException;
+
 
 }

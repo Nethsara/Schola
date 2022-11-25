@@ -61,6 +61,10 @@ public class LecturersExamsQuestionsController {
     private void setData() {
     }
 
+    public void setExamID(String id) {
+        lblExmID.setText(id);
+    }
+
     public void createExm(ActionEvent actionEvent) {
         System.out.println("create");
         boolean status = true;
@@ -68,7 +72,7 @@ public class LecturersExamsQuestionsController {
             for (LecturerExamQuestionTM e : obList
             ) {
 
-                status = examsQuestionsBO.saveExam(new ExamQuestionsDTO(
+                status = examsQuestionsBO.saveExamQuestion(new ExamQuestionsDTO(
                         e.getQuestionNo(),
                         e.getExmID(),
                         e.getQuestion(),
@@ -95,7 +99,7 @@ public class LecturersExamsQuestionsController {
         obList.add(
                 new LecturerExamQuestionTM(
                         obList.size() > 0 ? obList.get(obList.size() - 1).getQuestionNo() + 1 : 1,
-                        txtID.getText(),
+                        lblExmID.getText(),
                         txtQuestion.getText(),
                         txtMCQ1.getText(),
                         txtMCQ2.getText(),

@@ -32,4 +32,10 @@ public class SubjectsBOImpl implements SubjectsBO {
 
         return re;
     }
+
+    @Override
+    public String getNameByLecturer(String id) throws SQLException, ClassNotFoundException {
+        ArrayList<Subjects> search = dao.search(id);
+        return search.get(0).getName();
+    }
 }

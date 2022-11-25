@@ -3,19 +3,29 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.students.StudentExamResultController">
-    <AnchorPane layoutX="36.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0" />
-        <Label layoutX="509.0" layoutY="26.0" text="Exam" textFill="#785fd5">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="446.0" prefWidth="1100.0"
+            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.students.StudentExamResultController">
+    <AnchorPane layoutX="17.0" layoutY="26.0" prefHeight="393.0" prefWidth="1069.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
+        <Label layoutX="495.0" layoutY="29.0" text="Result" textFill="#785fd5">
             <font>
-                <Font name="Consolas Bold" size="15.0" />
+                <Font name="Consolas Bold" size="15.0"/>
             </font>
         </Label>
-      <TextField fx:id="txtResult" layoutX="212.0" layoutY="111.0" prefHeight="29.0" prefWidth="643.0" />
-      <JFXButton layoutX="500.0" layoutY="303.0" onAction="#nextButton" text="Close" textFill="WHITE" />
+        <JFXButton layoutX="499.0" layoutY="271.0" onAction="#closeBtn" text="Close" textFill="WHITE"/>
+        <Label layoutX="415.0" layoutY="130.0" text="Congratulations ! You got the marks " textFill="#785fd5">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblMarks" layoutX="514.0" layoutY="180.0" text="99" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Label>
     </AnchorPane>
 </AnchorPane>

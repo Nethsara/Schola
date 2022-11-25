@@ -36,6 +36,8 @@ public class DAOFactory {
                 return (T) new BatchDAOImpl();
             case SALARY:
                 return (T) new SalaryDAOImpl();
+            case STUDENT_MARK:
+                return (T) new StudentMarksDAOImpl();
             default:
                 return null;
         }

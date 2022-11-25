@@ -130,4 +130,9 @@ public class StudentBOImpl implements StudentBO {
                 )
         );
     }
+
+    @Override
+    public String getStudentByToken(String token) throws SQLException, ClassNotFoundException {
+        return dao.getIDByToken(token, "student");
+    }
 }
