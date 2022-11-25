@@ -15,7 +15,14 @@ public class ExamsBoImpl implements ExamsBO {
 
     @Override
     public boolean saveExams(ExamsDTO examsDTO) throws SQLException, Exception {
-        return false;
+        return examsDAO.save(
+                new Exams(
+                        examsDTO.getId(),
+                        examsDTO.getDate(),
+                        examsDTO.getBatch(),
+                        examsDTO.getLecturer()
+                )
+        );
     }
 
     @Override

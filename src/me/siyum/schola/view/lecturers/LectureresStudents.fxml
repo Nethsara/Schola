@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.lecturers.LecturersStudentsController">
-    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Pane layoutX="17.0" layoutY="67.0" prefHeight="483.0" prefWidth="1008.0">
-            <children>
-                <JFXListView fx:id="listStudents" prefHeight="490.0" prefWidth="1010.0" />
-            </children>
-        </Pane>
-        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0" />
-        <FontAwesomeIconView fill="#785fd5" glyphName="GRADUATION_CAP" layoutX="35.0" layoutY="43.0" size="20" />
-        <Label layoutX="67.0" layoutY="25.0" text="Students - L4" textFill="#785fd5">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <JFXListView fx:id="listStudents" layoutX="7.0" layoutY="105.0" prefHeight="459.0" prefWidth="1031.0"
+                     style="-fx-background-radius: 5;"/>
+        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
+        <FontAwesomeIconView fill="#785fd5" glyphName="GRADUATION_CAP" layoutX="35.0" layoutY="43.0" size="20"/>
+        <Label layoutX="67.0" layoutY="25.0" text="Students" textFill="#785fd5">
             <font>
-                <Font name="Consolas Bold" size="15.0" />
+                <Font name="Consolas Bold" size="15.0"/>
             </font>
         </Label>
+        <TextField fx:id="txtSearch" layoutX="9.0" layoutY="67.0" prefHeight="29.0" prefWidth="855.0"
+                   style="-fx-background-radius: 5;"/>
+        <JFXComboBox fx:id="cmbSortBox" layoutX="880.0" layoutY="69.0" onAction="#sortByOnAction" prefHeight="25.0"
+                     prefWidth="158.0" promptText="Sort By"/>
     </AnchorPane>
 </AnchorPane>

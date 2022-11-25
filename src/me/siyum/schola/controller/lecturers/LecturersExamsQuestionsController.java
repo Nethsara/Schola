@@ -4,8 +4,10 @@ import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.ExamsQuestionsBO;
@@ -31,7 +33,6 @@ public class LecturersExamsQuestionsController {
     public TableView<LecturerExamQuestionTM> tblQuestions;
     public TableColumn colCorrectAns;
     public Label lblExmID;
-    public TextField txtID;
 
     ObservableList<LecturerExamQuestionTM> obList = FXCollections.observableArrayList();
     ObservableList<String> answers = FXCollections.observableArrayList();
@@ -89,8 +90,11 @@ public class LecturersExamsQuestionsController {
             ex.printStackTrace();
         }
 
-        if(status){
+        if (status) {
             new Alert(Alert.AlertType.INFORMATION, "Done").show();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.close();
+
         }
     }
 

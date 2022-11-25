@@ -1,12 +1,15 @@
 package me.siyum.schola.controller.lecturers;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
@@ -22,11 +25,23 @@ import java.util.ArrayList;
 
 public class LecturersStudentsController {
     private final StudentBO stBo = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final ObservableList<LecturersStudentsTM> tmList = FXCollections.observableArrayList();
     public JFXListView<HBox> listStudents;
-    private ObservableList<LecturersStudentsTM> tmList = FXCollections.observableArrayList();
+    public TextField txtSearch;
+    public JFXComboBox<String> cmbSortBox;
 
     public void initialize() {
+        setData();
+    }
+
+    private void setData() {
+        setSortBy();
+        loadTable();
+    }
+
+    private void loadTable() {
         loadStudents();
+
         for (LecturersStudentsTM tm : tmList) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/me/siyum/schola/view/lecturers/LecturersTableRow.fxml"));
@@ -40,7 +55,6 @@ public class LecturersStudentsController {
                 e.printStackTrace();
             }
         }
-
     }
 
     private void loadStudents() {
@@ -78,5 +92,14 @@ public class LecturersStudentsController {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setSortBy() {
+        String[] ar = {"weak", "top", "id", "asc", "desc", "schola"};
+        ObservableList<String> obList = FXCollections.observableArrayList(ar);
+        cmbSortBox.setItems(obList);
+    }
+
+    public void sortByOnAction(ActionEvent actionEvent) {
     }
 }
