@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
@@ -21,6 +22,7 @@ import me.siyum.schola.dto.ExamsDTO;
 import me.siyum.schola.util.Env;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class LecturersExamsManagerController {
@@ -34,6 +36,14 @@ public class LecturersExamsManagerController {
 
     public void initialize() {
         setData();
+        pickerDate.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) < 0);
+            }
+        });
     }
 
     public void setData() {

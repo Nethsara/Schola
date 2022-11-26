@@ -19,8 +19,8 @@ public class SubjectsBOImpl implements SubjectsBO {
         ArrayList<Subjects> search = dao.search(s);
         ArrayList<SubjectsDTO> re = new ArrayList<>();
 
-        for (Subjects sb: search
-             ) {
+        for (Subjects sb : search
+        ) {
             re.add(
                     new SubjectsDTO(
                             sb.getSubID(),
@@ -31,6 +31,11 @@ public class SubjectsBOImpl implements SubjectsBO {
         }
 
         return re;
+    }
+
+    @Override
+    public String getLecturerBySubID(String s) throws SQLException, ClassNotFoundException {
+        return dao.getLecturerByID(s);
     }
 
     @Override

@@ -14,8 +14,10 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
+import me.siyum.schola.bo.custom.ExamsBO;
 import me.siyum.schola.bo.custom.StudentBO;
 import me.siyum.schola.controller.students.StudentFormController;
+import me.siyum.schola.dto.ExamsDTO;
 import me.siyum.schola.dto.StudentDTO;
 import me.siyum.schola.view.lecturers.tm.LecturersStudentsTM;
 
@@ -25,22 +27,68 @@ import java.util.ArrayList;
 
 public class LecturersStudentsController {
     private final StudentBO stBo = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private final ObservableList<LecturersStudentsTM> tmList = FXCollections.observableArrayList();
+    private final ExamsBO examsBO = BOFactory.getInstance().getBO(BOTypes.EXAMS);
     public JFXListView<HBox> listStudents;
     public TextField txtSearch;
     public JFXComboBox<String> cmbSortBox;
+    public JFXComboBox<String> cmbExam;
 
     public void initialize() {
         setData();
     }
 
     private void setData() {
-        setSortBy();
-        loadTable();
+        try {
+            setSortBy();
+            setExmCMB();
+            loadTable(stBo.searchStudents(""));
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    private void loadTable() {
-        loadStudents();
+    private void setExmCMB() throws SQLException, ClassNotFoundException {
+        ArrayList<ExamsDTO> allExams = examsBO.getAllExams();
+        ObservableList<String> exmIDs = FXCollections.observableArrayList();
+        for (ExamsDTO e : allExams
+        ) {
+            exmIDs.add(e.getId());
+        }
+        cmbExam.setItems(exmIDs);
+    }
+
+    private void loadTable(ArrayList<StudentDTO> studentDTOS) {
+        listStudents.getItems().clear();
+        ObservableList<LecturersStudentsTM> tmList = FXCollections.observableArrayList();
+        for (StudentDTO s : studentDTOS) {
+            Button btn = new Button("Edit");
+            tmList.add(new LecturersStudentsTM(
+                    s.getId(),
+                    s.getImage(),
+                    s.getName(),
+                    s.getEmail(),
+                    s.getNic(),
+                    s.getScholaMark(),
+                    s.isStatus(),
+                    btn
+            ));
+            btn.setOnAction(e -> {
+                System.out.println("Clicked");
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentForm.fxml"));
+                    Parent parent = loader.load();
+                    StudentFormController controller = loader.getController();
+                    controller.setData(s.getId());
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(parent));
+                    stage.show();
+
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
 
         for (LecturersStudentsTM tm : tmList) {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -57,49 +105,18 @@ public class LecturersStudentsController {
         }
     }
 
-    private void loadStudents() {
-        try {
-            ArrayList<StudentDTO> studentDTOS = stBo.searchStudents("");
-            for (StudentDTO s : studentDTOS) {
-                Button btn = new Button("Edit");
-                tmList.add(new LecturersStudentsTM(
-                        s.getId(),
-                        s.getImage(),
-                        s.getName(),
-                        s.getEmail(),
-                        s.getNic(),
-                        s.getScholaMark(),
-                        s.isStatus(),
-                        btn
-                ));
-                btn.setOnAction(e -> {
-                    System.out.println("Clicked");
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentForm.fxml"));
-                        Parent parent = loader.load();
-                        StudentFormController controller = loader.getController();
-                        controller.setData(s.getId());
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(parent));
-                        stage.show();
-
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                });
-            }
-
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void setSortBy() {
-        String[] ar = {"weak", "top", "id", "asc", "desc", "schola"};
+        String[] ar = {"weak", "top", "id asc", "id desc", "name asc", "name desc", "schola asc", "schola desc"};
         ObservableList<String> obList = FXCollections.observableArrayList(ar);
         cmbSortBox.setItems(obList);
     }
 
     public void sortByOnAction(ActionEvent actionEvent) {
+        try {
+            ArrayList<StudentDTO> studentDTOS = stBo.filterStudents(cmbSortBox.getValue(), cmbExam.getValue());
+            loadTable(studentDTOS);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

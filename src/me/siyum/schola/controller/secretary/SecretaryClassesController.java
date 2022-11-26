@@ -29,6 +29,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SecretaryClassesController {
+    private final BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
+    private final ClassRoomsBO classRoomsBO = BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
+    private final SubjectsBO subjectsBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
+    private final ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
     public JFXComboBox<String> cmbSubID;
     public JFXTextField txtClID;
     public JFXComboBox<String> cmbRoom;
@@ -44,13 +48,7 @@ public class SecretaryClassesController {
     public TableColumn colBatch;
     public TableColumn colActions;
 
-    private final BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
-    private final ClassRoomsBO classRoomsBO = BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
-    private final SubjectsBO subjectsBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
-    private final ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-
-
-    public void initialize(){
+    public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colSubject.setCellValueFactory(new PropertyValueFactory<>("subject"));
         colActions.setCellValueFactory(new PropertyValueFactory<>("btn"));
@@ -64,7 +62,7 @@ public class SecretaryClassesController {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
 
-                setDisable(empty || date.compareTo(today) < 0 );
+                setDisable(empty || date.compareTo(today) < 0);
             }
         });
 
@@ -123,7 +121,7 @@ public class SecretaryClassesController {
         ArrayList<ClassesDTO> allClasses = classesBO.getAllClasses("");
         ObservableList<SecretartClassesTM> list = FXCollections.observableArrayList();
         for (ClassesDTO c : allClasses
-             ) {
+        ) {
             Button btn = new Button("Cancel");
             list.add(
                     new SecretartClassesTM(
@@ -145,9 +143,10 @@ public class SecretaryClassesController {
         classesBO.scheduleClass(
                 new ClassesDTO(
                         txtClID.getText(),
-                        cmbSubID.getValue().toString(),
-                        cmbRoom.getValue().toString(),
-                        cmbBatch.getValue().toString(),
+                        cmbSubID.getValue(),
+                        subjectsBO.getLecturerBySubID(cmbSubID.getValue()),
+                        cmbRoom.getValue(),
+                        cmbBatch.getValue(),
                         pickerDate.getValue(),
                         pickerTime.getValue()
                 )

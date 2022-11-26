@@ -31,6 +31,7 @@ public class SubjectsDAOImpl implements SubjectsDAO {
 
     @Override
     public ArrayList<Subjects> search(String s) throws SQLException, ClassNotFoundException {
+        System.out.println("");
         s = "%" + s + "%";
         ArrayList<Subjects> arList = new ArrayList<>();
         ResultSet rs = CRUDUtil.execute("SELECT * FROM subjects WHERE subID LIKE ? || name LIKE ? || lecturer LIKE ? ",
@@ -68,5 +69,15 @@ public class SubjectsDAOImpl implements SubjectsDAO {
     @Override
     public String getIDByToken(String s, String role) {
         return null;
+    }
+
+    @Override
+    public String getLecturerByID(String id) throws SQLException, ClassNotFoundException {
+        ResultSet rs = CRUDUtil.execute("SELECT lecturer FROM subjects WHERE subID=?", id);
+        if (rs.next()) {
+            return rs.getString(1);
+        } else {
+            return "";
+        }
     }
 }
