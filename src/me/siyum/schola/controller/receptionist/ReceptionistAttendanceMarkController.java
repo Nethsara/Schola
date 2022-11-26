@@ -14,13 +14,16 @@ import me.siyum.schola.bo.custom.AttendanceBO;
 import me.siyum.schola.bo.custom.AttendanceMarkBO;
 import me.siyum.schola.bo.custom.ClassesBO;
 import me.siyum.schola.bo.custom.StudentBO;
+import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.AttendanceDTO;
 import me.siyum.schola.dto.AttendanceMarkDTO;
 import me.siyum.schola.dto.ClassesDTO;
 import me.siyum.schola.dto.StudentDTO;
 import me.siyum.schola.view.receptionist.tm.ReceptionistAttendanceMarkTM;
 
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ReceptionistAttendanceMarkController {
@@ -37,6 +40,9 @@ public class ReceptionistAttendanceMarkController {
     public TableColumn<ReceptionistAttendanceMarkTM, String> colClassRoom;
     public TableColumn<ReceptionistAttendanceMarkTM, String> colActions;
     public JFXCheckBox chkSelectAll;
+    int totalSt;
+    private String attendanceID = "";
+    private String classID = "";
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -65,6 +71,10 @@ public class ReceptionistAttendanceMarkController {
             String batch = classByID.getBatch();
             ArrayList<StudentDTO> studentDTOS = studentBO.filterStudents(batch);
 
+            totalSt = studentDTOS.size();
+            attendanceID = ram;
+            classID = classByID.getId();
+
             for (StudentDTO s : studentDTOS
             ) {
                 CheckBox chk = new CheckBox("");
@@ -90,21 +100,50 @@ public class ReceptionistAttendanceMarkController {
     public void abortMarking() {
     }
 
-    public void completeMarking() throws SQLException, ClassNotFoundException {
-        boolean status = true;
+    public void completeMarking() throws SQLException {
+        Connection connection = null;
+        boolean status;
         for (ReceptionistAttendanceMarkTM re : st
         ) {
-            status = attendanceMarkBO.saveAttendanceMarking(
-                    new AttendanceMarkDTO(
-                            re.getId(),
-                            re.getStID(),
-                            re.getActions().isSelected()
-                    )
-            );
+            try {
+                connection = DBConnection.getInstance().getConnection();
+                connection.setAutoCommit(false);
+                status = attendanceMarkBO.saveAttendanceMarking(
+                        new AttendanceMarkDTO(
+                                re.getId(),
+                                re.getStID(),
+                                re.getActions().isSelected()
+                        )
+                );
+                if (status) {
+                    boolean updateAttendance = attendanceBO.updateAttendance(
+                            new AttendanceDTO(
+                                    attendanceID,
+                                    classID,
+                                    LocalDate.now(),
+                                    totalSt,
+                                    false
+                            )
+                    );
+                    if (updateAttendance) {
+                        connection.commit();
+                        new Alert(Alert.AlertType.INFORMATION, "Success!").show();
+                    } else {
+                        connection.rollback();
+                        connection.setAutoCommit(true);
+                    }
+                } else {
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                assert connection != null;
+                connection.setAutoCommit(true);
+            }
         }
 
-        if (status) {
-            new Alert(Alert.AlertType.INFORMATION, "Success").show();
-        }
+
     }
 }

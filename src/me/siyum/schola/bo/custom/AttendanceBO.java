@@ -11,4 +11,8 @@ public interface AttendanceBO {
     ArrayList<AttendanceDTO> getAllAttendance() throws SQLException, ClassNotFoundException;
 
     AttendanceDTO getAttendanceByID(String id) throws SQLException, ClassNotFoundException;
+
+    String getLastID() throws SQLException, ClassNotFoundException;
+
+    boolean updateAttendance(AttendanceDTO attendanceDTO) throws SQLException, ClassNotFoundException;
 }

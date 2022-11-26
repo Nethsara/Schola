@@ -37,7 +37,8 @@ public class AnnouncementDAOImpl implements AnnouncementsDAO {
         if (res.next()) {
             return res.getString(1);
         }
-        return "";    }
+        return "";
+    }
 
     @Override
     public boolean update(Announcements announcements) throws SQLException, ClassNotFoundException {

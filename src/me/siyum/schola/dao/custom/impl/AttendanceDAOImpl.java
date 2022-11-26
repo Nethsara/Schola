@@ -11,8 +11,9 @@ import java.util.ArrayList;
 public class AttendanceDAOImpl implements AttendanceDAO {
     @Override
     public boolean save(Attendance attendance) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("INSERT INTO attendance VALUES(?,?,?,?)",
+        return CRUDUtil.execute("INSERT INTO attendance VALUES(?,?,?,?,?)",
                 attendance.getId(),
+                attendance.getClassID(),
                 attendance.getDate(),
                 attendance.getTotalSt(),
                 attendance.isStatus());
@@ -20,12 +21,17 @@ public class AttendanceDAOImpl implements AttendanceDAO {
 
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet res = CRUDUtil.execute("SELECT * FROM attendance ORDER BY amID DESC");
+        if (res.next()) {
+            return res.getString(1);
+        }
+        return "";
     }
 
     @Override
     public boolean update(Attendance attendance) throws SQLException, ClassNotFoundException {
-        return false;
+        return CRUDUtil.execute("UPDATE attendance SET status=false WHERE amID=?",
+                attendance.getId());
     }
 
     @Override

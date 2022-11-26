@@ -54,4 +54,21 @@ public class AttendanceBOImpl implements AttendanceBO {
                 retrieve.isStatus()
         );
     }
+
+    @Override
+    public String getLastID() throws SQLException, ClassNotFoundException {
+        return attendanceDAO.getLastID();
+    }
+
+    @Override
+    public boolean updateAttendance(AttendanceDTO attendanceDTO) throws SQLException, ClassNotFoundException {
+        return attendanceDAO.update(
+                new Attendance(
+                        attendanceDTO.getId(),
+                        attendanceDTO.getClassID(),
+                        attendanceDTO.getDate(),
+                        attendanceDTO.getTotalSt(),
+                        attendanceDTO.isStatus()
+                ));
+    }
 }

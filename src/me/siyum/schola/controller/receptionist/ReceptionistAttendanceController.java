@@ -3,7 +3,6 @@ package me.siyum.schola.controller.receptionist;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,13 +32,13 @@ public class ReceptionistAttendanceController {
     private final AttendanceBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
     public AnchorPane paneAttendance;
     public TableView<ReceptionistAttendanceTM> tblAttendance;
-    public TableColumn colID;
-    public TableColumn colBatch;
-    public TableColumn colDate;
-    public TableColumn colTime;
-    public TableColumn colClassRoom;
-    public TableColumn colLectures;
-    public TableColumn colActions;
+    public TableColumn<ReceptionistAttendanceTM, String> colID;
+    public TableColumn<ReceptionistAttendanceTM, String> colBatch;
+    public TableColumn<ReceptionistAttendanceTM, String> colDate;
+    public TableColumn<ReceptionistAttendanceTM, String> colTime;
+    public TableColumn<ReceptionistAttendanceTM, String> colClassRoom;
+    public TableColumn<ReceptionistAttendanceTM, String> colLectures;
+    public TableColumn<ReceptionistAttendanceTM, String> colActions;
     public JFXComboBox<String> cmbFilter;
 
     public void initialize() {
@@ -77,7 +76,8 @@ public class ReceptionistAttendanceController {
         ) {
             ClassesDTO classesDTO = classesBO.getClassByID(a.getClassID());
             Button btn = new Button("Mark");
-            if (a.getDate().isBefore(LocalDate.now())) {
+            if (a.getDate().isBefore(LocalDate.now()) && !a.isStatus()) {
+                btn.setDisable(true);
                 finishedClzList.add(
                         new ReceptionistAttendanceTM(
                                 a.getClassID(),
@@ -91,6 +91,10 @@ public class ReceptionistAttendanceController {
                         )
                 );
             } else {
+                if (!a.isStatus()) {
+                    btn.setText("Marked");
+                    btn.setDisable(true);
+                }
                 pendingClzList.add(
                         new ReceptionistAttendanceTM(
                                 a.getClassID(),
@@ -106,7 +110,7 @@ public class ReceptionistAttendanceController {
             }
             btn.setOnAction(e -> {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/receptionist/ReceptionistAttendenceMark.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../view/receptionist/ReceptionistAttendanceMark.fxml"));
                     Parent parent = loader.load();
                     ReceptionistAttendanceMarkController controller = loader.getController();
                     controller.setData(a.getId());
@@ -132,7 +136,7 @@ public class ReceptionistAttendanceController {
 
     }
 
-    public void filterOnAction(ActionEvent actionEvent) {
+    public void filterOnAction() {
         if (cmbFilter.getValue().equalsIgnoreCase("pending")) {
             System.out.println("pending");
             setPendingClasses();

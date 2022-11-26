@@ -131,13 +131,13 @@ public class StudentFormController {
                         clear();
                         setData();
                     } else {
-                        connection.setAutoCommit(true);
                         connection.rollback();
+                        connection.setAutoCommit(true);
                         new Alert(Alert.AlertType.WARNING, "Try Again!").show();
                     }
                 } else {
-                    connection.setAutoCommit(true);
                     connection.rollback();
+                    connection.setAutoCommit(true);
                     new Alert(Alert.AlertType.WARNING, "Try Again!").show();
                 }
             } else {
