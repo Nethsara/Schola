@@ -9,51 +9,54 @@ import javafx.scene.layout.AnchorPane;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.EmployeeBO;
-import me.siyum.schola.controller.logincontrol.LoginController;
+import me.siyum.schola.bo.custom.SalaryBO;
 import me.siyum.schola.dto.SalaryDTO;
-import me.siyum.schola.view.receptionist.tm.SalaryTM;
+import me.siyum.schola.util.Env;
+import me.siyum.schola.view.receptionist.tm.ReceptionistSalaryTM;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ReceptionistSalaryController {
     private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final SalaryBO salaryBO = BOFactory.getInstance().getBO(BOTypes.SALARY);
     public TableColumn colID;
     public TableColumn colDate;
     public TableColumn colMethod;
     public TableColumn colAmount;
     public AnchorPane paneRecSalaryHistory;
-    public TableView<SalaryTM> tblRecSalary;
+    public TableView<ReceptionistSalaryTM> tblRecSalary;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colMethod.setCellValueFactory(new PropertyValueFactory<>("method"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        //setData();
+        setData();
     }
 
-//    public void setData() {
-//        //int userID = LoginController.getUser().getId();
-//        ObservableList<SalaryTM> tmList = FXCollections.observableArrayList();
-//        try {
-//            ArrayList<SalaryDTO> salaryDTOS = employeeBO.getSalaries(userID);
-//
-//            for (SalaryDTO s : salaryDTOS) {
-//                tmList.add(
-//                        new SalaryTM(
-//                                s.getId(),
-//                                s.getEmpID(),
-//                                s.getDate(),
-//                                s.getAmount(),
-//                                employeeBO.getPaymentMethod(s.getId())
-//                        )
-//                );
-//            }
-//            tblRecSalary.setItems(tmList);
-//
-//        } catch (SQLException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void setData() {
+        try {
+            ObservableList<ReceptionistSalaryTM> tmList = FXCollections.observableArrayList();
+
+            String lectureID = employeeBO.getIDByToken(Env.token, "receptionist");
+            System.out.println(lectureID);
+            ArrayList<SalaryDTO> salaryDTOS = salaryBO.getSalaries(lectureID);
+
+            for (SalaryDTO s : salaryDTOS) {
+                System.out.println(s.getId());
+                tmList.add(
+                        new ReceptionistSalaryTM(
+                                s.getId(),
+                                s.getEmpID(),
+                                s.getDate(),
+                                s.getAmount()
+                        )
+                );
+            }
+            tblRecSalary.setItems(tmList);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

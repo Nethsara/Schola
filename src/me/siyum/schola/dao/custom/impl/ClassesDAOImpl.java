@@ -23,7 +23,11 @@ public class ClassesDAOImpl implements ClassesDAO {
 
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet res = CRUDUtil.execute("SELECT * FROM class ORDER BY cID DESC");
+        if (res.next()) {
+            return res.getString(1);
+        }
+        return "";
     }
 
     @Override

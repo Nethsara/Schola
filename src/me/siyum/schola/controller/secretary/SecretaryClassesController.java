@@ -72,12 +72,25 @@ public class SecretaryClassesController {
     private void setData() {
         try {
             setBatchID();
+            setClassID();
             setClassRooms();
             setSubjects();
             setTable();
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void setClassID() throws SQLException, ClassNotFoundException {
+        String tempID = classesBO.getLastID();
+        if (tempID.equalsIgnoreCase("")) {
+            txtClID.setText("SCS-" + 1);
+        } else {
+            String[] array = tempID.split("-");
+            int tempNumber = Integer.parseInt(array[1]);
+            int finalizeOrderId = tempNumber + 1;
+            txtClID.setText("SCS-" + finalizeOrderId);
         }
     }
 

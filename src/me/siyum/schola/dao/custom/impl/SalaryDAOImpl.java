@@ -17,7 +17,11 @@ public class SalaryDAOImpl implements SalaryDAO {
 
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet res = CRUDUtil.execute("SELECT * FROM salary ORDER BY sID DESC");
+        if (res.next()) {
+            return res.getString(1);
+        }
+        return "";
     }
 
     @Override
@@ -32,7 +36,7 @@ public class SalaryDAOImpl implements SalaryDAO {
 
     @Override
     public ArrayList<Salary> search(String s) throws SQLException, ClassNotFoundException {
-        ResultSet res = CRUDUtil.execute("SELECT * FROM salary");
+        ResultSet res = CRUDUtil.execute("SELECT * FROM salary WHERE empID LIKE ?", s);
         ArrayList<Salary> payments = new ArrayList<>();
         while (res.next()) {
             payments.add(

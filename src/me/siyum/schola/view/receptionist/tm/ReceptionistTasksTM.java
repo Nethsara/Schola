@@ -2,17 +2,17 @@ package me.siyum.schola.view.receptionist.tm;
 
 import javafx.scene.control.Button;
 
-public class TasksTM {
+public class ReceptionistTasksTM {
     private String id;
     private String time;
     private boolean status;
     private Button cancel;
     private String message;
 
-    public TasksTM() {
+    public ReceptionistTasksTM() {
     }
 
-    public TasksTM(String id, String time, String message, boolean status, Button cancel) {
+    public ReceptionistTasksTM(String id, String time, String message, boolean status, Button cancel) {
         this.id = id;
         this.time = time;
         this.status = status;

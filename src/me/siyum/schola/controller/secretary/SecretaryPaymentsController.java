@@ -90,12 +90,25 @@ public class SecretaryPaymentsController {
         txtPayable.setText(String.valueOf(employeeDTO.getSalary()));
     }
 
+    private String generateID() throws SQLException, ClassNotFoundException {
+        String lastID = empBo.getLastID();
+
+        if (lastID.equalsIgnoreCase("")) {
+            return "SEMS-" + 1;
+        } else {
+            String[] array = lastID.split("-");
+            int tempNumber = Integer.parseInt(array[1]);
+            int finalizeOrderId = tempNumber + 1;
+            return "SEMS-" + finalizeOrderId;
+        }
+    }
+
     public void payEmp(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (Double.parseDouble(txtAmount.getText()) > employeeDTO.getSalary()) {
             new Alert(Alert.AlertType.WARNING, "Amount is greater than payable amount, Please check values").show();
         } else {
             boolean b = bo.saveSalary(new SalaryDTO(
-                    "1",
+                    generateID(),
                     cmbEmployeeID.getValue(),
                     LocalDate.now(),
                     Double.parseDouble(txtAmount.getText())
