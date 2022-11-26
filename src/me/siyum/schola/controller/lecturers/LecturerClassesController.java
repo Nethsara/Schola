@@ -7,7 +7,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.*;
+import me.siyum.schola.bo.custom.ClassesBO;
+import me.siyum.schola.bo.custom.EmployeeBO;
 import me.siyum.schola.dto.ClassesDTO;
 import me.siyum.schola.util.Env;
 import me.siyum.schola.view.lecturers.tm.LecturerClassesTM;
@@ -18,17 +19,14 @@ import java.util.ArrayList;
 
 public class LecturerClassesController {
     private final ClassesBO classBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final SubjectsBO subjectsBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
-    private final BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
-    private final ClassRoomsBO classRoomsBO = BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
     private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    public TableColumn colID;
-    public TableColumn colDate;
-    public TableColumn colTime;
-    public TableColumn colSubject;
-    public TableColumn colBatch;
-    public TableColumn colClassroom;
-    public TableColumn colStatus;
+    public TableColumn<LecturerClassesTM, String> colID;
+    public TableColumn<LecturerClassesTM, String> colDate;
+    public TableColumn<LecturerClassesTM, String> colTime;
+    public TableColumn<LecturerClassesTM, String> colSubject;
+    public TableColumn<LecturerClassesTM, String> colBatch;
+    public TableColumn<LecturerClassesTM, String> colClassroom;
+    public TableColumn<LecturerClassesTM, String> colStatus;
     public TableView<LecturerClassesTM> tblClasses;
     private String lecturer;
 
@@ -40,7 +38,6 @@ public class LecturerClassesController {
         colBatch.setCellValueFactory(new PropertyValueFactory<>("batch"));
         colClassroom.setCellValueFactory(new PropertyValueFactory<>("classRoom"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-
 
         setData();
     }

@@ -4,14 +4,16 @@ import me.siyum.schola.dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
-    private DAOFactory(){}
 
-    public static DAOFactory getInstance(){
-        return daoFactory==null?daoFactory=(new DAOFactory()) : daoFactory;
+    private DAOFactory() {
     }
 
-    public <T> T getDAO(DAOTypes types){
-        switch (types){
+    public static DAOFactory getInstance() {
+        return daoFactory == null ? daoFactory = (new DAOFactory()) : daoFactory;
+    }
+
+    public <T> T getDAO(DAOTypes types) {
+        switch (types) {
             case STUDENT:
                 return (T) new StudentDAOImpl();
             case PARENT:
@@ -38,6 +40,10 @@ public class DAOFactory {
                 return (T) new SalaryDAOImpl();
             case STUDENT_MARK:
                 return (T) new StudentMarksDAOImpl();
+            case ATTENDANCE:
+                return (T) new AttendanceDAOImpl();
+            case ATTENDANCE_MARK:
+                return (T) new AttendanceMarkDAOImpl();
             default:
                 return null;
         }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.lecturers.LecturerAttendanceController">
+    <AnchorPane fx:id="paneAttendance" layoutX="14.0" layoutY="38.0" prefHeight="568.0" prefWidth="1073.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="30.0" layoutY="38.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
+        <Label layoutX="445.0" layoutY="6.0" text="Attendance Marking" textFill="#7a5ed6">
+            <font>
+                <Font name="Consolas Bold" size="20.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="tblAttendance" layoutX="19.0" layoutY="105.0" prefHeight="447.0" prefWidth="1040.0">
+            <columns>
+                <TableColumn fx:id="colID" prefWidth="75.0" text="ID"/>
+                <TableColumn fx:id="colBatch" prefWidth="187.0" text="Batch"/>
+                <TableColumn fx:id="colDate" prefWidth="143.0" text="Date"/>
+                <TableColumn fx:id="colTime" prefWidth="180.0" text="Time"/>
+                <TableColumn fx:id="colClassRoom" prefWidth="145.0" text="Class Room"/>
+                <TableColumn fx:id="colLectures" prefWidth="173.0" text="Lecturers"/>
+                <TableColumn fx:id="colActions" prefWidth="137.33331298828125" text="Actions"/>
+            </columns>
+        </TableView>
+        <JFXComboBox fx:id="cmbFilter" layoutX="867.0" layoutY="64.0" onAction="#filterOnAction" prefHeight="25.0"
+                     prefWidth="185.0" promptText="Status"/>
+    </AnchorPane>
+</AnchorPane>

@@ -6,24 +6,16 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.BatchBO;
-import me.siyum.schola.bo.custom.ClassRoomsBO;
-import me.siyum.schola.bo.custom.ClassesBO;
-import me.siyum.schola.bo.custom.SubjectsBO;
-import me.siyum.schola.dto.BatchDTO;
-import me.siyum.schola.dto.ClassRoomsDTO;
-import me.siyum.schola.dto.ClassesDTO;
-import me.siyum.schola.dto.SubjectsDTO;
+import me.siyum.schola.bo.custom.*;
+import me.siyum.schola.db.DBConnection;
+import me.siyum.schola.dto.*;
 import me.siyum.schola.view.secretary.tm.SecretartClassesTM;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,6 +25,8 @@ public class SecretaryClassesController {
     private final ClassRoomsBO classRoomsBO = BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
     private final SubjectsBO subjectsBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
     private final ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final AttendanceBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
+    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
     public JFXComboBox<String> cmbSubID;
     public JFXTextField txtClID;
     public JFXComboBox<String> cmbRoom;
@@ -40,13 +34,13 @@ public class SecretaryClassesController {
     public JFXTimePicker pickerTime;
     public JFXComboBox<String> cmbBatch;
     public TableView<SecretartClassesTM> tblTimeTable;
-    public TableColumn colID;
-    public TableColumn colSubject;
-    public TableColumn colClassRoom;
-    public TableColumn colDate;
-    public TableColumn colTime;
-    public TableColumn colBatch;
-    public TableColumn colActions;
+    public TableColumn<SecretartClassesTM, String> colID;
+    public TableColumn<SecretartClassesTM, String> colSubject;
+    public TableColumn<SecretartClassesTM, String> colClassRoom;
+    public TableColumn<SecretartClassesTM, String> colDate;
+    public TableColumn<SecretartClassesTM, String> colTime;
+    public TableColumn<SecretartClassesTM, String> colBatch;
+    public TableColumn<SecretartClassesTM, String> colActions;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -91,6 +85,18 @@ public class SecretaryClassesController {
             int tempNumber = Integer.parseInt(array[1]);
             int finalizeOrderId = tempNumber + 1;
             txtClID.setText("SCS-" + finalizeOrderId);
+        }
+    }
+
+    private String getAttendanceID() throws SQLException, ClassNotFoundException {
+        String tempID = attendanceBO.getLastID();
+        if (tempID.equalsIgnoreCase("")) {
+            return "SAS-" + 1;
+        } else {
+            String[] array = tempID.split("-");
+            int tempNumber = Integer.parseInt(array[1]);
+            int finalizeOrderId = tempNumber + 1;
+            return "SAS-" + finalizeOrderId;
         }
     }
 
@@ -152,18 +158,57 @@ public class SecretaryClassesController {
         tblTimeTable.setItems(list);
     }
 
-    public void scheduleClass(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        classesBO.scheduleClass(
-                new ClassesDTO(
-                        txtClID.getText(),
-                        cmbSubID.getValue(),
-                        subjectsBO.getLecturerBySubID(cmbSubID.getValue()),
-                        cmbRoom.getValue(),
-                        cmbBatch.getValue(),
-                        pickerDate.getValue(),
-                        pickerTime.getValue()
-                )
+    private ClassesDTO createClassObject() throws SQLException, ClassNotFoundException {
+        return new ClassesDTO(
+                txtClID.getText(),
+                cmbSubID.getValue(),
+                subjectsBO.getLecturerBySubID(cmbSubID.getValue()),
+                cmbRoom.getValue(),
+                cmbBatch.getValue(),
+                pickerDate.getValue(),
+                pickerTime.getValue()
         );
-        setTable();
+    }
+
+    private AttendanceDTO getAttendanceDTO() throws SQLException, ClassNotFoundException {
+        ArrayList<StudentDTO> studentDTOS = studentBO.filterStudents(cmbBatch.getValue());
+
+        return new AttendanceDTO(
+                getAttendanceID(),
+                txtClID.getText(),
+                pickerDate.getValue(),
+                studentDTOS.size(),
+                true
+        );
+    }
+
+    public void scheduleClass() throws SQLException {
+        Connection connection = null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
+            boolean savedClass = classesBO.scheduleClass(createClassObject());
+            if (savedClass) {
+                boolean savedAttendance = attendanceBO.saveAttendance(getAttendanceDTO());
+                if (savedAttendance) {
+                    connection.commit();
+                    new Alert(Alert.AlertType.INFORMATION, "Saved Success").show();
+                    setTable();
+                } else {
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                }
+            } else {
+                connection.rollback();
+                connection.setAutoCommit(true);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            assert connection != null;
+            connection.setAutoCommit(true);
+
+        }
+
     }
 }

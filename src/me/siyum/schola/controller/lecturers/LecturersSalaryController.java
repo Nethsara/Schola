@@ -20,16 +20,15 @@ import java.util.ArrayList;
 public class LecturersSalaryController {
     private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     private final SalaryBO salaryBO = BOFactory.getInstance().getBO(BOTypes.SALARY);
-    public TableColumn colID;
-    public TableColumn colDate;
-    public TableColumn colMethod;
-    public TableColumn colAmount;
+    public TableColumn<LecturerSalaryTM, String> colID;
+    public TableColumn<LecturerSalaryTM, String> colDate;
+    public TableColumn<LecturerSalaryTM, String> colMethod;
+    public TableColumn<LecturerSalaryTM, String> colAmount;
     public AnchorPane paneRecSalaryHistory;
     public TableView<LecturerSalaryTM> tblRecSalary;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colMethod.setCellValueFactory(new PropertyValueFactory<>("method"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         setData();

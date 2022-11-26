@@ -234,4 +234,21 @@ public class StudentBOImpl implements StudentBO {
         }
         return null;
     }
+
+    @Override
+    public ArrayList<StudentDTO> filterStudents(String filter) throws SQLException, ClassNotFoundException {
+        ArrayList<StudentDTO> students = new ArrayList<>();
+
+        System.out.println(filter);
+        ArrayList<Student> filteredStudents = dao.filter("SELECT * FROM students WHERE batch='" + filter + "'");
+        for (Student t : filteredStudents) {
+            students.add(
+                    new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
+                            t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
+                            t.getBatch()
+                    ));
+
+        }
+        return students;
+    }
 }
