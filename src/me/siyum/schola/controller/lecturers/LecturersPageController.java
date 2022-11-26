@@ -27,9 +27,16 @@ public class LecturersPageController {
         Navigation.navigate(Routes.LECTURER_EXAM, mainPane);
     }
 
-    public void classPage(ActionEvent actionEvent) {
+    public void classPage(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.LECTURER_CLASS, mainPane);
     }
 
-    public void salaryPage(ActionEvent actionEvent) {
+    public void salaryPage(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.LECTURER_SALARY, mainPane);
+
+    }
+
+    public void attendancePage(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.LECTURER_ATTENDANCE, mainPane);
     }
 }

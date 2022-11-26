@@ -63,7 +63,16 @@ public class Navigation {
                 break;
             case LECTURER_EXAM:
                 setPanel("lecturers/LectureresExams", anchorPane);
-
+                break;
+            case LECTURER_ATTENDANCE:
+                setPanel("lecturers/LecturerAttendance", anchorPane);
+                break;
+            case LECTURER_SALARY:
+                setPanel("lecturers/LecturerSalary", anchorPane);
+                break;
+            case LECTURER_CLASS:
+                setPanel("lecturers/LectureresClasses", anchorPane);
+                break;
         }
 
     }

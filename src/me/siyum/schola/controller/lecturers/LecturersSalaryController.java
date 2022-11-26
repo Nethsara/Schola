@@ -29,7 +29,6 @@ public class LecturersSalaryController {
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colMethod.setCellValueFactory(new PropertyValueFactory<>("method"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         setData();
