@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class AttendanceDTO {
     private String id;
+    private String classID;
     private LocalDate date;
     private int totalSt;
     private boolean status;
@@ -11,8 +12,9 @@ public class AttendanceDTO {
     public AttendanceDTO() {
     }
 
-    public AttendanceDTO(String id, LocalDate date, int totalSt, boolean status) {
+    public AttendanceDTO(String id, String classID, LocalDate date, int totalSt, boolean status) {
         this.id = id;
+        this.classID = classID;
         this.date = date;
         this.totalSt = totalSt;
         this.status = status;
@@ -24,6 +26,14 @@ public class AttendanceDTO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getClassID() {
+        return classID;
+    }
+
+    public void setClassID(String classID) {
+        this.classID = classID;
     }
 
     public LocalDate getDate() {

@@ -40,6 +40,10 @@ public class BOFactory {
                 return (T) new SalaryBOImpl();
             case STUDENT_MARK:
                 return (T) new StudentMarkBOImpl();
+            case ATTENDANCE:
+                return (T) new AttendanceBOImpl();
+            case ATTENDANCE_MARK:
+                return (T) new AttendanceMarkBOImpl();
             default:
                 return null;
         }

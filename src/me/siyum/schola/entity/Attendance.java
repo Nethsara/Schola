@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 public class Attendance implements SuperEntity {
     private String id;
+    private String classID;
     private LocalDate date;
     private int totalSt;
     private boolean status;
 
-    public Attendance() {
-    }
 
-    public Attendance(String id, LocalDate date, int totalSt, boolean status) {
+    public Attendance(String id, String classID, LocalDate date, int totalSt, boolean status) {
         this.id = id;
+        this.classID = classID;
         this.date = date;
         this.totalSt = totalSt;
         this.status = status;
@@ -24,6 +24,14 @@ public class Attendance implements SuperEntity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getClassID() {
+        return classID;
+    }
+
+    public void setClassID(String classID) {
+        this.classID = classID;
     }
 
     public LocalDate getDate() {

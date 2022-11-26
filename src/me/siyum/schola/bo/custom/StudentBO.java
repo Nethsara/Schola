@@ -23,5 +23,7 @@ public interface StudentBO {
 
     ArrayList<StudentDTO> filterStudents(String s, String exm) throws SQLException, ClassNotFoundException;
 
+    ArrayList<StudentDTO> filterStudents(String filter) throws SQLException, ClassNotFoundException;
+
 
 }

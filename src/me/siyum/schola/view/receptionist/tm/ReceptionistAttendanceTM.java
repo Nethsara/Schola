@@ -7,6 +7,7 @@ import java.time.LocalTime;
 
 public class ReceptionistAttendanceTM {
     private String id;
+    private String attendanceID;
     private String batch;
     private LocalDate date;
     private LocalTime time;
@@ -17,8 +18,9 @@ public class ReceptionistAttendanceTM {
     public ReceptionistAttendanceTM() {
     }
 
-    public ReceptionistAttendanceTM(String id, String batch, LocalDate date, LocalTime time, String classRoom, String lecturer, Button btn) {
+    public ReceptionistAttendanceTM(String id, String attendanceID, String batch, LocalDate date, LocalTime time, String classRoom, String lecturer, Button btn) {
         this.id = id;
+        this.attendanceID = attendanceID;
         this.batch = batch;
         this.date = date;
         this.time = time;
@@ -81,5 +83,13 @@ public class ReceptionistAttendanceTM {
 
     public void setBtn(Button btn) {
         this.btn = btn;
+    }
+
+    public String getAttendanceID() {
+        return attendanceID;
+    }
+
+    public void setAttendanceID(String attendanceID) {
+        this.attendanceID = attendanceID;
     }
 }

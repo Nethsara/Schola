@@ -1,22 +1,24 @@
 package me.siyum.schola.view.receptionist.tm;
 
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.CheckBox;
 
 public class ReceptionistAttendanceMarkTM {
     private String id;
     private String name;
+    private String stID;
     private String batch;
     private String phone;
     private String classRoom;
-    private ToggleButton actions;
+    private CheckBox actions;
 
-    public ReceptionistAttendanceMarkTM(String id, String name, String batch, String phone, String classRoom, ToggleButton actions) {
+    public ReceptionistAttendanceMarkTM(String id, String name, String stID, String batch, String phone, String classRoom, CheckBox actions) {
         this.id = id;
         this.name = name;
         this.batch = batch;
         this.phone = phone;
         this.classRoom = classRoom;
         this.actions = actions;
+        this.stID = stID;
     }
 
     public String getId() {
@@ -59,11 +61,19 @@ public class ReceptionistAttendanceMarkTM {
         this.classRoom = classRoom;
     }
 
-    public ToggleButton getActions() {
+    public CheckBox getActions() {
         return actions;
     }
 
-    public void setActions(ToggleButton actions) {
+    public void setActions(CheckBox actions) {
         this.actions = actions;
+    }
+
+    public String getStID() {
+        return stID;
+    }
+
+    public void setStID(String stID) {
+        this.stID = stID;
     }
 }

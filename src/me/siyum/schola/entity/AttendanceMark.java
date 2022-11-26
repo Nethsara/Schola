@@ -1,6 +1,6 @@
 package me.siyum.schola.entity;
 
-public class AttendanceMark {
+public class AttendanceMark implements SuperEntity {
     private String amID;
     private String stID;
     private boolean isPresent;

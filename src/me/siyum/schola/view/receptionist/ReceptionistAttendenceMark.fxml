@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -14,16 +16,22 @@
                 <Font name="Consolas Bold" size="20.0"/>
             </font>
         </Label>
-        <TableView fx:id="tblAttendance" layoutX="19.0" layoutY="94.0" prefHeight="466.0" prefWidth="1040.0">
+        <TableView fx:id="tblAttendance" layoutX="19.0" layoutY="94.0" prefHeight="466.0" prefWidth="902.0"
+                   style="-fx-background-radius: 5;">
             <columns>
-                <TableColumn fx:id="colID" prefWidth="75.0" text="ID"/>
-                <TableColumn fx:id="colName" prefWidth="187.0" text="Name"/>
-                <TableColumn fx:id="colBatch" prefWidth="119.0" text="Batch"/>
-                <TableColumn fx:id="colPhone" prefWidth="155.0" text="Phone"/>
-                <TableColumn fx:id="colClassRoom" prefWidth="178.0" text="Class Room"/>
-                <TableColumn fx:id="colActions" prefWidth="325.0" text="Actions"/>
+                <TableColumn fx:id="colID" prefWidth="97.0" text="ID"/>
+                <TableColumn fx:id="colName" prefWidth="320.0" text="Name"/>
+                <TableColumn fx:id="colBatch" prefWidth="120.0" text="Batch"/>
+                <TableColumn fx:id="colPhone" prefWidth="142.0" text="Phone"/>
+                <TableColumn fx:id="colClassRoom" prefWidth="130.0" text="Class Room"/>
+                <TableColumn fx:id="colActions" prefWidth="91.0" text="Present"/>
             </columns>
         </TableView>
-        <TextField layoutX="19.0" layoutY="53.0" prefHeight="29.0" prefWidth="1040.0"/>
+        <TextField layoutX="19.0" layoutY="53.0" prefHeight="29.0" prefWidth="771.0" style="-fx-background-radius: 5;"/>
+        <JFXCheckBox fx:id="chkSelectAll" layoutX="847.0" layoutY="59.0" text="Select All"/>
+        <JFXButton layoutX="940.0" layoutY="272.0" onAction="#completeMarking" style="-fx-background-color: #7a5dd5;"
+                   text="Complete Marking" textFill="WHITE"/>
+        <JFXButton layoutX="940.0" layoutY="315.0" onAction="#abortMarking" style="-fx-background-color: #c0392b;"
+                   text="    Abort Marking   " textFill="WHITE"/>
     </AnchorPane>
 </AnchorPane>

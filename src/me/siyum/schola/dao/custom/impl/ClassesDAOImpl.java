@@ -44,9 +44,9 @@ public class ClassesDAOImpl implements ClassesDAO {
     public ArrayList<Classes> search(String s) throws SQLException, ClassNotFoundException {
         ArrayList<Classes> classList = new ArrayList<>();
 
-        s = "%"+s+"%";
+        s = "%" + s + "%";
         ResultSet res = CRUDUtil.execute("SELECT * FROM class");
-        while (res.next()){
+        while (res.next()) {
             classList.add(
                     new Classes(
                             res.getString(1),
@@ -59,10 +59,23 @@ public class ClassesDAOImpl implements ClassesDAO {
                     )
             );
         }
-        return classList;    }
+        return classList;
+    }
 
     @Override
     public Classes retrieve(String s) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM class WHERE cID=?", s);
+        if (res.next()) {
+            return new Classes(
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getDate(6).toLocalDate(),
+                    res.getTime(7).toLocalTime()
+            );
+        }
         return null;
     }
 

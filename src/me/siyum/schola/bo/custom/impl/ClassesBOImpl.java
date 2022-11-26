@@ -53,4 +53,17 @@ public class ClassesBOImpl implements ClassesBO {
     public String getLastID() throws SQLException, ClassNotFoundException {
         return dao.getLastID();
     }
+
+    @Override
+    public ClassesDTO getClassByID(String id) throws SQLException, ClassNotFoundException {
+        Classes retrieve = dao.retrieve(id);
+        return new ClassesDTO(
+                retrieve.getId(),
+                retrieve.getSubID(),
+                retrieve.getLecturer(),
+                retrieve.getClssRoom(),
+                retrieve.getBatch(),
+                retrieve.getDate(),
+                retrieve.getTime());
+    }
 }

@@ -7,7 +7,10 @@ import java.util.ArrayList;
 
 public interface ClassesBO {
     ArrayList<ClassesDTO> getAllClasses(String s) throws SQLException, ClassNotFoundException;
+
     boolean scheduleClass(ClassesDTO classesDTO) throws SQLException, ClassNotFoundException;
 
     String getLastID() throws SQLException, ClassNotFoundException;
+
+    ClassesDTO getClassByID(String id) throws SQLException, ClassNotFoundException;
 }
