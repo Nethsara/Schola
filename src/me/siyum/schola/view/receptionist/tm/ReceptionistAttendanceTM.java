@@ -1,0 +1,85 @@
+package me.siyum.schola.view.receptionist.tm;
+
+import javafx.scene.control.Button;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class ReceptionistAttendanceTM {
+    private String id;
+    private String batch;
+    private LocalDate date;
+    private LocalTime time;
+    private String classRoom;
+    private String lecturer;
+    private Button btn;
+
+    public ReceptionistAttendanceTM() {
+    }
+
+    public ReceptionistAttendanceTM(String id, String batch, LocalDate date, LocalTime time, String classRoom, String lecturer, Button btn) {
+        this.id = id;
+        this.batch = batch;
+        this.date = date;
+        this.time = time;
+        this.classRoom = classRoom;
+        this.lecturer = lecturer;
+        this.btn = btn;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getBatch() {
+        return batch;
+    }
+
+    public void setBatch(String batch) {
+        this.batch = batch;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+
+    public String getClassRoom() {
+        return classRoom;
+    }
+
+    public void setClassRoom(String classRoom) {
+        this.classRoom = classRoom;
+    }
+
+    public String getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(String lecturer) {
+        this.lecturer = lecturer;
+    }
+
+    public Button getBtn() {
+        return btn;
+    }
+
+    public void setBtn(Button btn) {
+        this.btn = btn;
+    }
+}
