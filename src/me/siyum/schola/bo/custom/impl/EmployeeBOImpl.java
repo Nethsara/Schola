@@ -76,5 +76,156 @@ public class EmployeeBOImpl implements EmployeeBO {
         return dao.getIDByToken(token, role);
     }
 
+    @Override
+    public ArrayList<EmployeeDTO> filterEmployees(String filter) throws SQLException, ClassNotFoundException {
+        ArrayList<EmployeeDTO> returnList = new ArrayList<>();
+        if (filter.equalsIgnoreCase("id asc")) {
+            ArrayList<Employee> filteredEmp = dao.search("SELECT * FROM employee ORDER BY eID ASC");
+            for (Employee e : filteredEmp
+            ) {
+                returnList.add(new EmployeeDTO(
+                        e.getId(),
+                        e.getImage(),
+                        e.getName(),
+                        e.getAddress(),
+                        e.getEmail(),
+                        e.getSalary(),
+                        e.getPaymentMethod(),
+                        e.getRole(),
+                        e.isStatus()
+                ));
+            }
+
+            return returnList;
+        } else if (filter.equalsIgnoreCase("id desc")) {
+            ArrayList<Employee> filteredEmp = dao.search("SELECT * FROM employee ORDER BY eID DESC");
+            for (Employee e : filteredEmp
+            ) {
+                returnList.add(new EmployeeDTO(
+                        e.getId(),
+                        e.getImage(),
+                        e.getName(),
+                        e.getAddress(),
+                        e.getEmail(),
+                        e.getSalary(),
+                        e.getPaymentMethod(),
+                        e.getRole(),
+                        e.isStatus()
+                ));
+            }
+
+            return returnList;
+        } else if (filter.equalsIgnoreCase("name asc")) {
+            ArrayList<Employee> filteredEmp = dao.search("SELECT * FROM employee ORDER BY name ASC");
+            for (Employee e : filteredEmp
+            ) {
+                returnList.add(new EmployeeDTO(
+                        e.getId(),
+                        e.getImage(),
+                        e.getName(),
+                        e.getAddress(),
+                        e.getEmail(),
+                        e.getSalary(),
+                        e.getPaymentMethod(),
+                        e.getRole(),
+                        e.isStatus()
+                ));
+            }
+
+            return returnList;
+        } else if (filter.equalsIgnoreCase("name desc")) {
+            ArrayList<Employee> filteredEmp = dao.search("SELECT * FROM employee ORDER BY name DESC");
+            for (Employee e : filteredEmp
+            ) {
+                returnList.add(new EmployeeDTO(
+                        e.getId(),
+                        e.getImage(),
+                        e.getName(),
+                        e.getAddress(),
+                        e.getEmail(),
+                        e.getSalary(),
+                        e.getPaymentMethod(),
+                        e.getRole(),
+                        e.isStatus()
+                ));
+            }
+
+            return returnList;
+        } else if (filter.equalsIgnoreCase("receptionist")) {
+            ArrayList<Employee> filteredEmp = dao.get("receptionist");
+            for (Employee e : filteredEmp
+            ) {
+                returnList.add(new EmployeeDTO(
+                        e.getId(),
+                        e.getImage(),
+                        e.getName(),
+                        e.getAddress(),
+                        e.getEmail(),
+                        e.getSalary(),
+                        e.getPaymentMethod(),
+                        e.getRole(),
+                        e.isStatus()
+                ));
+            }
+            return returnList;
+
+        } else if (filter.equalsIgnoreCase("lecturers")) {
+            ArrayList<Employee> filteredEmp = dao.get("lecturer");
+            for (Employee e : filteredEmp
+            ) {
+                returnList.add(new EmployeeDTO(
+                        e.getId(),
+                        e.getImage(),
+                        e.getName(),
+                        e.getAddress(),
+                        e.getEmail(),
+                        e.getSalary(),
+                        e.getPaymentMethod(),
+                        e.getRole(),
+                        e.isStatus()
+                ));
+            }
+            return returnList;
+
+        } else if (filter.equalsIgnoreCase("minor")) {
+            ArrayList<Employee> filteredEmp = dao.get("minor");
+            for (Employee e : filteredEmp
+            ) {
+                returnList.add(new EmployeeDTO(
+                        e.getId(),
+                        e.getImage(),
+                        e.getName(),
+                        e.getAddress(),
+                        e.getEmail(),
+                        e.getSalary(),
+                        e.getPaymentMethod(),
+                        e.getRole(),
+                        e.isStatus()
+                ));
+            }
+            return returnList;
+
+        } else if (filter.equalsIgnoreCase("secretary")) {
+            ArrayList<Employee> filteredEmp = dao.get("secretary");
+            for (Employee e : filteredEmp
+            ) {
+                returnList.add(new EmployeeDTO(
+                        e.getId(),
+                        e.getImage(),
+                        e.getName(),
+                        e.getAddress(),
+                        e.getEmail(),
+                        e.getSalary(),
+                        e.getPaymentMethod(),
+                        e.getRole(),
+                        e.isStatus()
+                ));
+            }
+            return returnList;
+
+        }
+        return null;
+    }
+
 
 }

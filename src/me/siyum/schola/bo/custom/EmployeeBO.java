@@ -16,4 +16,8 @@ public interface EmployeeBO {
     String getLastID() throws SQLException, ClassNotFoundException;
 
     String getIDByToken(String token, String role) throws SQLException, ClassNotFoundException;
+
+    ArrayList<EmployeeDTO> filterEmployees(String filter) throws SQLException, ClassNotFoundException;
+
+
 }

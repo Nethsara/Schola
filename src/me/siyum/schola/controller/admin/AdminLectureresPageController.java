@@ -1,5 +1,6 @@
 package me.siyum.schola.controller.admin;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
@@ -22,12 +24,57 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AdminLectureresPageController {
-    private final EmployeeBO stBo = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final EmployeeBO empBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public JFXListView<HBox> listLec;
-    private ObservableList<AdminEmployeesTM> tmList = FXCollections.observableArrayList();
+    public JFXComboBox<String> cmbSortBy;
+    public TextField txtSearch;
 
     public void initialize() {
         setData();
+    }
+
+    public void setData() {
+        try {
+            setSortBy();
+            loadTable(empBO.getEmployeeByType(""));
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTable(ArrayList<EmployeeDTO> empDTO) {
+        listLec.getItems().clear();
+        ObservableList<AdminEmployeesTM> tmList = FXCollections.observableArrayList();
+
+        for (EmployeeDTO s : empDTO) {
+            Button btn = new Button("Edit");
+            tmList.add(new AdminEmployeesTM(
+                    s.getId(),
+                    s.getImage(),
+                    s.getName(),
+                    s.getAddress(),
+                    s.getEmail(),
+                    s.getSalary(),
+                    s.getPaymentMethod(),
+                    s.getRole(),
+                    s.isStatus()
+            ));
+            btn.setOnAction(e -> {
+                System.out.println("Clicked");
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentForm.fxml"));
+                    Parent parent = loader.load();
+                    StudentFormController controller = loader.getController();
+                    controller.setData(s.getId());
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(parent));
+                    stage.show();
+
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
         for (AdminEmployeesTM tm : tmList) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/me/siyum/schola/view/admin/AdminEmployeeTableRow.fxml"));
@@ -44,48 +91,6 @@ public class AdminLectureresPageController {
 
     }
 
-    public void setData() {
-        loadStudents();
-    }
-
-    private void loadStudents() {
-        try {
-            ArrayList<EmployeeDTO> empDTO = stBo.getEmployeeByType("");
-            for (EmployeeDTO s : empDTO) {
-                Button btn = new Button("Edit");
-                tmList.add(new AdminEmployeesTM(
-                        s.getId(),
-                        s.getImage(),
-                        s.getName(),
-                        s.getAddress(),
-                        s.getEmail(),
-                        s.getSalary(),
-                        s.getPaymentMethod(),
-                        s.getRole(),
-                        s.isStatus()
-                ));
-                btn.setOnAction(e -> {
-                    System.out.println("Clicked");
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentForm.fxml"));
-                        Parent parent = loader.load();
-                        StudentFormController controller = loader.getController();
-                        controller.setData(s.getId());
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(parent));
-                        stage.show();
-
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                });
-            }
-
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void newEmployee(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/admin/EmployeeForm.fxml"));
         try {
@@ -96,5 +101,16 @@ public class AdminLectureresPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setSortBy() {
+        String[] ar = {"receptionist", "lecturers", "minor", "secretary", "id asc", "id desc", "name asc", "name desc"};
+        ObservableList<String> obList = FXCollections.observableArrayList(ar);
+        cmbSortBy.setItems(obList);
+    }
+
+    public void sortOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        ArrayList<EmployeeDTO> employeeDTOS = empBO.filterEmployees(cmbSortBy.getValue());
+        loadTable(employeeDTOS);
     }
 }

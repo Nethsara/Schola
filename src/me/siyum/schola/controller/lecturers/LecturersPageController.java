@@ -27,9 +27,9 @@ public class LecturersPageController {
         Navigation.navigate(Routes.LECTURER_EXAM, mainPane);
     }
 
-    public void reportsPage(ActionEvent actionEvent) {
+    public void classPage(ActionEvent actionEvent) {
     }
 
-    public void classPage(ActionEvent actionEvent) {
+    public void salaryPage(ActionEvent actionEvent) {
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -51,6 +51,11 @@
          </font>
       </JFXButton>
       <JFXButton onAction="#classPage" text="Classes" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton onAction="#salaryPage" text="Salary" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0"/>
          </font>

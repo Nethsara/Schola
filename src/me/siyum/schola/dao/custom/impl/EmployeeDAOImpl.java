@@ -45,7 +45,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public ArrayList<Employee> search(String s) throws SQLException, ClassNotFoundException {
-        return null;
+        System.out.println(s);
+        ArrayList<Employee> employees = new ArrayList<>();
+        ResultSet resultSet = CRUDUtil.execute(s);
+        while (resultSet.next()) {
+            System.out.println(resultSet.getString(1));
+            employees.add(new Employee(
+                    resultSet.getString(1),
+                    resultSet.getBlob(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getDouble(6),
+                    resultSet.getString(7),
+                    resultSet.getString(8),
+                    resultSet.getBoolean(9)
+            ));
+        }
+        return employees;
     }
 
     @Override
