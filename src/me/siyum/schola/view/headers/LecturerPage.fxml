@@ -26,13 +26,14 @@
    <Circle fx:id="circleImg" fill="DODGERBLUE" layoutX="1060.0" layoutY="24.0" radius="17.0" stroke="TRANSPARENT"
            strokeType="INSIDE"/>
    <Circle fill="#1fff2c" layoutX="1050.0" layoutY="39.0" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE"/>
-   <FontAwesomeIconView fill="#dddddd" glyphName="BELL" layoutX="1005.0" layoutY="37.0" size="20" />
-   <Label layoutX="1003.0" layoutY="8.0" style="-fx-background-color: red; -fx-background-radius: 10;" text="  10  " textAlignment="CENTER" textFill="WHITE">
+   <FontAwesomeIconView fill="#dddddd" glyphName="BELL" layoutX="1005.0" layoutY="37.0" size="20"/>
+   <Label layoutX="1003.0" layoutY="8.0" style="-fx-background-color: red; -fx-background-radius: 10;" text="  10  "
+          textAlignment="CENTER" textFill="WHITE">
       <font>
-         <Font name="System Bold" size="11.0" />
+         <Font name="System Bold" size="11.0"/>
       </font>
    </Label>
-   <AnchorPane fx:id="mainPane" layoutX="2.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0" />
+   <AnchorPane fx:id="mainPane" layoutX="2.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0"/>
    <HBox layoutX="192.0" layoutY="10.0" prefHeight="28.0" prefWidth="491.0" spacing="10.0">
       <JFXButton onAction="#homePage" text="Home" textFill="WHITE">
          <font>
@@ -45,6 +46,11 @@
          </font>
       </JFXButton>
       <JFXButton onAction="#examsPage" text="Exams" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton onAction="#classPage" text="Classes" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0"/>
          </font>

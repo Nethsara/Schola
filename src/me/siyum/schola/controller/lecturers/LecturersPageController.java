@@ -29,4 +29,7 @@ public class LecturersPageController {
 
     public void reportsPage(ActionEvent actionEvent) {
     }
+
+    public void classPage(ActionEvent actionEvent) {
+    }
 }

@@ -150,4 +150,44 @@ public class StudentDAOImpl implements StudentDAO {
         }
         return students;
     }
+
+    @Override
+    public ArrayList<Student> filter(String filter) throws SQLException, ClassNotFoundException {
+        ArrayList<Student> students = new ArrayList<>();
+
+        ResultSet res = CRUDUtil.execute(filter);
+        while (res.next()) {
+            System.out.println("id " + res.getString(1) + " name " + res.getString(2));
+            students.add(
+                    new Student(
+                            res.getString(1),
+                            res.getString(2),
+                            res.getString(3),
+                            res.getString(4),
+                            res.getBlob(5),
+                            res.getString(6),
+                            res.getString(7),
+                            res.getString(8),
+                            res.getInt(9),
+                            res.getDate(10).toLocalDate(),
+                            res.getBoolean(11),
+                            res.getBoolean(12),
+                            res.getString(13)
+                    )
+            );
+        }
+        return students;
+    }
+
+    @Override
+    public ArrayList<Student> filterByMarks(String filter, String exm) throws SQLException, ClassNotFoundException {
+        ArrayList<Student> sts = new ArrayList<>();
+        ResultSet res = CRUDUtil.execute("SELECT stID FROM student_exam_marks WHERE examID=? ORDER BY ?", exm, filter);
+        while (res.next()) {
+            sts.add(
+                    retrieve(res.getString(1))
+            );
+        }
+        return sts;
+    }
 }

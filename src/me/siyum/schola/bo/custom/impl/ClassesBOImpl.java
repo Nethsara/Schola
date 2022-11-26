@@ -23,6 +23,7 @@ public class ClassesBOImpl implements ClassesBO {
                     new ClassesDTO(
                             c.getId(),
                             c.getSubID(),
+                            c.getLecturer(),
                             c.getClssRoom(),
                             c.getBatch(),
                             c.getDate(),
@@ -40,6 +41,7 @@ public class ClassesBOImpl implements ClassesBO {
         return dao.save(new Classes(
                 classesDTO.getId(),
                 classesDTO.getSubID(),
+                classesDTO.getLecturer(),
                 classesDTO.getClssRoom(),
                 classesDTO.getBatch(),
                 classesDTO.getDate(),

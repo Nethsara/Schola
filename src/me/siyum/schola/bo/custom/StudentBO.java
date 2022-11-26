@@ -21,5 +21,7 @@ public interface StudentBO {
 
     String getStudentByToken(String token) throws SQLException, ClassNotFoundException;
 
+    ArrayList<StudentDTO> filterStudents(String s, String exm) throws SQLException, ClassNotFoundException;
+
 
 }

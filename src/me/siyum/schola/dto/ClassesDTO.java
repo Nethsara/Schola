@@ -10,17 +10,19 @@ public class ClassesDTO {
     private String batch;
     private LocalDate date;
     private LocalTime time;
+    private String lecturer;
 
     public ClassesDTO() {
     }
 
-    public ClassesDTO(String id, String subID, String clssRoom, String batch, LocalDate date, LocalTime time) {
+    public ClassesDTO(String id, String subID, String lecturer, String clssRoom, String batch, LocalDate date, LocalTime time) {
         this.id = id;
         this.subID = subID;
         this.clssRoom = clssRoom;
         this.date = date;
         this.time = time;
         this.batch = batch;
+        this.lecturer = lecturer;
     }
 
     public String getId() {
@@ -69,5 +71,13 @@ public class ClassesDTO {
 
     public void setBatch(String batch) {
         this.batch = batch;
+    }
+
+    public String getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(String lecturer) {
+        this.lecturer = lecturer;
     }
 }

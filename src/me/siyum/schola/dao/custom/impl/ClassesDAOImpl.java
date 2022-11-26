@@ -11,9 +11,10 @@ import java.util.ArrayList;
 public class ClassesDAOImpl implements ClassesDAO {
     @Override
     public boolean save(Classes classes) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("INSERT INTO class VALUES(?,?,?,?,?,?)",
+        return CRUDUtil.execute("INSERT INTO class VALUES(?,?,?,?,?,?,?)",
                 classes.getId(),
                 classes.getSubID(),
+                classes.getLecturer(),
                 classes.getClssRoom(),
                 classes.getBatch(),
                 classes.getDate(),
@@ -48,8 +49,9 @@ public class ClassesDAOImpl implements ClassesDAO {
                             res.getString(2),
                             res.getString(3),
                             res.getString(4),
-                            res.getDate(5).toLocalDate(),
-                            res.getTime(6).toLocalTime()
+                            res.getString(5),
+                            res.getDate(6).toLocalDate(),
+                            res.getTime(7).toLocalTime()
                     )
             );
         }
@@ -74,4 +76,5 @@ public class ClassesDAOImpl implements ClassesDAO {
     public String getIDByToken(String s, String role) {
         return null;
     }
+
 }
