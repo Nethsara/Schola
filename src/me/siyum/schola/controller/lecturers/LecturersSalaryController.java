@@ -1,4 +1,4 @@
-package me.siyum.schola.controller.receptionist;
+package me.siyum.schola.controller.lecturers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,12 +12,12 @@ import me.siyum.schola.bo.custom.EmployeeBO;
 import me.siyum.schola.bo.custom.SalaryBO;
 import me.siyum.schola.dto.SalaryDTO;
 import me.siyum.schola.util.Env;
-import me.siyum.schola.view.receptionist.tm.ReceptionistSalaryTM;
+import me.siyum.schola.view.lecturers.tm.LecturerSalaryTM;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ReceptionistSalaryController {
+public class LecturersSalaryController {
     private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     private final SalaryBO salaryBO = BOFactory.getInstance().getBO(BOTypes.SALARY);
     public TableColumn colID;
@@ -25,7 +25,7 @@ public class ReceptionistSalaryController {
     public TableColumn colMethod;
     public TableColumn colAmount;
     public AnchorPane paneRecSalaryHistory;
-    public TableView<ReceptionistSalaryTM> tblRecSalary;
+    public TableView<LecturerSalaryTM> tblRecSalary;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -37,16 +37,16 @@ public class ReceptionistSalaryController {
 
     public void setData() {
         try {
-            ObservableList<ReceptionistSalaryTM> tmList = FXCollections.observableArrayList();
+            ObservableList<LecturerSalaryTM> tmList = FXCollections.observableArrayList();
 
-            String lectureID = employeeBO.getIDByToken(Env.token, "receptionist");
+            String lectureID = employeeBO.getIDByToken(Env.token, "lecturer");
             System.out.println(lectureID);
             ArrayList<SalaryDTO> salaryDTOS = salaryBO.getSalaries(lectureID);
 
             for (SalaryDTO s : salaryDTOS) {
                 System.out.println(s.getId());
                 tmList.add(
-                        new ReceptionistSalaryTM(
+                        new LecturerSalaryTM(
                                 s.getId(),
                                 s.getEmpID(),
                                 s.getDate(),

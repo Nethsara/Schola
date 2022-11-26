@@ -130,7 +130,7 @@ public class EmployeeFormController {
 
             if (saved) {
                 new Alert(Alert.AlertType.INFORMATION, "Saved Employee").show();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/admin/AdminLecturersPage.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../view/admin/AdminEmployeeManager.fxml"));
                 loader.load();
                 AdminLectureresPageController controller = loader.getController();
                 controller.setData();

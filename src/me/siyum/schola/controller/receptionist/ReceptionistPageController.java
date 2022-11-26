@@ -17,7 +17,7 @@ import me.siyum.schola.dto.ToDoDTO;
 import me.siyum.schola.entity.Tasks;
 import me.siyum.schola.util.Navigation;
 import me.siyum.schola.util.Routes;
-import me.siyum.schola.view.receptionist.tm.TasksTM;
+import me.siyum.schola.view.receptionist.tm.ReceptionistTasksTM;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,7 +32,7 @@ public class ReceptionistPageController {
     public JFXListView<String> listName;
     public TextField txtToDoListItem;
     public JFXButton btnRemove;
-    public TableView<TasksTM> tblRefreshments;
+    public TableView<ReceptionistTasksTM> tblRefreshments;
     public TableColumn colID;
     public TableColumn colTime;
     public TableColumn colStatus;
@@ -59,7 +59,7 @@ public class ReceptionistPageController {
     public void setData() {
         btnRemove.setDisable(true);
         try {
-            ObservableList<TasksTM> tmList = FXCollections.observableArrayList();
+            ObservableList<ReceptionistTasksTM> tmList = FXCollections.observableArrayList();
 
             ArrayList<TasksDTO> tasksDTOS = tasksBO.searchTasks("");
             for (TasksDTO t : tasksDTOS) {
@@ -71,7 +71,7 @@ public class ReceptionistPageController {
                     btn.setStyle("-fx-base: #2980b9; -fx-border-radius: 5; -fx-background-radius: 5;");
                     btn.setDisable(true);
                 }
-                TasksTM tm = new TasksTM(
+                ReceptionistTasksTM tm = new ReceptionistTasksTM(
                         t.getId(),
                         t.getTimeStamp(),
                         t.getMessage(),
