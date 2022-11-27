@@ -84,10 +84,6 @@ public class ClassesDAOImpl implements ClassesDAO {
         return null;
     }
 
-    @Override
-    public int getCount() throws SQLException, ClassNotFoundException {
-        return 0;
-    }
 
     @Override
     public String getIDByToken(String s, String role) {

@@ -80,11 +80,6 @@ public class AttendanceDAOImpl implements AttendanceDAO {
     }
 
     @Override
-    public int getCount() throws SQLException, ClassNotFoundException {
-        return 0;
-    }
-
-    @Override
     public String getIDByToken(String s, String role) throws SQLException, ClassNotFoundException {
         return null;
     }

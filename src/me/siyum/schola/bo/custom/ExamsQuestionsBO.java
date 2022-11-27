@@ -9,5 +9,5 @@ public interface ExamsQuestionsBO {
 
     ExamQuestionsDTO getQuestion(String exmID, int qNo) throws SQLException, ClassNotFoundException;
 
-    int getQuestionCount() throws SQLException, ClassNotFoundException;
+    int getQuestionCount(String id) throws SQLException, ClassNotFoundException;
 }

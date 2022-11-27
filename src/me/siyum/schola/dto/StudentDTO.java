@@ -4,7 +4,6 @@ import me.siyum.schola.entity.SuperEntity;
 
 import java.sql.Blob;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class StudentDTO implements SuperEntity {
     private String id;
@@ -22,7 +21,11 @@ public class StudentDTO implements SuperEntity {
     private boolean approval;
 
 
-    public StudentDTO(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark, LocalDate dob, boolean status, boolean approval, String batch) {
+    public StudentDTO(String id, String name,
+                      String email, String nic,
+                      Blob image, String address,
+                      String phone, String parentID,
+                      int scholaMark, LocalDate dob, boolean status, boolean approval, String batch) {
         this.id = id;
         this.name = name;
         this.email = email;

@@ -43,7 +43,7 @@ public class ExamsQuestionsBoImpl implements ExamsQuestionsBO {
     }
 
     @Override
-    public int getQuestionCount() throws SQLException, ClassNotFoundException {
-        return examsDAO.getCount();
+    public int getQuestionCount(String id) throws SQLException, ClassNotFoundException {
+        return examsDAO.examQuestionCount(id);
     }
 }

@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
@@ -24,8 +23,7 @@ public class StudentExamController {
     public JFXRadioButton radioMCQ3;
     public JFXRadioButton radioMCQ4;
     public JFXRadioButton radioMCQ1;
-    public Label lblExmID;
-    public Label lblStID;
+
     ExamsQuestionsBO examsQuestionsBO = BOFactory.getInstance().getBO(BOTypes.EXAM_QUESTIONS);
     private ExamQuestionsDTO examQuestionsDTO;
     private int correctAns;
@@ -43,14 +41,12 @@ public class StudentExamController {
         if (radioMCQ4.isSelected()) selectedAns = 4;
 
         if (selectedAns == correctAns) {
-            ExamMarking.mark += 1;
+            ExamMarking.mark++;
         }
 
 
-        int questionCount = examsQuestionsBO.getQuestionCount();
-        if (questionCount == ExamMarking.currentQ) {
-
-
+        int questionCount = examsQuestionsBO.getQuestionCount(ExamMarking.examID);
+        if ((questionCount == ExamMarking.currentQ)) {
             try {
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 stage.close();
@@ -64,7 +60,6 @@ public class StudentExamController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
 
             System.out.println(ExamMarking.mark);
         } else {
@@ -85,6 +80,7 @@ public class StudentExamController {
     }
 
     private void setData() {
+        System.out.println(ExamMarking.currentQ);
         try {
             examQuestionsDTO = examsQuestionsBO.getQuestion(ExamMarking.examID, ExamMarking.currentQ);
             txtQuestion.setText(examQuestionsDTO.getQuestion());
@@ -101,6 +97,4 @@ public class StudentExamController {
         }
     }
 
-    public void startExam(ActionEvent actionEvent) {
-    }
 }

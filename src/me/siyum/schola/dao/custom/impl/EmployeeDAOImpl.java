@@ -67,7 +67,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee retrieve(String s) throws SQLException, ClassNotFoundException {
-        ResultSet res = CRUDUtil.execute("SELECT * FROM employee");
+        ResultSet res = CRUDUtil.execute("SELECT * FROM employee WHERE eID=?", s);
         if (res.next()) {
             return new Employee(
                     res.getString(1),
@@ -114,11 +114,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ));
         }
         return employees;
-    }
-
-    @Override
-    public int getCount() {
-        return 0;
     }
 
     @Override

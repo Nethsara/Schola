@@ -57,10 +57,6 @@ public class BatchDAOImpl implements BatchDAO {
         return null;
     }
 
-    @Override
-    public int getCount() throws SQLException, ClassNotFoundException {
-        return 0;
-    }
 
     @Override
     public String getIDByToken(String s, String role) {

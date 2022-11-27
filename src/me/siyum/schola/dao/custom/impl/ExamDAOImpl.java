@@ -68,10 +68,6 @@ public class ExamDAOImpl implements ExamsDAO {
         return null;
     }
 
-    @Override
-    public int getCount() {
-        return 0;
-    }
 
     @Override
     public String getIDByToken(String s, String role) {

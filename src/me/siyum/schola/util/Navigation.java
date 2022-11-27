@@ -73,6 +73,12 @@ public class Navigation {
             case LECTURER_CLASS:
                 setPanel("lecturers/LectureresClasses", anchorPane);
                 break;
+            case STUDENT_ANNOUNCEMENT:
+                setPanel("students/StudentsAnnouncments", anchorPane);
+                break;
+            case STUDENT_EXAMS:
+                setPanel("students/StudentExamPage", anchorPane);
+                break;
         }
 
     }

@@ -2,20 +2,22 @@ package me.siyum.schola.controller.students;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.ExamsBO;
-import me.siyum.schola.bo.custom.StudentBO;
-import me.siyum.schola.bo.custom.StudentMarkBO;
-import me.siyum.schola.bo.custom.SubjectsBO;
+import me.siyum.schola.bo.custom.*;
 import me.siyum.schola.dto.ExamsDTO;
 import me.siyum.schola.util.Env;
 import me.siyum.schola.view.students.tm.StudentExamTM;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,17 +27,17 @@ public class StudentsExamPageController {
     private final SubjectsBO subBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
     private final StudentMarkBO stMarkBO = BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
     private final StudentBO stBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    public TableColumn colExmID;
-    public TableColumn colBy;
-    public TableColumn colSub;
-    public TableColumn colDate;
-    public TableColumn colTime;
-    public TableColumn colMarks;
-    public TableColumn colStatus;
-    public TableColumn colActions;
+    private final EmployeeBO empBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final ObservableList<StudentExamTM> obList = FXCollections.observableArrayList();
+    public TableColumn<StudentExamTM, String> colExmID;
+    public TableColumn<StudentExamTM, String> colBy;
+    public TableColumn<StudentExamTM, String> colSub;
+    public TableColumn<StudentExamTM, String> colDate;
+    public TableColumn<StudentExamTM, String> colMarks;
+    public TableColumn<StudentExamTM, String> colStatus;
+    public TableColumn<StudentExamTM, String> colActions;
     public TableView<StudentExamTM> tblExm;
     private String stID;
-    private ObservableList<StudentExamTM> obList = FXCollections.observableArrayList();
 
     public void initialize() {
         colExmID.setCellValueFactory(new PropertyValueFactory<>("exmID"));
@@ -63,26 +65,47 @@ public class StudentsExamPageController {
     private void setTables() throws SQLException, ClassNotFoundException {
         ArrayList<ExamsDTO> allExams = examsBO.getAllExams();
 
-        for (ExamsDTO e : allExams
-        ) {
+        for (ExamsDTO e : allExams) {
 
             String name = subBO.getNameByLecturer(e.getLecturer());
             double mark = stMarkBO.getMarkByID(e.getId(), stID);
 
-            String status = e.getDate().isBefore(LocalDate.now()) ? "finished" : "pending";
-            Button btn = new Button("Participate");
+            String status = e.getDate().isBefore(LocalDate.now()) ? "finished" :
+                    e.getDate().isEqual(LocalDate.now()) ? "complete now" : "pending";
 
+            Button btn = new Button("Participate");
+            if (status.equals("finished")) {
+                btn.setDisable(true);
+            } else if (status.equals("pending")) {
+                btn.setDisable(true);
+            }
             obList.add(
                     new StudentExamTM(
                             e.getId(),
                             e.getDate(),
-                            e.getLecturer(),
+                            empBO.getEmployeeByID(e.getLecturer()).getName(),
                             name,
                             mark,
                             status,
                             btn
                     )
             );
+
+            btn.setOnAction(ev -> {
+                System.out.println("Clicked");
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExamReady.fxml"));
+                    Parent parent = loader.load();
+                    StudentsExamReadyController controller = loader.getController();
+                    controller.setData(e.getId(), stID);
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(parent));
+                    stage.show();
+
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
         }
         tblExm.setItems(obList);
 

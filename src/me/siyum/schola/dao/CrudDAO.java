@@ -13,7 +13,5 @@ public interface CrudDAO<T extends SuperEntity,ID> {
     ArrayList<T> search(ID s) throws SQLException, ClassNotFoundException;
     T retrieve(ID id) throws SQLException, ClassNotFoundException;
     String getID(ID s) throws SQLException, ClassNotFoundException;
-    int getCount() throws SQLException, ClassNotFoundException;
-
     String getIDByToken(String s, String role) throws SQLException, ClassNotFoundException;
 }
