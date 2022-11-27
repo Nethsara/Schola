@@ -19,13 +19,12 @@
         <TableView fx:id="tblExm" layoutX="8.0" layoutY="72.0" prefHeight="478.0" prefWidth="1034.0">
             <columns>
                 <TableColumn fx:id="colExmID" prefWidth="100.33332824707031" text="Exam ID"/>
-                <TableColumn fx:id="colBy" prefWidth="155.33331298828125" text="By"/>
-                <TableColumn fx:id="colSub" prefWidth="146.33331298828125" text="Subject"/>
-                <TableColumn fx:id="colDate" prefWidth="150.0" text="Date"/>
-                <TableColumn fx:id="colTime" prefWidth="156.0" text="Time"/>
-                <TableColumn fx:id="colMarks" prefWidth="120.0" text="Marks"/>
-                <TableColumn fx:id="colStatus" prefWidth="104.0" text="Status"/>
-                <TableColumn fx:id="colActions" prefWidth="106.0" text="Actions"/>
+                <TableColumn fx:id="colBy" prefWidth="155.33331298828125" text="Lecturer"/>
+                <TableColumn fx:id="colSub" prefWidth="209.0" text="Subject"/>
+                <TableColumn fx:id="colDate" prefWidth="163.0" text="Date"/>
+                <TableColumn fx:id="colMarks" prefWidth="122.0" text="Marks"/>
+                <TableColumn fx:id="colStatus" prefWidth="175.0" text="Status"/>
+                <TableColumn fx:id="colActions" prefWidth="107.0" text="Actions"/>
             </columns>
         </TableView>
     </AnchorPane>

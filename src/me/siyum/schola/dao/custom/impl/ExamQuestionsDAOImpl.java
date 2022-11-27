@@ -75,15 +75,6 @@ public class ExamQuestionsDAOImpl implements ExamsQuestionsDAO {
     }
 
     @Override
-    public int getCount() throws SQLException, ClassNotFoundException {
-        ResultSet res = CRUDUtil.execute("SELECT COUNT(qID) FROM exam_questions");
-        if (res.next()) {
-            return res.getInt(1);
-        }
-        return 0;
-    }
-
-    @Override
     public String getIDByToken(String s, String role) {
         return null;
     }
@@ -107,5 +98,15 @@ public class ExamQuestionsDAOImpl implements ExamsQuestionsDAO {
             );
         }
         return null;
+    }
+
+    @Override
+    public int examQuestionCount(String exmID) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM exam_questions WHERE exmID=?", exmID);
+        int count = 0;
+        while (res.next()) {
+            count++;
+        }
+        return count;
     }
 }

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.*?>
 <AnchorPane prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.students.StudentsPageController">
    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#191d20" height="52.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1100.0" />
    <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
@@ -35,19 +34,29 @@
    </Label>
    <AnchorPane fx:id="mainPane" layoutX="2.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0" />
    <HBox layoutX="192.0" layoutY="10.0" prefHeight="28.0" prefWidth="491.0" spacing="10.0">
-      <JFXButton text="Home" textFill="WHITE">
+      <JFXButton onAction="#studentHome" text="Home" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas" size="15.0"/>
          </font>
       </JFXButton>
-      <JFXButton text="Exams" textFill="WHITE">
+      <JFXButton onAction="#studentExam" text="Exams" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas" size="15.0"/>
          </font>
       </JFXButton>
-      <JFXButton text="Reports" textFill="WHITE">
+      <JFXButton text="Classes" textFill="WHITE">
          <font>
-            <Font name="Consolas" size="15.0" />
+            <Font name="Consolas" size="15.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton text="HomeWork" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton text="Billing" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="15.0"/>
          </font>
       </JFXButton>
    </HBox>

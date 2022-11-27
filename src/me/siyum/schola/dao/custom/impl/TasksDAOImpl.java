@@ -61,10 +61,6 @@ public class TasksDAOImpl implements TasksDAO {
         return "";
     }
 
-    @Override
-    public int getCount() {
-        return 0;
-    }
 
     @Override
     public String getIDByToken(String s, String role) {

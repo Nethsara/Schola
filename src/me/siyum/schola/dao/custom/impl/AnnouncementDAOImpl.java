@@ -77,12 +77,7 @@ public class AnnouncementDAOImpl implements AnnouncementsDAO {
         return "";
     }
 
-    @Override
-    public int getCount() {
-        return 0;
-    }
-
-    @Override
+     @Override
     public String getIDByToken(String s, String role) {
         return null;
     }

@@ -8,6 +8,7 @@ import me.siyum.schola.dto.AttendanceMarkDTO;
 import me.siyum.schola.entity.AttendanceMark;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AttendanceMarkBOImpl implements AttendanceMarkBO {
     AttendanceMarkDAO attendanceMarkDAO = DAOFactory.getInstance().getDAO(DAOTypes.ATTENDANCE_MARK);
@@ -21,5 +22,22 @@ public class AttendanceMarkBOImpl implements AttendanceMarkBO {
                         attendanceMarkDTO.isPresent()
                 )
         );
+    }
+
+    @Override
+    public ArrayList<AttendanceMarkDTO> getAttendanceByID(String id) throws SQLException, ClassNotFoundException {
+        ArrayList<AttendanceMark> search = attendanceMarkDAO.search(id);
+        ArrayList<AttendanceMarkDTO> attendanceMarkDTOS = new ArrayList<>();
+        for (AttendanceMark a : search
+        ) {
+            attendanceMarkDTOS.add(
+                    new AttendanceMarkDTO(
+                            a.getAmID(),
+                            a.getStID(),
+                            a.isPresent()
+                    )
+            );
+        }
+        return attendanceMarkDTOS;
     }
 }

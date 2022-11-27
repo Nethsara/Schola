@@ -81,10 +81,6 @@ public class ParentDAOImpl implements ParentDAO {
         return "";
     }
 
-    @Override
-    public int getCount() {
-        return 0;
-    }
 
     @Override
     public String getIDByToken(String s, String role) {

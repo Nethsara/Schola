@@ -50,6 +50,7 @@ public class StudentExamResultController {
             );
             if (b) {
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                ExamMarking.scholaReload();
                 stage.close();
             }
         } catch (SQLException | ClassNotFoundException e) {

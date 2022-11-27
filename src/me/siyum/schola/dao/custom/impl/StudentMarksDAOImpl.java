@@ -53,11 +53,6 @@ public class StudentMarksDAOImpl implements StudentMarkDAO {
     }
 
     @Override
-    public int getCount() throws SQLException, ClassNotFoundException {
-        return 0;
-    }
-
-    @Override
     public String getIDByToken(String s, String role) {
         return null;
     }
@@ -70,4 +65,23 @@ public class StudentMarksDAOImpl implements StudentMarkDAO {
         }
         return 0;
     }
+
+    @Override
+    public ArrayList<StudentMarks> getExamMarksByID(String id) throws SQLException, ClassNotFoundException {
+        ArrayList<StudentMarks> returnList = new ArrayList<>();
+        ResultSet res = CRUDUtil.execute("SELECT * FROM student_exam_marks WHERE stID=?", id);
+
+        while (res.next()) {
+            returnList.add(
+                    new StudentMarks(
+                            res.getString(1),
+                            res.getString(2),
+                            res.getString(3),
+                            res.getInt(4)
+                    )
+            );
+        }
+        return returnList;
+    }
+
 }
