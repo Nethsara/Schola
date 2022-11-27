@@ -44,17 +44,17 @@
             <Font name="Consolas" size="15.0"/>
          </font>
       </JFXButton>
-      <JFXButton text="Classes" textFill="WHITE">
+      <JFXButton onAction="#classes" text="Classes" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0"/>
          </font>
       </JFXButton>
-      <JFXButton text="HomeWork" textFill="WHITE">
+      <JFXButton onAction="#homeWork" text="HomeWork" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0"/>
          </font>
       </JFXButton>
-      <JFXButton text="Billing" textFill="WHITE">
+      <JFXButton onAction="#billing" text="Billing" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0"/>
          </font>

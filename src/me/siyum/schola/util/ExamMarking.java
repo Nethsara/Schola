@@ -17,8 +17,11 @@ public class ExamMarking {
     public static int currentQ = 1;
     public static String examID = "e1";
     public static String stID = "";
+    public static int markPerQuestion = 0;
 
-    public static void scholaReload() throws SQLException, ClassNotFoundException {
+    public static boolean scholaReload() throws SQLException, ClassNotFoundException {
+
+        boolean saved = true;
         StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
         StudentMarkBO studentMarkBO = BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
         AttendanceMarkBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE_MARK);
@@ -52,7 +55,7 @@ public class ExamMarking {
             }
             scholaMark += ((attendanceMark / attendanceByID.size()) * 30) / 100;
 
-            studentBO.updateStudent(
+            saved = studentBO.updateStudent(
                     new StudentDTO(
                             s.getId(),
                             s.getName(),
@@ -72,5 +75,6 @@ public class ExamMarking {
             );
 
         }
+        return saved;
     }
 }

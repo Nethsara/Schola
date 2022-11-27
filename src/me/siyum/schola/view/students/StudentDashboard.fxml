@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.students.StudentDashboardController">
+   <Label layoutX="14.0" layoutY="14.0" text="Welcome, Nethsara Siyum" textFill="WHITE">
+      <font>
+         <Font name="Consolas Bold" size="12.0"/>
+      </font>
+   </Label>
+   <ImageView fitHeight="14.0" fitWidth="19.0" layoutX="169.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../../assets/images/wave-hand.png"/>
+   </ImageView>
+   <AnchorPane layoutX="13.0" layoutY="37.0" prefHeight="281.0" prefWidth="1075.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="19.0" layoutY="17.0" text="Announcements" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="14.0"/>
+         </font>
+      </Label>
+      <TableView layoutX="19.0" layoutY="43.0" prefHeight="225.0" prefWidth="1038.0"
+                 style="-fx-background-color: transparent; -fx-border-color: grey;">
+         <columns>
+            <TableColumn prefWidth="75.0" text="ID"/>
+            <TableColumn prefWidth="107.0" text="Date"/>
+            <TableColumn prefWidth="698.0000152587891" text="Message"/>
+            <TableColumn prefWidth="157.0" text="From"/>
+         </columns>
+      </TableView>
+      <JFXButton layoutX="988.0" layoutY="9.0" opacity="0.61"
+                 style="-fx-background-color: #111214; -fx-background-radius: 5;" text="View All" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="12.0"/>
+         </font>
+      </JFXButton>
+   </AnchorPane>
+   <AnchorPane layoutX="17.0" layoutY="323.0" prefHeight="281.0" prefWidth="543.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <Label layoutX="17.0" layoutY="8.0" text="Chat Box" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="14.0"/>
+         </font>
+      </Label>
+   </AnchorPane>
+   <AnchorPane layoutX="572.0" layoutY="323.0" prefHeight="281.0" prefWidth="514.0"
+               style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+      <TableView fx:id="tblClasses" layoutX="10.0" layoutY="30.0" prefHeight="235.0" prefWidth="495.0"
+                 style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;">
+         <columns>
+            <TableColumn fx:id="colDate" prefWidth="93.0" text="Date"/>
+            <TableColumn fx:id="colTime" prefWidth="73.0" text="Time"/>
+            <TableColumn fx:id="colClassRoom" prefWidth="94.0" text="Class Room"/>
+            <TableColumn fx:id="colSubject" prefWidth="103.0" text="Subject"/>
+            <TableColumn fx:id="colLecturer" prefWidth="130.0" text="Lecturer"/>
+         </columns>
+      </TableView>
+      <Label layoutX="179.0" layoutY="6.0" text="Upcoming Classes" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="14.0"/>
+         </font>
+      </Label>
+   </AnchorPane>
+</AnchorPane>

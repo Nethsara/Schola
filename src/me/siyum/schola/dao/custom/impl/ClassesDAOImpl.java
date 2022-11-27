@@ -45,7 +45,7 @@ public class ClassesDAOImpl implements ClassesDAO {
         ArrayList<Classes> classList = new ArrayList<>();
 
         s = "%" + s + "%";
-        ResultSet res = CRUDUtil.execute("SELECT * FROM class");
+        ResultSet res = CRUDUtil.execute("SELECT * FROM class ORDER BY date DESC");
         while (res.next()) {
             classList.add(
                     new Classes(

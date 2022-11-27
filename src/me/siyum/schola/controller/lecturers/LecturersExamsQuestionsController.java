@@ -11,9 +11,12 @@ import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.ExamsQuestionsBO;
+import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.ExamQuestionsDTO;
 import me.siyum.schola.view.lecturers.tm.LecturerExamQuestionTM;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class LecturersExamsQuestionsController {
@@ -22,16 +25,16 @@ public class LecturersExamsQuestionsController {
     public TextField txtMCQ2;
     public TextField txtMCQ3;
     public TextField txtMCQ4;
-    public JFXComboBox cmbCorrectAnswer;
-    public TableColumn colQNo;
-    public TableColumn colQuestion;
-    public TableColumn colMCQ1;
-    public TableColumn colMCQ2;
-    public TableColumn colMCQ3;
-    public TableColumn colMCQ4;
-    public TableColumn colAction;
+    public JFXComboBox<String> cmbCorrectAnswer;
+    public TableColumn<LecturerExamQuestionTM, String> colQNo;
+    public TableColumn<LecturerExamQuestionTM, String> colQuestion;
+    public TableColumn<LecturerExamQuestionTM, String> colMCQ1;
+    public TableColumn<LecturerExamQuestionTM, String> colMCQ2;
+    public TableColumn<LecturerExamQuestionTM, String> colMCQ3;
+    public TableColumn<LecturerExamQuestionTM, String> colMCQ4;
+    public TableColumn<LecturerExamQuestionTM, String> colAction;
     public TableView<LecturerExamQuestionTM> tblQuestions;
-    public TableColumn colCorrectAns;
+    public TableColumn<LecturerExamQuestionTM, String> colCorrectAns;
     public Label lblExmID;
 
     ObservableList<LecturerExamQuestionTM> obList = FXCollections.observableArrayList();
@@ -66,12 +69,14 @@ public class LecturersExamsQuestionsController {
         lblExmID.setText(id);
     }
 
-    public void createExm(ActionEvent actionEvent) {
+    public void createExm(ActionEvent actionEvent) throws SQLException {
         System.out.println("create");
         boolean status = true;
+        Connection connection = null;
         try {
-            for (LecturerExamQuestionTM e : obList
-            ) {
+            connection = DBConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
+            for (LecturerExamQuestionTM e : obList) {
 
                 status = examsQuestionsBO.saveExamQuestion(new ExamQuestionsDTO(
                         e.getQuestionNo(),
@@ -86,19 +91,27 @@ public class LecturersExamsQuestionsController {
 
 
             }
+            if (status) {
+                connection.commit();
+                new Alert(Alert.AlertType.INFORMATION, "Done").show();
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+
+            } else {
+                connection.rollback();
+                connection.setAutoCommit(true);
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
+        } finally {
+            assert connection != null;
+            connection.setAutoCommit(true);
         }
 
-        if (status) {
-            new Alert(Alert.AlertType.INFORMATION, "Done").show();
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.close();
 
-        }
     }
 
-    public void addQuestion(ActionEvent actionEvent) {
+    public void addQuestion() {
         Button btn = new Button("Remove");
         obList.add(
                 new LecturerExamQuestionTM(
@@ -109,7 +122,7 @@ public class LecturersExamsQuestionsController {
                         txtMCQ2.getText(),
                         txtMCQ3.getText(),
                         txtMCQ4.getText(),
-                        Integer.parseInt(cmbCorrectAnswer.getValue().toString()),
+                        Integer.parseInt(cmbCorrectAnswer.getValue()),
                         btn
                 )
         );

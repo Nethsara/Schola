@@ -15,18 +15,29 @@ public class StudentsPageController {
     public Circle circleImg;
     public AnchorPane mainPane;
 
-    public void initialize() {
-
+    public void initialize() throws IOException {
+        Navigation.navigate(Routes.STUDENT_DASHBOARD, mainPane);
     }
 
     public void notificationsPane(MouseEvent mouseEvent) throws IOException {
         Navigation.navigate(Routes.STUDENT_ANNOUNCEMENT, mainPane);
     }
 
-    public void studentHome(ActionEvent actionEvent) {
+    public void studentHome(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.STUDENT_DASHBOARD, mainPane);
     }
 
     public void studentExam(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.STUDENT_EXAMS, mainPane);
+    }
+
+    public void classes(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.STUDENT_CLASSES, mainPane);
+    }
+
+    public void billing(ActionEvent actionEvent) {
+    }
+
+    public void homeWork(ActionEvent actionEvent) {
     }
 }

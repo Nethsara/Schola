@@ -1,7 +1,9 @@
 package me.siyum.schola.controller.students;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,7 +30,9 @@ public class StudentsExamPageController {
     private final StudentMarkBO stMarkBO = BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
     private final StudentBO stBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
     private final EmployeeBO empBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    private final ObservableList<StudentExamTM> obList = FXCollections.observableArrayList();
+    private final ObservableList<StudentExamTM> todayExams = FXCollections.observableArrayList();
+    private final ObservableList<StudentExamTM> passedExams = FXCollections.observableArrayList();
+    private final ObservableList<StudentExamTM> pendingExams = FXCollections.observableArrayList();
     public TableColumn<StudentExamTM, String> colExmID;
     public TableColumn<StudentExamTM, String> colBy;
     public TableColumn<StudentExamTM, String> colSub;
@@ -37,6 +41,7 @@ public class StudentsExamPageController {
     public TableColumn<StudentExamTM, String> colStatus;
     public TableColumn<StudentExamTM, String> colActions;
     public TableView<StudentExamTM> tblExm;
+    public JFXComboBox<String> cmbFilter;
     private String stID;
 
     public void initialize() {
@@ -54,61 +59,166 @@ public class StudentsExamPageController {
     private void setData() {
         try {
             stID = stBO.getStudentByToken(Env.token);
-            setTables();
+            loadLists();
+            setComboBox();
+            setTables(todayExams);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
 
-    private void setTables() throws SQLException, ClassNotFoundException {
+    private void setComboBox() {
+        ObservableList<String> filterList = FXCollections.observableArrayList(
+                "Today",
+                "Passed",
+                "Pending"
+        );
+
+        cmbFilter.setItems(filterList);
+    }
+
+    private void loadPassedExams() throws SQLException, ClassNotFoundException {
+        setTables(passedExams);
+    }
+
+    private void loadTodayExams() throws SQLException, ClassNotFoundException {
+        setTables(todayExams);
+    }
+
+    private void loadPendingExams() throws SQLException, ClassNotFoundException {
+        setTables(pendingExams);
+    }
+
+    private void loadLists() throws SQLException, ClassNotFoundException {
         ArrayList<ExamsDTO> allExams = examsBO.getAllExams();
 
         for (ExamsDTO e : allExams) {
 
             String name = subBO.getNameByLecturer(e.getLecturer());
-            double mark = stMarkBO.getMarkByID(e.getId(), stID);
+            double mark = stMarkBO.getMarkByID(stID, e.getId());
 
             String status = e.getDate().isBefore(LocalDate.now()) ? "finished" :
-                    e.getDate().isEqual(LocalDate.now()) ? "complete now" : "pending";
+                    e.getDate().isEqual(LocalDate.now()) ? "today" : "pending";
 
+            System.out.println(mark + " mark from db " + e.getId() + " - Exm " + stID + " st ");
             Button btn = new Button("Participate");
-            if (status.equals("finished")) {
-                btn.setDisable(true);
-            } else if (status.equals("pending")) {
+
+            if (mark > -1) {
+                btn.setText("Already Done");
                 btn.setDisable(true);
             }
-            obList.add(
-                    new StudentExamTM(
-                            e.getId(),
-                            e.getDate(),
-                            empBO.getEmployeeByID(e.getLecturer()).getName(),
-                            name,
-                            mark,
-                            status,
-                            btn
-                    )
-            );
+            if (status.equals("finished") || status.equals("pending")) {
+                btn.setDisable(true);
+            }
 
-            btn.setOnAction(ev -> {
-                System.out.println("Clicked");
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExamReady.fxml"));
-                    Parent parent = loader.load();
-                    StudentsExamReadyController controller = loader.getController();
-                    controller.setData(e.getId(), stID);
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(parent));
-                    stage.show();
+            if (status.equalsIgnoreCase("finished")) {
+                passedExams.add(
+                        new StudentExamTM(
+                                e.getId(),
+                                e.getDate(),
+                                empBO.getEmployeeByID(e.getLecturer()).getName(),
+                                name,
+                                mark < 0 ? 0 : mark,
+                                status,
+                                btn
+                        )
+                );
 
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            });
+                btn.setOnAction(ev -> {
+                    System.out.println("Clicked");
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExamReady.fxml"));
+                        Parent parent = loader.load();
+                        StudentsExamReadyController controller = loader.getController();
+                        controller.setData(e.getId(), stID);
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(parent));
+                        stage.show();
+
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
+            }
+
+            if (status.equalsIgnoreCase("pending")) {
+                pendingExams.add(
+                        new StudentExamTM(
+                                e.getId(),
+                                e.getDate(),
+                                empBO.getEmployeeByID(e.getLecturer()).getName(),
+                                name,
+                                mark < 0 ? 0 : mark,
+                                status,
+                                btn
+                        )
+                );
+
+                btn.setOnAction(ev -> {
+                    System.out.println("Clicked");
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExamReady.fxml"));
+                        Parent parent = loader.load();
+                        StudentsExamReadyController controller = loader.getController();
+                        controller.setData(e.getId(), stID);
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(parent));
+                        stage.show();
+
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
+            }
+
+            if (status.equalsIgnoreCase("today")) {
+                todayExams.add(
+                        new StudentExamTM(
+                                e.getId(),
+                                e.getDate(),
+                                empBO.getEmployeeByID(e.getLecturer()).getName(),
+                                name,
+                                mark,
+                                status,
+                                btn
+                        )
+                );
+
+                btn.setOnAction(ev -> {
+                    System.out.println("Clicked");
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExamReady.fxml"));
+                        Parent parent = loader.load();
+                        StudentsExamReadyController controller = loader.getController();
+                        controller.setData(e.getId(), stID);
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(parent));
+                        stage.show();
+
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
+            }
         }
-        tblExm.setItems(obList);
+    }
 
+    private void setTables(ObservableList<StudentExamTM> obList) throws SQLException, ClassNotFoundException {
+        tblExm.setItems(obList);
+    }
+
+    public void filterOnActions(ActionEvent actionEvent) {
+        try {
+            if (cmbFilter.getValue().equalsIgnoreCase("Today")) {
+                loadTodayExams();
+            } else if (cmbFilter.getValue().equalsIgnoreCase("Passed")) {
+                loadPassedExams();
+            } else {
+                loadPendingExams();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 }

@@ -34,7 +34,7 @@
       </font>
    </Label>
    <AnchorPane fx:id="mainPane" layoutX="2.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0"/>
-   <HBox layoutX="192.0" layoutY="10.0" prefHeight="28.0" prefWidth="531.0" spacing="10.0">
+   <HBox layoutX="192.0" layoutY="10.0" prefHeight="28.0" prefWidth="710.0" spacing="10.0">
       <JFXButton onAction="#homePage" text="Home" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0"/>
@@ -61,6 +61,11 @@
          </font>
       </JFXButton>
       <JFXButton onAction="#attendancePage" prefHeight="28.0" prefWidth="110.0" text="Attendance" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton onAction="#homeWorks" prefHeight="28.0" prefWidth="110.0" text="Home Work" textFill="WHITE">
          <font>
             <Font name="Consolas" size="15.0"/>
          </font>

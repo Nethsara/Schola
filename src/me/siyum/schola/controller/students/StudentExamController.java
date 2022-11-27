@@ -25,7 +25,6 @@ public class StudentExamController {
     public JFXRadioButton radioMCQ1;
 
     ExamsQuestionsBO examsQuestionsBO = BOFactory.getInstance().getBO(BOTypes.EXAM_QUESTIONS);
-    private ExamQuestionsDTO examQuestionsDTO;
     private int correctAns;
     private int selectedAns;
 
@@ -35,13 +34,35 @@ public class StudentExamController {
 
 
     public void nextButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        if (radioMCQ1.isSelected()) selectedAns = 1;
-        if (radioMCQ2.isSelected()) selectedAns = 2;
-        if (radioMCQ3.isSelected()) selectedAns = 3;
-        if (radioMCQ4.isSelected()) selectedAns = 4;
+        if (radioMCQ1.isSelected()) {
+            radioMCQ3.setSelected(false);
+            radioMCQ2.setSelected(false);
+            radioMCQ4.setSelected(false);
+            selectedAns = 1;
+        }
+        if (radioMCQ2.isSelected()) {
+            radioMCQ1.setSelected(false);
+            radioMCQ3.setSelected(false);
+            radioMCQ4.setSelected(false);
+            selectedAns = 2;
+        }
+        if (radioMCQ3.isSelected()) {
+            radioMCQ1.setSelected(false);
+            radioMCQ2.setSelected(false);
+            radioMCQ4.setSelected(false);
+            selectedAns = 3;
+        }
+        if (radioMCQ4.isSelected()) {
+            radioMCQ1.setSelected(false);
+            radioMCQ2.setSelected(false);
+            radioMCQ3.setSelected(false);
+            selectedAns = 4;
+        }
+
+        ExamMarking.markPerQuestion = 100 / examsQuestionsBO.getQuestionCount(ExamMarking.examID);
 
         if (selectedAns == correctAns) {
-            ExamMarking.mark++;
+            ExamMarking.mark += ExamMarking.markPerQuestion;
         }
 
 
@@ -82,7 +103,7 @@ public class StudentExamController {
     private void setData() {
         System.out.println(ExamMarking.currentQ);
         try {
-            examQuestionsDTO = examsQuestionsBO.getQuestion(ExamMarking.examID, ExamMarking.currentQ);
+            ExamQuestionsDTO examQuestionsDTO = examsQuestionsBO.getQuestion(ExamMarking.examID, ExamMarking.currentQ);
             txtQuestion.setText(examQuestionsDTO.getQuestion());
             radioMCQ1.setText(examQuestionsDTO.getMcq1());
             radioMCQ2.setText(examQuestionsDTO.getMcq2());
