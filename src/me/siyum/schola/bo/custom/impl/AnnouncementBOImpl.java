@@ -6,7 +6,6 @@ import me.siyum.schola.dao.DAOTypes;
 import me.siyum.schola.dao.custom.AnnouncementsDAO;
 import me.siyum.schola.dto.AnnouncementsDTO;
 import me.siyum.schola.entity.Announcements;
-import me.siyum.schola.util.Accounts;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
