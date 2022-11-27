@@ -59,8 +59,11 @@ public class StudentMarksDAOImpl implements StudentMarkDAO {
 
     @Override
     public double getExmMarkByIDs(String stID, String exmID) throws SQLException, ClassNotFoundException {
-        ResultSet res = CRUDUtil.execute("SELECT mark FROM student_exam_marks WHERE stID=? || examID=?", stID, exmID);
+        System.out.println("dao get marks st " + stID + " ex " + exmID);
+        ResultSet res = CRUDUtil.execute("SELECT mark FROM student_exam_marks WHERE stID=? && examID=?", stID, exmID);
+
         if (res.next()) {
+            System.out.println("double from db " + res.getDouble(1));
             return res.getDouble(1);
         }
         return 0;

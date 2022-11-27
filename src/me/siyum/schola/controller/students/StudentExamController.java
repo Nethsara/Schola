@@ -40,8 +40,10 @@ public class StudentExamController {
         if (radioMCQ3.isSelected()) selectedAns = 3;
         if (radioMCQ4.isSelected()) selectedAns = 4;
 
+        ExamMarking.markPerQuestion = 100 / examsQuestionsBO.getQuestionCount(ExamMarking.examID);
+
         if (selectedAns == correctAns) {
-            ExamMarking.mark++;
+            ExamMarking.mark += ExamMarking.markPerQuestion;
         }
 
 

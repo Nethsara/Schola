@@ -15,6 +15,7 @@ public class StudentMarkBOImpl implements StudentMarkBO {
 
     @Override
     public double getMarkByID(String stID, String exmID) throws SQLException, ClassNotFoundException {
+        System.out.println("Bo get mark by ID called");
         return studentMarkDAO.getExmMarkByIDs(stID, exmID);
     }
 

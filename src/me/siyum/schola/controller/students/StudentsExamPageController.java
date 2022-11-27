@@ -68,12 +68,18 @@ public class StudentsExamPageController {
         for (ExamsDTO e : allExams) {
 
             String name = subBO.getNameByLecturer(e.getLecturer());
-            double mark = stMarkBO.getMarkByID(e.getId(), stID);
+            double mark = stMarkBO.getMarkByID(stID, e.getId());
 
+            System.out.println(mark);
             String status = e.getDate().isBefore(LocalDate.now()) ? "finished" :
                     e.getDate().isEqual(LocalDate.now()) ? "complete now" : "pending";
 
             Button btn = new Button("Participate");
+
+            if (mark > -1) {
+                btn.setText("Already Done");
+                btn.setDisable(true);
+            }
             if (status.equals("finished")) {
                 btn.setDisable(true);
             } else if (status.equals("pending")) {
@@ -85,7 +91,7 @@ public class StudentsExamPageController {
                             e.getDate(),
                             empBO.getEmployeeByID(e.getLecturer()).getName(),
                             name,
-                            mark,
+                            mark < 0 ? 0 : mark,
                             status,
                             btn
                     )
