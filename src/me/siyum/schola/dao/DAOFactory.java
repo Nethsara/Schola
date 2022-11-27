@@ -44,6 +44,10 @@ public class DAOFactory {
                 return (T) new AttendanceDAOImpl();
             case ATTENDANCE_MARK:
                 return (T) new AttendanceMarkDAOImpl();
+            case HOME_WORK:
+                return (T) new HomeWorkDAOImpl();
+            case HOME_WORK_STUDENT:
+                return (T) new HomeWorkStudentDAOImpl();
             default:
                 return null;
         }

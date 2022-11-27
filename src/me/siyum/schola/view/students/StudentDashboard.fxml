@@ -50,13 +50,14 @@
    </AnchorPane>
    <AnchorPane layoutX="572.0" layoutY="323.0" prefHeight="281.0" prefWidth="514.0"
                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-      <TableView layoutX="16.0" layoutY="46.0" prefHeight="219.0" prefWidth="495.0"
-                 style="-fx-background-color: transparent; -fx-border-color: grey;">
+      <TableView fx:id="tblClasses" layoutX="10.0" layoutY="30.0" prefHeight="235.0" prefWidth="495.0"
+                 style="-fx-background-color: transparent; -fx-border-color: grey; -fx-border-radius: 5; -fx-background-radius: 5;">
          <columns>
-            <TableColumn prefWidth="75.0" text="Subject"/>
-            <TableColumn prefWidth="127.0" text="Class Room"/>
-            <TableColumn prefWidth="134.0" text="Date"/>
-            <TableColumn prefWidth="157.0" text="Lecturer"/>
+            <TableColumn fx:id="colDate" prefWidth="93.0" text="Date"/>
+            <TableColumn fx:id="colTime" prefWidth="73.0" text="Time"/>
+            <TableColumn fx:id="colClassRoom" prefWidth="94.0" text="Class Room"/>
+            <TableColumn fx:id="colSubject" prefWidth="103.0" text="Subject"/>
+            <TableColumn fx:id="colLecturer" prefWidth="130.0" text="Lecturer"/>
          </columns>
       </TableView>
       <Label layoutX="179.0" layoutY="6.0" text="Upcoming Classes" textFill="WHITE">

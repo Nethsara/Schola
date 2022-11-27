@@ -43,7 +43,7 @@ public class ExamDAOImpl implements ExamsDAO {
         ArrayList<Exams> exm = new ArrayList<>();
 
         s = "%" + s + "%";
-        ResultSet res = CRUDUtil.execute("SELECT * FROM exam WHERE exID LIKE ? || batch LIKE ? || lecturer LIKE ?",
+        ResultSet res = CRUDUtil.execute("SELECT * FROM exam WHERE exID LIKE ? || batch LIKE ? || lecturer LIKE ? ORDER BY date DESC",
                 s, s, s);
         while (res.next()) {
             exm.add(

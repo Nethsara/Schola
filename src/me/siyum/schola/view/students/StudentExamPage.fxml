@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +17,7 @@
                 <Font name="Consolas Bold" size="15.0"/>
             </font>
         </Label>
-        <TableView fx:id="tblExm" layoutX="8.0" layoutY="72.0" prefHeight="478.0" prefWidth="1034.0">
+        <TableView fx:id="tblExm" layoutX="8.0" layoutY="119.0" prefHeight="431.0" prefWidth="1025.0">
             <columns>
                 <TableColumn fx:id="colExmID" prefWidth="100.33332824707031" text="Exam ID"/>
                 <TableColumn fx:id="colBy" prefWidth="155.33331298828125" text="Lecturer"/>
@@ -24,8 +25,10 @@
                 <TableColumn fx:id="colDate" prefWidth="163.0" text="Date"/>
                 <TableColumn fx:id="colMarks" prefWidth="122.0" text="Marks"/>
                 <TableColumn fx:id="colStatus" prefWidth="175.0" text="Status"/>
-                <TableColumn fx:id="colActions" prefWidth="107.0" text="Actions"/>
+                <TableColumn fx:id="colActions" prefWidth="98.0" text="Actions"/>
             </columns>
         </TableView>
+        <JFXComboBox fx:id="cmbFilter" layoutX="903.0" layoutY="71.0" onAction="#filterOnActions" prefHeight="25.0"
+                     prefWidth="128.0" promptText="Status"/>
     </AnchorPane>
 </AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.lecturers.LecturerHomeWorkSubmission">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="17.0" layoutY="48.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
+        <Label layoutX="476.0" layoutY="14.0" text="Home Work Submissions" textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="tblClasses" layoutX="17.0" layoutY="94.0" prefHeight="460.0" prefWidth="1016.0">
+            <columns>
+                <TableColumn fx:id="colID" prefWidth="121.0" text="Student ID"/>
+                <TableColumn fx:id="colName" prefWidth="234.0" text="Student Name"/>
+                <TableColumn fx:id="colDate" prefWidth="168.0" text="Submitted Date"/>
+                <TableColumn fx:id="colStatus" prefWidth="180.0" text="Status"/>
+                <TableColumn fx:id="colView" prefWidth="185.0" text="View"/>
+                <TableColumn fx:id="colActions" prefWidth="127.0" text="Actions"/>
+            </columns>
+        </TableView>
+        <Label layoutX="17.0" layoutY="62.0" text="HW ID : " textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblHWID" layoutX="83.0" layoutY="62.0" text="Exm : " textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+</AnchorPane>
