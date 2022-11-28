@@ -33,8 +33,35 @@ public class HomeWorkStudentBOImpl implements HomeWorkStudentBO {
     }
 
     @Override
+    public HomeWorkStudentsDTO getHomeWork(String id, String exmID) throws SQLException, ClassNotFoundException {
+        HomeWorkStudents retrieve = homeWorkStudentDAO.retrieve(id, exmID);
+        return new HomeWorkStudentsDTO(
+                retrieve.getId(),
+                retrieve.getStID(),
+                retrieve.getName(),
+                retrieve.getDateSubmitted(),
+                retrieve.isStatus(),
+                retrieve.getFile()
+        );
+    }
+
+    @Override
     public boolean update(HomeWorkStudentsDTO homeWorkStudentsDTO) throws SQLException, ClassNotFoundException {
         return homeWorkStudentDAO.update(
+                new HomeWorkStudents(
+                        homeWorkStudentsDTO.getId(),
+                        homeWorkStudentsDTO.getStID(),
+                        homeWorkStudentsDTO.getName(),
+                        homeWorkStudentsDTO.getDateSubmitted(),
+                        homeWorkStudentsDTO.isStatus(),
+                        homeWorkStudentsDTO.getFile()
+                )
+        );
+    }
+
+    @Override
+    public boolean saveHomeWorkStudents(HomeWorkStudentsDTO homeWorkStudentsDTO) throws SQLException, ClassNotFoundException {
+        return homeWorkStudentDAO.save(
                 new HomeWorkStudents(
                         homeWorkStudentsDTO.getId(),
                         homeWorkStudentsDTO.getStID(),
