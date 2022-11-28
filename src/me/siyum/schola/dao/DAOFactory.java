@@ -48,6 +48,10 @@ public class DAOFactory {
                 return (T) new HomeWorkDAOImpl();
             case HOME_WORK_STUDENT:
                 return (T) new HomeWorkStudentDAOImpl();
+            case LECTURER_VOTE:
+                return (T) new LecturerVoteDAOImpl();
+            case LECTURER_SCHOLA:
+                return (T) new LecturerScholaDAOImpl();
             default:
                 return null;
         }
