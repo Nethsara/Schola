@@ -6,23 +6,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="372.0" prefWidth="926.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.lecturers.LecturersExamsManagerController">
-    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="296.0" prefWidth="876.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Separator layoutX="17.0" layoutY="51.0" opacity="0.14" prefHeight="0.0" prefWidth="844.0" />
-        <Label layoutX="368.0" layoutY="14.0" text="Exam Schedule" textFill="#785fd5">
-            <font> 
-                <Font name="Consolas Bold" size="15.0" />
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="372.0" prefWidth="926.0"
+            xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.lecturers.LecturersExamsManagerController">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="296.0" prefWidth="876.0" style="-fx-background-radius: 15;">
+        <Separator layoutX="17.0" layoutY="51.0" opacity="0.68" prefHeight="0.0" prefWidth="844.0"/>
+        <Label layoutX="368.0" layoutY="14.0" text="Exam Schedule">
+            <font>
+                <Font name="Consolas Bold" size="20.0"/>
             </font>
         </Label>
-      <JFXButton layoutX="327.0" layoutY="235.0" onAction="#offlineExam" style="-fx-background-color: #785ed5;" text="Offline Exam" textFill="WHITE" />
-      <TextField fx:id="txtExamID" layoutX="35.0" layoutY="163.0" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;" />
-      <TextField fx:id="txtLecID" layoutX="212.0" layoutY="163.0" style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;" />
-      <JFXComboBox fx:id="cmbBatchID" focusColor="#785ed5" layoutX="432.0" layoutY="165.0" prefHeight="25.0" prefWidth="171.0" />
-      <JFXDatePicker fx:id="pickerDate" defaultColor="#785ed5" layoutX="655.0" layoutY="166.0" prefHeight="25.0" prefWidth="183.0" />
-      <Label layoutX="35.0" layoutY="140.0" text="Exam ID" textFill="WHITE" />
-      <Label layoutX="212.0" layoutY="140.0" text="Your ID" textFill="WHITE" />
-      <Label layoutX="432.0" layoutY="140.0" text="Batch" textFill="WHITE" />
-      <Label layoutX="655.0" layoutY="140.0" text="Date" textFill="WHITE" />
-      <JFXButton layoutX="462.0" layoutY="235.0" onAction="#onlineExam" style="-fx-background-color: #785ed5;" text="Online Exam" textFill="WHITE" />
+        <JFXButton layoutX="327.0" layoutY="235.0" onAction="#offlineExam" style="-fx-background-color: #ff7653;"
+                   text="Offline Exam" textFill="WHITE"/>
+        <TextField fx:id="txtExamID" layoutX="35.0" layoutY="163.0" prefHeight="31.0" prefWidth="127.0"
+                   style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;"/>
+        <TextField fx:id="txtLecID" layoutX="212.0" layoutY="163.0"
+                   style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;"/>
+        <JFXComboBox fx:id="cmbBatchID" focusColor="#785ed5" layoutX="432.0" layoutY="165.0" prefHeight="25.0"
+                     prefWidth="171.0"/>
+        <JFXDatePicker fx:id="pickerDate" defaultColor="#785ed5" layoutX="655.0" layoutY="166.0" prefHeight="25.0"
+                       prefWidth="183.0"/>
+        <Label layoutX="35.0" layoutY="140.0" text="Exam ID"/>
+        <Label layoutX="212.0" layoutY="140.0" text="Your ID"/>
+        <Label layoutX="432.0" layoutY="140.0" text="Batch"/>
+        <Label layoutX="655.0" layoutY="140.0" text="Date"/>
+        <JFXButton layoutX="462.0" layoutY="235.0" onAction="#onlineExam" style="-fx-background-color: #38d373;"
+                   text="Online Exam" textFill="WHITE"/>
     </AnchorPane>
 </AnchorPane>
