@@ -35,6 +35,27 @@ public class HomeWorkBOImpl implements HomeWorkBO {
     }
 
     @Override
+    public ArrayList<HomeWorkDTO> getAllHomeWorks() throws SQLException, ClassNotFoundException {
+        ArrayList<HomeWorks> search = homeWorkDAO.search("");
+        ArrayList<HomeWorkDTO> list = new ArrayList<>();
+
+        for (HomeWorks h : search
+        ) {
+            list.add(
+                    new HomeWorkDTO(
+                            h.getId(),
+                            h.getLecturerID(),
+                            h.getCreateDate(),
+                            h.getSubmissionDate(),
+                            h.getBatch(),
+                            h.getMessage()
+                    )
+            );
+        }
+        return list;
+    }
+
+    @Override
     public boolean save(HomeWorkDTO hw) throws SQLException, ClassNotFoundException {
         return homeWorkDAO.save(
                 new HomeWorks(

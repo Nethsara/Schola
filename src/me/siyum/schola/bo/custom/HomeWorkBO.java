@@ -8,5 +8,7 @@ import java.util.ArrayList;
 public interface HomeWorkBO {
     ArrayList<HomeWorkDTO> getHomeWorksLecturerID(String id) throws SQLException, ClassNotFoundException;
 
+    ArrayList<HomeWorkDTO> getAllHomeWorks() throws SQLException, ClassNotFoundException;
+
     boolean save(HomeWorkDTO hw) throws SQLException, ClassNotFoundException;
 }

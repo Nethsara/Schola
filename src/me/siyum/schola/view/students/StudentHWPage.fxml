@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.students.StudentsHWPageController">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
+        <FontAwesomeIconView fill="#785fd5" glyphName="GRADUATION_CAP" layoutX="35.0" layoutY="43.0" size="20"/>
+        <Label layoutX="66.0" layoutY="25.0" text="Exams" textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="tblExm" layoutX="8.0" layoutY="119.0" prefHeight="431.0" prefWidth="1025.0">
+            <columns>
+                <TableColumn fx:id="colHWID" prefWidth="145.0" text="Home Work ID"/>
+                <TableColumn fx:id="colLecturer" prefWidth="200.0" text="Lecturer"/>
+                <TableColumn fx:id="colCreated" prefWidth="245.0" text="Created Date"/>
+                <TableColumn fx:id="colSubmission" prefWidth="244.0" text="Submission Date"/>
+                <TableColumn fx:id="colActions" prefWidth="190.0" text="Actions"/>
+            </columns>
+        </TableView>
+        <JFXComboBox fx:id="cmbFilter" layoutX="903.0" layoutY="71.0" onAction="#filterOnActions" prefHeight="25.0"
+                     prefWidth="128.0" promptText="Status"/>
+    </AnchorPane>
+</AnchorPane>

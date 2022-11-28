@@ -11,7 +11,10 @@ import java.util.ArrayList;
 public class HomeWorkStudentDAOImpl implements HomeWorkStudentDAO {
     @Override
     public boolean save(HomeWorkStudents homeWorkStudents) throws SQLException, ClassNotFoundException {
-        return false;
+        return CRUDUtil.execute("INSERT INTO homework_students VALUES(?,?,?,?,?,?)",
+                homeWorkStudents.getId(), homeWorkStudents.getStID(), homeWorkStudents.getName(),
+                homeWorkStudents.getFile(), homeWorkStudents.getDateSubmitted(),
+                homeWorkStudents.isStatus());
     }
 
     @Override
@@ -65,6 +68,23 @@ public class HomeWorkStudentDAOImpl implements HomeWorkStudentDAO {
 
     @Override
     public String getIDByToken(String s, String role) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public HomeWorkStudents retrieve(String st, String ex) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM homework_students WHERE hwsID=? && stID=?", ex, st);
+        if (res.next()) {
+            return new HomeWorkStudents(
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getDate(5).toLocalDate(),
+                    res.getBoolean(6),
+                    res.getBlob(4)
+
+            );
+        }
         return null;
     }
 }

@@ -1,0 +1,48 @@
+package me.siyum.schola.controller.students;
+
+import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import me.siyum.schola.bo.BOFactory;
+import me.siyum.schola.bo.BOTypes;
+import me.siyum.schola.bo.custom.HomeWorkStudentBO;
+import me.siyum.schola.bo.custom.StudentBO;
+import me.siyum.schola.dao.CRUDUtil;
+import me.siyum.schola.dto.HomeWorkDTO;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+
+public class StudentHWUploadController {
+    public TextField txtHWID;
+    public TextField txtStID;
+
+    FileInputStream fis;
+
+    HomeWorkStudentBO homeWorkStudentBO = BOFactory.getInstance().getBO(BOTypes.HOME_WORK_STUDENT);
+    StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+
+    public void setData(HomeWorkDTO h) {
+        txtHWID.setText(h.getId());
+    }
+
+    public void uploadImageOnAction(ActionEvent actionEvent) throws FileNotFoundException, SQLException, ClassNotFoundException {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showOpenDialog(null);
+        fis = new FileInputStream(file);
+    }
+
+    public void completeNow(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        boolean b = CRUDUtil.execute("INSERT INTO homework_students VALUES(?,?,?,?,?,?)",
+                txtHWID.getText(),
+                txtStID.getText(),
+                studentBO.retrieveStudent(txtStID.getText()).getName(),
+                fis,
+                LocalDate.now(),
+                false
+        );
+    }
+}
