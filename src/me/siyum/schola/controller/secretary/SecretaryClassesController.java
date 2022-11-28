@@ -1,12 +1,12 @@
 package me.siyum.schola.controller.secretary;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTimePicker;
+import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
@@ -41,6 +41,7 @@ public class SecretaryClassesController {
     public TableColumn<SecretartClassesTM, String> colTime;
     public TableColumn<SecretartClassesTM, String> colBatch;
     public TableColumn<SecretartClassesTM, String> colActions;
+    public JFXButton btnValidation;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -141,7 +142,8 @@ public class SecretaryClassesController {
         ObservableList<SecretartClassesTM> list = FXCollections.observableArrayList();
         for (ClassesDTO c : allClasses
         ) {
-            Button btn = new Button("Cancel");
+            JFXButton btn = new JFXButton("Cancel");
+            btn.setStyle("-fx-background-color: #c0392b; -fx-text-fill:#ecf0f1;");
             list.add(
                     new SecretartClassesTM(
                             c.getId(),
