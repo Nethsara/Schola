@@ -57,18 +57,14 @@ public class LecturerHomeWorkSubmission {
     }
 
     private void setData() throws SQLException, ClassNotFoundException {
-        System.out.println("Setting data");
         ArrayList<HomeWorkStudentsDTO> homeWorkStudentsByID = homeWorkStudentBO.getHomeWorkStudentsByID(lblHWID.getText());
-        System.out.println(homeWorkStudentsByID);
         for (HomeWorkStudentsDTO h : homeWorkStudentsByID) {
-            System.out.println(h.getId());
             Button viewBtn = new Button("View");
             Button actionBtn = new Button("Mark As Complete");
 
             if (!h.isStatus()) {
                 actionBtn.setText("Mark As Incomplete");
             }
-            System.out.println(h.getStID());
 
             obList.add(
                     new LecturerHomeWorkSubmissionTM(
@@ -83,8 +79,6 @@ public class LecturerHomeWorkSubmission {
             viewBtn.setOnAction(e -> {
                 try {
                     HomeWorkStudentsDTO homeWork = homeWorkStudentBO.getHomeWork(h.getStID(), h.getId());
-                    System.out.println("File Saved");
-                    System.out.println(homeWork);
                     InputStream inputStream = homeWork.getFile().getBinaryStream();
                     String nameSaved = Env.downloadLocation + homeWork.getId() + "-Student-" + homeWork.getStID() + ".pdf";
                     try {
