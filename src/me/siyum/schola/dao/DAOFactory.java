@@ -52,6 +52,10 @@ public class DAOFactory {
                 return (T) new LecturerVoteDAOImpl();
             case LECTURER_SCHOLA:
                 return (T) new LecturerScholaDAOImpl();
+            case NOTIFICATION:
+                return (T) new NotificationDAOImpl();
+            case NOTIFICATION_STUDENT:
+                return (T) new NotificationStudentDAOImpl();
             default:
                 return null;
         }
