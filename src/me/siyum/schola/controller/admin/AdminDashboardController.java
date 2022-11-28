@@ -2,7 +2,9 @@ package me.siyum.schola.controller.admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
@@ -26,6 +28,7 @@ public class AdminDashboardController {
     public Label lblTotalCourses;
     public Label lblTotalClassRooms;
     public PieChart pieChart;
+    public LineChart paymentsGrowth;
 
     public void initialize() {
         setData();
@@ -38,9 +41,22 @@ public class AdminDashboardController {
             setCourses();
             setClassRooms();
             setPieChart();
+            setLineCharts();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setLineCharts() {
+        XYChart.Series series = new XYChart.Series();
+        series.getData().add(new XYChart.Data("June", 23));
+        series.getData().add(new XYChart.Data("July", 65));
+        series.getData().add(new XYChart.Data("August", 68));
+        series.getData().add(new XYChart.Data("September", 32));
+        series.getData().add(new XYChart.Data("October", 56));
+        series.getData().add(new XYChart.Data("November", 76));
+        series.getData().add(new XYChart.Data("December", 5));
+        paymentsGrowth.getData().add(series);
     }
 
 

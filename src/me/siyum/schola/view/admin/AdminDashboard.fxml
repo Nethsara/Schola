@@ -2,6 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -118,4 +121,15 @@
          </font>
       </Label>
    </AnchorPane>
+   <LineChart fx:id="paymentsGrowth" alternativeRowFillVisible="false" horizontalGridLinesVisible="false"
+              horizontalZeroLineVisible="false" layoutX="16.0" layoutY="456.0" prefHeight="150.0" prefWidth="1072.0"
+              style="-fx-background-color: transparent;" verticalGridLinesVisible="false"
+              verticalZeroLineVisible="false">
+      <xAxis>
+         <CategoryAxis side="BOTTOM"/>
+      </xAxis>
+      <yAxis>
+         <NumberAxis minorTickVisible="false" side="LEFT" tickLabelsVisible="false" tickMarkVisible="false"/>
+      </yAxis>
+   </LineChart>
 </AnchorPane>
