@@ -29,7 +29,7 @@ public class StudentHWUploadController {
         txtHWID.setText(h.getId());
     }
 
-    public void uploadImageOnAction(ActionEvent actionEvent) throws FileNotFoundException, SQLException, ClassNotFoundException {
+    public void uploadImageOnAction() throws FileNotFoundException {
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(null);
         fis = new FileInputStream(file);

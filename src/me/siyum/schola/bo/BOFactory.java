@@ -48,6 +48,14 @@ public class BOFactory {
                 return (T) new HomeWorkBOImpl();
             case HOME_WORK_STUDENT:
                 return (T) new HomeWorkStudentBOImpl();
+            case LECTURER_VOTE:
+                return (T) new LecturerVoteBOImpl();
+            case LECTURER_SCHOLA:
+                return (T) new LecturerScholaBOImpl();
+            case NOTIFICATION:
+                return (T) new NotificationBOImpl();
+            case NOTIFICATION_STUDENT:
+                return (T) new NotificationStudentBOImpl();
             default:
                 return null;
         }

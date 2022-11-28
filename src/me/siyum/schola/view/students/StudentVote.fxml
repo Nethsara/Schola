@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="332.0" prefWidth="926.0"
+            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.students.StudentVoteController">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="273.0" prefWidth="876.0"
+                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+        <Separator layoutX="17.0" layoutY="51.0" opacity="0.14" prefHeight="0.0" prefWidth="844.0"/>
+        <Label layoutX="315.0" layoutY="8.0" text="Heey! How was the class today?" textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="406.0" layoutY="217.0" onAction="#castVote" style="-fx-background-color: #785ed5;"
+                   text="Cast Vote" textFill="WHITE"/>
+        <ToggleButtonGroup layoutX="250.0" layoutY="128.0" selectionType="SINGLE">
+            <toggles>
+                <JFXRadioButton fx:id="vote5" text="Awesome    " textFill="WHITE"/>
+                <JFXRadioButton fx:id="vote4" text="Good    " textFill="WHITE"/>
+                <JFXRadioButton fx:id="vote3" text="Normal   " textFill="WHITE"/>
+                <JFXRadioButton fx:id="vote2" text="Weak  " textFill="WHITE"/>
+                <JFXRadioButton fx:id="vote1" text="Vey Weak" textFill="WHITE"/>
+            </toggles>
+        </ToggleButtonGroup>
+        <Label layoutX="250.0" layoutY="80.0" text="You had a class today by, " textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblLetName" layoutX="465.0" layoutY="80.0" textFill="#785fd5">
+            <font>
+                <Font name="Consolas Bold" size="15.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+</AnchorPane>
