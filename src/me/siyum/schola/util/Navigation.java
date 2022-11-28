@@ -20,7 +20,7 @@ public class Navigation {
                 setPanel("admin/AdminStudentPage", anchorPane);
                 break;
             case ADMIN_EMPLOYEE:
-                setPanel("admin/AdminLecturersPage", anchorPane);
+                setPanel("admin/AdminEmployeeManager", anchorPane);
                 break;
             case ADMIN_HOME:
                 setPanel("admin/AdminDashboard", anchorPane);

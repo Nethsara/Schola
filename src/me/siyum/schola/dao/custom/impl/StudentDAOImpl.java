@@ -71,7 +71,9 @@ public class StudentDAOImpl implements StudentDAO {
                             res.getDate(10).toLocalDate(),
                             res.getBoolean(11),
                             res.getBoolean(12),
-                            res.getString(13)
+                            res.getString(13),
+                            res.getString(14),
+                            res.getDate(15).toLocalDate()
                     )
             );
         }
@@ -95,7 +97,9 @@ public class StudentDAOImpl implements StudentDAO {
                     res.getDate(10).toLocalDate(),
                     res.getBoolean(11),
                     res.getBoolean(12),
-                    res.getString(13)
+                    res.getString(13),
+                    res.getString(14),
+                    res.getDate(15).toLocalDate()
             );
         }
         return null;
@@ -139,7 +143,9 @@ public class StudentDAOImpl implements StudentDAO {
                             res.getDate(10).toLocalDate(),
                             res.getBoolean(11),
                             res.getBoolean(12),
-                            res.getString(13)
+                            res.getString(13),
+                            res.getString(14),
+                            res.getDate(15).toLocalDate()
                     )
             );
         }
@@ -167,7 +173,9 @@ public class StudentDAOImpl implements StudentDAO {
                             res.getDate(10).toLocalDate(),
                             res.getBoolean(11),
                             res.getBoolean(12),
-                            res.getString(13)
+                            res.getString(13),
+                            res.getString(14),
+                            res.getDate(15).toLocalDate()
                     )
             );
         }

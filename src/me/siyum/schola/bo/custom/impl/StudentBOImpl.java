@@ -30,7 +30,9 @@ public class StudentBOImpl implements StudentBO {
                         st.getDob(),
                         st.isStatus(),
                         st.isApproval(),
-                        st.getBatch()
+                        st.getBatch(),
+                        st.getGender(),
+                        st.getCreated()
                 )
         );
     }
@@ -53,7 +55,9 @@ public class StudentBOImpl implements StudentBO {
                 t.getDob(),
                 t.isStatus(),
                 t.isApproval(),
-                t.getBatch());
+                t.getBatch(),
+                t.getGender(),
+                t.getCreated());
 
     }
 
@@ -80,7 +84,9 @@ public class StudentBOImpl implements StudentBO {
                     t.getDob(),
                     t.isStatus(),
                     t.isApproval(),
-                    t.getBatch()
+                    t.getBatch(),
+                    t.getGender(),
+                    t.getCreated()
             ));
         }
         return dtos;
@@ -104,7 +110,9 @@ public class StudentBOImpl implements StudentBO {
                     t.getDob(),
                     t.isStatus(),
                     t.isApproval(),
-                    t.getBatch()
+                    t.getBatch(),
+                    t.getGender(),
+                    t.getCreated()
             ));
         }
         return dtos;
@@ -126,7 +134,9 @@ public class StudentBOImpl implements StudentBO {
                         st.getDob(),
                         st.isStatus(),
                         st.isApproval(),
-                        st.getBatch()
+                        st.getBatch(),
+                        st.getGender(),
+                        st.getCreated()
                 )
         );
     }
@@ -146,7 +156,7 @@ public class StudentBOImpl implements StudentBO {
                 students.add(
                         new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                                 t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                                t.getBatch()
+                                t.getBatch(), t.getGender(), t.getCreated()
                         ));
 
             }
@@ -158,7 +168,7 @@ public class StudentBOImpl implements StudentBO {
                 students.add(
                         new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                                 t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                                t.getBatch()
+                                t.getBatch(), t.getGender(), t.getCreated()
                         ));
 
             }
@@ -170,7 +180,7 @@ public class StudentBOImpl implements StudentBO {
                 students.add(
                         new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                                 t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                                t.getBatch()
+                                t.getBatch(), t.getGender(), t.getCreated()
                         ));
 
             }
@@ -182,7 +192,7 @@ public class StudentBOImpl implements StudentBO {
                 students.add(
                         new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                                 t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                                t.getBatch()
+                                t.getBatch(), t.getGender(), t.getCreated()
                         ));
 
             }
@@ -193,7 +203,7 @@ public class StudentBOImpl implements StudentBO {
                 students.add(
                         new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                                 t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                                t.getBatch()
+                                t.getBatch(), t.getGender(), t.getCreated()
                         ));
 
             }
@@ -204,7 +214,7 @@ public class StudentBOImpl implements StudentBO {
                 students.add(
                         new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                                 t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                                t.getBatch()
+                                t.getBatch(), t.getGender(), t.getCreated()
                         ));
 
             }
@@ -215,7 +225,7 @@ public class StudentBOImpl implements StudentBO {
                 students.add(
                         new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                                 t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                                t.getBatch()
+                                t.getBatch(), t.getGender(), t.getCreated()
                         ));
 
             }
@@ -226,7 +236,7 @@ public class StudentBOImpl implements StudentBO {
                 students.add(
                         new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                                 t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                                t.getBatch()
+                                t.getBatch(), t.getGender(), t.getCreated()
                         ));
 
             }
@@ -245,7 +255,7 @@ public class StudentBOImpl implements StudentBO {
             students.add(
                     new StudentDTO(t.getId(), t.getName(), t.getEmail(), t.getAddress(), t.getImage(), t.getNic(),
                             t.getPhone(), t.getParentID(), t.getScholaMark(), t.getDob(), t.isStatus(), t.isApproval(),
-                            t.getBatch()
+                            t.getBatch(), t.getGender(), t.getCreated()
                     ));
 
         }

@@ -2,9 +2,10 @@ package me.siyum.schola.entity;
 
 import java.sql.Blob;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Student implements SuperEntity {
+    private String gender;
+    private LocalDate created;
     private String id;
     private String name;
     private String email;
@@ -22,7 +23,7 @@ public class Student implements SuperEntity {
 
     public Student(String id, String name, String email, String nic,
                    Blob image, String address, String phone, String parentID,
-                   int scholaMark, LocalDate dob, boolean status, boolean approval, String batch) {
+                   int scholaMark, LocalDate dob, boolean status, boolean approval, String batch, String gender, LocalDate created) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -36,34 +37,10 @@ public class Student implements SuperEntity {
         this.status = status;
         this.approval = approval;
         this.batch = batch;
+        this.gender = gender;
+        this.created = created;
     }
 
-    public Student() {
-    }
-
-    public Student(String id, String name, String email, String nic, Blob image, String address, String phone, String parentID, int scholaMark) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.nic = nic;
-        this.image = image;
-        this.address = address;
-        this.phone = phone;
-        this.parentID = parentID;
-        this.scholaMark = scholaMark;
-    }
-
-    public Student(String id, String name, String email, String nic, String address, Blob image, String phone, String parentID, int scholaMark) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.nic = nic;
-        this.image = image;
-        this.address = address;
-        this.phone = phone;
-        this.parentID = parentID;
-        this.scholaMark = scholaMark;
-    }
 
     public String getId() {
         return id;
@@ -167,5 +144,21 @@ public class Student implements SuperEntity {
 
     public void setBatch(String batch) {
         this.batch = batch;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
     }
 }

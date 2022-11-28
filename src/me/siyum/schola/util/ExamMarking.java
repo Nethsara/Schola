@@ -69,8 +69,9 @@ public class ExamMarking {
                             s.getDob(),
                             true,
                             true,
-                            s.getBatch()
-
+                            s.getBatch(),
+                            s.getGender(),
+                            s.getCreated()
                     )
             );
 
