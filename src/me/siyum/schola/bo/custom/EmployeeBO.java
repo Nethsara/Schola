@@ -19,5 +19,5 @@ public interface EmployeeBO {
 
     ArrayList<EmployeeDTO> filterEmployees(String filter) throws SQLException, ClassNotFoundException;
 
-
+    boolean updateEmployee(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException;
 }

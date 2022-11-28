@@ -6,7 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import me.siyum.schola.controller.students.StudentFormController;
 import me.siyum.schola.view.admin.tm.AdminStudentsTM;
@@ -15,7 +16,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class AdminStudentsRowController {
-    public ImageView lblStImg;
     public Button btnAction;
     public TextField txtID;
     public TextField txtStName;
@@ -23,13 +23,12 @@ public class AdminStudentsRowController {
     public TextField txtNIC;
     public TextField txtScholaMarks;
     public TextField txtStatus;
-
-    private AdminStudentsTM adminStudentsTM;
+    public Circle circleImage;
 
     public void setData(AdminStudentsTM studentTM) throws SQLException {
-        adminStudentsTM = studentTM;
         txtID.setText(studentTM.getId());
-        lblStImg.setImage(new Image(studentTM.getImage().getBinaryStream()));
+        Image tm = new Image(studentTM.getImage().getBinaryStream());
+        circleImage.setFill(new ImagePattern(tm));
         txtEmail.setText(studentTM.getEmail());
         txtStName.setText(studentTM.getName());
         txtNIC.setText(studentTM.getNic());

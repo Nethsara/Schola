@@ -35,8 +35,7 @@
             <Font name="System Bold" size="11.0"/>
         </font>
     </Label>
-    <AnchorPane fx:id="mainPane" layoutX="229.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0"
-                style="-fx-background-color: black;"/>
+    <AnchorPane fx:id="mainPane" layoutX="229.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0"/>
     <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="61.0" layoutY="88.0" radius="26.0" stroke="TRANSPARENT"
             strokeType="INSIDE"/>
     <Label layoutX="92.0" layoutY="66.0" text="Schola Admin">
@@ -61,12 +60,12 @@
    </Label>
    <VBox layoutX="16.0" layoutY="153.0" prefHeight="278.0" prefWidth="200.0">
        <JFXButton fx:id="dashboardButtton" alignment="BOTTOM_LEFT" onAction="#homePage" prefHeight="0.0"
-                  prefWidth="200.0" text=" Dashboard" textFill="#1eb569">
+                  prefWidth="200.0" text=" Dashboard" textFill="#95a0a9">
            <font>
                <Font name="Consolas" size="18.0"/>
            </font>
            <graphic>
-               <FontAwesomeIconView fx:id="dashboardIcon" fill="#1eb569" glyphName="TELEVISION" size="18"/>
+               <FontAwesomeIconView fx:id="dashboardIcon" fill="#95a0a9" glyphName="TELEVISION" size="18"/>
            </graphic>
            <padding>
                <Insets bottom="10.0" left="20.0" top="10.0"/>

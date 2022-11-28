@@ -122,7 +122,7 @@
       </Label>
    </AnchorPane>
    <LineChart fx:id="paymentsGrowth" alternativeRowFillVisible="false" horizontalGridLinesVisible="false"
-              horizontalZeroLineVisible="false" layoutX="16.0" layoutY="456.0" prefHeight="150.0" prefWidth="1072.0"
+              horizontalZeroLineVisible="false" layoutX="89.0" layoutY="448.0" prefHeight="150.0" prefWidth="922.0"
               style="-fx-background-color: transparent;" verticalGridLinesVisible="false"
               verticalZeroLineVisible="false">
       <xAxis>

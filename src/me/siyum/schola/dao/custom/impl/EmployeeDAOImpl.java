@@ -34,8 +34,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public boolean update(Employee employee) {
-        return false;
+    public boolean update(Employee employee) throws SQLException, ClassNotFoundException {
+        return CRUDUtil.execute("UPDATE employee SET image=?, name=?,address=?,email=?,salary=?,paymentMethod=?,role=?,status=? WHERE eID=?",
+                employee.getImage(),
+                employee.getName(),
+                employee.getAddress(),
+                employee.getEmail(),
+                employee.getSalary(),
+                employee.getPaymentMethod(),
+                employee.getRole(),
+                employee.isStatus(),
+                employee.getId());
     }
 
     @Override

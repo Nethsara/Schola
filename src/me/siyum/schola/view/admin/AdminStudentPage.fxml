@@ -2,31 +2,26 @@
 
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXListView?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
-            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="me.siyum.schola.controller.admin.AdminStudentPageController">
-    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0"
-                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <JFXListView fx:id="listStudents" layoutX="7.0" layoutY="105.0" prefHeight="459.0" prefWidth="1031.0"
-                     style="-fx-background-radius: 5;"/>
-        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
-        <FontAwesomeIconView fill="#785fd5" glyphName="GRADUATION_CAP" layoutX="35.0" layoutY="43.0" size="20"/>
-        <Label layoutX="67.0" layoutY="25.0" text="Students" textFill="#785fd5">
-            <font>
-                <Font name="Consolas Bold" size="15.0"/>
-            </font>
-        </Label>
-        <TextField fx:id="txtSearch" layoutX="9.0" layoutY="67.0" prefHeight="29.0" prefWidth="1031.0"
-                   style="-fx-background-radius: 5;" text="Search"/>
-        <JFXComboBox fx:id="cmbExam" layoutX="722.0" layoutY="22.0" prefHeight="25.0" prefWidth="158.0"
-                     promptText="Select Exam"/>
-        <JFXComboBox fx:id="cmbSortBox" layoutX="894.0" layoutY="22.0" onAction="#sortByOnAction" prefHeight="25.0"
-                     prefWidth="142.0" promptText="Sort By"/>
-    </AnchorPane>
+    <JFXListView fx:id="listStudents" layoutX="8.0" layoutY="124.0" prefHeight="490.0" prefWidth="1086.0"
+                 style="-fx-background-radius: 5;"/>
+    <Separator opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
+    <Label layoutX="13.0" layoutY="24.0" text="Students">
+        <font>
+            <Font name="Consolas Bold" size="24.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="txtSearch" layoutX="375.0" layoutY="80.0" prefHeight="29.0" prefWidth="711.0"
+               promptText="🔍 Search" style="-fx-background-radius: 3;"/>
+    <JFXComboBox fx:id="cmbExam" layoutX="180.0" layoutY="82.0" prefHeight="25.0" prefWidth="158.0"
+                 promptText="Select Exam (To FIlter By Marks)"/>
+    <JFXComboBox fx:id="cmbSortBox" layoutX="14.0" layoutY="82.0" onAction="#sortByOnAction" prefHeight="25.0"
+                 prefWidth="142.0" promptText="Sort By"/>
 </AnchorPane>
