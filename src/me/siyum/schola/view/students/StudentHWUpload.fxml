@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="372.0" prefWidth="926.0"
-            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="293.0" prefWidth="640.0"
+            xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="me.siyum.schola.controller.students.StudentHWUploadController">
-    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="296.0" prefWidth="876.0"
-                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Separator layoutX="17.0" layoutY="51.0" opacity="0.14" prefHeight="0.0" prefWidth="844.0"/>
-        <Label layoutX="373.0" layoutY="5.0" text="Upload Home Work" textFill="#785fd5">
+    <AnchorPane layoutY="17.0" prefHeight="260.0" prefWidth="655.0">
+        <Separator layoutX="47.0" layoutY="62.0" prefHeight="0.0" prefWidth="572.0"/>
+        <Label layoutX="261.0" layoutY="13.0" text="Upload Home Work">
             <font>
-                <Font name="Consolas Bold" size="15.0"/>
+                <Font name="Consolas Bold" size="20.0"/>
             </font>
         </Label>
-        <TextField fx:id="txtHWID" layoutX="35.0" layoutY="78.0" prefHeight="31.0" prefWidth="273.0"
+        <TextField fx:id="txtHWID" layoutX="69.0" layoutY="127.0" prefHeight="31.0" prefWidth="186.0"
                    style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;"/>
-        <TextField fx:id="txtStID" layoutX="600.0" layoutY="78.0" prefHeight="31.0" prefWidth="240.0"
+        <TextField fx:id="txtStID" layoutX="283.0" layoutY="127.0" prefHeight="31.0" prefWidth="176.0"
                    style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;"/>
-        <Label layoutX="35.0" layoutY="55.0" text="Home Work ID" textFill="WHITE"/>
-        <Label layoutX="600.0" layoutY="55.0" text="Your ID" textFill="WHITE"/>
-        <JFXButton layoutX="391.0" layoutY="257.0" onAction="#completeNow" style="-fx-background-color: #785ed5;"
-                   text="Complete Now" textFill="WHITE"/>
-        <JFXButton layoutX="390.0" layoutY="148.0" onAction="#uploadImageOnAction"
-                   style="-fx-background-color: #785ed5;" text="Complete Now" textFill="WHITE"/>
+        <Label layoutX="69.0" layoutY="97.0" text="Home Work ID">
+            <font>
+                <Font name="Consolas" size="12.0"/>
+            </font>
+        </Label>
+        <Label layoutX="283.0" layoutY="97.0" text="Your ID">
+            <font>
+                <Font name="Consolas" size="12.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="301.0" layoutY="197.0" onAction="#completeNow" style="-fx-background-color: #2ecc71;"
+                   text="Submit" textFill="WHITE">
+            <font>
+                <Font name="Consolas" size="12.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="478.0" layoutY="127.0" onAction="#uploadImageOnAction" prefHeight="31.0" prefWidth="117.0"
+                   style="-fx-background-color: #785ed5;" text="Upload Now" textFill="WHITE">
+            <graphic>
+                <FontAwesomeIconView fill="WHITE" glyphName="UPLOAD"/>
+            </graphic>
+            <font>
+                <Font name="Consolas" size="12.0"/>
+            </font>
+        </JFXButton>
     </AnchorPane>
 </AnchorPane>

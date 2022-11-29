@@ -2,40 +2,86 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
-            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="me.siyum.schola.controller.students.StudentsExamReadyController">
-    <AnchorPane layoutX="36.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0"
-                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
-        <Label layoutX="509.0" layoutY="26.0" text="Exam" textFill="#785fd5">
+    <AnchorPane layoutX="36.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-radius: 15;">
+        <Separator layoutX="12.0" layoutY="57.0" opacity="0.8" prefHeight="0.0" prefWidth="1016.0"/>
+        <Label layoutX="498.0" layoutY="14.0" text="Exam">
+            <font>
+                <Font name="Consolas Bold" size="20.0"/>
+            </font>
+        </Label>
+        <Label layoutX="451.0" layoutY="366.0" text="Exam ID : " textFill="#785fd5">
+            <font>
+                <Font name="Consolas" size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblExmID" layoutX="529.0" layoutY="366.0" text="Exam ID : " textFill="#785fd5">
+            <font>
+                <Font name="Consolas" size="14.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="501.0" layoutY="468.0" onAction="#startExam" style="-fx-background-color: #00ab55;"
+                   text="Start" textFill="WHITE">
             <font>
                 <Font name="Consolas Bold" size="15.0"/>
             </font>
-        </Label>
-        <Label layoutX="448.0" layoutY="244.0" text="Exam ID : " textFill="#785fd5">
+        </JFXButton>
+        <Label layoutX="435.0" layoutY="396.0" text="Student ID : " textFill="#785fd5">
             <font>
-                <Font size="14.0"/>
+                <Font name="Consolas" size="14.0"/>
             </font>
         </Label>
-        <Label fx:id="lblExmID" layoutX="526.0" layoutY="244.0" text="Exam ID : " textFill="#785fd5">
+        <Label fx:id="lblStID" layoutX="529.0" layoutY="396.0" text="Exam ID : " textFill="#785fd5">
             <font>
-                <Font size="14.0"/>
+                <Font name="Consolas" size="14.0"/>
             </font>
         </Label>
-        <JFXButton layoutX="500.0" layoutY="336.0" onAction="#startExam" text="Start"/>
-        <Label layoutX="432.0" layoutY="274.0" text="Student ID : " textFill="#785fd5">
+        <Label layoutX="66.0" layoutY="84.0"
+               text="You are about to face the exam. This exam will held online, and we advice you to follow the following instructions to ">
             <font>
-                <Font size="14.0"/>
+                <Font name="Consolas" size="14.0"/>
             </font>
         </Label>
-        <Label fx:id="lblStID" layoutX="526.0" layoutY="274.0" text="Exam ID : " textFill="#785fd5">
+        <Label layoutX="66.0" layoutY="112.0" text="keep your self from bieng canceling your exam result">
             <font>
-                <Font size="14.0"/>
+                <Font name="Consolas" size="14.0"/>
             </font>
         </Label>
+        <Label layoutX="66.0" layoutY="163.0"
+               text="Please use the knowledge that you gain from your own research. This marks is carried to your final exams.">
+            <font>
+                <Font name="Consolas" size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="66.0" layoutY="240.0"
+               text="This examination contains MCQ questions, find the most suitable answers for the question.">
+            <font>
+                <Font name="Consolas" size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="66.0" layoutY="261.0"
+               text="Once you click START button you wont able to exit the exam, so make sure to prepare yourself">
+            <font>
+                <Font name="Consolas" size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="322.0" layoutY="320.0" text="We wish you all the best for your exam. ">
+            <font>
+                <Font name="Consolas Bold" size="18.0"/>
+            </font>
+        </Label>
+        <ImageView fitHeight="67.0" fitWidth="88.0" layoutX="899.0" layoutY="429.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../../assets/images/exam.png"/>
+            </image>
+        </ImageView>
 
 
     </AnchorPane>

@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import me.siyum.schola.controller.students.StudentFormController;
 import me.siyum.schola.view.lecturers.tm.LecturersStudentsTM;
@@ -23,12 +25,15 @@ public class LecturersTableRowController {
     public TextField txtNIC;
     public TextField txtScholaMarks;
     public TextField txtStatus;
+    public Circle circleImage;
 
-    private  LecturersStudentsTM lecturersStudentsTM;
+    private LecturersStudentsTM lecturersStudentsTM;
+
     public void setData(LecturersStudentsTM studentTM) throws SQLException {
         lecturersStudentsTM = studentTM;
         txtID.setText(studentTM.getId());
-        lblStImg.setImage(new Image(studentTM.getImage().getBinaryStream()));
+        Image tm = new Image(studentTM.getImage().getBinaryStream());
+        circleImage.setFill(new ImagePattern(tm));
         txtEmail.setText(studentTM.getEmail());
         txtStName.setText(studentTM.getName());
         txtNIC.setText(studentTM.getNic());

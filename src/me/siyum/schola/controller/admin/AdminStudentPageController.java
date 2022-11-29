@@ -16,10 +16,10 @@ import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.ExamsBO;
 import me.siyum.schola.bo.custom.StudentBO;
-import me.siyum.schola.controller.lecturers.LecturersTableRowController;
 import me.siyum.schola.controller.students.StudentFormController;
 import me.siyum.schola.dto.ExamsDTO;
 import me.siyum.schola.dto.StudentDTO;
+import me.siyum.schola.view.admin.tm.AdminStudentsTM;
 import me.siyum.schola.view.lecturers.tm.LecturersStudentsTM;
 
 import java.io.IOException;
@@ -93,12 +93,22 @@ public class AdminStudentPageController {
 
         for (LecturersStudentsTM tm : tmList) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/me/siyum/schola/view/lecturers/LecturersTableRow.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/me/siyum/schola/view/admin/AdminStudentTableRow.fxml"));
             HBox anchorPane = null;
             try {
                 anchorPane = fxmlLoader.load();
-                LecturersTableRowController itemController = fxmlLoader.getController();
-                itemController.setData(tm);
+                AdminStudentsRowController itemController = fxmlLoader.getController();
+                itemController.setData(
+                        new AdminStudentsTM(
+                                tm.getId(),
+                                tm.getImage(),
+                                tm.getName(),
+                                tm.getEmail(),
+                                tm.getNic(),
+                                tm.getScholaMarks(),
+                                tm.getStatus(),
+                                tm.getBtn()
+                        ));
                 listStudents.getItems().add(anchorPane);
             } catch (IOException | SQLException e) {
                 e.printStackTrace();

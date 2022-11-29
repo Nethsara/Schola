@@ -2,28 +2,31 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.admin.AdminAnnouncement">
-    <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="601.0" prefWidth="1071.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Label layoutX="14.0" layoutY="14.0" text="Announcements" textFill="#7662c4">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="me.siyum.schola.controller.admin.AdminAnnouncement">
+    <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="601.0" prefWidth="1071.0" style="-fx-background-radius: 15;">
+        <Label layoutX="14.0" layoutY="14.0" text="Announcements">
             <font>
-                <Font name="Consolas Bold" size="18.0" />
+                <Font name="Consolas Bold" size="24.0"/>
             </font>
         </Label>
-        <JFXTextArea fx:id="messageBox" layoutX="14.0" layoutY="68.0" prefHeight="140.0" prefWidth="922.0" />
-        <JFXButton layoutX="962.0" layoutY="126.0" onAction="#sendMessage" style="-fx-background-color: #7662c4;" text="Send Message" textFill="WHITE" />
-        <Label layoutX="14.0" layoutY="42.0" text="What is the message?" textFill="WHITE" />
+        <JFXTextArea fx:id="messageBox" labelFloat="true" layoutX="14.0" layoutY="68.0" prefHeight="140.0"
+                     prefWidth="922.0" promptText="What is the message?"/>
+        <JFXButton layoutX="948.0" layoutY="124.0" onAction="#sendMessage" style="-fx-background-color: #00ab55;"
+                   text="Send Message" textFill="WHITE">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+        </JFXButton>
         <TableView fx:id="tblAnnouncements" layoutX="14.0" layoutY="245.0" prefHeight="345.0" prefWidth="1041.0">
             <columns>
-                <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="colTo" prefWidth="99.0" text="To" />
-                <TableColumn fx:id="colMessage" prefWidth="730.0" text="Message" />
-                <TableColumn fx:id="colActions" prefWidth="136.0" text="Action" />
+                <TableColumn fx:id="colID" prefWidth="75.0" text="ID"/>
+                <TableColumn fx:id="colTo" prefWidth="99.0" text="To"/>
+                <TableColumn fx:id="colMessage" prefWidth="730.0" text="Message"/>
+                <TableColumn fx:id="colActions" prefWidth="136.0" text="Action"/>
             </columns>
         </TableView>
     </AnchorPane>

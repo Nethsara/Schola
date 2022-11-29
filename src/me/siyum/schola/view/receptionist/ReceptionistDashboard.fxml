@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.receptionist.ReceptionistDashboardController">
+    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="630.0" prefWidth="1110.0"
+                style="-fx-background-color: #121315;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label layoutX="14.0" layoutY="14.0" text="Welcome, Nethsara Siyum" textFill="WHITE">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </Label>
+        <ImageView fitHeight="14.0" fitWidth="19.0" layoutX="169.0" layoutY="13.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../../assets/images/wave-hand.png"/>
+        </ImageView>
+        <AnchorPane layoutX="11.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0"
+                    style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+            <Label layoutX="15.0" layoutY="6.0" text="Pending Students" textFill="WHITE">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="19.0" text="1000" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="36.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane layoutX="284.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0"
+                    style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+            <Label layoutX="18.0" layoutY="6.0" text="Refreshment Serve" textFill="WHITE">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="18.0" text="100" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="36.0"/>
+                </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="17.0" text="/" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="36.0"/>
+                </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="25.0" text="100" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="36.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane layoutX="556.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0"
+                    style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+            <Label layoutX="20.0" layoutY="7.0" text="Pending Tasks" textFill="WHITE">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </Label>
+            <Label layoutX="27.0" layoutY="19.0" text="5" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="36.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane layoutX="827.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0"
+                    style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+            <Label layoutX="24.0" layoutY="7.0" text="To Mark Attendance" textFill="WHITE">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="19.0" text="7" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="36.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane layoutX="834.0" layoutY="14.0" prefHeight="27.0" prefWidth="256.0"
+                    style="-fx-background-color: #191d20; -fx-background-radius: 15;">
+            <Label layoutX="35.0" layoutY="7.0" text="Server Time : " textFill="WHITE">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="7.0" text="2022-11-12 : 15:31" textFill="WHITE">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </Label>
+            <FontAwesomeIconView fill="WHITE" glyphName="CLOCK_ALT" layoutX="14.0" layoutY="18.0"/>
+        </AnchorPane>
+        <AnchorPane layoutX="11.0" layoutY="132.0" prefHeight="479.0" prefWidth="537.0"
+                    style="-fx-background-color: #191d20; -fx-background-radius: 10;">
+            <Label layoutX="14.0" layoutY="14.0" text="To do list" textFill="WHITE">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="txtToDoListItem" layoutX="14.0" layoutY="42.0" prefHeight="29.0" prefWidth="398.0"
+                       promptText="Add a reminder for today"
+                       style="-fx-background-color: transparent; -fx-border-color: #7960d5; -fx-border-radius: 5;">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </TextField>
+            <JFXButton fx:id="btnAddToDo" layoutX="421.0" layoutY="43.0" onAction="#addToList"
+                       style="-fx-border-color: #7960d5; -fx-background-color: #7960d5; -fx-border-radius: 5;"
+                       text="Add" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="12.0"/>
+                </font>
+            </JFXButton>
+            <JFXListView fx:id="listName" layoutX="14.0" layoutY="79.0" prefHeight="390.0" prefWidth="515.0"
+                         style="-fx-border-radius: 5; -fx-border-color: #7960d5; -fx-background-radius: 5; -fx-background-color: transparent;"/>
+            <JFXButton fx:id="btnRemove" layoutX="468.0" layoutY="43.0" onAction="#removeFromList"
+                       style="-fx-border-color: #7960d5; -fx-background-color: #7960d5; -fx-border-radius: 5;"
+                       text="Remove" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="12.0"/>
+                </font>
+            </JFXButton>
+        </AnchorPane>
+        <AnchorPane layoutX="558.0" layoutY="132.0" prefHeight="479.0" prefWidth="528.0"
+                    style="-fx-background-color: #191d20; -fx-background-radius: 10;">
+            <Label layoutX="14.0" layoutY="14.0" text="Refreshments" textFill="WHITE">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
+            </Label>
+            <JFXButton layoutX="20.0" layoutY="44.0" onAction="#requestsRefreshments" prefHeight="27.0"
+                       prefWidth="496.0"
+                       style="-fx-border-color: #7960d5; -fx-border-radius: 5; -fx-background-color: #7960d5;"
+                       text="Request Refreshments to the Guests" textFill="WHITE"/>
+            <TableView fx:id="tblRefreshments" layoutX="20.0" layoutY="88.0" prefHeight="379.0"
+                       prefWidth="496.0" style="-fx-background-color: transparent;">
+                <columns>
+                    <TableColumn fx:id="colID" prefWidth="75.0" text="ID"/>
+                    <TableColumn fx:id="colTime" prefWidth="201.0" text="Time"/>
+                    <TableColumn fx:id="colStatus" prefWidth="149.0" text="Status"/>
+                    <TableColumn fx:id="colActions" prefWidth="70.0" resizable="false" text="Actions"/>
+                </columns>
+            </TableView>
+        </AnchorPane>
+    </AnchorPane>
+</AnchorPane>

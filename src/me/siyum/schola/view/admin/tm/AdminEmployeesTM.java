@@ -12,11 +12,13 @@ public class AdminEmployeesTM {
     private String paymentType;
     private String role;
     private boolean status;
+    private String scholaRank;
 
     public AdminEmployeesTM() {
     }
 
-    public AdminEmployeesTM(String id, Blob image, String name, String address, String email, double salary, String paymentType, String role, boolean status) {
+    public AdminEmployeesTM(String id, Blob image, String name,
+                            String address, String email, double salary, String paymentType, String role, boolean status, String scholaRank) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -26,6 +28,7 @@ public class AdminEmployeesTM {
         this.paymentType = paymentType;
         this.role = role;
         this.status = status;
+        this.scholaRank = scholaRank;
     }
 
     public String getId() {
@@ -98,5 +101,13 @@ public class AdminEmployeesTM {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getScholaRank() {
+        return scholaRank;
+    }
+
+    public void setScholaRank(String scholaRank) {
+        this.scholaRank = scholaRank;
     }
 }

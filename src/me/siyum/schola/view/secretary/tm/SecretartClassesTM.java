@@ -1,6 +1,6 @@
 package me.siyum.schola.view.secretary.tm;
 
-import javafx.scene.control.Button;
+import com.jfoenix.controls.JFXButton;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,12 +12,12 @@ public class SecretartClassesTM {
     private LocalDate date;
     private LocalTime time;
     private String batch;
-    private Button btn;
+    private JFXButton btn;
 
     public SecretartClassesTM() {
     }
 
-    public SecretartClassesTM(String id, String subject, String classRoom, LocalDate date, LocalTime time, String batch, Button btn) {
+    public SecretartClassesTM(String id, String subject, String classRoom, LocalDate date, LocalTime time, String batch, JFXButton btn) {
         this.id = id;
         this.subject = subject;
         this.classRoom = classRoom;
@@ -75,11 +75,11 @@ public class SecretartClassesTM {
         this.batch = batch;
     }
 
-    public Button getBtn() {
+    public JFXButton getBtn() {
         return btn;
     }
 
-    public void setBtn(Button btn) {
+    public void setBtn(JFXButton btn) {
         this.btn = btn;
     }
 }

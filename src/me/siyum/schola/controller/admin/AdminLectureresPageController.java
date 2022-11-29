@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.EmployeeBO;
+import me.siyum.schola.bo.custom.LecturerScholaBO;
 import me.siyum.schola.controller.students.StudentFormController;
 import me.siyum.schola.dto.EmployeeDTO;
 import me.siyum.schola.view.admin.tm.AdminEmployeesTM;
@@ -28,6 +29,7 @@ public class AdminLectureresPageController {
     public JFXListView<HBox> listLec;
     public JFXComboBox<String> cmbSortBy;
     public TextField txtSearch;
+    LecturerScholaBO lecturerScholaBO = BOFactory.getInstance().getBO(BOTypes.LECTURER_SCHOLA);
 
     public void initialize() {
         setData();
@@ -42,12 +44,13 @@ public class AdminLectureresPageController {
         }
     }
 
-    private void loadTable(ArrayList<EmployeeDTO> empDTO) {
+    private void loadTable(ArrayList<EmployeeDTO> empDTO) throws SQLException, ClassNotFoundException {
         listLec.getItems().clear();
         ObservableList<AdminEmployeesTM> tmList = FXCollections.observableArrayList();
 
         for (EmployeeDTO s : empDTO) {
             Button btn = new Button("Edit");
+            int lecturer = empBO.getEmployeeByID(s.getId()).getRole().equalsIgnoreCase("lecturer") ? lecturerScholaBO.getScholaByID(s.getId()).getMark() : 0;
             tmList.add(new AdminEmployeesTM(
                     s.getId(),
                     s.getImage(),
@@ -57,7 +60,8 @@ public class AdminLectureresPageController {
                     s.getSalary(),
                     s.getPaymentMethod(),
                     s.getRole(),
-                    s.isStatus()
+                    s.isStatus(),
+                    String.valueOf(lecturer)
             ));
             btn.setOnAction(e -> {
                 System.out.println("Clicked");

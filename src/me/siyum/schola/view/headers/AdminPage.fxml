@@ -1,65 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.admin.AdminPageController">
-   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#191d20" height="52.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1100.0" />
-   <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../assets/images/icon-grey.png" />
-   </ImageView>
-   <Label layoutX="56.0" layoutY="15.0" text="SCHOLA" textFill="WHITE">
-      <font>
-         <Font name="Agency FB Bold" size="20.0" />
-      </font>
-   </Label>
-   <Circle fx:id="circleImg" fill="DODGERBLUE" layoutX="1060.0" layoutY="24.0" radius="17.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-   <Circle fill="#1fff2c" layoutX="1050.0" layoutY="39.0" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-   <FontAwesomeIconView fill="#dddddd" glyphName="BELL" layoutX="1005.0" layoutY="37.0" size="20" />
-   <Label layoutX="1003.0" layoutY="8.0" style="-fx-background-color: red; -fx-background-radius: 10;" text="  10  " textAlignment="CENTER" textFill="WHITE">
-      <font>
-         <Font name="System Bold" size="11.0" />
-      </font>
-   </Label>
-   <AnchorPane fx:id="mainPane" layoutX="2.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0" />
-   <HBox layoutX="309.0" layoutY="12.0" prefHeight="31.0" prefWidth="600.0" spacing="10.0">
-      <JFXButton onAction="#homePage" text="Home" textFill="WHITE">
-         <font>
-            <Font name="Consolas" size="15.0"/>
-         </font>
-      </JFXButton>
-      <JFXButton onAction="#studentsPage" text="Students" textFill="WHITE">
-         <font>
-            <Font name="Consolas" size="15.0"/>
-         </font>
-      </JFXButton>
-      <JFXButton onAction="#employersPage" text="Employers" textFill="WHITE">
-         <font>
-            <Font name="Consolas" size="15.0"/>
-         </font>
-      </JFXButton>
-      <JFXButton onAction="#announcementPage" text="Announcements" textFill="WHITE">
-         <font>
-            <Font name="Consolas" size="15.0"/>
-         </font>
-      </JFXButton>
-      <JFXButton onAction="#incomesPage" text="Incomes" textFill="WHITE">
-         <font>
-            <Font name="Consolas" size="15.0"/>
-         </font>
-      </JFXButton>
-      <JFXButton onAction="#settingsPage" text="Settings" textFill="WHITE">
-         <font>
-            <Font name="Consolas" size="15.0"/>
-         </font>
-      </JFXButton>
-   </HBox>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="672.0" prefWidth="1329.0"
+            style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.admin.AdminPageController">
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="52.0" stroke="TRANSPARENT" strokeType="INSIDE"
+               width="1329.0"/>
+    <FontAwesomeIconView fill="#dadee1" glyphName="BELL" layoutX="148.0" layoutY="207.0" size="15" text=""/>
+    <Label layoutX="149.0" layoutY="186.0" prefHeight="12.0" prefWidth="12.0"
+           style="-fx-background-color: red; -fx-background-radius: 10;" text="  0" textAlignment="CENTER"
+           textFill="WHITE">
+        <font>
+            <Font name="System Bold" size="7.0"/>
+        </font>
+    </Label>
+    <AnchorPane fx:id="mainPane" layoutX="229.0" layoutY="31.0" prefHeight="620.0" prefWidth="1100.0"/>
+    <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="110.0" layoutY="115.0" radius="41.0" stroke="TRANSPARENT"
+            strokeType="INSIDE"/>
+    <Label layoutX="63.0" layoutY="162.0" text="Schola Admin">
+        <font>
+            <Font name="Consolas Bold" size="15.0"/>
+        </font>
+    </Label>
+    <Separator layoutX="22.0" layoutY="221.0" opacity="0.5" prefHeight="1.0" prefWidth="176.0"/>
+    <VBox layoutX="28.0" layoutY="240.0" prefHeight="232.0" prefWidth="176.0">
+        <JFXButton fx:id="dashboardButtton" alignment="BOTTOM_LEFT" onAction="#homePage" prefHeight="0.0"
+                   prefWidth="200.0" text=" Dashboard" textFill="#95a0a9">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+            <graphic>
+                <FontAwesomeIconView fx:id="dashboardIcon" fill="#95a0a9" glyphName="TELEVISION" size="15"/>
+            </graphic>
+            <padding>
+                <Insets bottom="10.0" left="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
+        <JFXButton fx:id="studentsButton" alignment="TOP_LEFT" onAction="#studentsPage" prefHeight="38.0"
+                   prefWidth="200.0" text=" Students" textFill="#95a0a9">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+            <graphic>
+                <FontAwesomeIconView fx:id="studentsIcon" fill="#95a0a9" glyphName="GRADUATION_CAP" size="15"/>
+            </graphic>
+            <padding>
+                <Insets bottom="10.0" left="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
+        <JFXButton fx:id="employerButton" alignment="TOP_LEFT" onAction="#employersPage" prefHeight="38.0"
+                   prefWidth="200.0" text=" Employers" textFill="#95a0a9">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+            <graphic>
+                <FontAwesomeIconView fx:id="iconEmployee" fill="#95a0a9" glyphName="USERS" size="15"/>
+            </graphic>
+            <padding>
+                <Insets bottom="10.0" left="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
+        <JFXButton fx:id="btnAnnouncements" alignment="TOP_LEFT" onAction="#announcementPage" prefHeight="38.0"
+                   prefWidth="200.0" text=" Announcements" textFill="#95a0a9">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+            <graphic>
+                <FontAwesomeIconView fx:id="iconAnnoun" fill="#95a0a9" glyphName="SEND" size="15"/>
+            </graphic>
+            <padding>
+                <Insets bottom="10.0" left="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
+        <JFXButton fx:id="btnIncome" alignment="TOP_LEFT" onAction="#incomesPage" prefHeight="38.0" prefWidth="200.0"
+                   text=" Incomes" textFill="#95a0a9">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+            <graphic>
+                <FontAwesomeIconView fx:id="iconIncome" fill="#95a0a9" glyphName="MONEY" size="15"/>
+            </graphic>
+            <padding>
+                <Insets bottom="10.0" left="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
+        <JFXButton fx:id="btnSettings" alignment="TOP_LEFT" onAction="#settingsPage" prefHeight="38.0" prefWidth="200.0"
+                   text=" Settings" textFill="#95a0a9">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+            <graphic>
+                <FontAwesomeIconView fx:id="iconSettings" fill="#95a0a9" glyphName="GEAR" size="15"/>
+            </graphic>
+            <padding>
+                <Insets bottom="10.0" left="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
+    </VBox>
+    <Separator layoutX="218.0" layoutY="39.0" opacity="0.65" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0"/>
+    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="37.0" layoutY="508.0" pickOnBounds="true"
+               preserveRatio="true">
+        <image>
+            <Image url="@../../assets/images/lms.png"/>
+        </image>
+    </ImageView>
+    <JFXButton layoutX="77.0" layoutY="189.0" onAction="#logout" text="Logout">
+        <graphic>
+            <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" onDragDetected="#logout" size="13">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </FontAwesomeIconView>
+        </graphic>
+    </JFXButton>
 </AnchorPane>

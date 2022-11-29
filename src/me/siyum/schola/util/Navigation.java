@@ -20,7 +20,7 @@ public class Navigation {
                 setPanel("admin/AdminStudentPage", anchorPane);
                 break;
             case ADMIN_EMPLOYEE:
-                setPanel("admin/AdminLecturersPage", anchorPane);
+                setPanel("admin/AdminEmployeeManager", anchorPane);
                 break;
             case ADMIN_HOME:
                 setPanel("admin/AdminDashboard", anchorPane);
@@ -104,16 +104,21 @@ public class Navigation {
             case RECEPTIONIST:
                 initUI("headers/ReceptionistPage");
                 break;
-            case RECEPTIONIST_SALARY:
-                initUI("receptionist/ReceptionistSalary");
-                break;
-            case RECEPTIONIST_STUDENTS:
-                initUI("receptionist/ReceptionistStudents");
-                break;
             case ADMIN:
                 initUI("headers/AdminPage");
                 break;
-
+            case STUDENT:
+                initUI("headers/StudentsPage");
+                break;
+            case SECRETARY:
+                initUI("headers/SecretaryPage");
+                break;
+            case LOGIN:
+                Env.token = "";
+                initUI("LoginPageForm");
+                break;
+            case LECTURER:
+                initUI("headers/LecturerPage");
             default:
                 initUI("WelcomePageForm");
         }

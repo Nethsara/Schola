@@ -6,9 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import me.siyum.schola.util.ExamMarking;
+import me.siyum.schola.util.Navigation;
+import me.siyum.schola.util.Routes;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LoginPageFormController {
     public TextField txtEmail;
@@ -29,15 +32,29 @@ public class LoginPageFormController {
 
     public void loginOnAction(Event actionEvent) throws IOException {
         try {
-            int loginStatus = LoginController.loginValidate(txtEmail.getText(), txtPassword.getText());
-            if (loginStatus == -1) {
-                passwordStatus.setText("Username or Password Incorrect!");
-            } else if (loginStatus == 2) {
-                LoginController.login("Receptionist", actionEvent);
-            } else {
+            ArrayList<String> strings = LoginController.loginValidate(txtEmail.getText(), txtPassword.getText());
+            boolean b = LoginController.writeToken(strings.get(1), strings.get(0));
+            System.out.println(b);
+            if (b) {
+                System.out.println("Login success!");
+                if (strings.get(0).equalsIgnoreCase("admin")) {
+                    Navigation.navigate(Routes.ADMIN, actionEvent);
+                } else if (strings.get(0).equalsIgnoreCase("lecturer")) {
+                    Navigation.navigate(Routes.LECTURER, actionEvent);
+                } else if (strings.get(0).equalsIgnoreCase("secretary")) {
+                    Navigation.navigate(Routes.SECRETARY, actionEvent);
+                } else if (strings.get(0).equalsIgnoreCase("receptionist")) {
+                    Navigation.navigate(Routes.RECEPTIONIST, actionEvent);
+                } else if (strings.get(0).equalsIgnoreCase("student")) {
+                    Navigation.navigate(Routes.STUDENT, actionEvent);
+                }
+                //else if (strings.get(0).equalsIgnoreCase("staff")) {
+                //Navigation.navigate(Routes.ADMIN, actionEvent);
+                // }
             }
         } catch (SQLException e) {
-            passwordStatus.setText("Username or Password Incorrect!");
+            e.printStackTrace();
+
         } catch (ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, "Class Not Found");
         }

@@ -205,7 +205,8 @@ public class StudentFormController {
         String batchID = cmbBatch.getValue();
 
         LocalDate dob = pickerDOB.getValue();
-        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark, dob, true, false, batchID);
+        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,
+                dob, true, false, batchID, "male", LocalDate.now());
     }
 
     public void setData(String id) {

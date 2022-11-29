@@ -23,9 +23,6 @@ public class StudentsPageController {
         Navigation.navigate(Routes.STUDENT_ANNOUNCEMENT, mainPane);
     }
 
-    public void studentHome(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.STUDENT_DASHBOARD, mainPane);
-    }
 
     public void studentExam(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.STUDENT_EXAMS, mainPane);
@@ -39,5 +36,12 @@ public class StudentsPageController {
     }
 
     public void homeWork(ActionEvent actionEvent) {
+    }
+
+    public void logout(MouseEvent mouseEvent) {
+    }
+
+    public void homePage(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.STUDENT_DASHBOARD, mainPane);
     }
 }

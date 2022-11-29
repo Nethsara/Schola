@@ -33,8 +33,9 @@ public class AnnouncementDAOImpl implements AnnouncementsDAO {
 
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {
-        ResultSet res = CRUDUtil.execute("SELECT * FROM students ORDER BY stID DESC");
+        ResultSet res = CRUDUtil.execute("SELECT * FROM announcements ORDER BY anID DESC");
         if (res.next()) {
+            System.out.println("dao " + res.getString(1));
             return res.getString(1);
         }
         return "";
@@ -77,7 +78,7 @@ public class AnnouncementDAOImpl implements AnnouncementsDAO {
         return "";
     }
 
-     @Override
+    @Override
     public String getIDByToken(String s, String role) {
         return null;
     }

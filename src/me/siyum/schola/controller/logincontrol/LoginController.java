@@ -1,32 +1,25 @@
 package me.siyum.schola.controller.logincontrol;
 
-import javafx.event.Event;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.util.Env;
-import me.siyum.schola.util.Navigation;
-import me.siyum.schola.util.Routes;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LoginController {
 
-    public static boolean writeToken(int id, String role) throws SQLException, IOException, ClassNotFoundException {
-        String token = getToken();
-        createFile();
-        FileWriter f = new FileWriter(Env.file);
-
-        f.write(token);
-        f.close();
-
-        return CRUDUtil.execute("INSERT INTO login_token VALUES(?,?,?,?)",
+    public static boolean writeToken(String id, String role) throws SQLException, IOException, ClassNotFoundException {
+        String token = generateToken();
+        System.out.println(token);
+        Env.token = token;
+        System.out.println(Env.token + " env");
+        return CRUDUtil.execute("INSERT INTO login_tokens VALUES(?,?,?)",
                 token,
                 id,
-                role,
-                getTokenID());
+                role);
     }
 
     private static int getTokenID() throws SQLException, ClassNotFoundException {
@@ -36,18 +29,6 @@ public class LoginController {
             lgtID = res.getInt(1);
         }
         return lgtID;
-    }
-
-    private static String getToken() throws SQLException, ClassNotFoundException, IOException {
-        createFile();
-        ResultSet res = CRUDUtil.execute("SELECT token FROM login_token");
-        String token = generateToken();
-        while (res.next()) {
-            if (token.equalsIgnoreCase(res.getString(1))) {
-                getToken();
-            }
-        }
-        return token;
     }
 
     private static String generateToken() {
@@ -82,25 +63,23 @@ public class LoginController {
         }
     }
 
-    public static int loginValidate(String user, String pass) throws SQLException, ClassNotFoundException {
+    public static ArrayList<String> loginValidate(String user, String pass) throws SQLException, ClassNotFoundException {
+        System.out.println(user + " " + pass);
         ResultSet res = CRUDUtil.execute("SELECT role,eID FROM users WHERE username=? AND password=?",
                 user, pass
         );
+        ArrayList<String> list = new ArrayList<>();
         if (res.next()) {
-            if (res.getString("role").equals("admin")) {
-                return 0;
-            } else if (res.getString("role").equals("staff")) {
-                return 1;
-            } else if (res.getString("role").equals("receptionist")) {
-                return 2;
-            }
+            System.out.println(res.getString(1));
+            System.out.println(res.getString(2));
+            list.add(
+                    res.getString(1)
+            );
+            list.add(
+                    res.getString(2)
+            );
         }
-        return -1;
-    }
-
-    public static void login(String role, Event aevt) throws IOException {
-        if (role.contains("Receptionist")) {
-            Navigation.navigate(Routes.RECEPTIONIST, aevt);
-        }
+        System.out.println(list);
+        return list;
     }
 }

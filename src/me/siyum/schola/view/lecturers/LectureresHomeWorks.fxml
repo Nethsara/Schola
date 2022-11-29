@@ -5,14 +5,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
-            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="me.siyum.schola.controller.lecturers.LecturerHomeWorkPageController">
-    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0"
-                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Separator layoutX="17.0" layoutY="48.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
-        <Label layoutX="455.0" layoutY="14.0" text="Home Work Manager" textFill="#785fd5">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-radius: 15;">
+        <Separator layoutX="17.0" layoutY="48.0" opacity="0.65" prefHeight="0.0" prefWidth="1016.0"/>
+        <Label layoutX="455.0" layoutY="14.0" text="Home Work Manager">
             <font>
-                <Font name="Consolas Bold" size="15.0"/>
+                <Font name="Consolas Bold" size="20.0"/>
             </font>
         </Label>
         <TableView fx:id="tblClasses" layoutX="17.0" layoutY="94.0" prefHeight="460.0" prefWidth="1016.0">
@@ -24,6 +23,11 @@
                 <TableColumn fx:id="colStatus" prefWidth="206.0" text="Actions"/>
             </columns>
         </TableView>
-        <JFXButton layoutX="925.0" layoutY="59.0" onAction="#newHomeWork" text="New Home Work"/>
+        <JFXButton layoutX="912.0" layoutY="59.0" onAction="#newHomeWork" style="-fx-background-color: #38d373;"
+                   text="New Home Work" textFill="WHITE">
+            <font>
+                <Font name="Consolas" size="14.0"/>
+            </font>
+        </JFXButton>
     </AnchorPane>
 </AnchorPane>

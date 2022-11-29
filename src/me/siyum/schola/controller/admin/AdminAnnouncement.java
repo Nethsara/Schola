@@ -20,12 +20,11 @@ public class AdminAnnouncement {
     private final ObservableList<AdminAnnouncmentTM> list = FXCollections.observableArrayList();
     public JFXTextArea messageBox;
     public TableView<AdminAnnouncmentTM> tblAnnouncements;
-    public TableColumn colID;
-    public TableColumn colTo;
-    public TableColumn colMessage;
-    public TableColumn colActions;
+    public TableColumn<AdminAnnouncmentTM, String> colID;
+    public TableColumn<AdminAnnouncmentTM, String> colTo;
+    public TableColumn<AdminAnnouncmentTM, String> colMessage;
+    public TableColumn<AdminAnnouncmentTM, String> colActions;
     AnnouncementsBO announcementsBO = BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
-    private String announceID;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -53,14 +52,14 @@ public class AdminAnnouncement {
                 );
 
                 btn.setOnAction(event -> {
-                    Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES,ButtonType.NO);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
                     Optional<ButtonType> buttonType = alert.showAndWait();
 
-                    if (buttonType.get()==ButtonType.YES){
-                        for (AdminAnnouncmentTM tm: list
-                        ) {
+                    if (buttonType.get() == ButtonType.YES) {
+                        for (AdminAnnouncmentTM tm : list) {
                             list.remove(tm);
-                            setData();
+                            //delete code
+                            tblAnnouncements.refresh();
                             return;
                         }
                     }
@@ -68,19 +67,15 @@ public class AdminAnnouncement {
                 });
             }
             tblAnnouncements.setItems(list);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     public void sendMessage() {
-        generateID();
         try {
-            System.out.println(announceID);
             stBo.saveAnnouncements(new AnnouncementsDTO(
-                    announceID,
+                    generateID(),
                     messageBox.getText(),
                     "admin",
                     "students"
@@ -90,15 +85,19 @@ public class AdminAnnouncement {
         }
     }
 
-    private void generateID() {
+    private String generateID() {
         try {
-            announceID = stBo.getLastID();
-            String[] array = announceID.split("-");//[D,3]
+            String lastID = stBo.getLastID();
+            System.out.println(lastID);
+            String[] array = lastID.split("-");//[D,3]
             int tempNumber = Integer.parseInt(array[1]);
+            System.out.println(tempNumber + " tempNum");
             int finalizeOrderId = tempNumber + 1;
-            announceID = "SA-" + finalizeOrderId;
+            System.out.println(finalizeOrderId + " finalize");
+            return "SA-" + finalizeOrderId;
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return "SA-1";
     }
 }
