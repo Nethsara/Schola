@@ -119,20 +119,20 @@
          </padding>
       </JFXButton>
    </VBox>
-   <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="77.0" layoutY="109.0" radius="26.0" stroke="TRANSPARENT"
+   <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="67.0" layoutY="109.0" radius="26.0" stroke="TRANSPARENT"
            strokeType="INSIDE"/>
-   <Label layoutX="108.0" layoutY="87.0" text="Schola Admin">
+   <Label layoutX="98.0" layoutY="87.0" text="Schola Lecturer">
       <font>
-         <Font name="Yu Gothic UI Bold" size="15.0"/>
+         <Font name="Consolas Bold" size="15.0"/>
       </font>
    </Label>
-   <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" layoutX="111.0" layoutY="123.0"
+   <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" layoutX="101.0" layoutY="123.0"
                         onDragDetected="#logout" size="13">
       <cursor>
          <Cursor fx:constant="HAND"/>
       </cursor>
    </FontAwesomeIconView>
-   <Label layoutX="127.0" layoutY="109.0" onDragDetected="#logout" text="Logout">
+   <Label layoutX="117.0" layoutY="109.0" onDragDetected="#logout" text="Logout">
       <font>
          <Font name="Yu Gothic UI Regular" size="12.0"/>
       </font>

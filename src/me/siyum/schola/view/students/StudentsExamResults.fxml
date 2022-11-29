@@ -3,29 +3,42 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="446.0" prefWidth="1100.0"
-            style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="239.0" prefWidth="1001.0"
+            xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="me.siyum.schola.controller.students.StudentExamResultController">
-    <AnchorPane layoutX="17.0" layoutY="26.0" prefHeight="393.0" prefWidth="1069.0"
-                style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Separator layoutX="12.0" layoutY="57.0" opacity="0.14" prefHeight="0.0" prefWidth="1016.0"/>
-        <Label layoutX="495.0" layoutY="29.0" text="Result" textFill="#785fd5">
+    <AnchorPane layoutX="17.0" layoutY="26.0" prefHeight="327.0" prefWidth="984.0" style="-fx-background-radius: 15;">
+        <Separator layoutX="12.0" layoutY="57.0" opacity="0.74" prefHeight="6.0" prefWidth="938.0"/>
+        <Label layoutX="377.0" layoutY="14.0" text="Congradulations !! ">
+            <font>
+                <Font name="Consolas Bold" size="20.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="457.0" layoutY="212.0" onAction="#closeBtn" style="-fx-background-color: #ffab00;"
+                   text="Close" textFill="WHITE">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </JFXButton>
+        <Label layoutX="92.0" layoutY="90.0"
+               text="How was the exam? We hope you showed the best of your talents, By the way here is the marks you got on the exam.">
+            <font>
+                <Font name="Consolas Bold" size="13.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblMarks" layoutX="473.0" layoutY="155.0" text="99">
             <font>
                 <Font name="Consolas Bold" size="15.0"/>
             </font>
         </Label>
-        <JFXButton layoutX="499.0" layoutY="271.0" onAction="#closeBtn" text="Close" textFill="WHITE"/>
-        <Label layoutX="415.0" layoutY="130.0" text="Congratulations ! You got the marks " textFill="#785fd5">
-            <font>
-                <Font name="System Bold" size="12.0"/>
-            </font>
-        </Label>
-        <Label fx:id="lblMarks" layoutX="514.0" layoutY="180.0" text="99" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="12.0"/>
-            </font>
-        </Label>
+        <ImageView fitHeight="84.0" fitWidth="88.0" layoutX="809.0" layoutY="181.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../../assets/images/exam-results.png"/>
+            </image>
+        </ImageView>
     </AnchorPane>
 </AnchorPane>
