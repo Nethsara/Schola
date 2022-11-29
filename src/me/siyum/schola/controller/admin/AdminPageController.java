@@ -5,7 +5,6 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -74,8 +73,6 @@ public class AdminPageController {
         setBtnColorGreen(btnSettings, iconSettings);
     }
 
-    public void logout(MouseEvent mouseEvent) {
-    }
 
     private void setButtonClorsNormal() {
         Button[] btns = {btnAnnouncements, btnIncome, btnSettings, dashboardButtton, studentsButton, employerButton, employerButton};
@@ -94,5 +91,10 @@ public class AdminPageController {
     private void setBtnColorGreen(Button btn, FontAwesomeIconView icon) {
         btn.setStyle("-fx-text-fill:#1eb569");
         icon.setStyle("-fx-fill:#1eb569");
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        System.out.println("Logout");
+        Navigation.navigate(Routes.LOGIN, actionEvent);
     }
 }

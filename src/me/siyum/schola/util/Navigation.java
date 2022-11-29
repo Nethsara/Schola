@@ -113,7 +113,10 @@ public class Navigation {
             case ADMIN:
                 initUI("headers/AdminPage");
                 break;
-
+            case LOGIN:
+                Env.token = "";
+                initUI("LoginPageForm");
+                break;
             default:
                 initUI("WelcomePageForm");
         }
