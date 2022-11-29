@@ -14,14 +14,6 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="1329.0"
             style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="me.siyum.schola.controller.lecturers.LecturersPageController">
-   <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../assets/images/icon-grey.png"/>
-   </ImageView>
-   <Label layoutX="56.0" layoutY="15.0" text="SCHOLA">
-      <font>
-         <Font name="Agency FB Bold" size="20.0"/>
-      </font>
-   </Label>
    <Circle fx:id="circleImg" fill="DODGERBLUE" layoutX="1301.0" layoutY="24.0" radius="17.0" stroke="TRANSPARENT"
            strokeType="INSIDE"/>
    <Circle fill="#1fff2c" layoutX="1291.0" layoutY="39.0" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE"/>
@@ -33,7 +25,7 @@
       </font>
    </Label>
    <AnchorPane fx:id="mainPane" layoutX="229.0" layoutY="46.0" prefHeight="620.0" prefWidth="1100.0"/>
-   <VBox layoutX="38.0" layoutY="162.0" prefHeight="278.0" prefWidth="176.0">
+   <VBox layoutX="38.0" layoutY="232.0" prefHeight="278.0" prefWidth="176.0">
       <JFXButton fx:id="btnDash" alignment="BOTTOM_LEFT" onAction="#homePage" prefHeight="0.0" prefWidth="200.0"
                  text=" Dashboard" textFill="#95a0a9">
          <font>
@@ -119,26 +111,36 @@
          </padding>
       </JFXButton>
    </VBox>
-   <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="67.0" layoutY="109.0" radius="26.0" stroke="TRANSPARENT"
+   <Separator layoutX="226.0" layoutY="16.0" opacity="0.65" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0"/>
+   <FontAwesomeIconView fill="#dadee1" glyphName="BELL" layoutX="158.0" layoutY="206.0" size="15"/>
+   <Label layoutX="159.0" layoutY="185.0" prefHeight="12.0" prefWidth="12.0"
+          style="-fx-background-color: red; -fx-background-radius: 10;" text="  0" textAlignment="CENTER"
+          textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="7.0"/>
+      </font>
+   </Label>
+   <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="120.0" layoutY="114.0" radius="41.0" stroke="TRANSPARENT"
            strokeType="INSIDE"/>
-   <Label layoutX="98.0" layoutY="87.0" text="Schola Lecturer">
+   <Label layoutX="64.0" layoutY="167.0" text="Schola Lecturer">
       <font>
          <Font name="Consolas Bold" size="15.0"/>
       </font>
    </Label>
-   <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" layoutX="101.0" layoutY="123.0"
-                        onDragDetected="#logout" size="13">
-      <cursor>
-         <Cursor fx:constant="HAND"/>
-      </cursor>
-   </FontAwesomeIconView>
-   <Label layoutX="117.0" layoutY="109.0" onDragDetected="#logout" text="Logout">
-      <font>
-         <Font name="Yu Gothic UI Regular" size="12.0"/>
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND"/>
-      </cursor>
-   </Label>
-   <Separator layoutX="226.0" layoutY="16.0" opacity="0.65" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0"/>
+   <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="47.0" layoutY="507.0" pickOnBounds="true"
+              preserveRatio="true">
+      <image>
+         <Image url="@../../assets/images/lms.png"/>
+      </image>
+   </ImageView>
+   <JFXButton layoutX="87.0" layoutY="188.0" onAction="#logout" text="Logout">
+      <graphic>
+         <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" onDragDetected="#logout" size="13">
+            <cursor>
+               <Cursor fx:constant="HAND"/>
+            </cursor>
+         </FontAwesomeIconView>
+      </graphic>
+   </JFXButton>
+   <Separator layoutX="32.0" layoutY="231.0" opacity="0.5" prefHeight="1.0" prefWidth="176.0"/>
 </AnchorPane>

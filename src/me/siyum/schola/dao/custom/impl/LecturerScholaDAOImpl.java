@@ -1,8 +1,10 @@
 package me.siyum.schola.dao.custom.impl;
 
+import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.dao.custom.LecturerScholaDAO;
 import me.siyum.schola.entity.LecturerSchola;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -34,6 +36,13 @@ public class LecturerScholaDAOImpl implements LecturerScholaDAO {
 
     @Override
     public LecturerSchola retrieve(String s) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM lecturer_schola WHERE lecID=?", s);
+        if (res.next()) {
+            return new LecturerSchola(
+                    res.getString(1),
+                    res.getInt(2)
+            );
+        }
         return null;
     }
 

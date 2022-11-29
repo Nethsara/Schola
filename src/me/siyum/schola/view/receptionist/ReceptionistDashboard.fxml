@@ -11,7 +11,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/8.0.171"
-            fx:controller="me.siyum.schola.controller.receptionist.ReceptionistPageController">
+            fx:controller="me.siyum.schola.controller.receptionist.ReceptionistDashboardController">
     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="630.0" prefWidth="1110.0"
                 style="-fx-background-color: #121315;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
