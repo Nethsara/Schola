@@ -14,7 +14,6 @@ import me.siyum.schola.util.Routes;
 import java.io.IOException;
 
 public class AdminPageController {
-    public Circle circleImg;
     public AnchorPane mainPane;
     public Circle circleImgLeft;
     public JFXButton dashboardButtton;
@@ -32,7 +31,6 @@ public class AdminPageController {
 
     public void initialize() throws IOException {
         Image im = new javafx.scene.image.Image("me/siyum/schola/assets/images/admin.png", false);
-        circleImg.setFill(new ImagePattern(im));
         circleImgLeft.setFill(new ImagePattern(im));
         Navigation.navigate(Routes.ADMIN_HOME, mainPane);
     }

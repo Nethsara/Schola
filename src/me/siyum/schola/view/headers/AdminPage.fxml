@@ -3,7 +3,8 @@
 <?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,26 +18,15 @@
             fx:controller="me.siyum.schola.controller.admin.AdminPageController">
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="52.0" stroke="TRANSPARENT" strokeType="INSIDE"
                width="1329.0"/>
-    <ImageView fitHeight="42.0" fitWidth="38.0" layoutX="50.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../../assets/images/icon-grey.png"/>
-    </ImageView>
-    <Label layoutX="98.0" layoutY="13.0" text="SCHOLA">
-        <font>
-            <Font name="Agency FB Bold" size="20.0"/>
-        </font>
-    </Label>
-    <Circle fx:id="circleImg" fill="DODGERBLUE" layoutX="1298.0" layoutY="24.0" radius="17.0" stroke="TRANSPARENT"
-            strokeType="INSIDE"/>
-    <Circle fill="#1fff2c" layoutX="1288.0" layoutY="39.0" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE"/>
-    <FontAwesomeIconView fill="#dadee1" glyphName="BELL" layoutX="1248.0" layoutY="37.0" size="20"/>
-    <Label layoutX="1252.0" layoutY="8.0" prefHeight="16.0" prefWidth="12.0"
-           style="-fx-background-color: red; -fx-background-radius: 10;" text=" 0" textAlignment="CENTER"
+    <FontAwesomeIconView fill="#dadee1" glyphName="BELL" layoutX="148.0" layoutY="207.0" size="15"/>
+    <Label layoutX="149.0" layoutY="186.0" prefHeight="12.0" prefWidth="12.0"
+           style="-fx-background-color: red; -fx-background-radius: 10;" text="  0" textAlignment="CENTER"
            textFill="WHITE">
         <font>
-            <Font name="System Bold" size="11.0"/>
+            <Font name="System Bold" size="7.0"/>
         </font>
     </Label>
-    <AnchorPane fx:id="mainPane" layoutX="229.0" layoutY="52.0" prefHeight="620.0" prefWidth="1100.0"/>
+    <AnchorPane fx:id="mainPane" layoutX="229.0" layoutY="31.0" prefHeight="620.0" prefWidth="1100.0"/>
     <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="110.0" layoutY="115.0" radius="41.0" stroke="TRANSPARENT"
             strokeType="INSIDE"/>
     <Label layoutX="63.0" layoutY="162.0" text="Schola Admin">
