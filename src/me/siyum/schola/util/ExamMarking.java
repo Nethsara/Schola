@@ -41,7 +41,6 @@ public class ExamMarking {
 
 
             scholaMark += ((exmMarks / marksByID.size()) * 50) / 100;
-            System.out.println("Student " + s.getId() + " scho mark  " + scholaMark);
 
 
             scholaMark += 20; //20% from home works

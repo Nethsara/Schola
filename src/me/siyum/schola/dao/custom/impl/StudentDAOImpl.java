@@ -6,12 +6,24 @@ import me.siyum.schola.entity.Student;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 
 public class StudentDAOImpl implements StudentDAO {
     @Override
     public boolean save(Student st) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("INSERT INTO students VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        String nic = st.getNic();
+        char[] charArray = nic.toCharArray();
+        String gender = "";
+        int dayOfYear = charArray[5] + charArray[6] + charArray[7];
+
+        if (dayOfYear > 500) {
+            gender = "female";
+        } else {
+            gender = "male";
+        }
+        return CRUDUtil.execute("INSERT INTO students VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 st.getId(),
                 st.getName(),
                 st.getEmail(),
@@ -24,7 +36,9 @@ public class StudentDAOImpl implements StudentDAO {
                 st.getDob(),
                 st.isStatus(),
                 st.isApproval(),
-                st.getBatch()
+                st.getBatch(),
+                gender,
+                LocalDate.now()
         );
     }
 

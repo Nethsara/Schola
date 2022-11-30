@@ -3,7 +3,6 @@ package me.siyum.schola.controller.logincontrol;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.util.Env;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,20 +50,7 @@ public class LoginController {
         return sb.toString();
     }
 
-    private static void createFile() throws IOException {
-        File folder = new File("C:/Schola");
-        if (!folder.exists()) {
-            boolean mkdir = folder.mkdir();
-        }
-
-        File token = new File(Env.file);
-        if (!token.exists()) {
-            final boolean newFile = token.createNewFile();
-        }
-    }
-
     public static ArrayList<String> loginValidate(String user, String pass) throws SQLException, ClassNotFoundException {
-        System.out.println(user + " " + pass);
         ResultSet res = CRUDUtil.execute("SELECT role,eID FROM users WHERE username=? AND password=?",
                 user, pass
         );
@@ -79,7 +65,6 @@ public class LoginController {
                     res.getString(2)
             );
         }
-        System.out.println(list);
         return list;
     }
 }

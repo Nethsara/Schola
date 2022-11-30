@@ -63,7 +63,7 @@ public class ReceptionistStudentsController implements Initializable {
         loadStudents();
         for (ReceptionistStudentTM tm : tmList) {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/me/siyum/schola/view/receptionist/TableRow.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/me/siyum/schola/view/receptionist/StudentTableRow.fxml"));
             HBox anchorPane = null;
             try {
                 anchorPane = fxmlLoader.load();

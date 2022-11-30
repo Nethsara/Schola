@@ -11,132 +11,122 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="665.0" prefWidth="1024.0"
             xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="me.siyum.schola.controller.students.StudentFormController">
-   <AnchorPane layoutX="39.0" layoutY="31.0" prefHeight="617.0" prefWidth="967.0" style="-fx-background-radius: 10;">
-      <ImageView fx:id="imgSt" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="15.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../../assets/images/stImg.png"/>
-      </ImageView>
-      <Label fx:id="lblName" layoutX="140.0" layoutY="38.0" text="Example Name">
-         <font>
-            <Font name="Consolas Bold" size="18.0"/>
-         </font>
-      </Label>
-      <Label layoutX="139.0" layoutY="59.0" text="Student">
-         <font>
-            <Font name="Consolas Bold" size="12.0"/>
-         </font>
-      </Label>
-      <Separator layoutX="15.0" layoutY="114.0" prefHeight="3.0" prefWidth="931.0"/>
-      <JFXButton layoutX="908.0" layoutY="54.0" style="-fx-background-color: #d63031;" text="BAN" textFill="WHITE"/>
-      <Label layoutX="59.0" layoutY="130.0" opacity="0.67" text="Basic">
-         <font>
-            <Font name="Consolas Bold" size="14.0"/>
-         </font>
-      </Label>
-      <Label layoutX="59.0" layoutY="279.0" opacity="0.67" text="Contact">
-         <font>
-            <Font name="Consolas Bold" size="14.0"/>
-         </font>
-      </Label>
+    <AnchorPane layoutX="39.0" layoutY="31.0" prefHeight="617.0" prefWidth="967.0" style="-fx-background-radius: 10;">
+        <ImageView fx:id="imgSt" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="15.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../../assets/images/stImg.png"/>
+        </ImageView>
+        <Label fx:id="lblName" layoutX="140.0" layoutY="38.0" text="Example Name">
+            <font>
+                <Font name="Consolas Bold" size="18.0"/>
+            </font>
+        </Label>
+        <Label layoutX="139.0" layoutY="59.0" text="Student">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Separator layoutX="15.0" layoutY="114.0" prefHeight="3.0" prefWidth="931.0"/>
+        <JFXButton layoutX="908.0" layoutY="54.0" style="-fx-background-color: #d63031;" text="BAN" textFill="WHITE"/>
+        <Label layoutX="59.0" layoutY="130.0" opacity="0.67" text="Basic">
+            <font>
+                <Font name="Consolas Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="59.0" layoutY="279.0" opacity="0.67" text="Contact">
+            <font>
+                <Font name="Consolas Bold" size="14.0"/>
+            </font>
+        </Label>
       <JFXCheckBox fx:id="chkAddParent" layoutX="59.0" layoutY="372.0" onAction="#changeParentStatus" text="Add parent">
          <font>
-            <Font name="Consolas" size="14.0"/>
+             <Font name="Consolas" size="14.0"/>
          </font>
       </JFXCheckBox>
       <Label layoutX="139.0" layoutY="75.0" text="ID : ">
          <font>
-            <Font name="Consolas Bold" size="12.0"/>
+             <Font name="Consolas Bold" size="12.0"/>
          </font>
       </Label>
       <Label fx:id="lblStID" layoutX="161.0" layoutY="75.0" text="ITS11111">
          <font>
-            <Font name="Consolas Bold" size="12.0"/>
+             <Font name="Consolas Bold" size="12.0"/>
          </font>
       </Label>
-      <AnchorPane layoutX="57.0" layoutY="397.0" prefHeight="167.0" prefWidth="885.0"
-                  style="-fx-background-color: white;">
-         <Label layoutX="20.0" layoutY="12.0" opacity="0.5" text="ID : ">
-            <font>
-               <Font name="Consolas" size="12.0"/>
-            </font>
-         </Label>
-         <Label fx:id="lblPID" layoutX="43.0" layoutY="12.0" opacity="0.5" text="P10009">
-            <font>
-               <Font name="Consolas" size="12.0"/>
-            </font>
-         </Label>
-         <Label layoutX="21.0" layoutY="97.0" opacity="0.5" text="NIC">
-            <font>
-               <Font name="Consolas" size="12.0"/>
-            </font>
-         </Label>
-         <Label layoutX="425.0" layoutY="97.0" opacity="0.5" text="Phone">
-            <font>
-               <Font name="Consolas" size="12.0"/>
-            </font>
-         </Label>
-         <JFXTextField fx:id="txtPName" labelFloat="true" layoutX="20.0" layoutY="57.0" prefHeight="25.0"
-                       prefWidth="389.0" promptText="Parent Name"/>
-         <JFXTextField fx:id="txtPEmail" labelFloat="true" layoutX="425.0" layoutY="57.0" prefHeight="25.0"
-                       prefWidth="415.0" promptText="Email"/>
-         <JFXTextField fx:id="txtPNIC" labelFloat="true" layoutX="20.0" layoutY="117.0" prefHeight="25.0"
-                       prefWidth="389.0" promptText="Parent NIC"/>
-         <JFXTextField fx:id="txtPPhone" labelFloat="true" layoutX="425.0" layoutY="117.0" prefHeight="25.0"
-                       prefWidth="415.0" promptText="Phone"/>
-         <AnchorPane fx:id="paneSelectParents" layoutX="1.0" prefHeight="167.0" prefWidth="885.0"
-                     style="-fx-background-color: white;">
-            <JFXComboBox fx:id="cmbParentID" layoutX="59.0" layoutY="70.0" onAction="#setParentIDOnAction"
-                         prefHeight="25.0" prefWidth="399.0"/>
-            <Label layoutX="59.0" layoutY="55.0" opacity="0.5" text="Select Parent ID">
-               <font>
-                  <Font name="Arial" size="12.0"/>
-               </font>
+        <AnchorPane layoutX="57.0" layoutY="397.0" prefHeight="167.0" prefWidth="885.0"
+                    style="-fx-background-color: white;">
+            <Label layoutX="20.0" layoutY="12.0" opacity="0.5" text="ID : ">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
             </Label>
-            <JFXTextField fx:id="txtParentName" layoutX="478.0" layoutY="70.0" prefHeight="25.0" prefWidth="368.0"/>
-            <Label layoutX="478.0" layoutY="55.0" opacity="0.5" text="Parent Name">
-               <font>
-                  <Font name="Arial" size="12.0"/>
-               </font>
+            <Label fx:id="lblPID" layoutX="43.0" layoutY="12.0" opacity="0.5" text="P10009">
+                <font>
+                    <Font name="Consolas" size="12.0"/>
+                </font>
             </Label>
-         </AnchorPane>
-      </AnchorPane>
-      <AnchorPane layoutX="754.0" layoutY="52.0" prefHeight="31.0" prefWidth="136.0"
-                  style="-fx-background-color: #26292e; -fx-background-radius: 10;">
-         <Label layoutX="14.0" layoutY="6.0" text="Schola Marks : " textFill="WHITE"/>
-         <Label fx:id="lblScholaMark" layoutX="106.0" layoutY="6.0" text="0" textFill="#00ff2f">
-            <font>
-               <Font name="System Bold" size="12.0"/>
-            </font>
-         </Label>
-      </AnchorPane>
-      <JFXButton fx:id="btnCancel" layoutX="465.0" layoutY="573.0" style="-fx-border-color: grey; -fx-border-radius: 5;"
-                 text="Cancel"/>
-      <JFXButton fx:id="btnSave" layoutX="525.0" layoutY="574.0" onAction="#saveStudentOnAction"
-                 style="-fx-background-color: #785fd4; -fx-border-radius: 5;" text="Save" textFill="WHITE"/>
-      <Separator layoutX="61.0" layoutY="267.0" prefHeight="3.0" prefWidth="868.0"/>
-      <Separator layoutX="57.0" layoutY="364.0" prefHeight="3.0" prefWidth="868.0"/>
-      <FontAwesomeIconView fx:id="iconUpload" fill="WHITE" glyphName="UPLOAD" layoutX="94.0" layoutY="108.0"
-                           onMouseClicked="#uploadStImageOnAction" size="20">
-         <cursor>
-            <Cursor fx:constant="HAND"/>
-         </cursor>
-      </FontAwesomeIconView>
-      <JFXDatePicker fx:id="pickerDOB" layoutX="603.0" layoutY="172.0" prefHeight="25.0" prefWidth="338.0"
-                     promptText="Date Of Birth"/>
-      <JFXComboBox fx:id="cmbBatch" layoutX="603.0" layoutY="221.0" prefHeight="25.0" prefWidth="338.0"
-                   promptText="Batch"/>
-      <JFXButton fx:id="btnReject" layoutX="601.0" layoutY="574.0" onAction="#rejectStudent"
-                 style="-fx-background-color: #e74c3c; -fx-border-radius: 5;" text="  Reject  " textFill="WHITE"
-                 visible="false"/>
-      <JFXTextField fx:id="txtName" labelFloat="true" layoutX="59.0" layoutY="172.0" prefHeight="25.0" prefWidth="532.0"
-                    promptText="Name in full"/>
-      <JFXTextField fx:id="txtNIC" labelFloat="true" layoutX="59.0" layoutY="220.0" prefHeight="25.0" prefWidth="227.0"
-                    promptText="NIC"/>
-      <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="303.0" layoutY="221.0" prefHeight="25.0"
-                    prefWidth="290.0" promptText="Email"/>
-      <JFXTextField fx:id="txtPhone" labelFloat="true" layoutX="64.0" layoutY="325.0" prefHeight="25.0"
-                    prefWidth="389.0" promptText="Phone"/>
-      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="460.0" layoutY="325.0" prefHeight="25.0"
-                    prefWidth="486.0" promptText="Address"/>
-   </AnchorPane>
+            <JFXTextField fx:id="txtPName" labelFloat="true" layoutX="20.0" layoutY="57.0" prefHeight="25.0"
+                          prefWidth="389.0" promptText="Parent Name"/>
+            <JFXTextField fx:id="txtPEmail" labelFloat="true" layoutX="425.0" layoutY="57.0" prefHeight="25.0"
+                          prefWidth="415.0" promptText="Email"/>
+            <JFXTextField fx:id="txtPNIC" labelFloat="true" layoutX="20.0" layoutY="117.0" prefHeight="25.0"
+                          prefWidth="389.0" promptText="Parent NIC"/>
+            <JFXTextField fx:id="txtPPhone" labelFloat="true" layoutX="425.0" layoutY="117.0" prefHeight="25.0"
+                          prefWidth="415.0" promptText="Phone"/>
+            <AnchorPane fx:id="paneSelectParents" layoutX="1.0" prefHeight="167.0" prefWidth="885.0"
+                        style="-fx-background-color: white;">
+                <JFXComboBox fx:id="cmbParentID" layoutX="59.0" layoutY="70.0" onAction="#setParentIDOnAction"
+                             prefHeight="25.0" prefWidth="399.0"/>
+                <Label layoutX="59.0" layoutY="55.0" opacity="0.5" text="Select Parent ID">
+                    <font>
+                        <Font name="Arial" size="12.0"/>
+                    </font>
+                </Label>
+                <JFXTextField fx:id="txtParentName" layoutX="478.0" layoutY="70.0" prefHeight="25.0" prefWidth="368.0"/>
+                <Label layoutX="478.0" layoutY="55.0" opacity="0.5" text="Parent Name">
+                    <font>
+                        <Font name="Arial" size="12.0"/>
+                    </font>
+                </Label>
+            </AnchorPane>
+        </AnchorPane>
+        <AnchorPane layoutX="754.0" layoutY="52.0" prefHeight="31.0" prefWidth="136.0"
+                    style="-fx-background-color: #26292e; -fx-background-radius: 10;">
+            <Label layoutX="14.0" layoutY="6.0" text="Schola Marks : " textFill="WHITE"/>
+            <Label fx:id="lblScholaMark" layoutX="106.0" layoutY="6.0" text="0" textFill="#00ff2f">
+                <font>
+                    <Font name="System Bold" size="12.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <JFXButton fx:id="btnCancel" layoutX="465.0" layoutY="573.0"
+                   style="-fx-border-color: grey; -fx-border-radius: 5;" text="Cancel"/>
+        <JFXButton fx:id="btnSave" layoutX="525.0" layoutY="574.0" onAction="#saveStudentOnAction"
+                   style="-fx-background-color: #785fd4; -fx-border-radius: 5;" text="Save" textFill="WHITE"/>
+        <Separator layoutX="61.0" layoutY="267.0" prefHeight="3.0" prefWidth="868.0"/>
+        <Separator layoutX="57.0" layoutY="364.0" prefHeight="3.0" prefWidth="868.0"/>
+        <FontAwesomeIconView fx:id="iconUpload" fill="#141414" glyphName="UPLOAD" layoutX="104.0" layoutY="106.0"
+                             onMouseClicked="#uploadStImageOnAction" size="20">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </FontAwesomeIconView>
+        <JFXDatePicker fx:id="pickerDOB" layoutX="603.0" layoutY="172.0" prefHeight="25.0" prefWidth="338.0"
+                       promptText="Date Of Birth"/>
+        <JFXComboBox fx:id="cmbBatch" layoutX="603.0" layoutY="221.0" prefHeight="25.0" prefWidth="338.0"
+                     promptText="Batch"/>
+        <JFXButton fx:id="btnReject" layoutX="601.0" layoutY="574.0" onAction="#rejectStudent"
+                   style="-fx-background-color: #e74c3c; -fx-border-radius: 5;" text="  Reject  " textFill="WHITE"
+                   visible="false"/>
+        <JFXTextField fx:id="txtName" labelFloat="true" layoutX="59.0" layoutY="172.0" prefHeight="25.0"
+                      prefWidth="532.0" promptText="Name in full"/>
+        <JFXTextField fx:id="txtNIC" labelFloat="true" layoutX="59.0" layoutY="220.0" prefHeight="25.0"
+                      prefWidth="227.0" promptText="NIC"/>
+        <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="303.0" layoutY="221.0" prefHeight="25.0"
+                      prefWidth="290.0" promptText="Email"/>
+        <JFXTextField fx:id="txtPhone" labelFloat="true" layoutX="64.0" layoutY="325.0" prefHeight="25.0"
+                      prefWidth="389.0" promptText="Phone"/>
+        <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="460.0" layoutY="325.0" prefHeight="25.0"
+                      prefWidth="486.0" promptText="Address"/>
+    </AnchorPane>
 </AnchorPane>

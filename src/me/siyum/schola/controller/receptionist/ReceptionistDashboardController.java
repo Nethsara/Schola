@@ -6,11 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
+import me.siyum.schola.bo.custom.StudentBO;
 import me.siyum.schola.bo.custom.TasksBO;
+import me.siyum.schola.dto.StudentDTO;
 import me.siyum.schola.dto.TasksDTO;
 import me.siyum.schola.dto.ToDoDTO;
 import me.siyum.schola.entity.Tasks;
@@ -24,6 +24,7 @@ import java.util.Optional;
 public class ReceptionistDashboardController {
     private static final ArrayList<ToDoDTO> toDoList = new ArrayList<>();
     private final TasksBO tasksBO = BOFactory.getInstance().getBO(BOTypes.TASKS);
+    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
     public JFXButton btnAddToDo;
     public JFXListView<String> listName;
     public TextField txtToDoListItem;
@@ -33,9 +34,10 @@ public class ReceptionistDashboardController {
     public TableColumn colTime;
     public TableColumn colStatus;
     public TableColumn colActions;
-    public AnchorPane receptionistPane;
-    public AnchorPane mainPane;
-    public Circle circleImg;
+    public Label lblPendingSt;
+    public Label lblServedRef;
+    public Label lblTotalRef;
+    public Label lblPendingTasks;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -53,6 +55,7 @@ public class ReceptionistDashboardController {
     }
 
     public void setData() {
+        setLables();
         btnRemove.setDisable(true);
         try {
             ObservableList<ReceptionistTasksTM> tmList = FXCollections.observableArrayList();
@@ -99,6 +102,39 @@ public class ReceptionistDashboardController {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setLables() {
+        try {
+            setPendingStLbl();
+            setRefreshments();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setRefreshments() throws SQLException, ClassNotFoundException {
+        ArrayList<TasksDTO> tasksDTOS = tasksBO.searchTasks("");
+        int doneCount = 0;
+        int pendingCount = 0;
+        for (TasksDTO t : tasksDTOS
+        ) {
+            if (t.getStatus()) {
+                doneCount++;
+            } else {
+                pendingCount++;
+            }
+        }
+
+        lblServedRef.setText(String.valueOf(doneCount));
+        lblTotalRef.setText(String.valueOf(tasksDTOS.size()));
+        lblPendingTasks.setText(String.valueOf(pendingCount));
+
+    }
+
+    private void setPendingStLbl() throws SQLException, ClassNotFoundException {
+        ArrayList<StudentDTO> studentDTOS = studentBO.searchStudents(false);
+        lblPendingSt.setText(String.valueOf(studentDTOS.size()));
     }
 
     public void addToList() {
