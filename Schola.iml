@@ -15,5 +15,6 @@
     <orderEntry type="library" name="jfoenix-8.0.8" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.30" level="project" />
     <orderEntry type="library" name="charm-glisten-3.0.1-b7" level="project" />
+    <orderEntry type="library" name="batik-anim" level="project" />
   </component>
 </module>

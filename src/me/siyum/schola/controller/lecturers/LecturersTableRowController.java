@@ -11,7 +11,13 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import me.siyum.schola.controller.students.StudentFormController;
+import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.view.lecturers.tm.LecturersStudentsTM;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -58,5 +64,18 @@ public class LecturersTableRowController {
     }
 
     public void generateReport() {
+        try {
+            JasperDesign jd = JRXmlLoader.load("F:\\IJSE\\Final Projects\\Schola\\src\\me\\siyum\\schola\\reports\\Student.jrxml");
+            String sql = "SELECT * FROM student_exam_marks WHERE stID='" + lecturersStudentsTM.getId() + "' ORDER BY examID DESC";
+            JRDesignQuery newQuery = new JRDesignQuery();
+            newQuery.setText(sql);
+            jd.setQuery(newQuery);
+
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, DBConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jp);
+        } catch (JRException | SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
