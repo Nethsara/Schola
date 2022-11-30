@@ -86,22 +86,29 @@
          </font>
       </Label>
    </AnchorPane>
-   <AnchorPane layoutX="479.0" layoutY="115.0" prefHeight="355.0" prefWidth="510.0" style="-fx-background-color: #0c2230; -fx-border-radius: 15; -fx-background-radius: 15;">
+   <AnchorPane layoutX="479.0" layoutY="115.0" prefHeight="355.0" prefWidth="510.0"
+               style="-fx-background-color: #0c2230; -fx-border-radius: 15; -fx-background-radius: 15;">
       <Label layoutX="44.0" layoutY="22.0" text="Let us get you in" textFill="WHITE">
          <font>
-            <Font name="Microsoft YaHei UI" size="24.0" />
+            <Font name="Microsoft YaHei UI" size="24.0"/>
          </font>
       </Label>
-      <TextField fx:id="txtEmail" layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="416.0" promptText="Username 👤" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;" />
-      <PasswordField fx:id="txtPassword" layoutX="44.0" layoutY="181.0" prefHeight="29.0" prefWidth="413.0" promptText="Password 🔑" style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;" />
-      <Label layoutX="46.0" layoutY="60.0" text="Don't have account? Meet your counsellor to create one." textFill="WHITE">
+      <TextField fx:id="txtEmail" layoutX="44.0" layoutY="124.0" onAction="#login" prefHeight="31.0" prefWidth="416.0"
+                 promptText="Username 👤"
+                 style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;"/>
+      <PasswordField fx:id="txtPassword" layoutX="44.0" layoutY="181.0" onAction="#login" prefHeight="29.0"
+                     prefWidth="413.0" promptText="Password 🔑"
+                     style="-fx-background-color: #0c2230; -fx-border-color: #3d87b4; -fx-border-radius: 5; -fx-text-fill:WHITE;"/>
+      <Label layoutX="46.0" layoutY="60.0" text="Don't have account? Meet your counsellor to create one."
+             textFill="WHITE">
          <font>
-            <Font name="Microsoft YaHei UI" size="12.0" />
+            <Font name="Microsoft YaHei UI" size="12.0"/>
          </font>
       </Label>
-      <JFXButton layoutX="205.0" layoutY="264.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #3d87b4;" text="Login" textFill="WHITE">
+      <JFXButton layoutX="205.0" layoutY="264.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="118.0"
+                 style="-fx-background-color: #3d87b4;" text="Login" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font size="13.0"/>
          </font>
       </JFXButton>
       <Label fx:id="passwordStatus" layoutX="289.0" layoutY="230.0" textFill="RED" />

@@ -40,7 +40,7 @@
    </HBox>
    <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="120.0" layoutY="125.0" radius="41.0" stroke="TRANSPARENT"
            strokeType="INSIDE"/>
-   <Label layoutX="73.0" layoutY="172.0" text="Schola Admin">
+   <Label layoutX="42.0" layoutY="174.0" text="Schola Receptionist">
       <font>
          <Font name="Consolas Bold" size="15.0"/>
       </font>
@@ -71,8 +71,8 @@
                <Insets bottom="10.0" left="20.0" top="10.0"/>
             </padding>
          </JFXButton>
-         <JFXButton fx:id="employerButton" alignment="TOP_LEFT" onAction="#employersPage" prefHeight="38.0"
-                    prefWidth="200.0" text=" Employers" textFill="#95a0a9">
+         <JFXButton fx:id="attendanceButton" alignment="TOP_LEFT" onAction="#attendancePage" prefHeight="38.0"
+                    prefWidth="200.0" text=" Attendance" textFill="#95a0a9">
             <font>
                <Font name="Consolas" size="15.0"/>
             </font>
@@ -83,8 +83,8 @@
                <Insets bottom="10.0" left="20.0" top="10.0"/>
             </padding>
          </JFXButton>
-         <JFXButton fx:id="btnIncome" alignment="TOP_LEFT" onAction="#salaryPage" prefHeight="38.0" prefWidth="200.0"
-                    text=" Incomes" textFill="#95a0a9">
+         <JFXButton fx:id="salaryButton" alignment="TOP_LEFT" onAction="#salaryPage" prefHeight="38.0" prefWidth="200.0"
+                    text=" Salary" textFill="#95a0a9">
             <font>
                <Font name="Consolas" size="15.0"/>
             </font>

@@ -82,9 +82,17 @@ public class Navigation {
             case STUDENT_DASHBOARD:
                 setPanel("students/StudentDashboard", anchorPane);
                 break;
+            case RECEPTIONIST_HOME:
+                setPanel("receptionist/ReceptionistDashboard", anchorPane);
+                break;
             case STUDENT_CLASSES:
                 setPanel("students/StudentClasses", anchorPane);
                 break;
+            case RECEPTIONIST_ATTENDANCE:
+                setPanel("receptionist/ReceptionistAttendance", anchorPane);
+                break;
+            case LECTURER_HOMEWORK:
+                setPanel("lecturers/LectureresHomeWorks", anchorPane);
         }
 
     }
@@ -119,6 +127,7 @@ public class Navigation {
                 break;
             case LECTURER:
                 initUI("headers/LecturerPage");
+                break;
             default:
                 initUI("WelcomePageForm");
         }

@@ -4,4 +4,6 @@ public class Env {
     public static String file = "C:/Schola";
     public static String downloadLocation = "C:/Schola/Downloads/";
     public static String token = "qqqqq";
+
+    public static Object user;
 }

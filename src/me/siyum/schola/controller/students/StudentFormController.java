@@ -21,6 +21,7 @@ import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.BatchDTO;
 import me.siyum.schola.dto.ParentDTO;
 import me.siyum.schola.dto.StudentDTO;
+import me.siyum.schola.util.Validator;
 
 import javax.imageio.ImageIO;
 import javax.sql.rowset.serial.SerialBlob;
@@ -71,6 +72,17 @@ public class StudentFormController {
         txtName.textProperty()
                 .addListener((observable, oldValue, newValue) -> lblName.setText(newValue));
 
+        txtEmail.textProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (Validator.isEmailMatch(txtEmail.getText())) {
+                        txtEmail.setStyle("-jfx-unfocus-color : black");
+                        txtEmail.setStyle("-jfx-focus-color : #4059a9");
+                    } else {
+                        txtEmail.setStyle("-jfx-unfocus-color : red");
+                        txtEmail.setStyle("-jfx-focus-color : red");
+                    }
+                });
+
     }
 
     public void uploadStImageOnAction() {
@@ -86,8 +98,9 @@ public class StudentFormController {
         if (btnSave.getText().equalsIgnoreCase("Save")) {
             try {
                 StudentDTO sdTO = getData();
-                sendToStudentBO(parentDTO, sdTO);
-
+                if (!(sdTO == null)) {
+                    sendToStudentBO(parentDTO, sdTO);
+                }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -103,12 +116,14 @@ public class StudentFormController {
     private void updateStudents() {
         try {
             StudentDTO sdTO = getData();
-            sdTO.setApproval(true);
-            sdTO.setStatus(true);
-            boolean b = studentBO.updateStudent(sdTO);
-            if (b) new Alert(Alert.AlertType.INFORMATION,
-                    "Successfully Updated the Student").show();
-            clear();
+            if (!(sdTO == null)) {
+                sdTO.setApproval(true);
+                sdTO.setStatus(true);
+                boolean b = studentBO.updateStudent(sdTO);
+                if (b) new Alert(Alert.AlertType.INFORMATION,
+                        "Successfully Updated the Student").show();
+                clear();
+            }
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -120,7 +135,9 @@ public class StudentFormController {
         try {
             connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
-            getData();
+            if (!(sdTO == null)) {
+                getData();
+            }
             if (!isSavedParent) {
                 boolean saveParent = parentBO.saveParent(pdTO);
                 if (saveParent) {
@@ -141,10 +158,11 @@ public class StudentFormController {
                     new Alert(Alert.AlertType.WARNING, "Try Again!").show();
                 }
             } else {
-                boolean b = studentBO.saveStudent(getData());
-                if (b) new Alert(Alert.AlertType.INFORMATION,
-                        "Successfully Added the Student").show();
-
+                if (!(sdTO == null)) {
+                    boolean b = studentBO.saveStudent(getData());
+                    if (b) new Alert(Alert.AlertType.INFORMATION,
+                            "Successfully Added the Student").show();
+                }
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -155,6 +173,17 @@ public class StudentFormController {
     }
 
     private StudentDTO getData() throws SQLException, ClassNotFoundException {
+        ArrayList<String> data = new ArrayList<>();
+        data.add(lblStID.getText());
+        data.add(txtName.getText());
+        data.add(txtEmail.getText());
+        data.add(txtNIC.getText());
+        data.add(txtAddress.getText());
+        data.add(txtPhone.getText());
+        data.add(cmbParentID.getValue() == null ? "" : cmbParentID.getValue());
+
+
+        System.out.println(data);
         String stID = lblStID.getText();
         String stName = txtName.getText();
         String stEmail = txtEmail.getText();
@@ -205,8 +234,15 @@ public class StudentFormController {
         String batchID = cmbBatch.getValue();
 
         LocalDate dob = pickerDOB.getValue();
-        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,
-                dob, true, false, batchID, "male", LocalDate.now());
+
+
+        if (Validator.validationString(data)) {
+            return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,
+                    dob, true, false, batchID, "male", LocalDate.now());
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Please enter valid data!").show();
+            return null;
+        }
     }
 
     public void setData(String id) {
@@ -334,6 +370,13 @@ public class StudentFormController {
 
         imgSt.setImage(new Image("me/siyum/schola/assets/images/stImg.png"));
 
+        txtAddress.setStyle("-jfx-unfocus-color : black");
+        txtName.setStyle("-jfx-unfocus-color : black");
+        txtEmail.setStyle("-jfx-unfocus-color : black");
+        txtPhone.setStyle("-jfx-unfocus-color : black");
+        txtPNIC.setStyle("-jfx-unfocus-color : black");
+        txtPName.setStyle("-jfx-unfocus-color : black");
+
     }
 
     public void setParentIDOnAction() {
@@ -347,13 +390,16 @@ public class StudentFormController {
 
     public void rejectStudent() {
         try {
+
             StudentDTO sdTO = getData();
-            sdTO.setApproval(false);
-            sdTO.setStatus(false);
-            boolean b = studentBO.updateStudent(sdTO);
-            if (b) new Alert(Alert.AlertType.INFORMATION,
-                    "Successfully Rejected the Student").show();
-            clear();
+            if (!(sdTO == null)) {
+                sdTO.setApproval(false);
+                sdTO.setStatus(false);
+                boolean b = studentBO.updateStudent(sdTO);
+                if (b) new Alert(Alert.AlertType.INFORMATION,
+                        "Successfully Rejected the Student").show();
+                clear();
+            }
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
