@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 8.1.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xmlns="http://jasperreports.sourceforge.net/jasperreports"
+			  xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+			  name="Student" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20"
+			  rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1623c41-5f90-4152-a453-23e70ec7e922">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="studentID" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM student_exam_marks]]>
+	</queryString>
+	<field name="semMID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="semMID"/>
+		<property name="com.jaspersoft.studio.field.label" value="semMID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_exam_marks"/>
+	</field>
+	<field name="examID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="examID"/>
+		<property name="com.jaspersoft.studio.field.label" value="examID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_exam_marks"/>
+	</field>
+	<field name="stID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="stID"/>
+		<property name="com.jaspersoft.studio.field.label" value="stID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_exam_marks"/>
+	</field>
+	<field name="mark" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="mark"/>
+		<property name="com.jaspersoft.studio.field.label" value="mark"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_exam_marks"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="368" splitType="Stretch">
+			<lineChart>
+				<chart evaluationTime="Report">
+					<reportElement x="90" y="30" width="570" height="200" uuid="93801ee9-0ee4-4fff-a379-18ea100bc3a3"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report"/>
+					<categorySeries>
+						<seriesExpression><![CDATA["Student Progress"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{examID}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{mark}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="123" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

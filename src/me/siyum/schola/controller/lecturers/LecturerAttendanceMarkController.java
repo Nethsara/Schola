@@ -143,7 +143,5 @@ public class LecturerAttendanceMarkController {
                 connection.setAutoCommit(true);
             }
         }
-
-
     }
 }
