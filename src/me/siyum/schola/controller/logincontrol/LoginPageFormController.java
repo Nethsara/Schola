@@ -1,5 +1,6 @@
 package me.siyum.schola.controller.logincontrol;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -33,30 +34,37 @@ public class LoginPageFormController {
     public void loginOnAction(Event actionEvent) throws IOException {
         try {
             ArrayList<String> strings = LoginController.loginValidate(txtEmail.getText(), txtPassword.getText());
-            boolean b = LoginController.writeToken(strings.get(1), strings.get(0));
-            System.out.println(b);
-            if (b) {
-                System.out.println("Login success!");
-                if (strings.get(0).equalsIgnoreCase("admin")) {
-                    Navigation.navigate(Routes.ADMIN, actionEvent);
-                } else if (strings.get(0).equalsIgnoreCase("lecturer")) {
-                    Navigation.navigate(Routes.LECTURER, actionEvent);
-                } else if (strings.get(0).equalsIgnoreCase("secretary")) {
-                    Navigation.navigate(Routes.SECRETARY, actionEvent);
-                } else if (strings.get(0).equalsIgnoreCase("receptionist")) {
-                    Navigation.navigate(Routes.RECEPTIONIST, actionEvent);
-                } else if (strings.get(0).equalsIgnoreCase("student")) {
-                    Navigation.navigate(Routes.STUDENT, actionEvent);
+            if (strings == null) {
+                new Alert(Alert.AlertType.WARNING, "Enter correct data").show();
+            } else {
+                boolean b = LoginController.writeToken(strings.get(1), strings.get(0));
+                System.out.println(b);
+                if (b) {
+                    System.out.println("Login success!");
+                    if (strings.get(0).equalsIgnoreCase("admin")) {
+                        Navigation.navigate(Routes.ADMIN, actionEvent);
+                    } else if (strings.get(0).equalsIgnoreCase("lecturer")) {
+                        Navigation.navigate(Routes.LECTURER, actionEvent);
+                    } else if (strings.get(0).equalsIgnoreCase("secretary")) {
+                        Navigation.navigate(Routes.SECRETARY, actionEvent);
+                    } else if (strings.get(0).equalsIgnoreCase("receptionist")) {
+                        Navigation.navigate(Routes.RECEPTIONIST, actionEvent);
+                    } else if (strings.get(0).equalsIgnoreCase("student")) {
+                        Navigation.navigate(Routes.STUDENT, actionEvent);
+                    }
+                    //else if (strings.get(0).equalsIgnoreCase("staff")) {
+                    //Navigation.navigate(Routes.ADMIN, actionEvent);
+                    // }
                 }
-                //else if (strings.get(0).equalsIgnoreCase("staff")) {
-                //Navigation.navigate(Routes.ADMIN, actionEvent);
-                // }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-
+            new Alert(Alert.AlertType.WARNING, "FIll the data!").show();
         } catch (ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, "Class Not Found");
         }
+    }
+
+    public void login(ActionEvent actionEvent) throws IOException {
+        loginOnAction(actionEvent);
     }
 }

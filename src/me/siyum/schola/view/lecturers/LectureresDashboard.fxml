@@ -13,12 +13,12 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
             xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="me.siyum.schola.controller.lecturers.LecturerDashboardController">
-   <Label layoutX="14.0" layoutY="14.0" text="Welcome, Nethsara Siyum">
+   <Label layoutX="14.0" layoutY="14.0" text="Welcome,">
       <font>
          <Font name="Consolas Bold" size="12.0"/>
       </font>
    </Label>
-   <ImageView fitHeight="14.0" fitWidth="19.0" layoutX="169.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="14.0" fitWidth="19.0" layoutX="185.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../assets/images/wave-hand.png"/>
    </ImageView>
    <AnchorPane layoutX="11.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-radius: 15;">
@@ -27,16 +27,14 @@
             <Font name="Consolas" size="12.0"/>
          </font>
       </Label>
-      <Label layoutX="23.0" layoutY="19.0" text="1000">
+      <Label fx:id="lblTotalSt" layoutX="23.0" layoutY="19.0" text="1000">
          <font>
             <Font name="Consolas Bold" size="36.0"/>
          </font>
       </Label>
       <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="179.0" layoutY="6.0" pickOnBounds="true"
                  preserveRatio="true">
-         <image>
-            <Image url="@../../assets/images/student.png"/>
-         </image>
+         <Image url="@../../assets/images/student.png"/>
       </ImageView>
    </AnchorPane>
    <AnchorPane layoutX="284.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-radius: 15;">
@@ -45,16 +43,14 @@
             <Font name="Consolas" size="12.0"/>
          </font>
       </Label>
-      <Label layoutX="31.0" layoutY="18.0" text="100">
+      <Label fx:id="lblTClasses" layoutX="31.0" layoutY="18.0" text="100">
          <font>
             <Font name="Consolas Bold" size="36.0"/>
          </font>
       </Label>
       <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="191.0" layoutY="8.0" pickOnBounds="true"
                  preserveRatio="true">
-         <image>
-            <Image url="@../../assets/images/classroom.png"/>
-         </image>
+         <Image url="@../../assets/images/classroom.png"/>
       </ImageView>
    </AnchorPane>
    <AnchorPane layoutX="556.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-radius: 15;">
@@ -63,16 +59,14 @@
             <Font name="Consolas" size="12.0"/>
          </font>
       </Label>
-      <Label layoutX="27.0" layoutY="19.0" text="5" textFill="#1e1e1e">
+      <Label fx:id="lblTotalUpcomminLessons" layoutX="27.0" layoutY="19.0" text="5" textFill="#1e1e1e">
          <font>
             <Font name="Consolas Bold" size="36.0"/>
          </font>
       </Label>
-      <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="199.0" layoutY="6.0" pickOnBounds="true"
+      <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="183.0" layoutY="6.0" pickOnBounds="true"
                  preserveRatio="true">
-         <image>
-            <Image url="@../../assets/images/online-lesson.png"/>
-         </image>
+         <Image url="@../../assets/images/online-lesson.png"/>
       </ImageView>
    </AnchorPane>
    <AnchorPane layoutX="827.0" layoutY="48.0" prefHeight="70.0" prefWidth="263.0" style="-fx-background-radius: 15;">
@@ -81,16 +75,14 @@
             <Font name="Consolas" size="12.0"/>
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="19.0" text="7">
+      <Label fx:id="lblScholaRating" layoutX="34.0" layoutY="19.0" text="7">
          <font>
             <Font name="Consolas Bold" size="36.0"/>
          </font>
       </Label>
-      <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="199.0" layoutY="6.0" pickOnBounds="true"
+      <ImageView fitHeight="58.0" fitWidth="60.0" layoutX="174.0" layoutY="6.0" pickOnBounds="true"
                  preserveRatio="true">
-         <image>
-            <Image url="@../../assets/images/rating.png"/>
-         </image>
+         <Image url="@../../assets/images/rating.png"/>
       </ImageView>
    </AnchorPane>
    <AnchorPane layoutX="15.0" layoutY="329.0" prefHeight="281.0" prefWidth="523.0"
@@ -100,14 +92,13 @@
             <Font name="Consolas Bold" size="14.0"/>
          </font>
       </Label>
-      <TableView layoutX="13.0" layoutY="43.0" prefHeight="225.0" prefWidth="493.0"
+      <TableView fx:id="tblWeak" layoutX="13.0" layoutY="43.0" prefHeight="225.0" prefWidth="493.0"
                  style="-fx-background-color: transparent; -fx-border-color: grey;">
          <columns>
-            <TableColumn prefWidth="75.0" text="#ID"/>
-            <TableColumn prefWidth="83.0" text="Image"/>
-            <TableColumn prefWidth="135.0" text="Name"/>
-            <TableColumn prefWidth="93.0" text="Schola Mark"/>
-            <TableColumn prefWidth="121.0" text="Actions" />
+            <TableColumn fx:id="colWID" prefWidth="75.0" text="#ID"/>
+            <TableColumn fx:id="colWName" prefWidth="200.0" text="Name"/>
+            <TableColumn fx:id="colWMark" prefWidth="105.0" text="Schola Mark"/>
+            <TableColumn fx:id="colWActions" prefWidth="111.0" text="Actions"/>
          </columns>
       </TableView>
       <JFXButton layoutX="425.0" layoutY="9.0" opacity="0.61"
@@ -133,37 +124,39 @@
          </xAxis>
          <yAxis>
             <NumberAxis minorTickVisible="false" side="LEFT" tickLabelsVisible="false" tickMarkVisible="false"/>
-        </yAxis>
+         </yAxis>
       </LineChart>
    </AnchorPane>
    <AnchorPane layoutX="552.0" layoutY="329.0" prefHeight="281.0" prefWidth="534.0"
                style="-fx-background-color: #c8facd; -fx-background-radius: 10;">
-      <children>
-         <Label layoutX="19.0" layoutY="17.0" text="Top Students" textFill="#007b55">
-            <font>
-               <Font name="Consolas Bold" size="14.0"/>
-            </font>
-         </Label>
-         <TableView layoutX="13.0" layoutY="43.0" prefHeight="225.0" prefWidth="511.0"
-                    style="-fx-background-color: transparent; -fx-border-color: grey;">
-            <columns>
-               <TableColumn prefWidth="75.0" text="#ID"/>
-               <TableColumn prefWidth="83.0" text="Image"/>
-               <TableColumn prefWidth="135.0" text="Name" />
-               <TableColumn prefWidth="93.0" text="Schola Mark" />
-               <TableColumn prefWidth="121.0" text="Actions" />
-            </columns>
-         </TableView>
-         <JFXButton layoutX="440.0" layoutY="14.0" opacity="0.61"
-                    style="-fx-background-color: #007b55; -fx-background-radius: 5;" text="View All" textFill="WHITE">
-            <font>
-               <Font name="Consolas" size="12.0"/>
-            </font>
-            <graphic>
-               <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_DOWN"/>
-            </graphic>
-         </JFXButton>
-         <Circle fill="#00ff04" layoutX="125.0" layoutY="25.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE"/>
-      </children>
+      <Label layoutX="19.0" layoutY="17.0" text="Top Students" textFill="#007b55">
+         <font>
+            <Font name="Consolas Bold" size="14.0"/>
+         </font>
+      </Label>
+      <TableView fx:id="tblTop" layoutX="13.0" layoutY="43.0" prefHeight="225.0" prefWidth="511.0"
+                 style="-fx-background-color: transparent; -fx-border-color: grey;">
+         <columns>
+            <TableColumn fx:id="colTID" prefWidth="75.0" text="#ID"/>
+            <TableColumn fx:id="colTName" prefWidth="210.0" text="Name"/>
+            <TableColumn fx:id="colTMark" prefWidth="107.0" text="Schola Mark"/>
+            <TableColumn fx:id="colTAction" prefWidth="117.0" text="Actions"/>
+         </columns>
+      </TableView>
+      <JFXButton layoutX="440.0" layoutY="14.0" opacity="0.61"
+                 style="-fx-background-color: #007b55; -fx-background-radius: 5;" text="View All" textFill="WHITE">
+         <font>
+            <Font name="Consolas" size="12.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_DOWN"/>
+         </graphic>
+      </JFXButton>
+      <Circle fill="#00ff04" layoutX="125.0" layoutY="25.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE"/>
    </AnchorPane>
+   <Label fx:id="lblName" layoutX="69.0" layoutY="14.0" text="Nethsara Siyum">
+      <font>
+         <Font name="Consolas Bold" size="12.0"/>
+      </font>
+   </Label>
 </AnchorPane>

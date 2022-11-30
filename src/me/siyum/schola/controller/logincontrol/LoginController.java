@@ -64,7 +64,9 @@ public class LoginController {
             list.add(
                     res.getString(2)
             );
+            return list;
         }
-        return list;
+        return null;
+
     }
 }
