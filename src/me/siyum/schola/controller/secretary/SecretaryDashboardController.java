@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.StudentBO;
@@ -18,6 +19,15 @@ public class SecretaryDashboardController {
     public Label lblPaymentReceived;
     public Label lblPaymentSent;
     public PieChart pieChart;
+    public TableColumn colID;
+    public TableColumn colName;
+    public TableColumn colEmail;
+    public TableColumn colSchola;
+    public TableColumn colAction;
+    public TableColumn colPID;
+    public TableColumn colPName;
+    public TableColumn colPEmail;
+    public TableColumn colPActions;
 
     private StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
 

@@ -19,6 +19,9 @@ public class Navigation {
             case ADMIN_STUDENTS:
                 setPanel("admin/AdminStudentPage", anchorPane);
                 break;
+            case ADMIN_MANAGEMENT:
+                setPanel("admin/AdminManagement", anchorPane);
+                break;
             case ADMIN_EMPLOYEE:
                 setPanel("admin/AdminEmployeeManager", anchorPane);
                 break;
@@ -93,6 +96,13 @@ public class Navigation {
                 break;
             case LECTURER_HOMEWORK:
                 setPanel("lecturers/LectureresHomeWorks", anchorPane);
+                break;
+            case STUDENT_HOMEWORKS:
+                setPanel("students/StudentHWPage", anchorPane);
+                break;
+            case STUDENT_FEE:
+                setPanel("students/StudentsPayments", anchorPane);
+                break;
         }
 
     }
@@ -122,14 +132,14 @@ public class Navigation {
                 initUI("headers/SecretaryPage");
                 break;
             case LOGIN:
+                Env.user = null;
                 Env.token = "";
                 initUI("LoginPageForm");
                 break;
             case LECTURER:
                 initUI("headers/LecturerPage");
                 break;
-            default:
-                initUI("WelcomePageForm");
+
         }
     }
 

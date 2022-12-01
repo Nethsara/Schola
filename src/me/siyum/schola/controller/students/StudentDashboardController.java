@@ -2,17 +2,17 @@ package me.siyum.schola.controller.students;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.ClassesBO;
-import me.siyum.schola.bo.custom.EmployeeBO;
-import me.siyum.schola.bo.custom.StudentBO;
-import me.siyum.schola.bo.custom.SubjectsBO;
+import me.siyum.schola.bo.custom.*;
 import me.siyum.schola.dto.ClassesDTO;
 import me.siyum.schola.dto.StudentDTO;
+import me.siyum.schola.dto.StudentMarkDTO;
 import me.siyum.schola.util.Env;
 import me.siyum.schola.view.students.tm.StudentClassesTM;
 
@@ -32,6 +32,7 @@ public class StudentDashboardController {
     public TableColumn<StudentClassesTM, String> colLecturer;
     public TableColumn<StudentClassesTM, String> colTime;
     public TableView<StudentClassesTM> tblClasses;
+    public LineChart studentGrowth;
 
     private String student;
 
@@ -50,9 +51,24 @@ public class StudentDashboardController {
         try {
             student = employeeBO.getIDByToken(Env.token, "student");
             setTable();
+            setLineChart();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setLineChart() throws SQLException, ClassNotFoundException {
+        XYChart.Series series = new XYChart.Series();
+
+        StudentMarkBO studentMarkBO = BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
+        ArrayList<StudentMarkDTO> marksByID = studentMarkBO.getMarksByID(student);
+
+        for (StudentMarkDTO mrk : marksByID
+        ) {
+            series.getData().add(new XYChart.Data(mrk.getExmID(), mrk.getMark()));
+
+        }
+        studentGrowth.getData().add(series);
     }
 
     private void setTable() throws SQLException, ClassNotFoundException {

@@ -21,15 +21,6 @@ public class LoginController {
                 role);
     }
 
-    private static int getTokenID() throws SQLException, ClassNotFoundException {
-        int lgtID = 0;
-        ResultSet res = CRUDUtil.execute("SELECT lgtID FROM login_token WHERE id DESC");
-        if (res.next()) {
-            lgtID = res.getInt(1);
-        }
-        return lgtID;
-    }
-
     private static String generateToken() {
 
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

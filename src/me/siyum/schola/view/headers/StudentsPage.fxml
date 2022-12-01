@@ -114,13 +114,11 @@
    </Label>
    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="47.0" layoutY="518.0" pickOnBounds="true"
               preserveRatio="true">
-      <image>
-         <Image url="@../../assets/images/lms.png"/>
-      </image>
+      <Image url="@../../assets/images/lms.png"/>
    </ImageView>
    <JFXButton layoutX="87.0" layoutY="199.0" onAction="#logout" text="Logout">
       <graphic>
-         <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" onDragDetected="#logout" size="13">
+         <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" size="13">
             <cursor>
                <Cursor fx:constant="HAND"/>
             </cursor>

@@ -3,6 +3,7 @@ package me.siyum.schola.controller.admin;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
@@ -99,5 +100,14 @@ public class AdminAnnouncement {
             e.printStackTrace();
         }
         return "SA-1";
+    }
+
+    public void addBatch(ActionEvent actionEvent) {
+    }
+
+    public void addSubject(ActionEvent actionEvent) {
+    }
+
+    public void addClassRoom(ActionEvent actionEvent) {
     }
 }

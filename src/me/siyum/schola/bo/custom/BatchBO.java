@@ -7,4 +7,6 @@ import java.util.ArrayList;
 
 public interface BatchBO {
     ArrayList<BatchDTO> getBatches(String s) throws SQLException, ClassNotFoundException;
+
+    BatchDTO getBatch(String id) throws SQLException, ClassNotFoundException;
 }

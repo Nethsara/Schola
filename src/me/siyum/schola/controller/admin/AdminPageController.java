@@ -28,6 +28,8 @@ public class AdminPageController {
     public FontAwesomeIconView iconIncome;
     public JFXButton btnSettings;
     public FontAwesomeIconView iconSettings;
+    public JFXButton btnManagement;
+    public FontAwesomeIconView iconManagement;
 
     public void initialize() throws IOException {
         Image im = new javafx.scene.image.Image("me/siyum/schola/assets/images/admin.png", false);
@@ -35,37 +37,37 @@ public class AdminPageController {
         Navigation.navigate(Routes.ADMIN_HOME, mainPane);
     }
 
-    public void homePage(ActionEvent actionEvent) throws IOException {
+    public void homePage() throws IOException {
         Navigation.navigate(Routes.ADMIN_HOME, mainPane);
         setButtonClorsNormal();
         setBtnColorGreen(dashboardButtton, dashboardIcon);
     }
 
-    public void studentsPage(ActionEvent actionEvent) throws IOException {
+    public void studentsPage() throws IOException {
         Navigation.navigate(Routes.ADMIN_STUDENTS, mainPane);
         setButtonClorsNormal();
         setBtnColorGreen(studentsButton, studentsIcon);
     }
 
-    public void employersPage(ActionEvent actionEvent) throws IOException {
+    public void employersPage() throws IOException {
         Navigation.navigate(Routes.ADMIN_EMPLOYEE, mainPane);
         setButtonClorsNormal();
         setBtnColorGreen(employerButton, iconEmployee);
     }
 
-    public void announcementPage(ActionEvent actionEvent) throws IOException {
+    public void announcementPage() throws IOException {
         Navigation.navigate(Routes.ADMIN_ANOUNCEMENTS, mainPane);
         setButtonClorsNormal();
         setBtnColorGreen(btnAnnouncements, iconAnnoun);
     }
 
-    public void incomesPage(ActionEvent actionEvent) throws IOException {
+    public void incomesPage() throws IOException {
         Navigation.navigate(Routes.ADMIN_INCOME, mainPane);
         setButtonClorsNormal();
         setBtnColorGreen(btnIncome, iconIncome);
     }
 
-    public void settingsPage(ActionEvent actionEvent) throws IOException {
+    public void settingsPage() throws IOException {
         Navigation.navigate(Routes.ADMIN_SETTINGS, mainPane);
         setButtonClorsNormal();
         setBtnColorGreen(btnSettings, iconSettings);
@@ -92,7 +94,10 @@ public class AdminPageController {
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
-        System.out.println("Logout");
         Navigation.navigate(Routes.LOGIN, actionEvent);
+    }
+
+    public void management(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.ADMIN_MANAGEMENT, actionEvent);
     }
 }

@@ -93,6 +93,18 @@
                 <Insets bottom="10.0" left="20.0" top="10.0"/>
             </padding>
         </JFXButton>
+        <JFXButton fx:id="btnManagement" alignment="TOP_LEFT" onAction="#management" prefHeight="38.0" prefWidth="200.0"
+                   text=" Management" textFill="#95a0a9">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+            <graphic>
+                <FontAwesomeIconView fx:id="iconManagement" fill="#95a0a9" glyphName="SLIDERS" size="15"/>
+            </graphic>
+            <padding>
+                <Insets bottom="10.0" left="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
         <JFXButton fx:id="btnSettings" alignment="TOP_LEFT" onAction="#settingsPage" prefHeight="38.0" prefWidth="200.0"
                    text=" Settings" textFill="#95a0a9">
             <font>
@@ -109,9 +121,7 @@
     <Separator layoutX="218.0" layoutY="39.0" opacity="0.65" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0"/>
     <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="37.0" layoutY="508.0" pickOnBounds="true"
                preserveRatio="true">
-        <image>
-            <Image url="@../../assets/images/lms.png"/>
-        </image>
+        <Image url="@../../assets/images/lms.png"/>
     </ImageView>
     <JFXButton layoutX="77.0" layoutY="189.0" onAction="#logout" text="Logout">
         <graphic>

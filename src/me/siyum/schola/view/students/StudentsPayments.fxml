@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.students.StudentPaymentController">
+    <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-radius: 15;">
+        <Pane layoutX="17.0" layoutY="67.0" prefHeight="483.0" prefWidth="1008.0">
+            <JFXTextField fx:id="txtPaymentID" labelFloat="true" layoutX="48.0" layoutY="27.0" prefHeight="25.0"
+                          prefWidth="237.0" promptText="Payment ID"/>
+            <JFXTextField fx:id="txtPayable" labelFloat="true" layoutX="301.0" layoutY="27.0" prefHeight="25.0"
+                          prefWidth="193.0" promptText="Total Payable"/>
+            <JFXTextField fx:id="txtAmount" labelFloat="true" layoutX="511.0" layoutY="27.0" prefHeight="25.0"
+                          prefWidth="175.0" promptText="Amount"/>
+            <JFXButton layoutX="706.0" layoutY="27.0" onAction="#uploadSlip" prefHeight="25.0" prefWidth="108.0"
+                       style="-fx-background-color: #ff5630;" text="Upload" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="12.0"/>
+                </font>
+            </JFXButton>
+            <JFXButton layoutX="857.0" layoutY="27.0" onAction="#submitForm" prefHeight="25.0" prefWidth="108.0"
+                       style="-fx-background-color: #36b37e;" text="Submit" textFill="WHITE">
+                <font>
+                    <Font name="Consolas Bold" size="12.0"/>
+                </font>
+            </JFXButton>
+            <TableView fx:id="tblPayments" layoutX="57.0" layoutY="142.0" prefHeight="313.0" prefWidth="916.0">
+                <columns>
+                    <TableColumn fx:id="colID" prefWidth="175.0" text="Payment ID"/>
+                    <TableColumn fx:id="colDate" prefWidth="233.0" text="Date"/>
+                    <TableColumn fx:id="colAmount" prefWidth="341.0" text="Amount"/>
+                    <TableColumn fx:id="colActions" prefWidth="166.0" text="Actions"/>
+                </columns>
+            </TableView>
+        </Pane>
+        <Separator layoutX="12.0" layoutY="52.0" opacity="0.89" prefHeight="0.0" prefWidth="1016.0"/>
+        <Label layoutX="17.0" layoutY="14.0" text="Fees">
+            <font>
+                <Font name="Consolas Bold" size="20.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+</AnchorPane>
