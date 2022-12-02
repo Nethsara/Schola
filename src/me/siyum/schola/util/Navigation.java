@@ -20,6 +20,7 @@ public class Navigation {
                 setPanel("admin/AdminStudentPage", anchorPane);
                 break;
             case ADMIN_MANAGEMENT:
+                System.out.println("Admin management Navigation");
                 setPanel("admin/AdminManagement", anchorPane);
                 break;
             case ADMIN_EMPLOYEE:
@@ -102,6 +103,12 @@ public class Navigation {
                 break;
             case STUDENT_FEE:
                 setPanel("students/StudentsPayments", anchorPane);
+                break;
+            case SECRETARY_FEE:
+                setPanel("secretary/SecretaryFees", anchorPane);
+                break;
+            case STUDENT_NOTIFICATIONS:
+                setPanel("students/StudentsNotifications", anchorPane);
                 break;
         }
 

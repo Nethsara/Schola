@@ -19,6 +19,7 @@ public class FeeBOImpl implements FeeBO {
 
         for (Fee f : search
         ) {
+            System.out.println("Bo " + f.getId());
             list.add(
                     new FeeDTO(
                             f.getId(),
@@ -35,5 +36,25 @@ public class FeeBOImpl implements FeeBO {
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {
         return feeDAO.getLastID();
+    }
+
+    @Override
+    public ArrayList<FeeDTO> getFeesAll() throws SQLException, ClassNotFoundException {
+        ArrayList<Fee> search = feeDAO.search("");
+        ArrayList<FeeDTO> list = new ArrayList<>();
+
+        for (Fee f : search
+        ) {
+            list.add(
+                    new FeeDTO(
+                            f.getId(),
+                            f.getStID(),
+                            f.getAmount(),
+                            f.getDate(),
+                            f.getBill()
+                    )
+            );
+        }
+        return list;
     }
 }

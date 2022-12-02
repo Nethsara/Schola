@@ -72,4 +72,8 @@ public class StudentsPageController {
     public void logout(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.LOGIN, actionEvent);
     }
+
+    public void notifications(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.STUDENT_NOTIFICATIONS, mainPane);
+    }
 }

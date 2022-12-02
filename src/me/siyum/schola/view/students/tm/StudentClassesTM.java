@@ -1,5 +1,7 @@
 package me.siyum.schola.view.students.tm;
 
+import javafx.scene.control.Button;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -11,6 +13,7 @@ public class StudentClassesTM {
     private String lecturer;
     private String classRoom;
     private String status;
+    private Button btn;
 
     public StudentClassesTM() {
     }
@@ -18,7 +21,7 @@ public class StudentClassesTM {
     public StudentClassesTM(String id, LocalDate date,
                             LocalTime time, String subject,
                             String lecturer, String classRoom,
-                            String status) {
+                            String status, Button btn) {
         this.id = id;
         this.date = date;
         this.time = time;
@@ -26,6 +29,7 @@ public class StudentClassesTM {
         this.lecturer = lecturer;
         this.classRoom = classRoom;
         this.status = status;
+        this.setBtn(btn);
     }
 
     public String getId() {
@@ -82,5 +86,13 @@ public class StudentClassesTM {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Button getBtn() {
+        return btn;
+    }
+
+    public void setBtn(Button btn) {
+        this.btn = btn;
     }
 }

@@ -58,6 +58,8 @@ public class DAOFactory {
                 return (T) new NotificationStudentDAOImpl();
             case FEE:
                 return (T) new FeeDAOImpl();
+            case USERS:
+                return (T) new UsersDAOImpl();
             default:
                 return null;
         }

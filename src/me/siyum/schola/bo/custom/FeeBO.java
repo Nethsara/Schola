@@ -9,4 +9,6 @@ public interface FeeBO {
     ArrayList<FeeDTO> getFeesByID(String stID) throws SQLException, ClassNotFoundException;
 
     String getLastID() throws SQLException, ClassNotFoundException;
+
+    ArrayList<FeeDTO> getFeesAll() throws SQLException, ClassNotFoundException;
 }

@@ -17,10 +17,12 @@ import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.BatchBO;
 import me.siyum.schola.bo.custom.ParentBO;
 import me.siyum.schola.bo.custom.StudentBO;
+import me.siyum.schola.bo.custom.UsersBO;
 import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.BatchDTO;
 import me.siyum.schola.dto.ParentDTO;
 import me.siyum.schola.dto.StudentDTO;
+import me.siyum.schola.dto.UsersDTO;
 import me.siyum.schola.util.Validator;
 
 import javax.imageio.ImageIO;
@@ -34,6 +36,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class StudentFormController {
 
@@ -64,8 +67,29 @@ public class StudentFormController {
     public JFXComboBox<String> cmbBatch;
     public JFXTextField txtParentName;
     public JFXButton btnReject;
+    UsersBO usersBO = BOFactory.getInstance().getBO(BOTypes.USERS);
     private boolean isSavedParent = true;
     private ParentDTO parentDTO;
+
+    private static String generatePassword() {
+
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+
+        StringBuilder sb = new StringBuilder(10);
+
+        for (int i = 0; i < 10; i++) {
+            int index
+                    = (int) (AlphaNumericString.length()
+                    * Math.random());
+
+            sb.append(AlphaNumericString
+                    .charAt(index));
+        }
+
+        return sb.toString();
+    }
 
     public void initialize() {
         setData();
@@ -130,6 +154,31 @@ public class StudentFormController {
         }
     }
 
+    private UsersDTO generateUser() {
+        String id = "";
+        try {
+            String tempStID = usersBO.getLastID();
+            if (tempStID.equalsIgnoreCase("")) {
+                id = "UNS-" + 1;
+            } else {
+                String[] array = tempStID.split("-");
+                int tempNumber = Integer.parseInt(array[1]);
+                int finalizeOrderId = tempNumber + 1;
+                id = "UNS-" + finalizeOrderId;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return new UsersDTO(
+                id,
+                txtName.getText().split(" ")[0].toLowerCase(Locale.ROOT),
+                generatePassword(),
+                "student",
+                lblStID.getText()
+        );
+    }
+
     private void sendToStudentBO(ParentDTO pdTO, StudentDTO sdTO) throws SQLException {
         Connection connection = null;
         try {
@@ -143,10 +192,19 @@ public class StudentFormController {
                 if (saveParent) {
                     boolean save = studentBO.saveStudent(sdTO);
                     if (save) {
-                        connection.commit();
-                        new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
-                        clear();
-                        setData();
+                        System.out.println("Saving");
+                        boolean generatedUsername = usersBO.save(
+                                generateUser());
+                        if (generatedUsername) {
+                            connection.commit();
+                            new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
+                            clear();
+                            setData();
+                        } else {
+                            connection.rollback();
+                            connection.setAutoCommit(true);
+                            new Alert(Alert.AlertType.WARNING, "User generated failed!").show();
+                        }
                     } else {
                         connection.rollback();
                         connection.setAutoCommit(true);
@@ -160,8 +218,24 @@ public class StudentFormController {
             } else {
                 if (!(sdTO == null)) {
                     boolean b = studentBO.saveStudent(getData());
-                    if (b) new Alert(Alert.AlertType.INFORMATION,
-                            "Successfully Added the Student").show();
+                    if (b) {
+                        boolean generatedUsername = usersBO.save(
+                                generateUser());
+                        if (generatedUsername) {
+                            connection.commit();
+                            new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
+                            clear();
+                            setData();
+                        } else {
+                            connection.rollback();
+                            connection.setAutoCommit(true);
+                            new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                        }
+                    } else {
+                        connection.rollback();
+                        connection.setAutoCommit(true);
+                        new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                    }
                 }
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -173,17 +247,6 @@ public class StudentFormController {
     }
 
     private StudentDTO getData() throws SQLException, ClassNotFoundException {
-        ArrayList<String> data = new ArrayList<>();
-        data.add(lblStID.getText());
-        data.add(txtName.getText());
-        data.add(txtEmail.getText());
-        data.add(txtNIC.getText());
-        data.add(txtAddress.getText());
-        data.add(txtPhone.getText());
-        data.add(cmbParentID.getValue() == null ? "" : cmbParentID.getValue());
-
-
-        System.out.println(data);
         String stID = lblStID.getText();
         String stName = txtName.getText();
         String stEmail = txtEmail.getText();
@@ -236,13 +299,9 @@ public class StudentFormController {
         LocalDate dob = pickerDOB.getValue();
 
 
-        if (Validator.validationString(data)) {
-            return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,
-                    dob, true, false, batchID, "male", LocalDate.now());
-        } else {
-            new Alert(Alert.AlertType.WARNING, "Please enter valid data!").show();
-            return null;
-        }
+        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,
+                dob, true, false, batchID, "male", LocalDate.now());
+
     }
 
     public void setData(String id) {

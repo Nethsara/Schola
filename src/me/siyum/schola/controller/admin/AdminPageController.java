@@ -97,7 +97,8 @@ public class AdminPageController {
         Navigation.navigate(Routes.LOGIN, actionEvent);
     }
 
-    public void management(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.ADMIN_MANAGEMENT, actionEvent);
+    public void management() throws IOException {
+        System.out.println("Management");
+        Navigation.navigate(Routes.ADMIN_MANAGEMENT, mainPane);
     }
 }

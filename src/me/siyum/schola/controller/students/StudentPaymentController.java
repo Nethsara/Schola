@@ -14,10 +14,16 @@ import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.BatchBO;
 import me.siyum.schola.bo.custom.FeeBO;
 import me.siyum.schola.dao.CRUDUtil;
+import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.FeeDTO;
 import me.siyum.schola.dto.StudentDTO;
 import me.siyum.schola.util.Env;
 import me.siyum.schola.view.students.tm.FeeTM;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -67,7 +73,23 @@ public class StudentPaymentController {
                                 btn
                         )
                 );
+                btn.setOnAction(e -> {
+                    try {
+                        JasperDesign jd = JRXmlLoader.load("F:\\IJSE\\Final Projects\\Schola\\src\\me\\siyum\\schola\\reports\\Billl.jrxml");
+                        String sql = "SELECT * FROM fee WHERE id='" + f.getId() + "'";
+                        JRDesignQuery newQuery = new JRDesignQuery();
+                        newQuery.setText(sql);
+                        jd.setQuery(newQuery);
+
+                        JasperReport jr = JasperCompileManager.compileReport(jd);
+                        JasperPrint jp = JasperFillManager.fillReport(jr, null, DBConnection.getInstance().getConnection());
+                        JasperViewer.viewReport(jp);
+                    } catch (JRException | SQLException | ClassNotFoundException er) {
+                        er.printStackTrace();
+                    }
+                });
             }
+
 
             tblPayments.setItems(obList);
 

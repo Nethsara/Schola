@@ -18,10 +18,11 @@
                 <TableColumn fx:id="colID" prefWidth="121.0" text="ID"/>
                 <TableColumn fx:id="colDate" prefWidth="158.0" text="Date"/>
                 <TableColumn fx:id="colTime" prefWidth="141.0" text="Time"/>
-                <TableColumn fx:id="colSubject" prefWidth="158.0" text="Subject"/>
-                <TableColumn fx:id="colLecturer" prefWidth="170.0" text="Lecturer"/>
-                <TableColumn fx:id="colClassroom" prefWidth="150.0" text="Classroom"/>
-                <TableColumn fx:id="colStatus" prefWidth="117.0" text="Status"/>
+                <TableColumn fx:id="colSubject" prefWidth="140.0" text="Subject"/>
+                <TableColumn fx:id="colLecturer" prefWidth="157.0" text="Lecturer"/>
+                <TableColumn fx:id="colClassroom" prefWidth="134.0" text="Classroom"/>
+                <TableColumn fx:id="colStatus" prefWidth="89.0" text="Status"/>
+                <TableColumn fx:id="colActions" prefWidth="75.0" text="Action"/>
             </columns>
         </TableView>
     </AnchorPane>

@@ -108,7 +108,11 @@ public class SecretaryPageController {
         icon.setStyle("-fx-fill:#1eb569");
     }
 
-    public void logout(ActionEvent actionEvent) {
+    public void logout(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.LOGIN, actionEvent);
+    }
 
+    public void btnIncomes(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.SECRETARY_FEE, mainPane);
     }
 }

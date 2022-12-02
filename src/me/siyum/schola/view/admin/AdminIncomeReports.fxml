@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="620.0" prefWidth="1100.0" style="-fx-background-color: #121315;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.siyum.schola.controller.admin.AdminStudentIncomeReportController">
-    <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="601.0" prefWidth="1071.0" style="-fx-background-color: #191d20; -fx-background-radius: 15;">
-        <Label layoutX="471.0" layoutY="32.0" text="Reports" textFill="#7662c4">
-            <font>
-                <Font name="Consolas Bold" size="31.0" />
-            </font>
-        </Label>
-      <Button layoutX="72.0" layoutY="192.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="238.0" text="Get Salary Rates">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="404.0" layoutY="192.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="238.0" text="Get Incomes">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="754.0" layoutY="192.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="238.0" text="Students">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="404.0" layoutY="364.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="238.0" text="Employees">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-    </AnchorPane>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.admin.AdminStudentIncomeReportController">
+    <Label layoutX="473.0" layoutY="23.0" text="Reporting">
+        <font>
+            <Font name="Consolas Bold" size="31.0"/>
+        </font>
+    </Label>
+    <JFXButton layoutX="928.0" layoutY="118.0" onAction="#expenses" style="-fx-background-color: #ff5630;"
+               text="Expenses Report" textFill="WHITE">
+        <font>
+            <Font name="Consolas" size="12.0"/>
+        </font>
+    </JFXButton>
+    <JFXButton layoutX="931.0" layoutY="310.0" onAction="#income" style="-fx-background-color: #36b37e;"
+               text="Income Reports" textFill="WHITE">
+        <font>
+            <Font name="Consolas" size="12.0"/>
+        </font>
+    </JFXButton>
+    <LineChart fx:id="chartExpenses" layoutX="22.0" layoutY="148.0" prefHeight="150.0" prefWidth="1033.0">
+        <xAxis>
+            <CategoryAxis side="BOTTOM"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis side="LEFT"/>
+        </yAxis>
+    </LineChart>
+    <LineChart fx:id="chartIncome" layoutX="22.0" layoutY="332.0" prefHeight="150.0" prefWidth="1033.0">
+        <xAxis>
+            <CategoryAxis side="BOTTOM"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis side="LEFT"/>
+        </yAxis>
+    </LineChart>
 </AnchorPane>

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -89,7 +90,8 @@ public class StudentDashboardController {
                                     subjectsBO.getNameByLecturer(c.getLecturer()),
                                     employeeBO.getEmployeeByID(c.getLecturer()).getName(),
                                     c.getClssRoom(),
-                                    c.getDate().isBefore(LocalDate.now()) ? "Passed" : "Upcoming"
+                                    c.getDate().isBefore(LocalDate.now()) ? "Passed" : "Upcoming",
+                                    new Button("")
                             )
                     );
                 }
