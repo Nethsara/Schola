@@ -37,7 +37,7 @@
 		<band height="256" splitType="Stretch">
 			<areaChart>
 				<chart evaluationTime="Report">
-					<reportElement x="0" y="56" width="800" height="200" uuid="d1a49c20-180a-43d4-b423-7733e6b64f72"/>
+					<reportElement x="0" y="56" width="800" height="200" uuid="e35c99da-9964-4022-8336-8b3f4456dfc4"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -45,8 +45,8 @@
 				<categoryDataset>
 					<dataset resetType="Report"/>
 					<categorySeries>
-						<seriesExpression><![CDATA[$F{id}]]></seriesExpression>
-						<categoryExpression><![CDATA[0]]></categoryExpression>
+						<seriesExpression><![CDATA[$F{stID}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{amount}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>

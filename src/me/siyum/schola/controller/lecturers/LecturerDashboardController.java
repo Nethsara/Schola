@@ -84,6 +84,7 @@ public class LecturerDashboardController {
         for (StudentDTO s : schola_desc
         ) {
             JFXButton btn = new JFXButton("Contact Parent");
+            btn.setStyle("-fx-background-color: #02ab56; -fx-text-fill:#ecf0f1;");
             weakOblist.add(
                     new LecturerDashboardStudentsTM(
                             s.getId(),
@@ -101,6 +102,7 @@ public class LecturerDashboardController {
         for (StudentDTO s : schola_asc
         ) {
             JFXButton btn = new JFXButton("Contact Parent");
+            btn.setStyle("-fx-background-color: #02ab56; -fx-text-fill:#ecf0f1;");
             topOblist.add(
                     new LecturerDashboardStudentsTM(
                             s.getId(),

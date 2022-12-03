@@ -83,7 +83,7 @@ public class AdminStudentIncomeReportController {
     public void income(ActionEvent actionEvent) {
         try {
             JasperDesign jd = JRXmlLoader.load("F:\\IJSE\\Final Projects\\Schola\\src\\me\\siyum\\schola\\reports\\Income.jrxml");
-            String sql = "SELECT * FROM salary";
+            String sql = "SELECT * FROM fee";
             JRDesignQuery newQuery = new JRDesignQuery();
             newQuery.setText(sql);
             jd.setQuery(newQuery);

@@ -50,6 +50,7 @@ public class LecturersPageController {
             Blob data = s.getImage();
             Image im = new Image(data.getBinaryStream());
             circleImgLeft.setFill(new ImagePattern(im));
+            circleImg.setFill(new ImagePattern(im));
             Navigation.navigate(Routes.LECTURER_DASHBOARD, mainPane);
         } catch (IOException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();

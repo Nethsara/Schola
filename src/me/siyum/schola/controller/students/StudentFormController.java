@@ -107,6 +107,17 @@ public class StudentFormController {
                     }
                 });
 
+        txtPEmail.textProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (Validator.isEmailMatch(txtEmail.getText())) {
+                        txtEmail.setStyle("-jfx-unfocus-color : black");
+                        txtEmail.setStyle("-jfx-focus-color : #4059a9");
+                    } else {
+                        txtEmail.setStyle("-jfx-unfocus-color : red");
+                        txtEmail.setStyle("-jfx-focus-color : red");
+                    }
+                });
+
     }
 
     public void uploadStImageOnAction() {
@@ -192,9 +203,7 @@ public class StudentFormController {
                 if (saveParent) {
                     boolean save = studentBO.saveStudent(sdTO);
                     if (save) {
-                        System.out.println("Saving");
-                        boolean generatedUsername = usersBO.save(
-                                generateUser());
+                        boolean generatedUsername = usersBO.save(generateUser());
                         if (generatedUsername) {
                             connection.commit();
                             new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
@@ -247,6 +256,10 @@ public class StudentFormController {
     }
 
     private StudentDTO getData() throws SQLException, ClassNotFoundException {
+        if (txtName.getText().isEmpty() && txtEmail.getText().isEmpty() && txtNIC.getText().isEmpty()
+                && txtAddress.getText().isEmpty() && txtPhone.getText().isEmpty() && txtPName.getText().isEmpty() && txtParentName.getText().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please fill the all data").showAndWait();
+        }
         String stID = lblStID.getText();
         String stName = txtName.getText();
         String stEmail = txtEmail.getText();
@@ -298,9 +311,21 @@ public class StudentFormController {
 
         LocalDate dob = pickerDOB.getValue();
 
-
-        return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,
-                dob, true, false, batchID, "male", LocalDate.now());
+        if (Validator.isNICMatch(stNIC)) {
+            if (Validator.isEmailMatch(stEmail)) {
+                if (Validator.isNumberMatch(stPhone)) {
+                    return new StudentDTO(stID, stName, stEmail, stNIC, blobImage, stAddress, stPhone, parentID, scholaMark,
+                            dob, true, false, batchID, "male", LocalDate.now());
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Check your phone number").show();
+                }
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Check email").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Check your NIC").show();
+        }
+        return null;
 
     }
 
