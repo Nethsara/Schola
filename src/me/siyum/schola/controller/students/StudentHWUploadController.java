@@ -5,10 +5,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.HomeWorkStudentBO;
 import me.siyum.schola.bo.custom.StudentBO;
 import me.siyum.schola.dao.CRUDUtil;
 import me.siyum.schola.dto.HomeWorkDTO;
+import me.siyum.schola.dto.StudentDTO;
+import me.siyum.schola.util.Env;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,13 +20,12 @@ import java.time.LocalDate;
 public class StudentHWUploadController {
     public TextField txtHWID;
     public TextField txtStID;
-
     FileInputStream fis;
-
-    HomeWorkStudentBO homeWorkStudentBO = BOFactory.getInstance().getBO(BOTypes.HOME_WORK_STUDENT);
     StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private StudentDTO s = (StudentDTO) Env.user;
 
     public void setData(HomeWorkDTO h) {
+        txtStID.setText(s.getId());
         txtHWID.setText(h.getId());
     }
 

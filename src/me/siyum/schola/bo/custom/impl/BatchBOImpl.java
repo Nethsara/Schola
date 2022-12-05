@@ -13,18 +13,29 @@ import java.util.ArrayList;
 public class BatchBOImpl implements BatchBO {
 
     BatchDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.BATCHES);
+
     @Override
     public ArrayList<BatchDTO> getBatches(String s) throws SQLException, ClassNotFoundException {
-        System.out.println(dao.search(""));
         ArrayList<Batch> search = dao.search(s);
         ArrayList<BatchDTO> batchDTOS = new ArrayList<>();
-        for (Batch b: search
-             ) {
+        for (Batch b : search
+        ) {
             batchDTOS.add(new BatchDTO(
                     b.getId(),
-                    b.getName()
+                    b.getName(),
+                    b.getFee()
             ));
         }
         return batchDTOS;
+    }
+
+    @Override
+    public BatchDTO getBatch(String id) throws SQLException, ClassNotFoundException {
+        Batch retrieve = dao.retrieve(id);
+        return new BatchDTO(
+                retrieve.getId(),
+                retrieve.getName(),
+                retrieve.getFee()
+        );
     }
 }

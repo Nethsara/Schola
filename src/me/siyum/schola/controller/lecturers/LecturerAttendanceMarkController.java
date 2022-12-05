@@ -53,7 +53,6 @@ public class LecturerAttendanceMarkController {
         colActions.setCellValueFactory(new PropertyValueFactory<>("actions"));
 
         chkSelectAll.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("Selected All");
             ObservableList<LecturerAttendanceMarkTM> items = tblAttendance.getItems();
 
             for (LecturerAttendanceMarkTM ratm : items

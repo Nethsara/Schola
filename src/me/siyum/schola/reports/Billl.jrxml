@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 8.1.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="Leaf_Red" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20" uuid="8e15d519-eab3-497d-b483-a5c1caac3ee0">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+    <style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+    <style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+    <style name="Detail" fontName="Arial" fontSize="12"/>
+    <queryString>
+        <![CDATA[SELECT * FROM fee;]]>
+    </queryString>
+    <field name="id" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="id"/>
+        <property name="com.jaspersoft.studio.field.label" value="id"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="fee"/>
+    </field>
+    <field name="stID" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="stID"/>
+        <property name="com.jaspersoft.studio.field.label" value="stID"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="fee"/>
+    </field>
+    <field name="amount" class="java.lang.Double">
+        <property name="com.jaspersoft.studio.field.name" value="amount"/>
+        <property name="com.jaspersoft.studio.field.label" value="amount"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="fee"/>
+    </field>
+    <field name="date" class="java.sql.Date">
+        <property name="com.jaspersoft.studio.field.name" value="date"/>
+        <property name="com.jaspersoft.studio.field.label" value="date"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="fee"/>
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="97" splitType="Stretch">
+            <staticText>
+                <reportElement style="Title" x="0" y="13" width="263" height="33"
+                               uuid="91f5fe7f-a65f-46a3-81ae-30f2d82c45a2"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Schola LMS]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="SubTitle" x="117" y="46" width="157" height="22"
+                               uuid="6931f6fc-c9e8-4cc3-9eec-607a123c87f7"/>
+                <text><![CDATA[Neanasa Institute]]></text>
+            </staticText>
+            <image>
+                <reportElement x="490" y="10" width="50" height="50" uuid="216680b5-c5db-4b1b-af3f-138e41db5c99"/>
+                <imageExpression><![CDATA["F:/Downloads/Add a heading (6).png"]]></imageExpression>
+            </image>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="80" splitType="Stretch">
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"
+                               uuid="2c4ebb21-8745-45a1-a9ad-477acaac72cb"/>
+                <graphicElement>
+                    <pen lineWidth="0.5" lineColor="#999999"/>
+                </graphicElement>
+            </line>
+            <staticText>
+                <reportElement x="220" y="3" width="150" height="30" uuid="99bf8ed1-db5f-4bb3-bd0e-21b3ae95777c"/>
+                <textElement>
+                    <font size="16"/>
+                </textElement>
+                <text><![CDATA[Payment Invoice]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="56" y="40" width="100" height="20" uuid="7adcfdd7-41d5-48c3-a2e2-de48162bf4b4"/>
+                <textFieldExpression><![CDATA[$F{stID}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="40" width="100" height="20" uuid="13a21411-18dd-4a82-ad85-2062d719ebd2"/>
+                <text><![CDATA[Student ID : ]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="448" y="37" width="100" height="13" uuid="d09e6c2a-8836-43b5-b3ff-0b0ab90f30f3"/>
+                <text><![CDATA[Payment ID : ]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="518" y="37" width="60" height="13" uuid="26b98c7a-39bc-4b82-b8a9-fe56985d7a23"/>
+                <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <columnFooter>
+        <band height="51" splitType="Stretch">
+            <textField>
+                <reportElement x="470" y="15" width="100" height="20" uuid="adb803eb-ce86-4d0c-89ff-d43f37c5d446"/>
+                <textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="370" y="16" width="100" height="19" uuid="87ca4c5d-ab6e-4c89-9ac8-5847df5cda0d"/>
+                <text><![CDATA[Total]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="15" width="56" height="15" uuid="3f90d61f-b3d4-4bb6-95ed-5a342af7470e"/>
+                <text><![CDATA[Date Paid : ]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="56" y="16" width="100" height="14" uuid="f1db7735-0fb9-4804-8a1a-6d3b8155cf1a"/>
+                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="20" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

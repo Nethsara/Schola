@@ -139,10 +139,8 @@ public class LecturerAttendanceController {
 
     public void filterOnAction() {
         if (cmbFilter.getValue().equalsIgnoreCase("pending")) {
-            System.out.println("pending");
             setPendingClasses();
         } else {
-            System.out.println("finished");
             setFinishedClasses();
         }
     }

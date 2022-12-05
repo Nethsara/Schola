@@ -12,22 +12,11 @@ public class LoginController {
 
     public static boolean writeToken(String id, String role) throws SQLException, IOException, ClassNotFoundException {
         String token = generateToken();
-        System.out.println(token);
         Env.token = token;
-        System.out.println(Env.token + " env");
         return CRUDUtil.execute("INSERT INTO login_tokens VALUES(?,?,?)",
                 token,
                 id,
                 role);
-    }
-
-    private static int getTokenID() throws SQLException, ClassNotFoundException {
-        int lgtID = 0;
-        ResultSet res = CRUDUtil.execute("SELECT lgtID FROM login_token WHERE id DESC");
-        if (res.next()) {
-            lgtID = res.getInt(1);
-        }
-        return lgtID;
     }
 
     private static String generateToken() {
@@ -56,8 +45,6 @@ public class LoginController {
         );
         ArrayList<String> list = new ArrayList<>();
         if (res.next()) {
-            System.out.println(res.getString(1));
-            System.out.println(res.getString(2));
             list.add(
                     res.getString(1)
             );

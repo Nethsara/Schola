@@ -24,7 +24,6 @@ public class HomeWorkStudentDAOImpl implements HomeWorkStudentDAO {
 
     @Override
     public boolean update(HomeWorkStudents homeWorkStudents) throws SQLException, ClassNotFoundException {
-        System.out.println("Updaing");
         return CRUDUtil.execute("UPDATE homework_students SET stID=?,stName=?,file=?,date=?,status=? WHERE hwsID=?",
                 homeWorkStudents.getStID(), homeWorkStudents.getName(),
                 homeWorkStudents.getFile(), homeWorkStudents.getDateSubmitted(),
@@ -38,7 +37,6 @@ public class HomeWorkStudentDAOImpl implements HomeWorkStudentDAO {
 
     @Override
     public ArrayList<HomeWorkStudents> search(String s) throws SQLException, ClassNotFoundException {
-        System.out.println(s + " dao search");
         ArrayList<HomeWorkStudents> list = new ArrayList<>();
         ResultSet res = CRUDUtil.execute("SELECT * FROM homework_students WHERE hwsID=?", s);
         while (res.next()) {

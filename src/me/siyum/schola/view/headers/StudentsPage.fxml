@@ -82,6 +82,18 @@
                <Insets bottom="10.0" left="20.0" top="10.0"/>
             </padding>
          </JFXButton>
+         <JFXButton fx:id="btnSalary1" alignment="TOP_LEFT" onAction="#notifications" prefHeight="38.0"
+                    prefWidth="200.0" text="  Notification" textFill="#95a0a9">
+            <font>
+               <Font name="Consolas" size="15.0"/>
+            </font>
+            <graphic>
+               <FontAwesomeIconView fx:id="iconSalary1" fill="#95a0a9" glyphName="ENVELOPE" size="15"/>
+            </graphic>
+            <padding>
+               <Insets bottom="10.0" left="20.0" top="10.0"/>
+            </padding>
+         </JFXButton>
          <JFXButton fx:id="btnSalary" alignment="TOP_LEFT" onAction="#billing" prefHeight="38.0" prefWidth="200.0"
                     text="  Payments" textFill="#95a0a9">
             <font>
@@ -104,23 +116,13 @@
       </font>
    </Label>
    <Separator layoutX="236.0" layoutY="26.0" opacity="0.65" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0"/>
-   <FontAwesomeIconView fill="#dadee1" glyphName="BELL" layoutX="158.0" layoutY="217.0" size="15" text=""/>
-   <Label layoutX="159.0" layoutY="196.0" prefHeight="12.0" prefWidth="12.0"
-          style="-fx-background-color: red; -fx-background-radius: 10;" text="  0" textAlignment="CENTER"
-          textFill="WHITE">
-      <font>
-         <Font name="System Bold" size="7.0"/>
-      </font>
-   </Label>
    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="47.0" layoutY="518.0" pickOnBounds="true"
               preserveRatio="true">
-      <image>
-         <Image url="@../../assets/images/lms.png"/>
-      </image>
+      <Image url="@../../assets/images/lms.png"/>
    </ImageView>
-   <JFXButton layoutX="87.0" layoutY="199.0" onAction="#logout" text="Logout">
+   <JFXButton layoutX="87.0" layoutY="196.0" onAction="#logout" text="Logout">
       <graphic>
-         <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" onDragDetected="#logout" size="13">
+         <FontAwesomeIconView fill="#00ab55" glyphName="SHARE_SQUARE_ALT" size="13">
             <cursor>
                <Cursor fx:constant="HAND"/>
             </cursor>

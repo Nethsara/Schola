@@ -2,9 +2,7 @@
 
 <?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="349.0" prefWidth="777.0"
@@ -17,8 +15,6 @@
                 <Font name="Consolas Bold" size="20.0"/>
             </font>
         </Label>
-        <TextField fx:id="txtQuestion" layoutX="64.0" layoutY="94.0" prefHeight="29.0" prefWidth="643.0"
-                   style="-fx-background-color: transparent;"/>
         <JFXButton contentDisplay="RIGHT" layoutX="675.0" layoutY="350.0" onAction="#nextButton"
                    style="-fx-background-color: #2ecc71;" text="Next" textFill="WHITE">
             <font>
@@ -48,5 +44,25 @@
                 <Font name="Consolas" size="12.0"/>
             </font>
         </JFXRadioButton>
+        <Label fx:id="lblTime" layoutX="553.0" layoutY="147.0" text="Label">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label layoutX="483.0" layoutY="147.0" text="Time Left">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label layoutX="594.0" layoutY="147.0" text="Seconds">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label fx:id="txtQuestion" layoutX="64.0" layoutY="87.0" text="Label">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+        </Label>
     </AnchorPane>
 </AnchorPane>

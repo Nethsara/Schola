@@ -118,7 +118,7 @@
             <Font name="Consolas" size="14.0"/>
          </font>
       </Label>
-      <LineChart layoutX="-1.0" layoutY="25.0" prefHeight="150.0" prefWidth="1080.0">
+      <LineChart fx:id="charLecPerform" layoutX="-1.0" layoutY="25.0" prefHeight="150.0" prefWidth="1080.0">
          <xAxis>
             <CategoryAxis side="BOTTOM"/>
          </xAxis>

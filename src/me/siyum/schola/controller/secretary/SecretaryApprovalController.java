@@ -59,7 +59,6 @@ public class SecretaryApprovalController {
                         btn
                 ));
                 btn.setOnAction(e->{
-                    System.out.println("Clicked");
                     try {
                         FXMLLoader loader= new FXMLLoader(getClass().getResource(".././../view/students/StudentForm.fxml"));
                         Parent parent = loader.load();

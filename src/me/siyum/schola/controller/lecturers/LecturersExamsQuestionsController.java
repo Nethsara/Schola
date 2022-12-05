@@ -70,7 +70,6 @@ public class LecturersExamsQuestionsController {
     }
 
     public void createExm(ActionEvent actionEvent) throws SQLException {
-        System.out.println("create");
         boolean status = true;
         Connection connection = null;
         try {

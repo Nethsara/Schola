@@ -40,7 +40,6 @@ public class AdminAnnouncement {
 
             for (AnnouncementsDTO ad : search
             ) {
-                System.out.println(ad.getId());
                 Button btn = new Button("Delete");
                 list.add(
                         new AdminAnnouncmentTM(
@@ -88,12 +87,9 @@ public class AdminAnnouncement {
     private String generateID() {
         try {
             String lastID = stBo.getLastID();
-            System.out.println(lastID);
             String[] array = lastID.split("-");//[D,3]
             int tempNumber = Integer.parseInt(array[1]);
-            System.out.println(tempNumber + " tempNum");
             int finalizeOrderId = tempNumber + 1;
-            System.out.println(finalizeOrderId + " finalize");
             return "SA-" + finalizeOrderId;
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

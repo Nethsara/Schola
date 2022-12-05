@@ -39,11 +39,9 @@ public class LecturersSalaryController {
             ObservableList<LecturerSalaryTM> tmList = FXCollections.observableArrayList();
 
             String lectureID = employeeBO.getIDByToken(Env.token, "lecturer");
-            System.out.println(lectureID);
             ArrayList<SalaryDTO> salaryDTOS = salaryBO.getSalaries(lectureID);
 
             for (SalaryDTO s : salaryDTOS) {
-                System.out.println(s.getId());
                 tmList.add(
                         new LecturerSalaryTM(
                                 s.getId(),

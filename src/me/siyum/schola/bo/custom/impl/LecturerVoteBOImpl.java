@@ -18,7 +18,8 @@ public class LecturerVoteBOImpl implements LecturerVoteBO {
         return lecturerVoteDAO.save(
                 new LecturerVote(
                         lecturerVoteDTO.getLecturer(),
-                        lecturerVoteDTO.getVote()
+                        lecturerVoteDTO.getVote(),
+                        lecturerVoteDTO.getDate()
                 )
         );
     }
@@ -32,7 +33,8 @@ public class LecturerVoteBOImpl implements LecturerVoteBO {
             list.add(
                     new LecturerVoteDTO(
                             l.getLecturer(),
-                            l.getVote()
+                            l.getVote(),
+                            l.getDate()
                     )
             );
         }

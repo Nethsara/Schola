@@ -56,6 +56,10 @@ public class BOFactory {
                 return (T) new NotificationBOImpl();
             case NOTIFICATION_STUDENT:
                 return (T) new NotificationStudentBOImpl();
+            case FEE:
+                return (T) new FeeBOImpl();
+            case USERS:
+                return (T) new UsersBOImpl();
             default:
                 return null;
         }

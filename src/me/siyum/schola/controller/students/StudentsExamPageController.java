@@ -100,7 +100,6 @@ public class StudentsExamPageController {
             String status = e.getDate().isBefore(LocalDate.now()) ? "finished" :
                     e.getDate().isEqual(LocalDate.now()) ? "today" : "pending";
 
-            System.out.println(mark + " mark from db " + e.getId() + " - Exm " + stID + " st ");
             Button btn = new Button("Participate");
 
             if (mark > -1) {
@@ -125,7 +124,6 @@ public class StudentsExamPageController {
                 );
 
                 btn.setOnAction(ev -> {
-                    System.out.println("Clicked");
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExamReady.fxml"));
                         Parent parent = loader.load();
@@ -155,7 +153,6 @@ public class StudentsExamPageController {
                 );
 
                 btn.setOnAction(ev -> {
-                    System.out.println("Clicked");
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExamReady.fxml"));
                         Parent parent = loader.load();
@@ -185,7 +182,6 @@ public class StudentsExamPageController {
                 );
 
                 btn.setOnAction(ev -> {
-                    System.out.println("Clicked");
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(".././../view/students/StudentsExamReady.fxml"));
                         Parent parent = loader.load();

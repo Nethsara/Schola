@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.AnnouncementsBO;
+import me.siyum.schola.bo.custom.NotificationStudentBO;
 import me.siyum.schola.dto.AnnouncementsDTO;
 import me.siyum.schola.view.students.tm.AnnouncementsTM;
 
@@ -19,6 +20,7 @@ public class StudentsAnnouncementsController {
 
     private final AnnouncementsBO stBo = BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
     public JFXListView listAnnouncements;
+    NotificationStudentBO noti = BOFactory.getInstance().getBO(BOTypes.NOTIFICATION_STUDENT);
     private ObservableList<AnnouncementsTM> tmList = FXCollections.observableArrayList();
 
     public void initialize() {
@@ -27,6 +29,7 @@ public class StudentsAnnouncementsController {
 
     private void setData() {
         ArrayList<AnnouncementsDTO> search = null;
+
         try {
             search = stBo.search("");
         } catch (SQLException e) {
@@ -34,9 +37,6 @@ public class StudentsAnnouncementsController {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(
-                search
-        );
         for (AnnouncementsDTO dto : search
         ) {
             tmList.add(

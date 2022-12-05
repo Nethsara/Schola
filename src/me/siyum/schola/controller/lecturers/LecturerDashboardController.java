@@ -3,20 +3,16 @@ package me.siyum.schola.controller.lecturers;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.ClassRoomsBO;
-import me.siyum.schola.bo.custom.ClassesBO;
-import me.siyum.schola.bo.custom.LecturerScholaBO;
-import me.siyum.schola.bo.custom.StudentBO;
-import me.siyum.schola.dto.ClassRoomsDTO;
-import me.siyum.schola.dto.ClassesDTO;
-import me.siyum.schola.dto.EmployeeDTO;
-import me.siyum.schola.dto.StudentDTO;
+import me.siyum.schola.bo.custom.*;
+import me.siyum.schola.dto.*;
 import me.siyum.schola.util.Env;
 import me.siyum.schola.view.lecturers.tm.LecturerDashboardStudentsTM;
 
@@ -40,16 +36,18 @@ public class LecturerDashboardController {
     public TableView<LecturerDashboardStudentsTM> tblTop;
     public TableView<LecturerDashboardStudentsTM> tblWeak;
     public Label lblName;
+    public LineChart charLecPerform;
 
 
     EmployeeDTO lecturer;
     ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
     ClassRoomsBO classRoomsBO = BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
     StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    LecturerVoteBO lecturerVoteBO = BOFactory.getInstance().getBO(BOTypes.LECTURER_VOTE);
 
     LecturerScholaBO lecturerScholaBO = BOFactory.getInstance().getBO(BOTypes.LECTURER_SCHOLA);
 
-    public void initialize() {
+    public void initialize() throws SQLException, ClassNotFoundException {
         lecturer = (EmployeeDTO) Env.user;
 
         colWID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -65,6 +63,21 @@ public class LecturerDashboardController {
         colTAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
 
         setData();
+        setChart();
+    }
+
+    private void setChart() throws SQLException, ClassNotFoundException {
+        XYChart.Series series = new XYChart.Series();
+
+
+        ArrayList<LecturerVoteDTO> votesByLectID = lecturerVoteBO.getVotesByLectID(lecturer.getId());
+
+        for (LecturerVoteDTO mrk : votesByLectID
+        ) {
+            series.getData().add(new XYChart.Data(mrk.getDate(), 5));
+
+        }
+        //charLecPerform.getData().add(series);
     }
 
     private void setData() {
@@ -84,6 +97,7 @@ public class LecturerDashboardController {
         for (StudentDTO s : schola_desc
         ) {
             JFXButton btn = new JFXButton("Contact Parent");
+            btn.setStyle("-fx-background-color: #02ab56; -fx-text-fill:#ecf0f1;");
             weakOblist.add(
                     new LecturerDashboardStudentsTM(
                             s.getId(),
@@ -101,6 +115,7 @@ public class LecturerDashboardController {
         for (StudentDTO s : schola_asc
         ) {
             JFXButton btn = new JFXButton("Contact Parent");
+            btn.setStyle("-fx-background-color: #02ab56; -fx-text-fill:#ecf0f1;");
             topOblist.add(
                     new LecturerDashboardStudentsTM(
                             s.getId(),

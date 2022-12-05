@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="620.0" prefWidth="1100.0"
+            xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="me.siyum.schola.controller.admin.AdminManagementController">
+    <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="601.0" prefWidth="1071.0" style="-fx-background-radius: 15;">
+        <Label layoutX="14.0" layoutY="14.0" text="Management">
+            <font>
+                <Font name="Consolas Bold" size="24.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="634.0" layoutY="113.0" onAction="#addBatch" prefHeight="28.0" prefWidth="128.0"
+                   style="-fx-background-color: #00ab55;" text="Add Batch" textFill="WHITE">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+        </JFXButton>
+        <JFXTextField labelFloat="true" layoutX="37.0" layoutY="112.0" prefHeight="25.0" prefWidth="264.0"
+                      promptText="Batch ID"/>
+        <JFXTextField labelFloat="true" layoutX="331.0" layoutY="114.0" prefHeight="25.0" prefWidth="243.0"
+                      promptText="Fee"/>
+        <JFXComboBox fx:id="cmbBatch" layoutX="781.0" layoutY="114.0" prefHeight="25.0" prefWidth="218.0"
+                     promptText="Batch List"/>
+        <JFXTextField labelFloat="true" layoutX="39.0" layoutY="215.0" prefHeight="25.0" prefWidth="264.0"
+                      promptText="Subject"/>
+        <JFXComboBox layoutX="330.0" layoutY="217.0" prefHeight="25.0" prefWidth="243.0" promptText="Lecturer"/>
+        <JFXButton layoutX="634.0" layoutY="211.0" onAction="#addSubject" prefHeight="28.0" prefWidth="128.0"
+                   style="-fx-background-color: #ffab00;" text="Add Subject" textFill="WHITE">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+        </JFXButton>
+        <JFXComboBox fx:id="cmbSubs" layoutX="784.0" layoutY="212.0" prefHeight="25.0" prefWidth="218.0"
+                     promptText="Subject List"/>
+        <JFXTextField labelFloat="true" layoutX="39.0" layoutY="317.0" prefHeight="25.0" prefWidth="264.0"
+                      promptText="Class Room"/>
+        <JFXTextField labelFloat="true" layoutX="331.0" layoutY="317.0" prefHeight="25.0" prefWidth="243.0"
+                      promptText="Space"/>
+        <JFXButton layoutX="634.0" layoutY="316.0" onAction="#addClassRoom" style="-fx-background-color: #ff5630;"
+                   text="Add ClassRoom" textFill="WHITE">
+            <font>
+                <Font name="Consolas" size="15.0"/>
+            </font>
+        </JFXButton>
+        <JFXComboBox fx:id="cmbClassRoom" layoutX="784.0" layoutY="318.0" prefHeight="25.0" prefWidth="218.0"
+                     promptText="Class List"/>
+    </AnchorPane>
+</AnchorPane>

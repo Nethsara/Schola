@@ -162,7 +162,6 @@ public class StudentBOImpl implements StudentBO {
             }
             return students;
         } else if (s.equalsIgnoreCase("top")) {
-            System.out.println("Order by top");
             ArrayList<Student> filteredStudents = dao.filterByMarks("mark ASC", exm);
             for (Student t : filteredStudents) {
                 students.add(
@@ -174,7 +173,6 @@ public class StudentBOImpl implements StudentBO {
             }
             return students;
         } else if (s.equalsIgnoreCase("id asc")) {
-            System.out.println("id asc");
             ArrayList<Student> filteredStudents = dao.filter("SELECT * FROM students ORDER BY stID ASC");
             for (Student t : filteredStudents) {
                 students.add(
@@ -186,7 +184,6 @@ public class StudentBOImpl implements StudentBO {
             }
             return students;
         } else if (s.equalsIgnoreCase("id desc")) {
-            System.out.println("id desc");
             ArrayList<Student> filteredStudents = dao.filter("SELECT * FROM students ORDER BY stID DESC");
             for (Student t : filteredStudents) {
                 students.add(
@@ -248,8 +245,6 @@ public class StudentBOImpl implements StudentBO {
     @Override
     public ArrayList<StudentDTO> filterStudents(String filter) throws SQLException, ClassNotFoundException {
         ArrayList<StudentDTO> students = new ArrayList<>();
-
-        System.out.println(filter);
         ArrayList<Student> filteredStudents = dao.filter("SELECT * FROM students WHERE batch='" + filter + "'");
         for (Student t : filteredStudents) {
             students.add(
@@ -260,5 +255,10 @@ public class StudentBOImpl implements StudentBO {
 
         }
         return students;
+    }
+
+    @Override
+    public boolean deleteStudent(String id) throws Exception {
+        return dao.delete(id);
     }
 }

@@ -30,7 +30,6 @@ public class SalaryBOImpl implements SalaryBO {
 
     @Override
     public ArrayList<SalaryDTO> getSalaries(String id) throws SQLException, ClassNotFoundException {
-        System.out.println(id + " BO");
         ArrayList<Salary> payments = dao.search("%" + id + "%");
         ArrayList<SalaryDTO> obList = new ArrayList<>();
         for (Salary s : payments) {

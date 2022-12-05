@@ -54,11 +54,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public ArrayList<Employee> search(String s) throws SQLException, ClassNotFoundException {
-        System.out.println(s);
         ArrayList<Employee> employees = new ArrayList<>();
         ResultSet resultSet = CRUDUtil.execute(s);
         while (resultSet.next()) {
-            System.out.println(resultSet.getString(1));
             employees.add(new Employee(
                     resultSet.getString(1),
                     resultSet.getBlob(2),
@@ -76,10 +74,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee retrieve(String s) throws SQLException, ClassNotFoundException {
-        System.out.println(s + "DAO ");
         ResultSet res = CRUDUtil.execute("SELECT * FROM employee WHERE eID=?", s);
         if (res.next()) {
-            System.out.println("Found a lecturer");
             return new Employee(
                     res.getString(1),
                     res.getBlob(2),

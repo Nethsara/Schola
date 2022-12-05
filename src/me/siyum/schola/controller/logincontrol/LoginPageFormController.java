@@ -6,6 +6,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import me.siyum.schola.bo.BOFactory;
+import me.siyum.schola.bo.BOTypes;
+import me.siyum.schola.bo.custom.UsersBO;
 import me.siyum.schola.util.ExamMarking;
 import me.siyum.schola.util.Navigation;
 import me.siyum.schola.util.Routes;
@@ -19,11 +22,14 @@ public class LoginPageFormController {
     public PasswordField txtPassword;
     public Label passwordStatus;
 
-    public void initialize() {
+    public void initialize() throws SQLException, ClassNotFoundException {
         setData();
+        //Mailing.sendMail("");
     }
 
-    private void setData() {
+    private void setData() throws SQLException, ClassNotFoundException {
+        UsersBO usersBO = BOFactory.getInstance().getBO(BOTypes.USERS);
+        usersBO.getLastID();
         try {
             ExamMarking.scholaReload();
         } catch (SQLException | ClassNotFoundException e) {
@@ -38,9 +44,7 @@ public class LoginPageFormController {
                 new Alert(Alert.AlertType.WARNING, "Enter correct data").show();
             } else {
                 boolean b = LoginController.writeToken(strings.get(1), strings.get(0));
-                System.out.println(b);
                 if (b) {
-                    System.out.println("Login success!");
                     if (strings.get(0).equalsIgnoreCase("admin")) {
                         Navigation.navigate(Routes.ADMIN, actionEvent);
                     } else if (strings.get(0).equalsIgnoreCase("lecturer")) {

@@ -33,14 +33,15 @@ public class BatchDAOImpl implements BatchDAO {
     public ArrayList<Batch> search(String s) throws SQLException, ClassNotFoundException {
         ArrayList<Batch> batchList = new ArrayList<>();
 
-        s = "%"+s+"%";
+        s = "%" + s + "%";
         ResultSet res = CRUDUtil.execute("SELECT * FROM batches");
-        while (res.next()){
+        while (res.next()) {
             batchList.add(
-                new Batch(
-                        res.getString(1),
-                        res.getString(2)
-                )
+                    new Batch(
+                            res.getString(1),
+                            res.getString(2),
+                            res.getDouble(3)
+                    )
             );
         }
         return batchList;
@@ -49,6 +50,15 @@ public class BatchDAOImpl implements BatchDAO {
 
     @Override
     public Batch retrieve(String s) throws SQLException, ClassNotFoundException {
+        ResultSet res = CRUDUtil.execute("SELECT * FROM batches WHERE btIC=?", s);
+        if (res.next()) {
+            return
+                    new Batch(
+                            res.getString(1),
+                            res.getString(2),
+                            res.getDouble(3)
+                    );
+        }
         return null;
     }
 
