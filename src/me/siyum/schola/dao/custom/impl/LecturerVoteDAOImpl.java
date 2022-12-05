@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class LecturerVoteDAOImpl implements LecturerVoteDAO {
     @Override
     public boolean save(LecturerVote lecturerVote) throws SQLException, ClassNotFoundException {
-        return CRUDUtil.execute("INSERT INTO lecturer_vote VALUES(?,?)",
-                lecturerVote.getLecturer(), lecturerVote.getVote());
+        return CRUDUtil.execute("INSERT INTO lecturer_vote VALUES(?,?,?)",
+                lecturerVote.getLecturer(), lecturerVote.getVote(), lecturerVote.getDate());
     }
 
     @Override
@@ -38,8 +38,8 @@ public class LecturerVoteDAOImpl implements LecturerVoteDAO {
             list.add(
                     new LecturerVote(
                             res.getString(1),
-                            res.getInt(2)
-                    )
+                            res.getInt(2),
+                            res.getDate(3).toLocalDate())
             );
         }
         return list;

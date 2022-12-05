@@ -19,7 +19,6 @@ public class FeeBOImpl implements FeeBO {
 
         for (Fee f : search
         ) {
-            System.out.println("Bo " + f.getId());
             list.add(
                     new FeeDTO(
                             f.getId(),

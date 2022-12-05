@@ -35,7 +35,7 @@ public class StudentDAOImpl implements StudentDAO {
                 st.getScholaMark(),
                 st.getDob(),
                 st.isStatus(),
-                st.isApproval(),
+                false,
                 st.getBatch(),
                 gender,
                 LocalDate.now()
@@ -59,8 +59,8 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public boolean delete(String id) {
-        return false;
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        return CRUDUtil.execute("DELETE FROM students WHERE stID=?", id);
     }
 
     @Override
@@ -172,7 +172,6 @@ public class StudentDAOImpl implements StudentDAO {
 
         ResultSet res = CRUDUtil.execute(filter);
         while (res.next()) {
-            System.out.println("id " + res.getString(1) + " name " + res.getString(2));
             students.add(
                     new Student(
                             res.getString(1),

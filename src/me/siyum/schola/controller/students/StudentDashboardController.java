@@ -5,16 +5,19 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.*;
+import me.siyum.schola.dto.AnnouncementsDTO;
 import me.siyum.schola.dto.ClassesDTO;
 import me.siyum.schola.dto.StudentDTO;
 import me.siyum.schola.dto.StudentMarkDTO;
 import me.siyum.schola.util.Env;
+import me.siyum.schola.view.students.tm.DasboardAnnTM;
 import me.siyum.schola.view.students.tm.StudentClassesTM;
 
 import java.sql.SQLException;
@@ -34,6 +37,11 @@ public class StudentDashboardController {
     public TableColumn<StudentClassesTM, String> colTime;
     public TableView<StudentClassesTM> tblClasses;
     public LineChart studentGrowth;
+    public Label lblName;
+    public TableColumn<DasboardAnnTM, String> colFrom;
+    public TableColumn<DasboardAnnTM, String> colMessage;
+    public TableColumn<DasboardAnnTM, String> colID;
+    public TableView<DasboardAnnTM> tblAnnounTable;
 
     private String student;
 
@@ -45,12 +53,42 @@ public class StudentDashboardController {
         colSubject.setCellValueFactory(new PropertyValueFactory<>("subject"));
         colClassRoom.setCellValueFactory(new PropertyValueFactory<>("classRoom"));
 
+        colMessage.setCellValueFactory(new PropertyValueFactory<>("message"));
+        colFrom.setCellValueFactory(new PropertyValueFactory<>("from"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+
         setData();
+        setAnnouncements();
+    }
+
+    private void setAnnouncements() {
+        AnnouncementsBO anBO = BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
+        try {
+            ArrayList<AnnouncementsDTO> search = anBO.search("");
+            ObservableList<DasboardAnnTM> dasboardAnnTMS = FXCollections.observableArrayList();
+            for (AnnouncementsDTO a : search
+            ) {
+                dasboardAnnTMS.add(
+                        new DasboardAnnTM(
+                                a.getId(),
+                                a.getMessage(),
+                                a.getFrom()
+                        )
+                );
+            }
+            tblAnnounTable.setItems(dasboardAnnTMS);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setData() {
         try {
-            student = employeeBO.getIDByToken(Env.token, "student");
+
+            student = studentBO.getStudentByToken(Env.token);
+            StudentDTO studentDTO = studentBO.retrieveStudent(student);
+            lblName.setText(studentDTO.getName());
             setTable();
             setLineChart();
         } catch (SQLException | ClassNotFoundException e) {
@@ -80,7 +118,6 @@ public class StudentDashboardController {
         ArrayList<ClassesDTO> allClasses = classBO.getAllClasses("");
         for (ClassesDTO c : allClasses
         ) {
-            System.out.println(c.getLecturer());
             if (studentDTO.getBatch().equalsIgnoreCase(c.getBatch())) {
                 if (c.getDate().isAfter(LocalDate.now())) {
                     clsTM.add(new StudentClassesTM(

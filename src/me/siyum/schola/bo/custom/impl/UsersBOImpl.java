@@ -14,8 +14,6 @@ public class UsersBOImpl implements UsersBO {
 
     @Override
     public boolean save(UsersDTO u) throws SQLException, ClassNotFoundException {
-        System.out.println("Saving password");
-        System.out.println(u.getPassword());
         return usersDAO.save(
                 new Users(
                         u.geteID(),

@@ -68,12 +68,10 @@ public class SecretaryPaymentsController {
     }
 
     private void setTable() throws SQLException, ClassNotFoundException {
-        System.out.println("Setting table");
         ArrayList<SalaryDTO> salaries = bo.getSalaries();
         ObservableList<SecretarySalaryTM> list = FXCollections.observableArrayList();
         for (SalaryDTO s : salaries
         ) {
-            System.out.println(s.getId());
             list.add(
                     new SecretarySalaryTM(
                             s.getId(),

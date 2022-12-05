@@ -11,6 +11,7 @@ import me.siyum.schola.bo.custom.LecturerVoteBO;
 import me.siyum.schola.dto.LecturerVoteDTO;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class StudentVoteController {
     private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
@@ -44,7 +45,8 @@ public class StudentVoteController {
             boolean voted = lecturerVoteBO.vote(
                     new LecturerVoteDTO(
                             lecturerVoteDTO.getLecturer(),
-                            vote
+                            vote,
+                            LocalDate.now()
                     )
             );
 

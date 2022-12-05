@@ -9,7 +9,7 @@
             fx:controller="me.siyum.schola.controller.students.StudentsHWPageController">
     <AnchorPane layoutX="26.0" layoutY="26.0" prefHeight="568.0" prefWidth="1050.0" style="-fx-background-radius: 15;">
         <Separator layoutX="12.0" layoutY="57.0" prefHeight="0.0" prefWidth="1016.0"/>
-        <Label layoutX="14.0" layoutY="27.0" text="Exams">
+        <Label layoutX="14.0" layoutY="27.0" text="Home Works">
             <font>
                 <Font name="Consolas Bold" size="20.0"/>
             </font>

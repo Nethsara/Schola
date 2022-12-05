@@ -132,7 +132,6 @@ public class LecturersExamsManagerController {
     }
 
     private boolean saveExam() throws Exception {
-        System.out.println("saving exams");
         return examsBO.saveExams(new ExamsDTO(
                 txtExamID.getText(),
                 pickerDate.getValue(),

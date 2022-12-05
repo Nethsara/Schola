@@ -35,7 +35,6 @@ public class FeeDAOImpl implements FeeDAO {
 
     @Override
     public ArrayList<Fee> search(String s) throws SQLException, ClassNotFoundException {
-        System.out.println(s);
         s = "%" + s + "%";
         ResultSet res = CRUDUtil.execute("SELECT * FROM fee");
         ArrayList<Fee> list = new ArrayList<>();

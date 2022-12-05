@@ -37,9 +37,6 @@ public class StudentsAnnouncementsController {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(
-                search
-        );
         for (AnnouncementsDTO dto : search
         ) {
             tmList.add(

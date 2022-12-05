@@ -52,14 +52,13 @@ public class SecretaryFeeController {
 
     private void setData() {
         FeeBO feeBO = BOFactory.getInstance().getBO(BOTypes.FEE);
-        System.out.println("Sec Fee");
         try {
             ArrayList<FeeDTO> feesByID = feeBO.getFeesByID("");
 
             for (FeeDTO f : feesByID
             ) {
-                System.out.println(f.getId());
                 JFXButton btn = new JFXButton("View Receipt");
+                btn.setStyle("-fx-background-color: #111214; -fx-text-fill: #ffffff");
                 obList.add(
                         new SecretaryFeeTM(
                                 f.getId(),

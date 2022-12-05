@@ -23,17 +23,19 @@
                       promptText="Batch ID"/>
         <JFXTextField labelFloat="true" layoutX="331.0" layoutY="114.0" prefHeight="25.0" prefWidth="243.0"
                       promptText="Fee"/>
-        <JFXComboBox layoutX="781.0" layoutY="114.0" prefHeight="25.0" prefWidth="218.0" promptText="Batch List"/>
+        <JFXComboBox fx:id="cmbBatch" layoutX="781.0" layoutY="114.0" prefHeight="25.0" prefWidth="218.0"
+                     promptText="Batch List"/>
         <JFXTextField labelFloat="true" layoutX="39.0" layoutY="215.0" prefHeight="25.0" prefWidth="264.0"
                       promptText="Subject"/>
-        <JFXComboBox layoutX="337.0" layoutY="217.0" prefHeight="25.0" prefWidth="243.0" promptText="Lecturer"/>
+        <JFXComboBox layoutX="330.0" layoutY="217.0" prefHeight="25.0" prefWidth="243.0" promptText="Lecturer"/>
         <JFXButton layoutX="634.0" layoutY="211.0" onAction="#addSubject" prefHeight="28.0" prefWidth="128.0"
                    style="-fx-background-color: #ffab00;" text="Add Subject" textFill="WHITE">
             <font>
                 <Font name="Consolas" size="15.0"/>
             </font>
         </JFXButton>
-        <JFXComboBox layoutX="784.0" layoutY="212.0" prefHeight="25.0" prefWidth="218.0" promptText="Subject List"/>
+        <JFXComboBox fx:id="cmbSubs" layoutX="784.0" layoutY="212.0" prefHeight="25.0" prefWidth="218.0"
+                     promptText="Subject List"/>
         <JFXTextField labelFloat="true" layoutX="39.0" layoutY="317.0" prefHeight="25.0" prefWidth="264.0"
                       promptText="Class Room"/>
         <JFXTextField labelFloat="true" layoutX="331.0" layoutY="317.0" prefHeight="25.0" prefWidth="243.0"
@@ -44,6 +46,7 @@
                 <Font name="Consolas" size="15.0"/>
             </font>
         </JFXButton>
-        <JFXComboBox layoutX="784.0" layoutY="318.0" prefHeight="25.0" prefWidth="218.0" promptText="Class List"/>
+        <JFXComboBox fx:id="cmbClassRoom" layoutX="784.0" layoutY="318.0" prefHeight="25.0" prefWidth="218.0"
+                     promptText="Class List"/>
     </AnchorPane>
 </AnchorPane>

@@ -35,7 +35,6 @@ public class AnnouncementDAOImpl implements AnnouncementsDAO {
     public String getLastID() throws SQLException, ClassNotFoundException {
         ResultSet res = CRUDUtil.execute("SELECT * FROM announcements ORDER BY anID DESC");
         if (res.next()) {
-            System.out.println("dao " + res.getString(1));
             return res.getString(1);
         }
         return "";

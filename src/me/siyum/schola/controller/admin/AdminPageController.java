@@ -32,9 +32,9 @@ public class AdminPageController {
     public FontAwesomeIconView iconManagement;
 
     public void initialize() throws IOException {
+        Navigation.navigate(Routes.ADMIN_HOME, mainPane);
         Image im = new javafx.scene.image.Image("me/siyum/schola/assets/images/admin.png", false);
         circleImgLeft.setFill(new ImagePattern(im));
-        Navigation.navigate(Routes.ADMIN_HOME, mainPane);
     }
 
     public void homePage() throws IOException {
@@ -75,13 +75,13 @@ public class AdminPageController {
 
 
     private void setButtonClorsNormal() {
-        Button[] btns = {btnAnnouncements, btnIncome, btnSettings, dashboardButtton, studentsButton, employerButton, employerButton};
+        Button[] btns = {btnAnnouncements, btnIncome, btnSettings, dashboardButtton, studentsButton, employerButton, employerButton, btnManagement};
         for (Button bt : btns
         ) {
             bt.setStyle("-fx-fill:#95a0a9");
         }
 
-        FontAwesomeIconView[] iconViews = {iconAnnoun, iconIncome, iconSettings, iconEmployee, studentsIcon, dashboardIcon};
+        FontAwesomeIconView[] iconViews = {iconAnnoun, iconIncome, iconSettings, iconEmployee, studentsIcon, dashboardIcon, iconManagement};
         for (FontAwesomeIconView icn : iconViews
         ) {
             icn.setStyle("-fx-fill:#95a0a9");
@@ -98,7 +98,8 @@ public class AdminPageController {
     }
 
     public void management() throws IOException {
-        System.out.println("Management");
+        setButtonClorsNormal();
         Navigation.navigate(Routes.ADMIN_MANAGEMENT, mainPane);
+        setBtnColorGreen(btnManagement, iconManagement);
     }
 }

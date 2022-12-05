@@ -16,7 +16,6 @@ public class BatchBOImpl implements BatchBO {
 
     @Override
     public ArrayList<BatchDTO> getBatches(String s) throws SQLException, ClassNotFoundException {
-        System.out.println(dao.search(""));
         ArrayList<Batch> search = dao.search(s);
         ArrayList<BatchDTO> batchDTOS = new ArrayList<>();
         for (Batch b : search

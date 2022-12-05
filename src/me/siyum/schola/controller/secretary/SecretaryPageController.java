@@ -48,7 +48,6 @@ public class SecretaryPageController {
             Env.user = employeeBO.getEmployeeByID(employeeBO.getIDByToken(Env.token, "secretary"));
             EmployeeDTO s = (EmployeeDTO) Env.user;
             Blob data = s.getImage();
-            System.out.println(data + " Image ");
             Image im = new Image(data.getBinaryStream());
             circleImg.setFill(new ImagePattern(im));
             circleImg1.setFill(new ImagePattern(im));

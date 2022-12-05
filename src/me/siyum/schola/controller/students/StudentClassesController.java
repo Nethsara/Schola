@@ -73,7 +73,6 @@ public class StudentClassesController {
         ArrayList<ClassesDTO> allClasses = classBO.getAllClasses("");
         for (ClassesDTO c : allClasses
         ) {
-            System.out.println(c.getLecturer());
             if (studentDTO.getBatch().equalsIgnoreCase(c.getBatch())) {
                 Button btn = new Button("Vote");
                 if (c.getDate().isBefore(LocalDate.now())) {
@@ -100,7 +99,7 @@ public class StudentClassesController {
                         Parent parent = loader.load();
                         StudentVoteController controller = loader.getController();
                         controller.setData(new LecturerVoteDTO(
-                                c.getLecturer(), 0
+                                c.getLecturer(), 0, LocalDate.now()
                         ));
                         Stage stage = new Stage();
                         stage.setScene(new Scene(parent));

@@ -30,7 +30,6 @@ public class LoginPageFormController {
     private void setData() throws SQLException, ClassNotFoundException {
         UsersBO usersBO = BOFactory.getInstance().getBO(BOTypes.USERS);
         usersBO.getLastID();
-        System.out.println(usersBO.getLastID());
         try {
             ExamMarking.scholaReload();
         } catch (SQLException | ClassNotFoundException e) {
@@ -45,9 +44,7 @@ public class LoginPageFormController {
                 new Alert(Alert.AlertType.WARNING, "Enter correct data").show();
             } else {
                 boolean b = LoginController.writeToken(strings.get(1), strings.get(0));
-                System.out.println(b);
                 if (b) {
-                    System.out.println("Login success!");
                     if (strings.get(0).equalsIgnoreCase("admin")) {
                         Navigation.navigate(Routes.ADMIN, actionEvent);
                     } else if (strings.get(0).equalsIgnoreCase("lecturer")) {

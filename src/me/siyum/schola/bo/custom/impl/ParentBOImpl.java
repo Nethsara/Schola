@@ -33,7 +33,6 @@ public class ParentBOImpl implements ParentBO {
     @Override
     public ParentDTO getParentByID(String id) throws SQLException, ClassNotFoundException {
         Parent parent = dao.retrieve(id);
-        System.out.println(parent.getName() + " bo parent name");
         return new ParentDTO(
                 parent.getId(),
                 parent.getName(),

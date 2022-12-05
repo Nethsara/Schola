@@ -157,7 +157,7 @@ public class ReceptionistDashboardController {
 
         for (AttendanceDTO a : allAttendance
         ) {
-            count = a.isStatus() ? count++ : count;
+            count = a.isStatus() ? count : count++;
         }
         lblToMarkAttendance.setText(String.valueOf(count));
     }

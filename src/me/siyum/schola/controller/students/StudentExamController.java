@@ -1,13 +1,19 @@
 package me.siyum.schola.controller.students;
 
 import com.jfoenix.controls.JFXRadioButton;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.ExamsQuestionsBO;
@@ -15,23 +21,35 @@ import me.siyum.schola.dto.ExamQuestionsDTO;
 import me.siyum.schola.util.ExamMarking;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class StudentExamController {
-    public TextField txtQuestion;
+public class StudentExamController implements Initializable {
+    private static final int STARTTIME = 120;
+    private final IntegerProperty timeSeconds = new SimpleIntegerProperty(STARTTIME);
     public JFXRadioButton radioMCQ2;
     public JFXRadioButton radioMCQ3;
     public JFXRadioButton radioMCQ4;
     public JFXRadioButton radioMCQ1;
-
+    public Label lblTime;
+    public Label txtQuestion;
     ExamsQuestionsBO examsQuestionsBO = BOFactory.getInstance().getBO(BOTypes.EXAM_QUESTIONS);
+    private Timeline timeline;
     private int correctAns;
     private int selectedAns;
 
-    public void initialize() {
-        setData();
+
+    private void updateTime() {
+        int seconds = timeSeconds.get();
+        timeSeconds.set(seconds - 1);
     }
 
+    public void handle() {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), evt -> updateTime()));
+        timeSeconds.set(STARTTIME);
+        timeline.play();
+    }
 
     public void nextButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (radioMCQ1.isSelected()) {
@@ -82,7 +100,6 @@ public class StudentExamController {
                 e.printStackTrace();
             }
 
-            System.out.println(ExamMarking.mark);
         } else {
             ExamMarking.currentQ++;
             try {
@@ -101,7 +118,6 @@ public class StudentExamController {
     }
 
     private void setData() {
-        System.out.println(ExamMarking.currentQ);
         try {
             ExamQuestionsDTO examQuestionsDTO = examsQuestionsBO.getQuestion(ExamMarking.examID, ExamMarking.currentQ);
             txtQuestion.setText(examQuestionsDTO.getQuestion());
@@ -118,4 +134,10 @@ public class StudentExamController {
         }
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setData();
+        handle();
+        lblTime.textProperty().bind(timeSeconds.asString());
+    }
 }

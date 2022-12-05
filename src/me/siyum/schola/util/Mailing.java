@@ -55,10 +55,8 @@ public class Mailing {
             // Now set the actual message
             message.setText("This is actual message");
 
-            System.out.println("sending...");
             // Send message
             Transport.send(message);
-            System.out.println("Sent message successfully....");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }

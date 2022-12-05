@@ -36,7 +36,6 @@ public class SalaryDAOImpl implements SalaryDAO {
 
     @Override
     public ArrayList<Salary> search(String s) throws SQLException, ClassNotFoundException {
-        System.out.println(s);
         s = "%" + s + "%";
         ResultSet res = CRUDUtil.execute("SELECT * FROM salary WHERE empID LIKE ?", s);
         ArrayList<Salary> payments = new ArrayList<>();

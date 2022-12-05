@@ -12,9 +12,7 @@ public class LoginController {
 
     public static boolean writeToken(String id, String role) throws SQLException, IOException, ClassNotFoundException {
         String token = generateToken();
-        System.out.println(token);
         Env.token = token;
-        System.out.println(Env.token + " env");
         return CRUDUtil.execute("INSERT INTO login_tokens VALUES(?,?,?)",
                 token,
                 id,
@@ -47,8 +45,6 @@ public class LoginController {
         );
         ArrayList<String> list = new ArrayList<>();
         if (res.next()) {
-            System.out.println(res.getString(1));
-            System.out.println(res.getString(2));
             list.add(
                     res.getString(1)
             );
