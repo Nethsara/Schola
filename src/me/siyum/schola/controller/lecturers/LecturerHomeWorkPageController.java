@@ -81,10 +81,15 @@ public class LecturerHomeWorkPageController {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        
+
 
     }
 
-    public void newHomeWork(ActionEvent actionEvent) {
+    public void newHomeWork(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../view/lecturers/LectureresHomeWorkScheduler.fxml"));
+        Parent parent = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.show();
     }
 }

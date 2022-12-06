@@ -33,80 +33,78 @@
    </Label>
    <AnchorPane fx:id="mainPane" layoutX="242.0" layoutY="55.0" prefHeight="620.0" prefWidth="1100.0"/>
    <VBox layoutX="36.0" layoutY="258.0" prefHeight="198.0" prefWidth="176.0">
-      <children>
-         <JFXButton fx:id="btnDash" alignment="BOTTOM_LEFT" onAction="#homePage" prefHeight="0.0" prefWidth="200.0"
-                    text=" Dashboard" textFill="#95a0a9">
-            <font>
-               <Font name="Consolas" size="15.0"/>
-            </font>
-            <graphic>
-               <FontAwesomeIconView fx:id="iconDash" fill="#95a0a9" glyphName="TELEVISION" size="15"/>
-            </graphic>
-            <padding>
-               <Insets bottom="10.0" left="20.0" top="10.0"/>
-            </padding>
-         </JFXButton>
-         <JFXButton fx:id="btnExam" alignment="TOP_LEFT" onAction="#studentExam" prefHeight="38.0" prefWidth="200.0"
-                    text="  Exams" textFill="#95a0a9">
-            <font>
-               <Font name="Consolas" size="15.0"/>
-            </font>
-            <graphic>
-               <FontAwesomeIconView fx:id="iconExam" fill="#95a0a9" glyphName="LIST_OL" size="15"/>
-            </graphic>
-            <padding>
-               <Insets bottom="10.0" left="20.0" top="10.0"/>
-            </padding>
-         </JFXButton>
-         <JFXButton fx:id="btnClass" alignment="TOP_LEFT" onAction="#classes" prefHeight="38.0" prefWidth="200.0"
-                    text="  Classes" textFill="#95a0a9">
-            <font>
-               <Font name="Consolas" size="15.0"/>
-            </font>
-            <graphic>
-               <FontAwesomeIconView fx:id="iconClass" fill="#95a0a9" glyphName="TH" size="15"/>
-            </graphic>
-            <padding>
-               <Insets bottom="10.0" left="20.0" top="10.0"/>
-            </padding>
-         </JFXButton>
-         <JFXButton fx:id="btnHomeWork" alignment="TOP_LEFT" onAction="#homeWork" prefHeight="38.0" prefWidth="200.0"
-                    text="  Home Works" textFill="#95a0a9">
-            <font>
-               <Font name="Consolas" size="15.0"/>
-            </font>
-            <graphic>
-               <FontAwesomeIconView fx:id="iconHomeWork" fill="#95a0a9" glyphName="CLIPBOARD" size="15"/>
-            </graphic>
-            <padding>
-               <Insets bottom="10.0" left="20.0" top="10.0"/>
-            </padding>
-         </JFXButton>
-         <JFXButton fx:id="btnSalary1" alignment="TOP_LEFT" onAction="#notifications" prefHeight="38.0"
-                    prefWidth="200.0" text="  Notification" textFill="#95a0a9">
-            <font>
-               <Font name="Consolas" size="15.0"/>
-            </font>
-            <graphic>
-               <FontAwesomeIconView fx:id="iconSalary1" fill="#95a0a9" glyphName="ENVELOPE" size="15"/>
-            </graphic>
-            <padding>
-               <Insets bottom="10.0" left="20.0" top="10.0"/>
-            </padding>
-         </JFXButton>
-         <JFXButton fx:id="btnSalary" alignment="TOP_LEFT" onAction="#billing" prefHeight="38.0" prefWidth="200.0"
-                    text="  Payments" textFill="#95a0a9">
-            <font>
-               <Font name="Consolas" size="15.0"/>
-            </font>
-            <graphic>
-               <FontAwesomeIconView fx:id="iconSalary" fill="#95a0a9" glyphName="CREDIT_CARD" size="15"/>
-            </graphic>
-            <padding>
-               <Insets bottom="10.0" left="20.0" top="10.0"/>
-            </padding>
-         </JFXButton>
-      </children>
+      <JFXButton fx:id="btnDash" alignment="BOTTOM_LEFT" onAction="#homePage" prefHeight="0.0" prefWidth="200.0"
+                 text=" Dashboard" textFill="#95a0a9">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView fx:id="iconDash" fill="#95a0a9" glyphName="TELEVISION" size="15"/>
+         </graphic>
+         <padding>
+            <Insets bottom="10.0" left="20.0" top="10.0"/>
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="btnExam" alignment="TOP_LEFT" onAction="#studentExam" prefHeight="38.0" prefWidth="200.0"
+                 text="  Exams" textFill="#95a0a9">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView fx:id="iconExam" fill="#95a0a9" glyphName="LIST_OL" size="15"/>
+         </graphic>
+         <padding>
+            <Insets bottom="10.0" left="20.0" top="10.0"/>
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="btnClass" alignment="TOP_LEFT" onAction="#classes" prefHeight="38.0" prefWidth="200.0"
+                 text="  Classes" textFill="#95a0a9">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView fx:id="iconClass" fill="#95a0a9" glyphName="TH" size="15"/>
+         </graphic>
+         <padding>
+            <Insets bottom="10.0" left="20.0" top="10.0"/>
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="btnHomeWork" alignment="TOP_LEFT" onAction="#homeWork" prefHeight="38.0" prefWidth="200.0"
+                 text="  Home Works" textFill="#95a0a9">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView fx:id="iconHomeWork" fill="#95a0a9" glyphName="CLIPBOARD" size="15"/>
+         </graphic>
+         <padding>
+            <Insets bottom="10.0" left="20.0" top="10.0"/>
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="notificationBtn" alignment="TOP_LEFT" onAction="#notifications" prefHeight="38.0"
+                 prefWidth="200.0" text="  Notification" textFill="#95a0a9">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView fx:id="notificationIcon" fill="#95a0a9" glyphName="ENVELOPE" size="15"/>
+         </graphic>
+         <padding>
+            <Insets bottom="10.0" left="20.0" top="10.0"/>
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="btnSalary" alignment="TOP_LEFT" onAction="#billing" prefHeight="38.0" prefWidth="200.0"
+                 text="  Payments" textFill="#95a0a9">
+         <font>
+            <Font name="Consolas" size="15.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView fx:id="iconSalary" fill="#95a0a9" glyphName="CREDIT_CARD" size="15"/>
+         </graphic>
+         <padding>
+            <Insets bottom="10.0" left="20.0" top="10.0"/>
+         </padding>
+      </JFXButton>
    </VBox>
    <Circle fx:id="circleImgLeft" fill="DODGERBLUE" layoutX="123.0" layoutY="117.0" radius="43.0" stroke="TRANSPARENT"
            strokeType="INSIDE"/>

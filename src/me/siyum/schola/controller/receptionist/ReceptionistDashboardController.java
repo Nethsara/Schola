@@ -157,7 +157,11 @@ public class ReceptionistDashboardController {
 
         for (AttendanceDTO a : allAttendance
         ) {
-            count = a.isStatus() ? count : count++;
+
+            System.out.println(a.getId() + a.isStatus());
+            if (a.isStatus()) {
+                count++;
+            }
         }
         lblToMarkAttendance.setText(String.valueOf(count));
     }
@@ -194,6 +198,7 @@ public class ReceptionistDashboardController {
         listName.getItems().add(txtToDoListItem.getText());
         txtToDoListItem.clear();
         btnRemove.setDisable(true);
+        lblPendingTasks.setText(String.valueOf(1));
     }
 
     public void removeFromList() {

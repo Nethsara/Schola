@@ -99,50 +99,36 @@ public class ReceptionistAttendanceMarkController {
     public void abortMarking() {
     }
 
-    public void completeMarking() throws SQLException {
+    public void completeMarking() throws SQLException, ClassNotFoundException {
         Connection connection = null;
-        boolean status;
+        boolean status = true;
         for (ReceptionistAttendanceMarkTM re : st
         ) {
-            try {
-                connection = DBConnection.getInstance().getConnection();
-                connection.setAutoCommit(false);
-                status = attendanceMarkBO.saveAttendanceMarking(
-                        new AttendanceMarkDTO(
-                                re.getId(),
-                                re.getStID(),
-                                re.getActions().isSelected()
-                        )
-                );
-                if (status) {
-                    boolean updateAttendance = attendanceBO.updateAttendance(
-                            new AttendanceDTO(
-                                    attendanceID,
-                                    classID,
-                                    LocalDate.now(),
-                                    totalSt,
-                                    false
-                            )
-                    );
-                    if (updateAttendance) {
-                        connection.commit();
-                        new Alert(Alert.AlertType.INFORMATION, "Success!").show();
-                    } else {
-                        connection.rollback();
-                        connection.setAutoCommit(true);
-                    }
-                } else {
-                    connection.rollback();
-                    connection.setAutoCommit(true);
-                }
-            } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
-            } finally {
-                assert connection != null;
-                connection.setAutoCommit(true);
+
+            connection = DBConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
+            status = attendanceMarkBO.saveAttendanceMarking(
+                    new AttendanceMarkDTO(
+                            re.getId(),
+                            re.getStID(),
+                            re.getActions().isSelected()
+                    )
+            );
+        }
+        if (status) {
+            boolean updateAttendance = attendanceBO.updateAttendance(
+                    new AttendanceDTO(
+                            attendanceID,
+                            classID,
+                            LocalDate.now(),
+                            totalSt,
+                            false
+                    )
+            );
+            if (updateAttendance) {
+                new Alert(Alert.AlertType.INFORMATION, "Success").show();
             }
         }
-
 
     }
 }

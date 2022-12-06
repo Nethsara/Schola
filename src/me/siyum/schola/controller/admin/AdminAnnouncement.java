@@ -73,12 +73,17 @@ public class AdminAnnouncement {
 
     public void sendMessage() {
         try {
-            stBo.saveAnnouncements(new AnnouncementsDTO(
+            boolean b = stBo.saveAnnouncements(new AnnouncementsDTO(
                     generateID(),
                     messageBox.getText(),
                     "admin",
                     "students"
             ));
+            if (b) {
+                new Alert(Alert.AlertType.INFORMATION, "Message Sent").show();
+                tblAnnouncements.getItems().clear();
+                setData();
+            }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

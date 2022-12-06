@@ -3,6 +3,7 @@ package me.siyum.schola.controller.lecturers;
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
@@ -40,6 +41,8 @@ public class LecturersPageController {
     public Circle circleImgLeft;
 
     public void initialize() throws IOException {
+        setButtonClorsNormal();
+        setBtnColorGreen(btnDash, iconDash);
         setData();
     }
 
@@ -59,33 +62,66 @@ public class LecturersPageController {
 
     public void homePage() throws IOException {
         Navigation.navigate(Routes.LECTURER_DASHBOARD, mainPane);
+        setButtonClorsNormal();
+        setBtnColorGreen(btnDash, iconDash);
     }
 
     public void studentsPage() throws IOException {
+        setButtonClorsNormal();
+        setBtnColorGreen(btnStudent, iconStudents);
         Navigation.navigate(Routes.LECTURER_STUDENTS, mainPane);
     }
 
     public void examsPage() throws IOException {
+        setButtonClorsNormal();
+        setBtnColorGreen(btnExam, iconExam);
         Navigation.navigate(Routes.LECTURER_EXAM, mainPane);
     }
 
     public void classPage() throws IOException {
+        setButtonClorsNormal();
+        setBtnColorGreen(btnClass, iconClass);
         Navigation.navigate(Routes.LECTURER_CLASS, mainPane);
     }
 
     public void salaryPage() throws IOException {
+        setButtonClorsNormal();
+        setBtnColorGreen(btnSalary, iconSalary);
         Navigation.navigate(Routes.LECTURER_SALARY, mainPane);
     }
 
     public void attendancePage() throws IOException {
+        setButtonClorsNormal();
+        setBtnColorGreen(btnAttendance, iconAttendance);
         Navigation.navigate(Routes.LECTURER_ATTENDANCE, mainPane);
     }
 
     public void homeWorks() throws IOException {
+        setButtonClorsNormal();
+        setBtnColorGreen(btnHomeWork, iconHomeWork);
         Navigation.navigate(Routes.LECTURER_HOMEWORK, mainPane);
     }
 
     public void logOut(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.LOGIN, actionEvent);
+    }
+
+    private void setButtonClorsNormal() {
+        Button[] btns = {btnDash, btnClass, btnExam, btnHomeWork, btnSalary, btnAttendance, btnStudent};
+        for (Button bt : btns
+        ) {
+            bt.setStyle("-fx-fill:#95a0a9");
+        }
+
+        FontAwesomeIconView[] iconViews = {iconSalary, iconAttendance, iconHomeWork, iconClass, iconExam, iconDash, iconStudents};
+        for (FontAwesomeIconView icn : iconViews
+        ) {
+            icn.setStyle("-fx-fill:#95a0a9");
+        }
+    }
+
+    private void setBtnColorGreen(Button btn, FontAwesomeIconView icon) {
+        btn.setStyle("-fx-text-fill:#1eb569");
+        icon.setStyle("-fx-fill:#1eb569");
     }
 }
