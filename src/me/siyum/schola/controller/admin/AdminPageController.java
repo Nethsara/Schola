@@ -33,6 +33,8 @@ public class AdminPageController {
 
     public void initialize() throws IOException {
         Navigation.navigate(Routes.ADMIN_HOME, mainPane);
+        setButtonClorsNormal();
+        setBtnColorGreen(dashboardButtton, dashboardIcon);
         Image im = new javafx.scene.image.Image("me/siyum/schola/assets/images/admin.png", false);
         circleImgLeft.setFill(new ImagePattern(im));
     }

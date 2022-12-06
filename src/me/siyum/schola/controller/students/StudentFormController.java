@@ -23,6 +23,7 @@ import me.siyum.schola.dto.BatchDTO;
 import me.siyum.schola.dto.ParentDTO;
 import me.siyum.schola.dto.StudentDTO;
 import me.siyum.schola.dto.UsersDTO;
+import me.siyum.schola.util.Mailing;
 import me.siyum.schola.util.Validator;
 
 import javax.imageio.ImageIO;
@@ -188,9 +189,11 @@ public class StudentFormController {
                 "student",
                 lblStID.getText()
         );
+
     }
 
     private void sendToStudentBO(ParentDTO pdTO, StudentDTO sdTO) throws SQLException {
+        UsersDTO usersDTO = null;
         Connection connection = null;
         try {
             connection = DBConnection.getInstance().getConnection();
@@ -203,7 +206,8 @@ public class StudentFormController {
                 if (saveParent) {
                     boolean save = studentBO.saveStudent(sdTO);
                     if (save) {
-                        boolean generatedUsername = usersBO.save(generateUser());
+                        usersDTO = generateUser();
+                        boolean generatedUsername = usersBO.save(usersDTO);
                         if (generatedUsername) {
                             connection.commit();
                             new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
@@ -225,6 +229,7 @@ public class StudentFormController {
                     new Alert(Alert.AlertType.WARNING, "Try Again!").show();
                 }
             } else {
+                usersDTO = generateUser();
                 if (!(sdTO == null)) {
                     boolean b = studentBO.saveStudent(getData());
                     if (b) {
@@ -232,6 +237,8 @@ public class StudentFormController {
                                 generateUser());
                         if (generatedUsername) {
                             connection.commit();
+                            Mailing.startThread(txtEmail.getText(), "Welcome to Schola LMS", "Here are your credentials to login to Schola LMS." +
+                                    "\n UserName : " + usersDTO.getUserName() + "\n Password : " + usersDTO.getPassword() + "\n Thanks for Choosing Schola LMS");
                             new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
                             clear();
                             setData();
@@ -252,6 +259,7 @@ public class StudentFormController {
         } finally {
             assert connection != null;
             connection.setAutoCommit(true);
+            assert usersDTO != null;
         }
     }
 

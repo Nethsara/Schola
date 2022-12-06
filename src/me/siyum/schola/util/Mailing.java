@@ -1,64 +1,59 @@
 package me.siyum.schola.util;
 
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class Mailing {
-    public static void sendMail(String recepient) {
-        // Recipient's email ID needs to be mentioned.
-        String to = "fromaddress@gmail.com";
+    private static Thread t1;
 
-        // Sender's email ID needs to be mentioned
-        String from = "scholalms@gmail.com";
+    public static void startThread(String toEmail, String subject, String message) {
+        t1 = new Thread(() -> sendEmail(toEmail, subject, message));
+        t1.start();
 
-        // Assuming you are sending email from through gmails smtp
-        String host = "smtp.gmail.com";
+    }
 
-        // Get system properties
-        Properties properties = System.getProperties();
-
-        // Setup mail server
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.port", "465");
-        properties.put("mail.smtp.ssl.enable", "true");
-        properties.put("mail.smtp.auth", "true");
-
-        // Get the Session object.// and pass username and password
-        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-
-            protected PasswordAuthentication getPasswordAuthentication() {
-
-                return new PasswordAuthentication("scholalms@gmail.com", "Harshana");
-
-            }
-
-        });
-
-        // Used to debug SMTP issues
-        session.setDebug(true);
-
+    public static void stopThread() {
         try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
+            t1.stop();
+        } catch (NullPointerException e) {
+            System.out.println("Sending error");
+        }
+    }
 
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
 
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+    public static void sendEmail(String toEmail, String subject, String message) {
+        try {
+            String fromEmail = "info@kivate.com";
+            String username = "3eca03733297d70151b0667829d8a27d";
+            String password = "774009ff985f6d88dc9cf4ce59998303";
 
-            // Set Subject: header field
-            message.setSubject("This is the Subject Line!");
+            Properties props = System.getProperties();
+            props.put("mail.smtp.host", "in-v3.mailjet.com");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "25");
+            props.put("mail.smtp.starttls.enable", "true");
 
-            // Now set the actual message
-            message.setText("This is actual message");
+            Session mailSession = Session.getDefaultInstance(props, null);
+            mailSession.setDebug(true);
 
-            // Send message
-            Transport.send(message);
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
+            Message mailMessage = new MimeMessage(mailSession);
+            mailMessage.setFrom(new InternetAddress(fromEmail));
+            mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            mailMessage.setContent(message, "text/plain");
+            mailMessage.setSubject(subject);
+
+            Transport transport = mailSession.getTransport("smtp");
+            transport.connect("in-v3.mailjet.com", username, password);
+            transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            stopThread();
         }
     }
 }

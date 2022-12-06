@@ -1,7 +1,6 @@
 package me.siyum.schola.controller.students;
 
 import com.jfoenix.controls.JFXRadioButton;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -13,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
 import me.siyum.schola.bo.custom.ExamsQuestionsBO;
@@ -40,16 +38,6 @@ public class StudentExamController implements Initializable {
     private int selectedAns;
 
 
-    private void updateTime() {
-        int seconds = timeSeconds.get();
-        timeSeconds.set(seconds - 1);
-    }
-
-    public void handle() {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), evt -> updateTime()));
-        timeSeconds.set(STARTTIME);
-        timeline.play();
-    }
 
     public void nextButton(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (radioMCQ1.isSelected()) {
@@ -137,7 +125,5 @@ public class StudentExamController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData();
-        handle();
-        lblTime.textProperty().bind(timeSeconds.asString());
     }
 }

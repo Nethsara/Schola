@@ -17,9 +17,11 @@
             </font>
         </Label>
         <TextField fx:id="txtHWID" layoutX="35.0" layoutY="78.0" prefHeight="31.0" prefWidth="127.0"
-                   style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;"/>
+                   style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;"
+                   text="SHW-2"/>
         <TextField fx:id="txtLecID" layoutX="212.0" layoutY="78.0"
-                   style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;"/>
+                   style="-fx-background-color: transparent; -fx-border-color: #785ed5; -fx-border-radius: 5;"
+                   text="SEM-2"/>
         <JFXComboBox fx:id="cmbBatchID" focusColor="#785ed5" layoutX="432.0" layoutY="80.0" prefHeight="25.0"
                      prefWidth="171.0"/>
         <JFXDatePicker fx:id="pickerDate" defaultColor="#785ed5" layoutX="655.0" layoutY="81.0" prefHeight="25.0"

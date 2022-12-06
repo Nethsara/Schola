@@ -112,6 +112,9 @@ public class SecretaryPageController {
     }
 
     public void btnIncomes(ActionEvent actionEvent) throws IOException {
+        setButtonClorsNormal();
+        setBtnColorGreen(btnIncome, iconIncome);
         Navigation.navigate(Routes.SECRETARY_FEE, mainPane);
     }
+
 }

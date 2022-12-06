@@ -35,6 +35,7 @@ public class SecretaryDashboardController {
     public TableColumn<SecretaryDashboardStTM, String> colPEmail;
     public TableColumn<SecretaryDashboardStTM, String> colPActions;
     public TableView<SecretaryDashboardStTM> tblSt;
+    public TableView<SecretaryDashboardStTM> tblPStudent;
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -42,6 +43,12 @@ public class SecretaryDashboardController {
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colSchola.setCellValueFactory(new PropertyValueFactory<>("scholaMark"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
+
+
+        colPID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colPName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colPEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colPActions.setCellValueFactory(new PropertyValueFactory<>("btn"));
         setData();
     }
 
@@ -73,11 +80,29 @@ public class SecretaryDashboardController {
         }
         tblSt.setItems(st);
 
+        ArrayList<StudentDTO> pendingSt = studentBO.searchStudents(false);
+        ObservableList<SecretaryDashboardStTM> pST = FXCollections.observableArrayList();
+        for (StudentDTO s : pendingSt
+        ) {
+            Button btn = new Button("View");
+            pST.add(
+                    new SecretaryDashboardStTM(
+                            s.getId(),
+                            s.getName(),
+                            s.getEmail(),
+                            s.getScholaMark(),
+                            btn
+                    )
+            );
+        }
+        tblPStudent.setItems(pST);
+
     }
 
     private void setLabels() throws SQLException, ClassNotFoundException {
         ArrayList<StudentDTO> studentDTOS = studentBO.searchStudents("");
         lblTotalStudents.setText(String.valueOf(studentDTOS.size()));
+        lblPendingStudents.setText(String.valueOf(1));
     }
 
     private void setPieChart() throws SQLException, ClassNotFoundException {

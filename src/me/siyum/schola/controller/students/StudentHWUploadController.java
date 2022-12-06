@@ -1,6 +1,7 @@
 package me.siyum.schola.controller.students;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import me.siyum.schola.bo.BOFactory;
@@ -44,5 +45,8 @@ public class StudentHWUploadController {
                 LocalDate.now(),
                 false
         );
+        if (b) {
+            new Alert(Alert.AlertType.INFORMATION, "Success!").show();
+        }
     }
 }
