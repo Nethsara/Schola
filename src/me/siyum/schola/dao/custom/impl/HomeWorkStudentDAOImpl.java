@@ -12,8 +12,11 @@ public class HomeWorkStudentDAOImpl implements HomeWorkStudentDAO {
     @Override
     public boolean save(HomeWorkStudents homeWorkStudents) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("INSERT INTO homework_students VALUES(?,?,?,?,?,?)",
-                homeWorkStudents.getId(), homeWorkStudents.getStID(), homeWorkStudents.getName(),
-                homeWorkStudents.getFile(), homeWorkStudents.getDateSubmitted(),
+                homeWorkStudents.getId(),
+                homeWorkStudents.getStID(),
+                homeWorkStudents.getName(),
+                homeWorkStudents.getFile(),
+                homeWorkStudents.getDateSubmitted(),
                 homeWorkStudents.isStatus());
     }
 

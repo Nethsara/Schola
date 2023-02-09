@@ -35,7 +35,7 @@ public class AdminPageController {
         Navigation.navigate(Routes.ADMIN_HOME, mainPane);
         setButtonClorsNormal();
         setBtnColorGreen(dashboardButtton, dashboardIcon);
-        Image im = new javafx.scene.image.Image("me/siyum/schola/assets/images/admin.png", false);
+        Image im = new javafx.scene.image.Image("me/siyum/schola/assets/images/admin.jpg", false);
         circleImgLeft.setFill(new ImagePattern(im));
     }
 

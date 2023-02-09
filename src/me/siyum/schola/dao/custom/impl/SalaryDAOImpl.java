@@ -12,7 +12,10 @@ public class SalaryDAOImpl implements SalaryDAO {
     @Override
     public boolean save(Salary salary) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("INSERT INTO salary VALUES(?,?,?,?)",
-                salary.getId(), salary.getEmpID(), salary.getDate(), salary.getAmount());
+                salary.getId(),
+                salary.getEmpID(),
+                salary.getDate(),
+                salary.getAmount());
     }
 
     @Override

@@ -21,6 +21,6 @@ public class AppInitializer extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.centerOnScreen();
-        primaryStage.getIcons().add(new Image("./me/siyum/schola/assets/images/icon-blue.png"));
+        //primaryStage.getIcons().add(new Image("./me/siyum/schola/assets/images/icon-blue.png"));
     }
 }
