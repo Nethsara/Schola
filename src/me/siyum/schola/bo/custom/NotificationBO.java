@@ -1,4 +1,6 @@
 package me.siyum.schola.bo.custom;
 
-public interface NotificationBO {
+import me.siyum.schola.bo.SuperBO;
+
+public interface NotificationBO extends SuperBO {
 }

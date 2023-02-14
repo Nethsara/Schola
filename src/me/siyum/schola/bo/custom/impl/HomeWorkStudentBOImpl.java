@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class HomeWorkStudentBOImpl implements HomeWorkStudentBO {
-    HomeWorkStudentDAO homeWorkStudentDAO = DAOFactory.getInstance().getDAO(DAOTypes.HOME_WORK_STUDENT);
+    HomeWorkStudentDAO homeWorkStudentDAO = (HomeWorkStudentDAO) DAOFactory.getInstance().getDAO(DAOTypes.HOME_WORK_STUDENT);
 
     @Override
     public ArrayList<HomeWorkStudentsDTO> getHomeWorkStudentsByID(String id) throws SQLException, ClassNotFoundException {

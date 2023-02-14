@@ -11,10 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ExamsBoImpl implements ExamsBO {
-    ExamsDAO examsDAO = DAOFactory.getInstance().getDAO(DAOTypes.EXAMS);
+    ExamsDAO examsDAO = (ExamsDAO) DAOFactory.getInstance().getDAO(DAOTypes.EXAMS);
 
     @Override
-    public boolean saveExams(ExamsDTO examsDTO) throws SQLException, Exception {
+    public boolean saveExams(ExamsDTO examsDTO) throws Exception {
         return examsDAO.save(
                 new Exams(
                         examsDTO.getId(),

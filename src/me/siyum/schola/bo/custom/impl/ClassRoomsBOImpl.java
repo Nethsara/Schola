@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ClassRoomsBOImpl implements ClassRoomsBO {
 
-    ClassRoomDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.CLASS_ROOMS);
+    ClassRoomDAO dao = (ClassRoomDAO) DAOFactory.getInstance().getDAO(DAOTypes.CLASS_ROOMS);
 
     @Override
     public ArrayList<ClassRoomsDTO> getAllClassRooms(String s) throws SQLException, ClassNotFoundException {

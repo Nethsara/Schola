@@ -77,13 +77,13 @@ public class AdminPageController {
 
 
     private void setButtonClorsNormal() {
-        Button[] btns = {btnAnnouncements, btnIncome, btnSettings, dashboardButtton, studentsButton, employerButton, employerButton, btnManagement};
+        Button[] btns = {btnAnnouncements, btnIncome, dashboardButtton, studentsButton, employerButton, employerButton, btnManagement};
         for (Button bt : btns
         ) {
             bt.setStyle("-fx-fill:#95a0a9");
         }
 
-        FontAwesomeIconView[] iconViews = {iconAnnoun, iconIncome, iconSettings, iconEmployee, studentsIcon, dashboardIcon, iconManagement};
+        FontAwesomeIconView[] iconViews = {iconAnnoun, iconIncome, iconEmployee, studentsIcon, dashboardIcon, iconManagement};
         for (FontAwesomeIconView icn : iconViews
         ) {
             icn.setStyle("-fx-fill:#95a0a9");

@@ -38,7 +38,7 @@ public class StudentsPageController {
     public FontAwesomeIconView notificationIcon;
     public JFXButton btnSalary;
     public FontAwesomeIconView iconSalary;
-    StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
 
     public void initialize() throws IOException {
         setButtonClorsNormal();

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class AdminAnnouncement {
-    private final AnnouncementsBO stBo = BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
+    private final AnnouncementsBO stBo = (AnnouncementsBO) BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
     private final ObservableList<AdminAnnouncmentTM> list = FXCollections.observableArrayList();
     public JFXTextArea messageBox;
     public TableView<AdminAnnouncmentTM> tblAnnouncements;
@@ -24,7 +24,7 @@ public class AdminAnnouncement {
     public TableColumn<AdminAnnouncmentTM, String> colTo;
     public TableColumn<AdminAnnouncmentTM, String> colMessage;
     public TableColumn<AdminAnnouncmentTM, String> colActions;
-    AnnouncementsBO announcementsBO = BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
+    AnnouncementsBO announcementsBO = (AnnouncementsBO) BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ParentBOImpl implements ParentBO {
-    private ParentDAOImpl dao = DAOFactory.getInstance().getDAO(DAOTypes.PARENT);
+    private final ParentDAOImpl dao = (ParentDAOImpl) DAOFactory.getInstance().getDAO(DAOTypes.PARENT);
 
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {

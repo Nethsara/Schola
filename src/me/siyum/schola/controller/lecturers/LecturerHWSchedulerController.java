@@ -25,8 +25,8 @@ public class LecturerHWSchedulerController {
     public JFXDatePicker pickerDate;
     public TextField txtMessage;
 
-    BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
-    HomeWorkBO hmw = BOFactory.getInstance().getBO(BOTypes.HOME_WORK);
+    BatchBO batchBO = (BatchBO) BOFactory.getInstance().getBO(BOTypes.BATCHES);
+    HomeWorkBO hmw = (HomeWorkBO) BOFactory.getInstance().getBO(BOTypes.HOME_WORK);
 
     public void initialize() {
         setData();

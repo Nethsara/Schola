@@ -28,7 +28,7 @@ public class LoginPageFormController {
     }
 
     private void setData() throws SQLException, ClassNotFoundException {
-        UsersBO usersBO = BOFactory.getInstance().getBO(BOTypes.USERS);
+        UsersBO usersBO = (UsersBO) BOFactory.getInstance().getBO(BOTypes.USERS);
         usersBO.getLastID();
         try {
             ExamMarking.scholaReload();

@@ -40,12 +40,12 @@ public class LecturerDashboardController {
 
 
     EmployeeDTO lecturer;
-    ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    ClassRoomsBO classRoomsBO = BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
-    StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    LecturerVoteBO lecturerVoteBO = BOFactory.getInstance().getBO(BOTypes.LECTURER_VOTE);
+    ClassesBO classesBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    ClassRoomsBO classRoomsBO = (ClassRoomsBO) BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
+    StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    LecturerVoteBO lecturerVoteBO = (LecturerVoteBO) BOFactory.getInstance().getBO(BOTypes.LECTURER_VOTE);
 
-    LecturerScholaBO lecturerScholaBO = BOFactory.getInstance().getBO(BOTypes.LECTURER_SCHOLA);
+    LecturerScholaBO lecturerScholaBO = (LecturerScholaBO) BOFactory.getInstance().getBO(BOTypes.LECTURER_SCHOLA);
 
     public void initialize() throws SQLException, ClassNotFoundException {
         lecturer = (EmployeeDTO) Env.user;

@@ -12,54 +12,62 @@ public class BOFactory {
         return boFactory == null ? boFactory = (new BOFactory()) : boFactory;
     }
 
-    public <T> T getBO(BOTypes types) {
+    public SuperBO getBO(BOTypes types) {
         switch (types) {
             case STUDENT:
-                return (T) new StudentBOImpl();
+                return (SuperBO) new StudentBOImpl();
             case PARENT:
-                return (T) new ParentBOImpl();
+                return new ParentBOImpl();
             case TASKS:
-                return (T) new TasksBOImpl();
+                return new TasksBOImpl();
             case EMPLOYEE:
-                return (T) new EmployeeBOImpl();
+                return new EmployeeBOImpl();
             case ANNOUNCEMENTS:
-                return (T) new AnnouncementBOImpl();
+                return new AnnouncementBOImpl();
             case EXAMS:
-                return (T) new ExamsBoImpl();
+                return new ExamsBoImpl();
             case EXAM_QUESTIONS:
-                return (T) new ExamsQuestionsBoImpl();
+                return new ExamsQuestionsBoImpl();
             case SUBJECTS:
-                return (T) new SubjectsBOImpl();
+                return new SubjectsBOImpl();
             case CLASS_ROOMS:
-                return (T) new ClassRoomsBOImpl();
+                return new ClassRoomsBOImpl();
             case CLASSES:
-                return (T) new ClassesBOImpl();
+                return new ClassesBOImpl();
             case BATCHES:
-                return (T) new BatchBOImpl();
+                return new BatchBOImpl();
             case SALARY:
-                return (T) new SalaryBOImpl();
+                return new SalaryBOImpl();
             case STUDENT_MARK:
-                return (T) new StudentMarkBOImpl();
+                return new StudentMarkBOImpl();
             case ATTENDANCE:
-                return (T) new AttendanceBOImpl();
+                return new AttendanceBOImpl();
             case ATTENDANCE_MARK:
-                return (T) new AttendanceMarkBOImpl();
+                return new AttendanceMarkBOImpl();
             case HOME_WORK:
-                return (T) new HomeWorkBOImpl();
+                return new HomeWorkBOImpl();
             case HOME_WORK_STUDENT:
-                return (T) new HomeWorkStudentBOImpl();
+                return new HomeWorkStudentBOImpl();
             case LECTURER_VOTE:
-                return (T) new LecturerVoteBOImpl();
+                return new LecturerVoteBOImpl();
             case LECTURER_SCHOLA:
-                return (T) new LecturerScholaBOImpl();
+                return new LecturerScholaBOImpl();
             case NOTIFICATION:
-                return (T) new NotificationBOImpl();
+                return new NotificationBOImpl();
             case NOTIFICATION_STUDENT:
-                return (T) new NotificationStudentBOImpl();
+                return new NotificationStudentBOImpl();
             case FEE:
-                return (T) new FeeBOImpl();
+                return new FeeBOImpl();
             case USERS:
-                return (T) new UsersBOImpl();
+                return new UsersBOImpl();
+            case ATTENDANCE_MARKING:
+                return new AttendanceMarkingBOImpl();
+            case CLASS_SCHEDULER:
+                return new ClassSchedulerBOImpl();
+            case EXAM_RESULT:
+                return new ExamResultsBOImpl();
+            case SAVE_STUDENTS:
+                return new SaveStudentsBOImpl();
             default:
                 return null;
         }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class SubjectsBOImpl implements SubjectsBO {
 
-    SubjectsDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.SUBJECTS);
+    SubjectsDAO dao = (SubjectsDAO) DAOFactory.getInstance().getDAO(DAOTypes.SUBJECTS);
 
     @Override
     public ArrayList<SubjectsDTO> getAllSubjects(String s) throws SQLException, ClassNotFoundException {

@@ -25,10 +25,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class StudentDashboardController {
-    private final ClassesBO classBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private final SubjectsBO subjectsBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
+    private final ClassesBO classBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final SubjectsBO subjectsBO = (SubjectsBO) BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
 
     public TableColumn<StudentClassesTM, String> colDate;
     public TableColumn<StudentClassesTM, String> colSubject;
@@ -63,7 +63,7 @@ public class StudentDashboardController {
     }
 
     private void setAnnouncements() {
-        AnnouncementsBO anBO = BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
+        AnnouncementsBO anBO = (AnnouncementsBO) BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
         try {
             ArrayList<AnnouncementsDTO> search = anBO.search("");
             ObservableList<DasboardAnnTM> dasboardAnnTMS = FXCollections.observableArrayList();
@@ -99,7 +99,7 @@ public class StudentDashboardController {
     private void setLineChart() throws SQLException, ClassNotFoundException {
         XYChart.Series series = new XYChart.Series();
 
-        StudentMarkBO studentMarkBO = BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
+        StudentMarkBO studentMarkBO = (StudentMarkBO) BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
         ArrayList<StudentMarkDTO> marksByID = studentMarkBO.getMarksByID(student);
 
         for (StudentMarkDTO mrk : marksByID

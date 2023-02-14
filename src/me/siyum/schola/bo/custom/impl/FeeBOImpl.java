@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FeeBOImpl implements FeeBO {
-    FeeDAO feeDAO = DAOFactory.getInstance().getDAO(DAOTypes.FEE);
+    FeeDAO feeDAO = (FeeDAO) DAOFactory.getInstance().getDAO(DAOTypes.FEE);
 
     public ArrayList<FeeDTO> getFeesByID(String stID) throws SQLException, ClassNotFoundException {
         ArrayList<Fee> search = feeDAO.search(stID);

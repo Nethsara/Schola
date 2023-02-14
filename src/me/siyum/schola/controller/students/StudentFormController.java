@@ -14,11 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.BatchBO;
-import me.siyum.schola.bo.custom.ParentBO;
-import me.siyum.schola.bo.custom.StudentBO;
-import me.siyum.schola.bo.custom.UsersBO;
-import me.siyum.schola.db.DBConnection;
+import me.siyum.schola.bo.custom.*;
 import me.siyum.schola.dto.BatchDTO;
 import me.siyum.schola.dto.ParentDTO;
 import me.siyum.schola.dto.StudentDTO;
@@ -33,7 +29,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Blob;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,9 +36,11 @@ import java.util.Locale;
 
 public class StudentFormController {
 
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private final ParentBO parentBO = BOFactory.getInstance().getBO(BOTypes.PARENT);
-    private final BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+
+    private final SaveStudentBO saveStudentBO = (SaveStudentBO) BOFactory.getInstance().getBO(BOTypes.SAVE_STUDENTS);
+    private final ParentBO parentBO = (ParentBO) BOFactory.getInstance().getBO(BOTypes.PARENT);
+    private final BatchBO batchBO = (BatchBO) BOFactory.getInstance().getBO(BOTypes.BATCHES);
     public ImageView imgSt;
     public Label lblName;
     public TextField txtName;
@@ -68,7 +65,7 @@ public class StudentFormController {
     public JFXComboBox<String> cmbBatch;
     public JFXTextField txtParentName;
     public JFXButton btnReject;
-    UsersBO usersBO = BOFactory.getInstance().getBO(BOTypes.USERS);
+    UsersBO usersBO = (UsersBO) BOFactory.getInstance().getBO(BOTypes.USERS);
     private boolean isSavedParent = true;
     private ParentDTO parentDTO;
 
@@ -192,74 +189,25 @@ public class StudentFormController {
 
     }
 
-    private void sendToStudentBO(ParentDTO pdTO, StudentDTO sdTO) throws SQLException {
-        UsersDTO usersDTO = null;
-        Connection connection = null;
-        try {
-            connection = DBConnection.getInstance().getConnection();
-            connection.setAutoCommit(false);
-            if (!(sdTO == null)) {
-                getData();
+    private void sendToStudentBO(ParentDTO pdTO, StudentDTO sdTO) throws SQLException, ClassNotFoundException {
+        UsersDTO usersDTO = generateUser();
+
+        if (!isSavedParent) {
+            boolean b = saveStudentBO.saveStudentWithNewParent(pdTO, sdTO, usersDTO);
+            if (b) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
+                clear();
+                setData();
             }
-            if (!isSavedParent) {
-                boolean saveParent = parentBO.saveParent(pdTO);
-                if (saveParent) {
-                    boolean save = studentBO.saveStudent(sdTO);
-                    if (save) {
-                        usersDTO = generateUser();
-                        boolean generatedUsername = usersBO.save(usersDTO);
-                        if (generatedUsername) {
-                            connection.commit();
-                            new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
-                            clear();
-                            setData();
-                        } else {
-                            connection.rollback();
-                            connection.setAutoCommit(true);
-                            new Alert(Alert.AlertType.WARNING, "User generated failed!").show();
-                        }
-                    } else {
-                        connection.rollback();
-                        connection.setAutoCommit(true);
-                        new Alert(Alert.AlertType.WARNING, "Try Again!").show();
-                    }
-                } else {
-                    connection.rollback();
-                    connection.setAutoCommit(true);
-                    new Alert(Alert.AlertType.WARNING, "Try Again!").show();
-                }
-            } else {
-                usersDTO = generateUser();
-                if (!(sdTO == null)) {
-                    boolean b = studentBO.saveStudent(getData());
-                    if (b) {
-                        boolean generatedUsername = usersBO.save(
-                                generateUser());
-                        if (generatedUsername) {
-                            connection.commit();
-                            Mailing.startThread(txtEmail.getText(), "Welcome to Schola LMS", "Here are your credentials to login to Schola LMS." +
-                                    "\n UserName : " + usersDTO.getUserName() + "\n Password : " + usersDTO.getPassword() + "\n Thanks for Choosing Schola LMS");
-                            new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
-                            clear();
-                            setData();
-                        } else {
-                            connection.rollback();
-                            connection.setAutoCommit(true);
-                            new Alert(Alert.AlertType.WARNING, "Try Again!").show();
-                        }
-                    } else {
-                        connection.rollback();
-                        connection.setAutoCommit(true);
-                        new Alert(Alert.AlertType.WARNING, "Try Again!").show();
-                    }
-                }
+        } else {
+            boolean b = saveStudentBO.saveStudentWithOldParent(pdTO, sdTO, usersDTO);
+            if (b) {
+                Mailing.startThread(txtEmail.getText(), "Welcome to Schola LMS", "Here are your credentials to login to Schola LMS." +
+                        "\n UserName : " + usersDTO.getUserName() + "\n Password : " + usersDTO.getPassword() + "\n Thanks for Choosing Schola LMS");
+                new Alert(Alert.AlertType.CONFIRMATION, "Operation Success").show();
+                clear();
+                setData();
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            assert connection != null;
-            connection.setAutoCommit(true);
-            assert usersDTO != null;
         }
     }
 
@@ -326,15 +274,16 @@ public class StudentFormController {
                             dob, true, false, batchID, "male", LocalDate.now());
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Check your phone number").show();
+                    return null;
                 }
             } else {
                 new Alert(Alert.AlertType.ERROR, "Check email").show();
+                return null;
             }
         } else {
             new Alert(Alert.AlertType.ERROR, "Check your NIC").show();
+            return null;
         }
-        return null;
-
     }
 
     public void setData(String id) {

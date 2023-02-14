@@ -25,9 +25,9 @@ import java.util.ResourceBundle;
 
 public class ReceptionistStudentsController implements Initializable {
 
-    private final StudentBO stBo = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final StudentBO stBo = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
     public JFXListView<HBox> listStudents;
-    private ObservableList<ReceptionistStudentTM> tmList = FXCollections.observableArrayList();
+    private final ObservableList<ReceptionistStudentTM> tmList = FXCollections.observableArrayList();
 
     private void loadStudents() {
         try {

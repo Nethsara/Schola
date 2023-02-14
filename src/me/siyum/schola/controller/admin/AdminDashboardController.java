@@ -31,9 +31,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class AdminDashboardController {
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    private final ClassRoomsBO classRoomsBO = BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final ClassRoomsBO classRoomsBO = (ClassRoomsBO) BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
     public Label lblStudentTotal;
     public Label lblTotalEmployee;
     public Label lblTotalCourses;
@@ -45,7 +45,7 @@ public class AdminDashboardController {
     public TableColumn<AdminDashboardEmpTM, Integer> colScholaMark;
     public TableView<AdminDashboardEmpTM> tblLecturers;
     public AnchorPane mainPane;
-    LecturerScholaBO lecturerScholaBO = BOFactory.getInstance().getBO(BOTypes.LECTURER_SCHOLA);
+    LecturerScholaBO lecturerScholaBO = (LecturerScholaBO) BOFactory.getInstance().getBO(BOTypes.LECTURER_SCHOLA);
     ObservableList<AdminDashboardEmpTM> obList = FXCollections.observableArrayList();
 
     public void initialize() {

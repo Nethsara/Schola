@@ -30,9 +30,9 @@ public class LecturersExamsManagerController {
     public TextField txtLecID;
     public JFXComboBox<String> cmbBatchID;
     public JFXDatePicker pickerDate;
-    ExamsBO examsBO = BOFactory.getInstance().getBO(BOTypes.EXAMS);
-    EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
+    ExamsBO examsBO = (ExamsBO) BOFactory.getInstance().getBO(BOTypes.EXAMS);
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    BatchBO batchBO = (BatchBO) BOFactory.getInstance().getBO(BOTypes.BATCHES);
 
     public void initialize() {
         setData();
@@ -41,7 +41,7 @@ public class LecturersExamsManagerController {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
 
-                setDisable(empty || date.compareTo(today) < 0);
+                setDisable(empty || date.isBefore(today));
             }
         });
     }

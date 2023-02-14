@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
-    private final EmployeeDAOImpl dao = DAOFactory.getInstance().getDAO(DAOTypes.EMPLOYEE);
+    private final EmployeeDAOImpl dao = (EmployeeDAOImpl) DAOFactory.getInstance().getDAO(DAOTypes.EMPLOYEE);
 
     @Override
     public ArrayList<EmployeeDTO> getEmployeeByType(String type) throws SQLException, ClassNotFoundException {

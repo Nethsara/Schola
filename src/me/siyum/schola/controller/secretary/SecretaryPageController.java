@@ -21,7 +21,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 
 public class SecretaryPageController {
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public Circle circleImg;
     public AnchorPane mainPane;
     public JFXButton dashboardButton;
@@ -30,11 +30,13 @@ public class SecretaryPageController {
     public FontAwesomeIconView studentsIcon;
     public JFXButton btnAnnouncements;
     public FontAwesomeIconView iconAnon;
-    public JFXButton btnIncome;
-    public FontAwesomeIconView iconIncome;
     public JFXButton btnSettings;
     public FontAwesomeIconView iconSettings;
     public Circle circleImg1;
+    public FontAwesomeIconView iconPayments;
+    public JFXButton btnPayments;
+    public JFXButton btnIncomes;
+    public FontAwesomeIconView iconIncome;
 
     public void initialize() throws IOException {
         setData();
@@ -78,7 +80,7 @@ public class SecretaryPageController {
     public void secretaryPayments() throws IOException {
         Navigation.navigate(Routes.SECRETARY_PAYMENTS, mainPane);
         setButtonClorsNormal();
-        setBtnColorGreen(btnIncome, iconIncome);
+        setBtnColorGreen(btnPayments, iconPayments);
     }
 
     public void secretatyClasses() throws IOException {
@@ -89,13 +91,13 @@ public class SecretaryPageController {
 
 
     private void setButtonClorsNormal() {
-        Button[] btns = {btnAnnouncements, btnIncome, btnSettings, dashboardButton, studentsButton};
+        Button[] btns = {btnAnnouncements, btnIncomes, btnPayments, btnSettings, dashboardButton, studentsButton};
         for (Button bt : btns
         ) {
             bt.setStyle("-fx-fill:#95a0a9");
         }
 
-        FontAwesomeIconView[] iconViews = {iconAnon, iconIncome, iconSettings, studentsIcon, dashboardIcon};
+        FontAwesomeIconView[] iconViews = {iconAnon, iconIncome, iconPayments, iconSettings, studentsIcon, dashboardIcon};
         for (FontAwesomeIconView icn : iconViews
         ) {
             icn.setStyle("-fx-fill:#95a0a9");
@@ -113,7 +115,7 @@ public class SecretaryPageController {
 
     public void btnIncomes(ActionEvent actionEvent) throws IOException {
         setButtonClorsNormal();
-        setBtnColorGreen(btnIncome, iconIncome);
+        setBtnColorGreen(btnIncomes, iconIncome);
         Navigation.navigate(Routes.SECRETARY_FEE, mainPane);
     }
 

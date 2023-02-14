@@ -14,7 +14,7 @@
     <AnchorPane layoutX="39.0" layoutY="31.0" prefHeight="617.0" prefWidth="967.0" style="-fx-background-radius: 10;">
         <ImageView fx:id="imgSt" fitHeight="90.0" fitWidth="90.0" layoutX="20.0" layoutY="15.0" pickOnBounds="true"
                    preserveRatio="true">
-            <Image url="@../../assets/images/stImg.png"/>
+            <Image url="@../../assets/images/student.png"/>
         </ImageView>
         <Label fx:id="lblName" layoutX="140.0" layoutY="38.0" text="Example Name">
             <font>
@@ -38,21 +38,22 @@
                 <Font name="Consolas Bold" size="14.0"/>
             </font>
         </Label>
-      <JFXCheckBox fx:id="chkAddParent" layoutX="59.0" layoutY="372.0" onAction="#changeParentStatus" text="Add parent">
-         <font>
-             <Font name="Consolas" size="14.0"/>
-         </font>
-      </JFXCheckBox>
-      <Label layoutX="139.0" layoutY="75.0" text="ID : ">
-         <font>
-             <Font name="Consolas Bold" size="12.0"/>
-         </font>
-      </Label>
-      <Label fx:id="lblStID" layoutX="161.0" layoutY="75.0" text="ITS11111">
-         <font>
-             <Font name="Consolas Bold" size="12.0"/>
-         </font>
-      </Label>
+        <JFXCheckBox fx:id="chkAddParent" layoutX="59.0" layoutY="372.0" onAction="#changeParentStatus"
+                     text="Add parent">
+            <font>
+                <Font name="Consolas" size="14.0"/>
+            </font>
+        </JFXCheckBox>
+        <Label layoutX="139.0" layoutY="75.0" text="ID : ">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblStID" layoutX="161.0" layoutY="75.0" text="ITS11111">
+            <font>
+                <Font name="Consolas Bold" size="12.0"/>
+            </font>
+        </Label>
         <AnchorPane layoutX="57.0" layoutY="397.0" prefHeight="167.0" prefWidth="885.0"
                     style="-fx-background-color: white;">
             <Label layoutX="20.0" layoutY="12.0" opacity="0.5" text="ID : ">

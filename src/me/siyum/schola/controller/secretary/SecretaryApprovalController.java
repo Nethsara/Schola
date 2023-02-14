@@ -21,9 +21,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SecretaryApprovalController {
-    private final StudentBO stBo = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final StudentBO stBo = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
     public JFXListView<HBox> listStudents;
-    private ObservableList<SecretartStudentTM> tmList = FXCollections.observableArrayList();
+    private final ObservableList<SecretartStudentTM> tmList = FXCollections.observableArrayList();
 
     public void initialize() {
         loadStudents();

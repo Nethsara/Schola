@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class StudentBOImpl implements StudentBO {
 
-    private final StudentDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.STUDENT);
+    private final StudentDAO dao = (StudentDAO) DAOFactory.getInstance().getDAO(DAOTypes.STUDENT);
 
     @Override
     public boolean saveStudent(StudentDTO st) throws SQLException, ClassNotFoundException {

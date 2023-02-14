@@ -22,9 +22,9 @@ public class ExamMarking {
     public static boolean scholaReload() throws SQLException, ClassNotFoundException {
 
         boolean saved = true;
-        StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-        StudentMarkBO studentMarkBO = BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
-        AttendanceMarkBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE_MARK);
+        StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+        StudentMarkBO studentMarkBO = (StudentMarkBO) BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
+        AttendanceMarkBO attendanceBO = (AttendanceMarkBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE_MARK);
         ArrayList<StudentDTO> studentDTOS = studentBO.searchStudents("");
 
         for (StudentDTO s : studentDTOS
@@ -66,8 +66,8 @@ public class ExamMarking {
                             s.getParentID(),
                             scholaMark,
                             s.getDob(),
-                            true,
-                            true,
+                            s.isStatus(),
+                            s.isApproval(),
                             s.getBatch(),
                             s.getGender(),
                             s.getCreated()

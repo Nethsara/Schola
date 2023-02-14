@@ -29,8 +29,8 @@ import java.util.ArrayList;
 public class LecturerAttendanceController {
     private final ObservableList<LecturerAttendanceTM> pendingClzList = FXCollections.observableArrayList();
     private final ObservableList<LecturerAttendanceTM> finishedClzList = FXCollections.observableArrayList();
-    private final ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final AttendanceBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
+    private final ClassesBO classesBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
     public AnchorPane paneAttendance;
     public TableView<LecturerAttendanceTM> tblAttendance;
     public TableColumn<LecturerAttendanceTM, String> colID;

@@ -26,8 +26,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class StudentsHWPageController {
-    private final HomeWorkBO homeWorkBO = BOFactory.getInstance().getBO(BOTypes.HOME_WORK);
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final HomeWorkBO homeWorkBO = (HomeWorkBO) BOFactory.getInstance().getBO(BOTypes.HOME_WORK);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
     private final ObservableList<StudentHWTM> list = FXCollections.observableArrayList();
     public JFXComboBox<String> cmbFilter;
     public TableView<StudentHWTM> tblExm;

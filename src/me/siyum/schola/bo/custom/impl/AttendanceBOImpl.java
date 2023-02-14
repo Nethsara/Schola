@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class AttendanceBOImpl implements AttendanceBO {
 
-    AttendanceDAO attendanceDAO = DAOFactory.getInstance().getDAO(DAOTypes.ATTENDANCE);
+    AttendanceDAO attendanceDAO = (AttendanceDAO) DAOFactory.getInstance().getDAO(DAOTypes.ATTENDANCE);
 
     @Override
     public boolean saveAttendance(AttendanceDTO attendanceDTO) throws SQLException, ClassNotFoundException {

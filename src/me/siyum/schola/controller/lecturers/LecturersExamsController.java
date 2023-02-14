@@ -26,7 +26,7 @@ public class LecturersExamsController {
     public TableColumn colDate;
     public TableColumn colBatch;
     public TableColumn colActions;
-    ExamsBO examsBo = BOFactory.getInstance().getBO(BOTypes.EXAMS);
+    ExamsBO examsBo = (ExamsBO) BOFactory.getInstance().getBO(BOTypes.EXAMS);
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));

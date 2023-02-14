@@ -26,7 +26,7 @@ public class ReceptionistTableRowController {
     public TextField txtStatus;
     public Circle circleImg;
 
-    StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
 
     public void setData(ReceptionistStudentTM studentTM) throws SQLException {
         txtID.setText(studentTM.getId());

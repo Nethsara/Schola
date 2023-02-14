@@ -41,10 +41,11 @@ public class StudentPaymentController {
     public TableColumn<FeeTM, String> colID;
     public TableColumn<FeeTM, String> colAmount;
     public TableColumn<FeeTM, String> colActions;
+    double paid = 0;
     FileInputStream fis;
-    FeeBO feeBO = BOFactory.getInstance().getBO(BOTypes.FEE);
+    FeeBO feeBO = (FeeBO) BOFactory.getInstance().getBO(BOTypes.FEE);
     StudentDTO s = (StudentDTO) Env.user;
-    BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
+    BatchBO batchBO = (BatchBO) BOFactory.getInstance().getBO(BOTypes.BATCHES);
 
     ObservableList<FeeTM> obList = FXCollections.observableArrayList();
 
@@ -59,7 +60,6 @@ public class StudentPaymentController {
     private void setData() {
         tblPayments.getItems().clear();
         try {
-            txtPayable.setText(String.valueOf(batchBO.getBatch(s.getBatch()).getFee()));
             setPayID();
             ArrayList<FeeDTO> feesByID = feeBO.getFeesByID(s.getId());
             for (FeeDTO f : feesByID
@@ -75,7 +75,7 @@ public class StudentPaymentController {
                 );
                 btn.setOnAction(e -> {
                     try {
-                        JasperDesign jd = JRXmlLoader.load("F:\\IJSE\\Final Projects\\Schola\\src\\me\\siyum\\schola\\reports\\Billl.jrxml");
+                        JasperDesign jd = JRXmlLoader.load("/home/siyum/IdeaProjects/IJSE/Final Proj/Schola/src/me/siyum/schola/reports/Billl.jrxml");
                         String sql = "SELECT * FROM fee WHERE id='" + f.getId() + "'";
                         JRDesignQuery newQuery = new JRDesignQuery();
                         newQuery.setText(sql);
@@ -88,11 +88,11 @@ public class StudentPaymentController {
                         er.printStackTrace();
                     }
                 });
+                paid += f.getAmount();
             }
 
-
+            txtPayable.setText(String.valueOf(batchBO.getBatch(s.getBatch()).getFee() - paid));
             tblPayments.setItems(obList);
-
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

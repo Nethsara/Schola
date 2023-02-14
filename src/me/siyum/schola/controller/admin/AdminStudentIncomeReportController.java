@@ -23,7 +23,7 @@ public class AdminStudentIncomeReportController {
     public LineChart chartExpenses;
     public LineChart chartIncome;
 
-    SalaryBO salaryBO = BOFactory.getInstance().getBO(BOTypes.SALARY);
+    SalaryBO salaryBO = (SalaryBO) BOFactory.getInstance().getBO(BOTypes.SALARY);
 
     public void initialize() {
         setIncome();
@@ -48,7 +48,7 @@ public class AdminStudentIncomeReportController {
 
     private void setIncome() {
         XYChart.Series series = new XYChart.Series();
-        FeeBO feeBO = BOFactory.getInstance().getBO(BOTypes.FEE);
+        FeeBO feeBO = (FeeBO) BOFactory.getInstance().getBO(BOTypes.FEE);
         try {
             ArrayList<FeeDTO> feesAll = feeBO.getFeesAll();
 
@@ -66,7 +66,7 @@ public class AdminStudentIncomeReportController {
 
     public void expenses(ActionEvent actionEvent) {
         try {
-            JasperDesign jd = JRXmlLoader.load("F:\\IJSE\\Final Projects\\Schola\\src\\me\\siyum\\schola\\reports\\Expenses.jrxml");
+            JasperDesign jd = JRXmlLoader.load("/home/siyum/IdeaProjects/IJSE/Final Proj/Schola/src/me/siyum/schola/reports/Expenses.jrxml");
             String sql = "SELECT * FROM salary";
             JRDesignQuery newQuery = new JRDesignQuery();
             newQuery.setText(sql);
@@ -82,7 +82,7 @@ public class AdminStudentIncomeReportController {
 
     public void income(ActionEvent actionEvent) {
         try {
-            JasperDesign jd = JRXmlLoader.load("F:\\IJSE\\Final Projects\\Schola\\src\\me\\siyum\\schola\\reports\\Income.jrxml");
+            JasperDesign jd = JRXmlLoader.load("/home/siyum/IdeaProjects/IJSE/Final Proj/Schola/src/me/siyum/schola/reports/Income.jrxml");
             String sql = "SELECT * FROM fee";
             JRDesignQuery newQuery = new JRDesignQuery();
             newQuery.setText(sql);

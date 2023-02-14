@@ -28,8 +28,8 @@ import java.util.ArrayList;
 public class ReceptionistAttendanceController {
     private final ObservableList<ReceptionistAttendanceTM> pendingClzList = FXCollections.observableArrayList();
     private final ObservableList<ReceptionistAttendanceTM> finishedClzList = FXCollections.observableArrayList();
-    private final ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final AttendanceBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
+    private final ClassesBO classesBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
     public AnchorPane paneAttendance;
     public TableView<ReceptionistAttendanceTM> tblAttendance;
     public TableColumn<ReceptionistAttendanceTM, String> colID;

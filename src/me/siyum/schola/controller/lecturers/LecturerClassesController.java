@@ -18,8 +18,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class LecturerClassesController {
-    private final ClassesBO classBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final ClassesBO classBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public TableColumn<LecturerClassesTM, String> colID;
     public TableColumn<LecturerClassesTM, String> colDate;
     public TableColumn<LecturerClassesTM, String> colTime;

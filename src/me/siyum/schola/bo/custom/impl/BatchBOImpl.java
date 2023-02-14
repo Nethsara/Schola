@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class BatchBOImpl implements BatchBO {
 
-    BatchDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.BATCHES);
+    BatchDAO dao = (BatchDAO) DAOFactory.getInstance().getDAO(DAOTypes.BATCHES);
 
     @Override
     public ArrayList<BatchDTO> getBatches(String s) throws SQLException, ClassNotFoundException {

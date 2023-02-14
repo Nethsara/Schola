@@ -18,10 +18,10 @@ import java.util.ArrayList;
 
 public class StudentsAnnouncementsController {
 
-    private final AnnouncementsBO stBo = BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
+    private final AnnouncementsBO stBo = (AnnouncementsBO) BOFactory.getInstance().getBO(BOTypes.ANNOUNCEMENTS);
     public JFXListView listAnnouncements;
-    NotificationStudentBO noti = BOFactory.getInstance().getBO(BOTypes.NOTIFICATION_STUDENT);
-    private ObservableList<AnnouncementsTM> tmList = FXCollections.observableArrayList();
+    NotificationStudentBO noti = (NotificationStudentBO) BOFactory.getInstance().getBO(BOTypes.NOTIFICATION_STUDENT);
+    private final ObservableList<AnnouncementsTM> tmList = FXCollections.observableArrayList();
 
     public void initialize() {
         setData();
@@ -32,11 +32,10 @@ public class StudentsAnnouncementsController {
 
         try {
             search = stBo.search("");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        assert search != null;
         for (AnnouncementsDTO dto : search
         ) {
             tmList.add(

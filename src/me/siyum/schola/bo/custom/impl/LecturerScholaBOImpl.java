@@ -10,7 +10,7 @@ import me.siyum.schola.entity.LecturerSchola;
 import java.sql.SQLException;
 
 public class LecturerScholaBOImpl implements LecturerScholaBO {
-    LecturerScholaDAO lecturerScholaDAO = DAOFactory.getInstance().getDAO(DAOTypes.LECTURER_SCHOLA);
+    LecturerScholaDAO lecturerScholaDAO = (LecturerScholaDAO) DAOFactory.getInstance().getDAO(DAOTypes.LECTURER_SCHOLA);
 
     @Override
     public LecturerScholaDTO getScholaByID(String id) throws SQLException, ClassNotFoundException {

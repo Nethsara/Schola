@@ -1,11 +1,12 @@
 package me.siyum.schola.bo.custom;
 
+import me.siyum.schola.bo.SuperBO;
 import me.siyum.schola.dto.StudentDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface StudentBO {
+public interface StudentBO extends SuperBO {
 
     boolean saveStudent(StudentDTO student) throws SQLException, ClassNotFoundException;
 
@@ -25,7 +26,7 @@ public interface StudentBO {
 
     ArrayList<StudentDTO> filterStudents(String filter) throws SQLException, ClassNotFoundException;
 
-    boolean deleteStudent(String id) throws SQLException, Exception;
+    boolean deleteStudent(String id) throws Exception;
 
 
 }

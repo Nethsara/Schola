@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LecturerVoteBOImpl implements LecturerVoteBO {
-    LecturerVoteDAO lecturerVoteDAO = DAOFactory.getInstance().getDAO(DAOTypes.LECTURER_VOTE);
+    LecturerVoteDAO lecturerVoteDAO = (LecturerVoteDAO) DAOFactory.getInstance().getDAO(DAOTypes.LECTURER_VOTE);
 
     @Override
     public boolean vote(LecturerVoteDTO lecturerVoteDTO) throws SQLException, ClassNotFoundException {

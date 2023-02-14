@@ -30,8 +30,8 @@ import java.util.Optional;
 
 public class ReceptionistDashboardController {
     private static final ArrayList<ToDoDTO> toDoList = new ArrayList<>();
-    private final TasksBO tasksBO = BOFactory.getInstance().getBO(BOTypes.TASKS);
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final TasksBO tasksBO = (TasksBO) BOFactory.getInstance().getBO(BOTypes.TASKS);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
     public JFXButton btnAddToDo;
     public JFXListView<String> listName;
     public TextField txtToDoListItem;
@@ -47,7 +47,7 @@ public class ReceptionistDashboardController {
     public Label lblPendingTasks;
     public Label lblToMarkAttendance;
     public Label lblTime;
-    AttendanceBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
+    AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
