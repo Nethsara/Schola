@@ -34,7 +34,7 @@ public class ReceptionistPageController {
     public FontAwesomeIconView iconAttendance;
     public FontAwesomeIconView iconSalary;
 
-    EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
 
     public void initialize() throws IOException {
         setButtonClorsNormal();

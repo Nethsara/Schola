@@ -1,11 +1,12 @@
 package me.siyum.schola.bo.custom;
 
+import me.siyum.schola.bo.SuperBO;
 import me.siyum.schola.dto.AttendanceDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface AttendanceBO {
+public interface AttendanceBO extends SuperBO {
     boolean saveAttendance(AttendanceDTO attendanceDTO) throws SQLException, ClassNotFoundException;
 
     ArrayList<AttendanceDTO> getAllAttendance() throws SQLException, ClassNotFoundException;

@@ -14,8 +14,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class StudentVoteController {
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    private final LecturerVoteBO lecturerVoteBO = BOFactory.getInstance().getBO(BOTypes.LECTURER_VOTE);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final LecturerVoteBO lecturerVoteBO = (LecturerVoteBO) BOFactory.getInstance().getBO(BOTypes.LECTURER_VOTE);
     public JFXRadioButton vote5;
     public JFXRadioButton vote4;
     public JFXRadioButton vote3;

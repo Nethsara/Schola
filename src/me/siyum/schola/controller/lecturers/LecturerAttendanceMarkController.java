@@ -10,10 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.AttendanceBO;
-import me.siyum.schola.bo.custom.AttendanceMarkBO;
-import me.siyum.schola.bo.custom.ClassesBO;
-import me.siyum.schola.bo.custom.StudentBO;
+import me.siyum.schola.bo.custom.*;
 import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.AttendanceDTO;
 import me.siyum.schola.dto.AttendanceMarkDTO;
@@ -27,11 +24,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class LecturerAttendanceMarkController {
-    private final AttendanceBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
-    private final ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
+
+    private final AttendanceMarkingBO attendanceMarkingBO = (AttendanceMarkingBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE_MARKING);
+    private final ClassesBO classesBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
     private final ObservableList<LecturerAttendanceMarkTM> st = FXCollections.observableArrayList();
-    private final AttendanceMarkBO attendanceMarkBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE_MARK);
     public TableView<LecturerAttendanceMarkTM> tblAttendance;
     public TableColumn<LecturerAttendanceMarkTM, String> colID;
     public TableColumn<LecturerAttendanceMarkTM, String> colName;
@@ -100,47 +98,7 @@ public class LecturerAttendanceMarkController {
     }
 
     public void completeMarking() throws SQLException {
-        Connection connection = null;
-        boolean status;
-        for (LecturerAttendanceMarkTM re : st
-        ) {
-            try {
-                connection = DBConnection.getInstance().getConnection();
-                connection.setAutoCommit(false);
-                status = attendanceMarkBO.saveAttendanceMarking(
-                        new AttendanceMarkDTO(
-                                re.getId(),
-                                re.getStID(),
-                                re.getActions().isSelected()
-                        )
-                );
-                if (status) {
-                    boolean updateAttendance = attendanceBO.updateAttendance(
-                            new AttendanceDTO(
-                                    attendanceID,
-                                    classID,
-                                    LocalDate.now(),
-                                    totalSt,
-                                    false
-                            )
-                    );
-                    if (updateAttendance) {
-                        connection.commit();
-                        new Alert(Alert.AlertType.INFORMATION, "Success!").show();
-                    } else {
-                        connection.rollback();
-                        connection.setAutoCommit(true);
-                    }
-                } else {
-                    connection.rollback();
-                    connection.setAutoCommit(true);
-                }
-            } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
-            } finally {
-                assert connection != null;
-                connection.setAutoCommit(true);
-            }
-        }
+        boolean status = attendanceMarkingBO.markAttendance(st, attendanceID, classID, totalSt);
     }
+
 }

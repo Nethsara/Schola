@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
+import me.siyum.schola.bo.custom.ExamResultsBO;
 import me.siyum.schola.bo.custom.StudentMarkBO;
 import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.StudentMarkDTO;
@@ -16,7 +17,8 @@ import java.sql.SQLException;
 
 public class StudentExamResultController {
     public Label lblMarks;
-    StudentMarkBO studentMarkBO = BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
+    StudentMarkBO studentMarkBO = (StudentMarkBO) BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
+    ExamResultsBO examResultsBO = (ExamResultsBO) BOFactory.getInstance().getBO(BOTypes.EXAM_RESULT);
 
 
     public void setMarks(String marks) {
@@ -41,34 +43,19 @@ public class StudentExamResultController {
     }
 
     public void closeBtn(ActionEvent actionEvent) {
-        Connection connection = null;
-        try {
-            connection = DBConnection.getInstance().getConnection();
-            connection.setAutoCommit(false);
-            boolean b = studentMarkBO.saveExmStMarks(
-                    new StudentMarkDTO(
-                            generateID(),
-                            ExamMarking.examID,
-                            ExamMarking.stID,
-                            ExamMarking.mark
-                    )
-            );
-            if (b) {
-                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                boolean scholaUpdated = ExamMarking.scholaReload();
-                if (scholaUpdated) {
-                    connection.commit();
-                    stage.close();
-                } else {
-                    connection.rollback();
-                    connection.setAutoCommit(true);
-                }
-            } else {
-                connection.rollback();
-                connection.setAutoCommit(true);
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
+        boolean b = examResultsBO.saveResults(new StudentMarkDTO(
+                generateID(),
+                ExamMarking.examID,
+                ExamMarking.stID,
+                ExamMarking.mark
+        ));
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        if (b)
+            stage.close();
+
+
     }
 }

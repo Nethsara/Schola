@@ -22,8 +22,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SecretaryPaymentsController {
-    private final SalaryBO bo = BOFactory.getInstance().getBO(BOTypes.SALARY);
-    private final EmployeeBO empBo = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final SalaryBO bo = (SalaryBO) BOFactory.getInstance().getBO(BOTypes.SALARY);
+    private final EmployeeBO empBo = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public JFXTextField txtEmpName;
     public JFXTextField txtPayable;
     public JFXTextField txtAmount;

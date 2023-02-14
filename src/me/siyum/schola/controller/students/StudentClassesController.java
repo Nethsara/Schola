@@ -28,10 +28,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class StudentClassesController {
-    private final ClassesBO classBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private final SubjectsBO subjectsBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
+    private final ClassesBO classBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final SubjectsBO subjectsBO = (SubjectsBO) BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
     public TableColumn<StudentClassesTM, String> colID;
     public TableColumn<StudentClassesTM, String> colDate;
     public TableColumn<StudentClassesTM, String> colTime;
@@ -75,11 +75,7 @@ public class StudentClassesController {
         ) {
             if (studentDTO.getBatch().equalsIgnoreCase(c.getBatch())) {
                 Button btn = new Button("Vote");
-                if (c.getDate().isBefore(LocalDate.now())) {
-                    btn.setDisable(false);
-                } else {
-                    btn.setDisable(true);
-                }
+                btn.setDisable(!c.getDate().isBefore(LocalDate.now()));
                 clsTM.add(new StudentClassesTM(
                                 c.getId(),
                                 c.getDate(),

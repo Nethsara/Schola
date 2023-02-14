@@ -21,7 +21,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 
 public class LecturersPageController {
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public AnchorPane mainPane;
     public Circle circleImg;
     public JFXButton btnDash;

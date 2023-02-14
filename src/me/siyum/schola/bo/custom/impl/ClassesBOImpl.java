@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ClassesBOImpl implements ClassesBO {
-    ClassesDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.CLASSES);
+    ClassesDAO dao = (ClassesDAO) DAOFactory.getInstance().getDAO(DAOTypes.CLASSES);
 
     @Override
     public ArrayList<ClassesDTO> getAllClasses(String s) throws SQLException, ClassNotFoundException {

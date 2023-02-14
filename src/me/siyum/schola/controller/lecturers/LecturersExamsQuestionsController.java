@@ -40,7 +40,7 @@ public class LecturersExamsQuestionsController {
     ObservableList<LecturerExamQuestionTM> obList = FXCollections.observableArrayList();
     ObservableList<String> answers = FXCollections.observableArrayList();
 
-    ExamsQuestionsBO examsQuestionsBO = BOFactory.getInstance().getBO(BOTypes.EXAM_QUESTIONS);
+    ExamsQuestionsBO examsQuestionsBO = (ExamsQuestionsBO) BOFactory.getInstance().getBO(BOTypes.EXAM_QUESTIONS);
 
     public void initialize() {
         answers.add("1");

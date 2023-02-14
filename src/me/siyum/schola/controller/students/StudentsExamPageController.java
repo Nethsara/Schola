@@ -25,11 +25,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class StudentsExamPageController {
-    private final ExamsBO examsBO = BOFactory.getInstance().getBO(BOTypes.EXAMS);
-    private final SubjectsBO subBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
-    private final StudentMarkBO stMarkBO = BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
-    private final StudentBO stBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private final EmployeeBO empBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final ExamsBO examsBO = (ExamsBO) BOFactory.getInstance().getBO(BOTypes.EXAMS);
+    private final SubjectsBO subBO = (SubjectsBO) BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
+    private final StudentMarkBO stMarkBO = (StudentMarkBO) BOFactory.getInstance().getBO(BOTypes.STUDENT_MARK);
+    private final StudentBO stBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final EmployeeBO empBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     private final ObservableList<StudentExamTM> todayExams = FXCollections.observableArrayList();
     private final ObservableList<StudentExamTM> passedExams = FXCollections.observableArrayList();
     private final ObservableList<StudentExamTM> pendingExams = FXCollections.observableArrayList();

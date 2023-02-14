@@ -13,7 +13,10 @@ public class TasksDAOImpl implements TasksDAO {
     @Override
     public boolean save(Tasks tasks) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("INSERT INTO tasks VALUES(?,?,?,?)",
-                tasks.getId(), tasks.getTimeStamp(), tasks.getMessage(), tasks.getStatus());
+                tasks.getId(),
+                tasks.getTimeStamp(),
+                tasks.getMessage(),
+                tasks.getStatus());
     }
 
     @Override

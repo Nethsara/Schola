@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SalaryBOImpl implements SalaryBO {
-    SalaryDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.SALARY);
+    SalaryDAO dao = (SalaryDAO) DAOFactory.getInstance().getDAO(DAOTypes.SALARY);
 
     @Override
     public ArrayList<SalaryDTO> getSalaries() throws SQLException, ClassNotFoundException {

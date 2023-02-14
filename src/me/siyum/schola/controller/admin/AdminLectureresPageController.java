@@ -25,11 +25,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AdminLectureresPageController {
-    private final EmployeeBO empBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final EmployeeBO empBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public JFXListView<HBox> listLec;
     public JFXComboBox<String> cmbSortBy;
     public TextField txtSearch;
-    LecturerScholaBO lecturerScholaBO = BOFactory.getInstance().getBO(BOTypes.LECTURER_SCHOLA);
+    LecturerScholaBO lecturerScholaBO = (LecturerScholaBO) BOFactory.getInstance().getBO(BOTypes.LECTURER_SCHOLA);
 
     public void initialize() {
         setData();

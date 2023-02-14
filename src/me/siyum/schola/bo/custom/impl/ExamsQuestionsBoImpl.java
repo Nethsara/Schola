@@ -10,11 +10,11 @@ import me.siyum.schola.entity.ExamQuestions;
 import java.sql.SQLException;
 
 public class ExamsQuestionsBoImpl implements ExamsQuestionsBO {
-    ExamsQuestionsDAO examsDAO = DAOFactory.getInstance().getDAO(DAOTypes.EXAM_QUESTIONS);
+    ExamsQuestionsDAO examsDAO = (ExamsQuestionsDAO) DAOFactory.getInstance().getDAO(DAOTypes.EXAM_QUESTIONS);
 
 
     @Override
-    public boolean saveExamQuestion(ExamQuestionsDTO examsDTO) throws SQLException, Exception {
+    public boolean saveExamQuestion(ExamQuestionsDTO examsDTO) throws Exception {
         return examsDAO.save(new ExamQuestions(
                 examsDTO.getQuestionNo(),
                 examsDTO.getExmID(),

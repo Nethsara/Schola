@@ -27,8 +27,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AdminStudentPageController {
-    private final StudentBO stBo = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private final ExamsBO examsBO = BOFactory.getInstance().getBO(BOTypes.EXAMS);
+    private final StudentBO stBo = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final ExamsBO examsBO = (ExamsBO) BOFactory.getInstance().getBO(BOTypes.EXAMS);
     public JFXListView<HBox> listStudents;
     public TextField txtSearch;
     public JFXComboBox<String> cmbSortBox;

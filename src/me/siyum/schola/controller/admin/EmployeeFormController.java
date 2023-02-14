@@ -33,9 +33,10 @@ import java.time.LocalDate;
 
 public class EmployeeFormController {
 
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
     public ImageView imgSt;
     public Label lblEmployee;
+
     public TextField txtEmail;
     public TextField txtPhone;
     public TextField txtAddress;

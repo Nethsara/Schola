@@ -18,8 +18,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ReceptionistSalaryController {
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    private final SalaryBO salaryBO = BOFactory.getInstance().getBO(BOTypes.SALARY);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final SalaryBO salaryBO = (SalaryBO) BOFactory.getInstance().getBO(BOTypes.SALARY);
     public TableColumn colID;
     public TableColumn colDate;
     public TableColumn colMethod;

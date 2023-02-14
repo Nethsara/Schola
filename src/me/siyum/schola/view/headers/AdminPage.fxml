@@ -105,18 +105,6 @@
                 <Insets bottom="10.0" left="20.0" top="10.0"/>
             </padding>
         </JFXButton>
-        <JFXButton fx:id="btnSettings" alignment="TOP_LEFT" onAction="#settingsPage" prefHeight="38.0" prefWidth="200.0"
-                   text=" Settings" textFill="#95a0a9">
-            <font>
-                <Font name="Consolas" size="15.0"/>
-            </font>
-            <graphic>
-                <FontAwesomeIconView fx:id="iconSettings" fill="#95a0a9" glyphName="GEAR" size="15"/>
-            </graphic>
-            <padding>
-                <Insets bottom="10.0" left="20.0" top="10.0"/>
-            </padding>
-        </JFXButton>
     </VBox>
     <Separator layoutX="218.0" layoutY="39.0" opacity="0.65" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0"/>
     <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="37.0" layoutY="508.0" pickOnBounds="true"

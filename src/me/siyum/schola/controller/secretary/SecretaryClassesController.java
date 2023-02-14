@@ -21,12 +21,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SecretaryClassesController {
-    private final BatchBO batchBO = BOFactory.getInstance().getBO(BOTypes.BATCHES);
-    private final ClassRoomsBO classRoomsBO = BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
-    private final SubjectsBO subjectsBO = BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
-    private final ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final AttendanceBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final BatchBO batchBO = (BatchBO) BOFactory.getInstance().getBO(BOTypes.BATCHES);
+
+    private final ClassSchedulerBO classSchedulerBO = (ClassSchedulerBO) BOFactory.getInstance().getBO(BOTypes.CLASS_SCHEDULER);
+
+    private final ClassRoomsBO classRoomsBO = (ClassRoomsBO) BOFactory.getInstance().getBO(BOTypes.CLASS_ROOMS);
+    private final SubjectsBO subjectsBO = (SubjectsBO) BOFactory.getInstance().getBO(BOTypes.SUBJECTS);
+    private final ClassesBO classesBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
     public JFXComboBox<String> cmbSubID;
     public JFXTextField txtClID;
     public JFXComboBox<String> cmbRoom;
@@ -57,7 +60,7 @@ public class SecretaryClassesController {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
 
-                setDisable(empty || date.compareTo(today) < 0);
+                setDisable(empty || date.isBefore(today));
             }
         });
 
@@ -184,33 +187,13 @@ public class SecretaryClassesController {
         );
     }
 
-    public void scheduleClass() throws SQLException {
-        Connection connection = null;
-        try {
-            connection = DBConnection.getInstance().getConnection();
-            connection.setAutoCommit(false);
-            boolean savedClass = classesBO.scheduleClass(createClassObject());
-            if (savedClass) {
-                boolean savedAttendance = attendanceBO.saveAttendance(getAttendanceDTO());
-                if (savedAttendance) {
-                    connection.commit();
-                    new Alert(Alert.AlertType.INFORMATION, "Saved Success").show();
-                    setTable();
-                } else {
-                    connection.rollback();
-                    connection.setAutoCommit(true);
-                }
-            } else {
-                connection.rollback();
-                connection.setAutoCommit(true);
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            assert connection != null;
-            connection.setAutoCommit(true);
+    public void scheduleClass() throws SQLException, ClassNotFoundException {
 
+        boolean b = classSchedulerBO.scheduleClass(createClassObject(), getAttendanceDTO());
+
+        if (b) {
+            new Alert(Alert.AlertType.INFORMATION, "Done").show();
+            setTable();
         }
-
     }
 }

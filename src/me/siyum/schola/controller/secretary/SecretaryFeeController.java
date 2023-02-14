@@ -38,7 +38,7 @@ public class SecretaryFeeController {
     EmployeeDTO s = (EmployeeDTO) Env.user;
     ObservableList<SecretaryFeeTM> obList = FXCollections.observableArrayList();
 
-    StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
 
     public void initialize() {
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -51,7 +51,7 @@ public class SecretaryFeeController {
     }
 
     private void setData() {
-        FeeBO feeBO = BOFactory.getInstance().getBO(BOTypes.FEE);
+        FeeBO feeBO = (FeeBO) BOFactory.getInstance().getBO(BOTypes.FEE);
         try {
             ArrayList<FeeDTO> feesByID = feeBO.getFeesByID("");
 

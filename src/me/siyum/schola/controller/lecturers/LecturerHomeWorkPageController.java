@@ -24,8 +24,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LecturerHomeWorkPageController {
-    private final EmployeeBO employeeBO = BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
-    private final HomeWorkBO homeWorkBO = BOFactory.getInstance().getBO(BOTypes.HOME_WORK);
+    private final EmployeeBO employeeBO = (EmployeeBO) BOFactory.getInstance().getBO(BOTypes.EMPLOYEE);
+    private final HomeWorkBO homeWorkBO = (HomeWorkBO) BOFactory.getInstance().getBO(BOTypes.HOME_WORK);
     private final ObservableList<LecturerHomeWorkTM> observableList = FXCollections.observableArrayList();
     public TableView<LecturerHomeWorkTM> tblClasses;
     public TableColumn<LecturerHomeWorkTM, String> colID;

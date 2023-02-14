@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class TasksBOImpl implements TasksBO {
-    private final TasksDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.TASKS);
+    private final TasksDAO dao = (TasksDAO) DAOFactory.getInstance().getDAO(DAOTypes.TASKS);
 
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {

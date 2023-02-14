@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StudentMarkBOImpl implements StudentMarkBO {
-    StudentMarkDAO studentMarkDAO = DAOFactory.getInstance().getDAO(DAOTypes.STUDENT_MARK);
+    StudentMarkDAO studentMarkDAO = (StudentMarkDAO) DAOFactory.getInstance().getDAO(DAOTypes.STUDENT_MARK);
 
     @Override
     public double getMarkByID(String stID, String exmID) throws SQLException, ClassNotFoundException {

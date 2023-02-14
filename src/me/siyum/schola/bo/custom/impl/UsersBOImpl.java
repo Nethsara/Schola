@@ -10,7 +10,7 @@ import me.siyum.schola.entity.Users;
 import java.sql.SQLException;
 
 public class UsersBOImpl implements UsersBO {
-    UsersDAO usersDAO = DAOFactory.getInstance().getDAO(DAOTypes.USERS);
+    UsersDAO usersDAO = (UsersDAO) DAOFactory.getInstance().getDAO(DAOTypes.USERS);
 
     @Override
     public boolean save(UsersDTO u) throws SQLException, ClassNotFoundException {

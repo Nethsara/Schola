@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AttendanceMarkBOImpl implements AttendanceMarkBO {
-    AttendanceMarkDAO attendanceMarkDAO = DAOFactory.getInstance().getDAO(DAOTypes.ATTENDANCE_MARK);
+    AttendanceMarkDAO attendanceMarkDAO = (AttendanceMarkDAO) DAOFactory.getInstance().getDAO(DAOTypes.ATTENDANCE_MARK);
 
     @Override
     public boolean saveAttendanceMarking(AttendanceMarkDTO attendanceMarkDTO) throws SQLException, ClassNotFoundException {

@@ -12,54 +12,54 @@ public class DAOFactory {
         return daoFactory == null ? daoFactory = (new DAOFactory()) : daoFactory;
     }
 
-    public <T> T getDAO(DAOTypes types) {
+    public SuperDAO getDAO(DAOTypes types) {
         switch (types) {
             case STUDENT:
-                return (T) new StudentDAOImpl();
+                return new StudentDAOImpl();
             case PARENT:
-                return (T) new ParentDAOImpl();
+                return new ParentDAOImpl();
             case TASKS:
-                return (T) new TasksDAOImpl();
+                return new TasksDAOImpl();
             case EMPLOYEE:
-                return (T) new EmployeeDAOImpl();
+                return new EmployeeDAOImpl();
             case ANNOUNCEMENT:
-                return (T) new AnnouncementDAOImpl();
+                return new AnnouncementDAOImpl();
             case EXAMS:
-                return (T) new ExamDAOImpl();
+                return new ExamDAOImpl();
             case EXAM_QUESTIONS:
-                return (T) new ExamQuestionsDAOImpl();
+                return new ExamQuestionsDAOImpl();
             case CLASS_ROOMS:
-                return (T) new ClassRoomsDAOImpl();
+                return new ClassRoomsDAOImpl();
             case SUBJECTS:
-                return (T) new SubjectsDAOImpl();
+                return new SubjectsDAOImpl();
             case CLASSES:
-                return (T) new ClassesDAOImpl();
+                return new ClassesDAOImpl();
             case BATCHES:
-                return (T) new BatchDAOImpl();
+                return new BatchDAOImpl();
             case SALARY:
-                return (T) new SalaryDAOImpl();
+                return new SalaryDAOImpl();
             case STUDENT_MARK:
-                return (T) new StudentMarksDAOImpl();
+                return new StudentMarksDAOImpl();
             case ATTENDANCE:
-                return (T) new AttendanceDAOImpl();
+                return new AttendanceDAOImpl();
             case ATTENDANCE_MARK:
-                return (T) new AttendanceMarkDAOImpl();
+                return new AttendanceMarkDAOImpl();
             case HOME_WORK:
-                return (T) new HomeWorkDAOImpl();
+                return new HomeWorkDAOImpl();
             case HOME_WORK_STUDENT:
-                return (T) new HomeWorkStudentDAOImpl();
+                return new HomeWorkStudentDAOImpl();
             case LECTURER_VOTE:
-                return (T) new LecturerVoteDAOImpl();
+                return new LecturerVoteDAOImpl();
             case LECTURER_SCHOLA:
-                return (T) new LecturerScholaDAOImpl();
+                return new LecturerScholaDAOImpl();
             case NOTIFICATION:
-                return (T) new NotificationDAOImpl();
+                return new NotificationDAOImpl();
             case NOTIFICATION_STUDENT:
-                return (T) new NotificationStudentDAOImpl();
+                return new NotificationStudentDAOImpl();
             case FEE:
-                return (T) new FeeDAOImpl();
+                return new FeeDAOImpl();
             case USERS:
-                return (T) new UsersDAOImpl();
+                return new UsersDAOImpl();
             default:
                 return null;
         }

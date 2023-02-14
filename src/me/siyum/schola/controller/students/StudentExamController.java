@@ -32,7 +32,7 @@ public class StudentExamController implements Initializable {
     public JFXRadioButton radioMCQ1;
     public Label lblTime;
     public Label txtQuestion;
-    ExamsQuestionsBO examsQuestionsBO = BOFactory.getInstance().getBO(BOTypes.EXAM_QUESTIONS);
+    ExamsQuestionsBO examsQuestionsBO = (ExamsQuestionsBO) BOFactory.getInstance().getBO(BOTypes.EXAM_QUESTIONS);
     private Timeline timeline;
     private int correctAns;
     private int selectedAns;

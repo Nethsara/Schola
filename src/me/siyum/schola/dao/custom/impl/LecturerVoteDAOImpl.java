@@ -12,7 +12,9 @@ public class LecturerVoteDAOImpl implements LecturerVoteDAO {
     @Override
     public boolean save(LecturerVote lecturerVote) throws SQLException, ClassNotFoundException {
         return CRUDUtil.execute("INSERT INTO lecturer_vote VALUES(?,?,?)",
-                lecturerVote.getLecturer(), lecturerVote.getVote(), lecturerVote.getDate());
+                lecturerVote.getLecturer(),
+                lecturerVote.getVote(),
+                lecturerVote.getDate());
     }
 
     @Override

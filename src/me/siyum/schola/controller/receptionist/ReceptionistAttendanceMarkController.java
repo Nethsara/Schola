@@ -10,10 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import me.siyum.schola.bo.BOFactory;
 import me.siyum.schola.bo.BOTypes;
-import me.siyum.schola.bo.custom.AttendanceBO;
-import me.siyum.schola.bo.custom.AttendanceMarkBO;
-import me.siyum.schola.bo.custom.ClassesBO;
-import me.siyum.schola.bo.custom.StudentBO;
+import me.siyum.schola.bo.custom.*;
 import me.siyum.schola.db.DBConnection;
 import me.siyum.schola.dto.AttendanceDTO;
 import me.siyum.schola.dto.AttendanceMarkDTO;
@@ -27,11 +24,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ReceptionistAttendanceMarkController {
-    private final AttendanceBO attendanceBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
-    private final ClassesBO classesBO = BOFactory.getInstance().getBO(BOTypes.CLASSES);
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE);
+
+    private final AttendanceMarkingBO attendanceMarkingBO = (AttendanceMarkingBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE_MARKING);
+    private final ClassesBO classesBO = (ClassesBO) BOFactory.getInstance().getBO(BOTypes.CLASSES);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
     private final ObservableList<ReceptionistAttendanceMarkTM> st = FXCollections.observableArrayList();
-    private final AttendanceMarkBO attendanceMarkBO = BOFactory.getInstance().getBO(BOTypes.ATTENDANCE_MARK);
+    private final AttendanceMarkBO attendanceMarkBO = (AttendanceMarkBO) BOFactory.getInstance().getBO(BOTypes.ATTENDANCE_MARK);
     public TableView<ReceptionistAttendanceMarkTM> tblAttendance;
     public TableColumn<ReceptionistAttendanceMarkTM, String> colID;
     public TableColumn<ReceptionistAttendanceMarkTM, String> colName;
@@ -100,35 +99,9 @@ public class ReceptionistAttendanceMarkController {
     }
 
     public void completeMarking() throws SQLException, ClassNotFoundException {
-        Connection connection = null;
-        boolean status = true;
-        for (ReceptionistAttendanceMarkTM re : st
-        ) {
-
-            connection = DBConnection.getInstance().getConnection();
-            connection.setAutoCommit(false);
-            status = attendanceMarkBO.saveAttendanceMarking(
-                    new AttendanceMarkDTO(
-                            re.getId(),
-                            re.getStID(),
-                            re.getActions().isSelected()
-                    )
-            );
-        }
+        boolean status = attendanceMarkingBO.markAttendanceReceptionist(st, attendanceID, classID, totalSt);
         if (status) {
-            boolean updateAttendance = attendanceBO.updateAttendance(
-                    new AttendanceDTO(
-                            attendanceID,
-                            classID,
-                            LocalDate.now(),
-                            totalSt,
-                            false
-                    )
-            );
-            if (updateAttendance) {
-                new Alert(Alert.AlertType.INFORMATION, "Success").show();
-            }
+            new Alert(Alert.AlertType.INFORMATION, "Success").show();
         }
-
     }
 }

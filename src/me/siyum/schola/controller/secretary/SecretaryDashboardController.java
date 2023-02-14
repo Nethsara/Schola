@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class SecretaryDashboardController {
-    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
     public Label lblTotalStudents;
     public Label lblPendingStudents;
     public Label lblPaymentReceived;

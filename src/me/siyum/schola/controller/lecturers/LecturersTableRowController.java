@@ -63,7 +63,7 @@ public class LecturersTableRowController {
 
     public void generateReport() {
         try {
-            JasperDesign jd = JRXmlLoader.load("F:\\IJSE\\Final Projects\\Schola\\src\\me\\siyum\\schola\\reports\\Student.jrxml");
+            JasperDesign jd = JRXmlLoader.load("/home/siyum/IdeaProjects/IJSE/Final Proj/Schola/src/me/siyum/schola/reports/Student.jrxml");
             String sql = "SELECT * FROM student_exam_marks WHERE stID='" + lecturersStudentsTM.getId() + "' ORDER BY examID DESC";
             JRDesignQuery newQuery = new JRDesignQuery();
             newQuery.setText(sql);

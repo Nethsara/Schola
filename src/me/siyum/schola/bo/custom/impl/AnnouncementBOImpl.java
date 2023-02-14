@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AnnouncementBOImpl implements AnnouncementsBO {
-    private final AnnouncementsDAO dao = DAOFactory.getInstance().getDAO(DAOTypes.ANNOUNCEMENT);
+    private final AnnouncementsDAO dao = (AnnouncementsDAO) DAOFactory.getInstance().getDAO(DAOTypes.ANNOUNCEMENT);
 
     @Override
     public String getLastID() throws SQLException, ClassNotFoundException {

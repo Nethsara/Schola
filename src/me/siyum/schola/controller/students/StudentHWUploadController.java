@@ -22,8 +22,8 @@ public class StudentHWUploadController {
     public TextField txtHWID;
     public TextField txtStID;
     FileInputStream fis;
-    StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
-    private StudentDTO s = (StudentDTO) Env.user;
+    StudentBO studentBO = (StudentBO) BOFactory.getInstance().getBO(BOTypes.STUDENT);
+    private final StudentDTO s = (StudentDTO) Env.user;
 
     public void setData(HomeWorkDTO h) {
         txtStID.setText(s.getId());

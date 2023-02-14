@@ -52,7 +52,7 @@
             </staticText>
             <image>
                 <reportElement x="490" y="10" width="50" height="50" uuid="216680b5-c5db-4b1b-af3f-138e41db5c99"/>
-                <imageExpression><![CDATA["F:/Downloads/Add a heading (6).png"]]></imageExpression>
+                <imageExpression><![CDATA["/home/siyum/Downloads/logo-blue.png"]]></imageExpression>
             </image>
         </band>
     </title>
